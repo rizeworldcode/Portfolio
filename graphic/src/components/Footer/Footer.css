@@ -1,0 +1,354 @@
+/* ============================================================
+   VITRIO LIQUID GLASS FOOTER CARD STYLES
+   Exact reproduction of reference design
+   ============================================================ */
+
+.vitrio-footer-section {
+  position: relative;
+  width: 100%;
+  padding: 50px 24px 60px;
+  background: #eceef1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Floating Liquid Silver-Glass Card */
+.vitrio-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1120px;
+  border-radius: 36px;
+  background: linear-gradient(
+    180deg,
+    #e7eaee 0%,
+    #dde1e6 48%,
+    #d2d7dd 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow:
+    0 24px 55px -12px rgba(15, 23, 42, 0.16),
+    0 8px 20px -6px rgba(15, 23, 42, 0.08),
+    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1.5px 2px 0 rgba(0, 0, 0, 0.06);
+  padding: 42px 48px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  transition: box-shadow 350ms ease, transform 350ms ease;
+}
+
+.vitrio-card:hover {
+  box-shadow:
+    0 30px 65px -12px rgba(15, 23, 42, 0.2),
+    0 10px 25px -6px rgba(15, 23, 42, 0.1),
+    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 1),
+    inset 0 -1.5px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* ---- Top Area: Left (Brand + Form) & Right (3 Columns) ---- */
+.vitrio-card__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 48px;
+  width: 100%;
+}
+
+/* Left Section */
+.vitrio-card__left {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 380px;
+}
+
+.vitrio-card__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.vitrio-card__logo-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  padding: 4px;
+}
+
+.vitrio-card__logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.vitrio-card__brand-name {
+  font-family: "Inter", sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #111827;
+}
+
+.vitrio-card__tagline {
+  font-family: "Inter", sans-serif;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: #555e6c;
+  margin: 0;
+  max-width: 320px;
+}
+
+/* Contact Card (Address + Phone) */
+.vitrio-card__contact-card {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 14px;
+  padding: 10px 14px;
+  max-width: 340px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+  transition: all 250ms ease;
+  margin-top: 4px;
+}
+
+.vitrio-card__contact-card:hover {
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.08);
+  transform: translateY(-2px);
+}
+
+.vitrio-card__contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #4b5563;
+  text-decoration: none;
+  transition: color 180ms ease;
+}
+
+.vitrio-card__contact-item:hover {
+  color: #111827;
+}
+
+.vitrio-card__contact-item strong {
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.vitrio-card__contact-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.vitrio-card__contact-icon--pin {
+  color: #ef4444;
+}
+
+.vitrio-card__contact-icon--phone {
+  color: #10b981;
+}
+
+.vitrio-card__contact-divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.06);
+}
+
+
+
+/* Middle Section: Centered Navigation */
+.vitrio-card__nav-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  gap: 14px;
+  flex: 1;
+}
+
+.vitrio-card__col-title {
+  font-family: "Inter", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #6b7280;
+}
+
+/* Simple Text Links (No Cards/Boxes) */
+.vitrio-card__text-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.vitrio-card__text-link {
+  font-family: "Inter", sans-serif;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #4b5563;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  cursor: pointer;
+  transition: color 180ms ease, transform 180ms ease;
+  display: inline-block;
+  line-height: 1.4;
+}
+
+.vitrio-card__text-link:hover {
+  color: #111827;
+  transform: translateY(-2px);
+}
+
+/* ---- Google Map Box ---- */
+.vitrio-card__map-box {
+  width: 280px;
+  height: 140px;
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+  background: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow:
+    0 8px 20px -4px rgba(15, 23, 42, 0.1),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.8);
+  transition: transform 250ms ease, box-shadow 250ms ease;
+  flex-shrink: 0;
+}
+
+.vitrio-card__map-box:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 12px 28px -6px rgba(15, 23, 42, 0.16),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 1);
+}
+
+.vitrio-card__map-iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* ---- Bottom Area: Copyright & Circular Social Pills ---- */
+.vitrio-card__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding-top: 14px;
+}
+
+.vitrio-card__copyright {
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  color: #6b7280;
+  margin: 0;
+}
+
+.vitrio-card__copyright strong {
+  color: #374151;
+  font-weight: 600;
+}
+
+.vitrio-card__socials {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.vitrio-card__social-pill {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  color: #374151;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 1.5px 4px rgba(15, 23, 42, 0.05);
+  transition: all 200ms ease;
+}
+
+.vitrio-card__social-pill:hover {
+  background: #ffffff;
+  color: #111827;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.12);
+}
+
+/* ============================================================
+   RESPONSIVENESS (Tablet & Mobile)
+   ============================================================ */
+@media (max-width: 960px) {
+  .vitrio-card {
+    padding: 32px 32px 24px;
+    gap: 28px;
+  }
+  .vitrio-card__top {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 28px;
+  }
+  .vitrio-card__left {
+    max-width: 100%;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+  .vitrio-card__nav-col {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+  .vitrio-card__map-box {
+    width: 280px;
+    height: 140px;
+  }
+}
+
+@media (max-width: 640px) {
+  .vitrio-footer-section {
+    padding: 30px 14px 40px;
+  }
+  .vitrio-card {
+    border-radius: 26px;
+    padding: 26px 20px 20px;
+    gap: 24px;
+  }
+  .vitrio-card__map-box {
+    width: 100%;
+    height: 160px;
+  }
+  .vitrio-card__bottom {
+    flex-direction: column-reverse;
+    align-items: center;
+    text-align: center;
+    gap: 14px;
+  }
+}
