@@ -44,7 +44,7 @@ export default function Hero() {
           playsInline
           preload="auto"
         >
-          <source src="/hero-video.mp4" type="video/mp4" />
+          <source src="/videos-compressed/hero-compressed.mp4" type="video/mp4" />
         </video>
         <div className="ignitex-hero__overlay-left" />
         <div className="ignitex-hero__overlay-top" />

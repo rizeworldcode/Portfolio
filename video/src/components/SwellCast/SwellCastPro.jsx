@@ -29,6 +29,7 @@ function readTiles(raw) {
     const clip = mediaUrl(o.video) || mediaUrl(o.videoUrl);
     const useVideo = o.media === "video" || (o.media !== "image" && !!clip && !image);
     return {
+      ...o,
       image: useVideo ? "" : image,
       video: useVideo ? clip : "",
       title: typeof o.title === "string" ? o.title : "",
@@ -1023,11 +1024,29 @@ function StreamLive(props) {
       };
     };
 
+    let lastSelectTime = 0;
+    const triggerSelect = (e) => {
+      if (tnow() - lastSelectTime < 350) return;
+      const it = pick(e);
+      if (it < 0) return;
+      lastSelectTime = tnow();
+      const tile = opts.current.tiles[it];
+      if (opts.current.onSelect) {
+        opts.current.onSelect(tile, it);
+      }
+      if (!tile || !tile.link || typeof window === "undefined") return;
+      if (opts.current.newTab) window.open(tile.link, "_blank", "noopener,noreferrer");
+      else window.location.href = tile.link;
+    };
+
     const onUp = (e) => {
       const g = st.grab;
       if (!g || g.id !== e.pointerId) return;
       st.grab = null;
-      if (!g.on) return;
+      if (!g.on) {
+        triggerSelect(e);
+        return;
+      }
       try {
         host.releasePointerCapture(e.pointerId);
       } catch (err) {}
@@ -1077,15 +1096,7 @@ function StreamLive(props) {
         st.swallow = false;
         return;
       }
-      const it = pick(e);
-      if (it < 0) return;
-      const tile = opts.current.tiles[it];
-      if (opts.current.onSelect) {
-        opts.current.onSelect(tile, it);
-      }
-      if (!tile || !tile.link || typeof window === "undefined") return;
-      if (opts.current.newTab) window.open(tile.link, "_blank", "noopener,noreferrer");
-      else window.location.href = tile.link;
+      triggerSelect(e);
     };
 
     host.addEventListener("pointermove", onMove);

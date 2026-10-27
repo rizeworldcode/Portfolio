@@ -100,7 +100,8 @@
 @media (min-width: 768px) {
   .swell-modal-card {
     flex-direction: row;
-    height: 480px;
+    height: 540px;
+    max-width: 840px;
   }
 }
 
@@ -130,7 +131,7 @@
 
 .swell-modal-media {
   flex: 1.2;
-  background: #f1f5f9;
+  background: #000000;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -139,7 +140,13 @@
   min-height: 260px;
 }
 
-.swell-modal-video,
+.swell-modal-video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #000000;
+}
+
 .swell-modal-image {
   width: 100%;
   height: 100%;

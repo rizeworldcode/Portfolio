@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import CurvedMediaCarousel from "./CurvedMediaCarousel";
 import "./CurvedShowcase.css";
 
-// Curated Showcase items (Videos & Motion Visuals)
+// Helper for clean URL encoding with spaces
+const vPath = (p) => encodeURI(p);
+
+// Curated Showcase items (Web-optimized Videos & Real Frame Posters)
 const SHOWCASE_ITEMS = [
   {
     id: "reel-1",
@@ -13,19 +16,18 @@ const SHOWCASE_ITEMS = [
     year: "2026",
     description:
       "A fast-paced dynamic montage showcasing our best cinematography, color grading, sound design, and motion identity.",
-    video: "/hero-video.mp4",
-    image: "/showcase/port.jpg",
+    video: "/videos-compressed/rizeworld-gmb.mp4",
     tags: ["Cinematic", "Showreel", "4K Video", "Sound Design"],
   },
   {
     id: "item-2",
-    title: "Creative Brand Identity",
+    title: "Creative Pro Motion & Skills",
     category: "Motion Graphics · Identity",
     client: "Creative Corp",
     year: "2026",
     description:
       "Modern brand identity film featuring kinetic typography, sleek 3D renders, and futuristic aesthetic pacing.",
-    image: "/showcase/creative.jpg",
+    video: "/videos-compressed/skills.mp4",
     tags: ["Typography", "3D Motion", "Brand Film"],
   },
   {
@@ -36,30 +38,30 @@ const SHOWCASE_ITEMS = [
     year: "2025",
     description:
       "Mouth-watering culinary commercial with high-speed macro food shots and atmospheric warm color grading.",
-    image: "/showcase/kafesa.jpg",
+    video: "/videos-compressed/kafesa-befr.mp4",
     tags: ["Macro Video", "Food & Beverage", "Commercial"],
   },
   {
     id: "item-4",
-    title: "The Sweet Bite 3D VFX",
+    title: "3D Infrastructure CGI Walkthrough",
     category: "Product Promo · 3D VFX",
-    client: "Brownie Bites Co.",
+    client: "Bhavik Infra CGI",
     year: "2025",
     description:
-      "Dynamic 3D product animation highlighting textures, ingredients, and irresistible packaging reveal.",
-    image: "/showcase/brownie.png",
-    tags: ["VFX", "CGI", "Product Reveal"],
+      "Dynamic 3D product and architectural animation highlighting textures, lighting, and realistic structural modeling.",
+    video: "/videos-compressed/infra-cgi.mp4",
+    tags: ["VFX", "CGI", "3D Modeling"],
   },
   {
     id: "item-5",
-    title: "Clap Box Studio Sessions",
-    category: "Music Video · Sound Sync",
-    client: "Clap Box Records",
+    title: "Sigdi Sizzling Food Feast",
+    category: "Culinary Video · Sound Sync",
+    client: "Sigdi Food Lounge",
     year: "2025",
     description:
-      "High-energy live music showcase edited to rhythm with aggressive glitch cuts and neon stage lighting.",
-    image: "/showcase/clapbox.jpg",
-    tags: ["Music Sync", "Stage Light", "Dynamic Cut"],
+      "High-energy live kitchen cuts edited to rhythm with smoky grill flames and delicious plating.",
+    video: "/videos-compressed/sigdi-b.mp4",
+    tags: ["BBQ Grill", "Live Kitchen", "Dynamic Cut"],
   },
   {
     id: "item-6",
@@ -69,7 +71,7 @@ const SHOWCASE_ITEMS = [
     year: "2025",
     description:
       "Cinematic architectural walkthrough combining high-definition FPV drone sweeps and elegant interior framing.",
-    image: "/showcase/avantika.jpg",
+    video: "/videos-compressed/avantika-k.mp4",
     tags: ["Drone 4K", "Architecture", "Luxury Tour"],
   },
   {
@@ -80,21 +82,56 @@ const SHOWCASE_ITEMS = [
     year: "2025",
     description:
       "Inspiring documentary-style campus story capturing academic excellence, sports passion, and student life.",
-    image: "/showcase/dwps.png",
+    video: "/videos-compressed/dwps-jerry.mp4",
     tags: ["Docu-Style", "Education", "Storytelling"],
   },
   {
     id: "item-8",
-    title: "Serenity Yoga & Wellness",
+    title: "Serenity Yoga & Nature Film",
     category: "Lifestyle Documentary",
-    client: "Saniya Life",
+    client: "Yoga Lifestyle Life",
     year: "2025",
     description:
       "Calming, organic visual study of movement and nature, crafted with gentle lighting and meditative pacing.",
-    image: "/showcase/yoga.jpg",
+    video: "/videos-compressed/yoga-nature.mp4",
     tags: ["Lifestyle", "Slow Motion", "Wellness"],
   },
 ];
+
+function CurvedModalVideo({ item }) {
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.currentTime = 0;
+    const playPromise = video.play();
+    if (playPromise && typeof playPromise.catch === "function") {
+      playPromise.catch(() => {
+        if (videoRef.current) {
+          videoRef.current.muted = true;
+          videoRef.current.play().catch(() => {});
+        }
+      });
+    }
+  }, [item?.video]);
+
+  if (!item?.video) return null;
+
+  return (
+    <video
+      ref={videoRef}
+      key={item.video}
+      src={item.video}
+      controls
+      autoPlay
+      playsInline
+      preload="auto"
+      className="curved-modal-video"
+    />
+  );
+}
 
 export default function CurvedShowcase() {
   const [activeItem, setActiveItem] = useState(null);
@@ -102,6 +139,18 @@ export default function CurvedShowcase() {
   const [speed, setSpeed] = useState(38);
   const [direction, setDirection] = useState("left");
   const [activeIdx, setActiveIdx] = useState(0);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        setActiveItem(null);
+      }
+    };
+    if (activeItem) {
+      window.addEventListener("keydown", handleKeyDown);
+    }
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [activeItem]);
 
   const handleCardClick = (item, idx) => {
     setActiveItem(item);
@@ -223,6 +272,7 @@ export default function CurvedShowcase() {
       <div className="curved-showcase__carousel-wrap">
         <CurvedMediaCarousel
           images={SHOWCASE_ITEMS}
+          paused={Boolean(activeItem)}
           layout={{
             cardHeight: 64,
             aspect: 0.72,
@@ -235,7 +285,7 @@ export default function CurvedShowcase() {
             curve: 0.72,
             power: 2,
             slant: 0,
-            smoothness: 2,
+            smoothness: 3,
           }}
           appearance={{
             background: "#ffffff",
@@ -245,21 +295,21 @@ export default function CurvedShowcase() {
           }}
           motion={{
             autoplay: autoplay,
-            speed: speed,
+            speed: 28,
             direction: direction,
             pauseOnHover: true,
           }}
           interaction={{
             draggable: true,
             inertia: true,
-            friction: 3.2,
-            dragSensitivity: 1.1,
+            friction: 2.0,
+            dragSensitivity: 1.0,
             snap: false,
             wheel: true,
           }}
           media={{
             loopMode: "loop",
-            videoPlay: "always",
+            videoPlay: "hover",
           }}
           hoverFx={{
             hoverEnabled: true,
@@ -344,21 +394,7 @@ export default function CurvedShowcase() {
 
               {/* Media Container */}
               <div className="curved-modal-media">
-                {activeItem.video ? (
-                  <video
-                    src={activeItem.video}
-                    controls
-                    autoPlay
-                    playsInline
-                    className="curved-modal-video"
-                  />
-                ) : (
-                  <img
-                    src={activeItem.image}
-                    alt={activeItem.title}
-                    className="curved-modal-image"
-                  />
-                )}
+                <CurvedModalVideo item={activeItem} />
               </div>
 
               {/* Information */}

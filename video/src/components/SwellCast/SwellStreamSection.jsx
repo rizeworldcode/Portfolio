@@ -3,72 +3,100 @@ import { motion, AnimatePresence } from "framer-motion";
 import SwellCastPro from "./SwellCastPro";
 import "./SwellStreamSection.css";
 
-// Diverse visual media cards
+// Helper for clean URL encoding with spaces
+const vPath = (p) => encodeURI(p);
+
+// Dedicated Ambient & Cinematic Stream Reels (10 Unique Reels - 0 Duplication)
 const STREAM_CARDS = [
   {
-    image: "/showcase/creative.jpg",
-    title: "Cinematic Kinetic Motion",
-    category: "Motion Graphics · 4K",
-    client: "Creative Corp",
+    media: "video",
+    video: "/videos-compressed/june-17.mp4",
+    title: "17th June Milestone Visuals",
+    category: "Event Film",
+    client: "Rizeworld Events",
     year: "2026",
-    description: "Futuristic kinetic visual typography and 3D fluid motion design.",
+    description: "Milestone anniversary visual piece celebrating production milestones, keynotes, and achievements.",
   },
   {
-    video: "/hero-video.mp4",
-    image: "/showcase/port.jpg",
-    title: "Rizeworld Master Reel",
-    category: "Showreel · Full Edit",
-    client: "Rizeworld Studios",
+    media: "video",
+    video: "/videos-compressed/water-cinematic.mp4",
+    title: "Elemental Water Macro Cinema",
+    category: "Macro Visual",
+    client: "Cinematic Nature Studies",
     year: "2026",
-    description: "Signature master montage of cinematic cuts, sound design, and color pacing.",
+    description: "Hypnotic high-speed liquid dynamics, macro droplets, and ambient aquatic light refraction.",
   },
   {
-    image: "/showcase/kafesa.jpg",
-    title: "Kafesa Gourmet Spotlight",
-    category: "Commercial · Macro 4K",
-    client: "Kafesa Bistro",
-    year: "2025",
-    description: "Mouth-watering commercial focusing on high-frame-rate steam and sizzling textures.",
+    media: "video",
+    video: "/videos-compressed/stone-trees.mp4",
+    title: "Stone & Trees Organic Space",
+    category: "Landscape Design",
+    client: "Eco Living Studio",
+    year: "2026",
+    description: "Atmospheric architectural study integrating ancient stone walls with lush living foliage.",
   },
   {
-    image: "/showcase/brownie.png",
-    title: "Sweet Bite CGI Product",
-    category: "3D VFX · Product CGI",
-    client: "Brownie Bites",
+    media: "video",
+    video: "/videos-compressed/ambhuti-tile-1.mp4",
+    title: "Ambhuti High Bond Material Film",
+    category: "Industrial Reel",
+    client: "Ambhuti Group",
     year: "2025",
-    description: "Ultra-realistic 3D chocolate simulation, particles, and packaging explosion.",
+    description: "Industrial strength and product durability demonstrated through heavy-load impact tests.",
   },
   {
-    image: "/showcase/avantika.jpg",
-    title: "Avantika Royal Living",
-    category: "Architectural Drone Tour",
-    client: "Avantika Residences",
+    media: "video",
+    video: "/videos-compressed/saniya-ambience.mp4",
+    title: "Saniya Hospital Ambience & Stories",
+    category: "Healthcare Docu",
+    client: "Saniya Hospital",
     year: "2025",
-    description: "Sweeping FPV drone footage through royal estate interiors and sunlit facades.",
+    description: "Heartwarming patient recovery testimonials and calming interior medical ambience.",
   },
   {
-    image: "/showcase/clapbox.jpg",
-    title: "Clap Box Studio Beats",
-    category: "Music Visualizer · Edit",
-    client: "Clap Box Music",
+    media: "video",
+    video: "/videos-compressed/bhau-final.mp4",
+    title: "Bhau High-Octane Action Cinema",
+    category: "Action Cinema",
+    client: "Bhau Productions",
     year: "2025",
-    description: "Rhythmic bass-synced motion cuts with electric chromatic aberration effects.",
+    description: "Gritty cinematic drama and dynamic chase sequences edited with pulse-pounding rhythm.",
   },
   {
-    image: "/showcase/dwps.png",
-    title: "DWPS Horizons Campaign",
-    category: "Brand Storytelling",
-    client: "DWPS Alwar",
+    media: "video",
+    video: "/videos-compressed/rize-institute.mp4",
+    title: "Rize Creative Academy Hub",
+    category: "Academy Reel",
+    client: "Rize Institute",
     year: "2025",
-    description: "Heartfelt documentary capturing youth aspirations, sports triumphs, and education.",
+    description: "Behind the scenes of digital creators, video editors, and design innovators building careers.",
   },
   {
-    image: "/showcase/yoga.jpg",
-    title: "Serenity Yoga & Nature",
-    category: "Slow Motion Docu",
-    client: "Saniya Life",
+    media: "video",
+    video: "/videos-compressed/influencer-reel.mp4",
+    title: "Creator Influencer Viral Campaign",
+    category: "Influencer Reel",
+    client: "Creator Network",
     year: "2025",
-    description: "Serene sunrise aesthetics, atmospheric fog, and peaceful meditative cadence.",
+    description: "High-energy social media influencer activation designed for explosive engagement and reach.",
+  },
+  {
+    media: "video",
+    video: "/videos-compressed/zoniraz-franchise.mp4",
+    title: "Zoniraz Franchise Launch Gala",
+    category: "Franchise Film",
+    client: "Zoniraz Retail",
+    year: "2025",
+    description: "Exclusive retail business opportunity walkthrough showcasing turnkey store models.",
+  },
+  {
+    media: "video",
+    video: "/videos-compressed/yoga-adventure.mp4",
+    title: "Himalayan Outdoor Yoga Adventure",
+    category: "Adventure Reel",
+    client: "Yoga Lifestyle Life",
+    year: "2025",
+    description: "Epic mountain peaks, high-altitude breathwork, and breathtaking adventure cinematography.",
   },
 ];
 
@@ -90,26 +118,26 @@ export default function SwellStreamSection() {
           accentColor="#111111"
           background="#ffffff"
           spread={1}
-          startSize={0.28}
-          endSize={0.96}
+          startSize={0.32}
+          endSize={1.02}
           growth={3}
-          ratio={1.08}
-          gap={32}
+          ratio={0.58}
+          gap={28}
           radius={0.08}
-          flow={0.35}
+          flow={0.25}
           direction="outward"
           hoverSlow={0.22}
           drag={true}
           wheel={true}
           vScroll="page"
-          scrollGain={1}
-          smear={0.6}
+          scrollGain={0.65}
+          smear={0.4}
           bulge={0.22}
           bend={0.28}
           depthBlur={1}
           focusX={58}
           focusWidth={0.2}
-          maxVideos={4}
+          maxVideos={2}
           onSelect={(card) => setSelectedCard(card)}
           style={{ width: "100%", height: "100%" }}
         />
@@ -151,21 +179,25 @@ export default function SwellStreamSection() {
               </button>
 
               <div className="swell-modal-media">
-                {selectedCard.video ? (
-                  <video
-                    src={selectedCard.video}
-                    controls
-                    autoPlay
-                    playsInline
-                    className="swell-modal-video"
-                  />
-                ) : (
-                  <img
-                    src={selectedCard.image}
-                    alt={selectedCard.title}
-                    className="swell-modal-image"
-                  />
-                )}
+                <video
+                  ref={(el) => {
+                    if (el) {
+                      const p = el.play();
+                      if (p && typeof p.catch === "function") {
+                        p.catch(() => {
+                          el.muted = true;
+                          el.play();
+                        });
+                      }
+                    }
+                  }}
+                  key={selectedCard.video}
+                  src={selectedCard.video}
+                  controls
+                  autoPlay
+                  playsInline
+                  className="swell-modal-video"
+                />
               </div>
 
               <div className="swell-modal-info">

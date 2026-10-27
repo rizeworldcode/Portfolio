@@ -31,3 +31,5 @@ Thumbs.db
 *.mp4
 *.mov
 video/public/hero-video.mp4
+video/public/Video portfolio/
+**/Video portfolio/
