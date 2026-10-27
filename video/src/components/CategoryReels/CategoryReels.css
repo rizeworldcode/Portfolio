@@ -268,7 +268,7 @@
   right: 14px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   z-index: 3;
 }
 
@@ -278,24 +278,16 @@
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: #ffffff;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.22);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  padding: 4px 10px;
+  padding: 4px 11px;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.reel-card__duration-badge {
-  font-size: 11px;
-  font-weight: 600;
-  color: #ffffff;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  padding: 3px 8px;
-  border-radius: 6px;
-  font-family: monospace;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1.2;
 }
 
 /* Center Play Circle */
@@ -622,27 +614,62 @@
     padding: 16px;
   }
 
+  /* Full-size 9:16 Reel Player on Responsive (No Text Card Overlap) */
   .reel-modal-card {
-    max-height: 92vh;
-    border-radius: 20px;
+    width: 90vw !important;
+    max-width: calc(85vh * (9 / 16)) !important;
+    height: auto !important;
+    max-height: 85vh !important;
+    aspect-ratio: 9 / 16 !important;
+    background: #000000 !important;
+    border-radius: 24px !important;
+    overflow: hidden !important;
+    border: 1px solid rgba(255, 255, 255, 0.18) !important;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7) !important;
   }
 
   .reel-modal-player-col {
-    min-height: 240px;
-    max-height: 300px;
+    width: 100% !important;
+    height: 100% !important;
+    flex: 1 !important;
+    min-height: 0 !important;
+    max-height: 100% !important;
+    background: #000000 !important;
   }
 
+  .reel-modal-player-wrap {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .reel-modal-video {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    border-radius: 24px !important;
+  }
+
+  .reel-modal-close {
+    top: 14px !important;
+    right: 14px !important;
+    background: rgba(0, 0, 0, 0.65) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    color: #ffffff !important;
+    width: 40px !important;
+    height: 40px !important;
+    z-index: 50 !important;
+  }
+
+  .reel-modal-close:hover {
+    background: rgba(0, 0, 0, 0.85) !important;
+    color: #ffffff !important;
+  }
+
+  /* Hide bottom text card on mobile so reel plays 100% full size */
   .reel-modal-info-col {
-    padding: 22px 20px;
-  }
-
-  .reel-modal-title {
-    font-size: 20px;
-  }
-
-  .reel-modal-desc {
-    font-size: 13.5px;
-    margin-bottom: 16px;
+    display: none !important;
   }
 }
 
@@ -688,14 +715,17 @@
     border-radius: 14px;
   }
 
-  .reel-card__tag {
-    font-size: 9px;
-    padding: 3px 7px;
+  .reel-card__top {
+    top: 10px;
+    left: 10px;
+    right: 10px;
   }
 
-  .reel-card__duration {
-    font-size: 9px;
-    padding: 2px 5px;
+  .reel-card__category-badge {
+    font-size: 9.5px;
+    padding: 3px 8px;
+    white-space: nowrap;
+    max-width: 100%;
   }
 
   .reel-card__title {
@@ -708,40 +738,19 @@
   }
 
   .reel-modal-backdrop {
-    padding: 10px;
+    padding: 8px;
   }
 
   .reel-modal-card {
-    border-radius: 16px;
-    max-height: 94vh;
+    border-radius: 20px !important;
+    max-height: 84vh !important;
   }
 
-  .reel-modal-player-col {
-    min-height: 200px;
-    max-height: 260px;
-  }
-
-  .reel-modal-info-col {
-    padding: 18px 14px;
-  }
-
-  .reel-modal-title {
-    font-size: 18px;
-  }
-
-  .reel-modal-desc {
-    font-size: 12.5px;
-    margin-bottom: 14px;
-  }
-
-  .reel-modal-tags {
-    margin-bottom: 16px;
-    gap: 6px;
-  }
-
-  .reel-modal-cta {
-    padding: 11px 16px;
-    font-size: 13px;
+  .reel-modal-close {
+    width: 36px !important;
+    height: 36px !important;
+    top: 12px !important;
+    right: 12px !important;
   }
 }
 

@@ -193,6 +193,7 @@ function Band(props) {
   return (
     <div
       data-band=""
+      className="swell-text-band"
       style={{
         position: "absolute",
         left: `${clampN(textX, 0, 100)}%`,

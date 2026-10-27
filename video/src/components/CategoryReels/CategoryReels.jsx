@@ -490,7 +490,6 @@ function SmartReelCard({ reel, index, onSelect }) {
         {/* Top Badges */}
         <div className="reel-card__top">
           <span className="reel-card__category-badge">{reel.categoryLabel}</span>
-          <span className="reel-card__duration-badge">{reel.duration}</span>
         </div>
 
         {/* Center Play Icon */}
@@ -674,7 +673,6 @@ export default function CategoryReels() {
               <div className="reel-modal-info-col">
                 <div className="reel-modal-badge-row">
                   <span className="reel-modal-badge">{selectedReel.categoryLabel}</span>
-                  <span className="reel-modal-duration">{selectedReel.duration}</span>
                 </div>
 
                 <h3 className="reel-modal-title">{selectedReel.title}</h3>

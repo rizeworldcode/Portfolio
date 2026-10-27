@@ -533,31 +533,58 @@
     padding: 16px;
   }
 
+  /* Full-size 9:16 Reel Player on Responsive (No Text Card Overlap) */
   .curved-modal-card {
-    max-height: 92vh;
-    border-radius: 20px;
+    width: 90vw !important;
+    max-width: calc(85vh * (9 / 16)) !important;
+    height: auto !important;
+    max-height: 85vh !important;
+    aspect-ratio: 9 / 16 !important;
+    background: #000000 !important;
+    border-radius: 24px !important;
+    overflow: hidden !important;
+    border: 1px solid rgba(255, 255, 255, 0.18) !important;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7) !important;
   }
 
   .curved-modal-media {
-    min-height: 200px;
-    max-height: 260px;
+    width: 100% !important;
+    height: 100% !important;
+    flex: 1 !important;
+    min-height: 0 !important;
+    max-height: 100% !important;
+    background: #000000 !important;
   }
 
+  .curved-modal-video,
+  .curved-modal-image {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    border-radius: 24px !important;
+  }
+
+  .curved-modal-close {
+    top: 14px !important;
+    right: 14px !important;
+    background: rgba(0, 0, 0, 0.65) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    color: #ffffff !important;
+    width: 40px !important;
+    height: 40px !important;
+    z-index: 50 !important;
+  }
+
+  .curved-modal-close:hover {
+    background: rgba(0, 0, 0, 0.85) !important;
+    color: #ffffff !important;
+  }
+
+  /* Hide bottom text card on mobile so video plays 100% full size */
   .curved-modal-info {
-    padding: 20px 18px;
-  }
-
-  .curved-modal-title {
-    font-size: 20px;
-  }
-
-  .curved-modal-desc {
-    font-size: 13.5px;
-    margin-bottom: 14px;
-  }
-
-  .curved-modal-tags {
-    margin-bottom: 18px;
+    display: none !important;
   }
 }
 
@@ -613,24 +640,18 @@
   }
 
   .curved-modal-backdrop {
-    padding: 10px;
+    padding: 8px;
   }
 
   .curved-modal-card {
-    border-radius: 16px;
-    max-height: 94vh;
+    border-radius: 20px !important;
+    max-height: 84vh !important;
   }
 
-  .curved-modal-media {
-    min-height: 180px;
-    max-height: 220px;
-  }
-
-  .curved-modal-info {
-    padding: 16px 14px;
-  }
-
-  .curved-modal-title {
-    font-size: 18px;
+  .curved-modal-close {
+    width: 36px !important;
+    height: 36px !important;
+    top: 12px !important;
+    right: 12px !important;
   }
 }

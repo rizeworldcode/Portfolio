@@ -33,3 +33,6 @@ Thumbs.db
 video/public/hero-video.mp4
 video/public/Video portfolio/
 **/Video portfolio/
+
+# Local assistant config
+GEMINI.md
