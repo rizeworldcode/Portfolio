@@ -708,7 +708,7 @@ export const PORTFOLIO_CATEGORIES = [
     "category": "Banners · EVM Creatives · Leaders",
     "tag": "Political & Election",
     "description": "High-impact political posters, election campaign materials, EVM vote banners, candidate identity collaterals, and community leadership creatives.",
-    "coverImage": "/Graphic portfolio/Bhau k.png",
+    "coverImage": "/Graphic portfolio/Bhau alwar.png",
     "itemCount": 6,
     "images": [
       {

@@ -40,8 +40,8 @@ export default function Footer() {
             </div>
 
             <p className="vitrio-card__tagline">
-              Liquid glass interfaces, crafted with care for modern products and
-              teams that love detail.
+              Crafting high-impact visual identities, creative branding, and
+              digital graphics crafted with precision for modern brands.
             </p>
 
             {/* Contact Card with Address and Phone */}
