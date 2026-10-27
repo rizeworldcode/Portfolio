@@ -89,7 +89,7 @@ export default function Hero() {
             </li>
             <li>
               <a href="#reels" className="ignitex-nav__link">
-                Reels <sup className="ignitex-nav__sup">(28)</sup>
+                Reels <sup className="ignitex-nav__sup">(27)</sup>
               </a>
             </li>
           </ul>
@@ -136,7 +136,7 @@ export default function Hero() {
             onClick={() => setMobileMenuOpen(false)}
             className="ignitex-mobile-drawer__link"
           >
-            Reels (28)
+            Reels (27)
           </a>
         </motion.div>
       )}

@@ -25,23 +25,9 @@ const CATEGORIES = [
 
 // Authentic Video Portfolio dataset with authentic video frames (28 Unique Non-Duplicated Reels)
 const REELS_DATA = [
-  // --- Hospital & Healthcare Reels (7 Unique Reels) ---
+  // --- Hospital & Healthcare Reels (6 Unique Reels) ---
   {
     id: "hosp-1",
-    title: "Saniya Hospital ICU & Emergency Care",
-    category: "hospital",
-    categoryLabel: "Hospital Care",
-    client: "Saniya Hospital Alwar",
-    duration: "0:45",
-    views: "184K",
-    likes: "12.4K",
-    video: "/videos-compressed/saniya-hospital.mp4",
-    description:
-      "A fast-paced awareness reel showcasing 24/7 emergency care, modern ICU infrastructure, and doctor consultations.",
-    tags: ["Healthcare", "Emergency Care", "Doctor Profile", "4K Video"],
-  },
-  {
-    id: "hosp-2",
     title: "Saniya Hospital Specialized Doctors & OPD",
     category: "hospital",
     categoryLabel: "Specialized OPD",
