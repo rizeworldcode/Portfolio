@@ -86,21 +86,28 @@
   padding: 34px 56px 20px;
 }
 
-/* Logo */
 .ignitex-nav__logo {
-  font-family: "Plus Jakarta Sans", sans-serif;
-  font-size: 21px;
-  font-weight: 800;
-  letter-spacing: -0.01em;
-  color: #ffffff;
   display: inline-flex;
-  align-items: flex-start;
+  align-items: center;
   text-decoration: none;
   transition: opacity 200ms ease;
 }
 
+.ignitex-nav__logo-img {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  display: block;
+  transition: transform 0.25s ease;
+}
+
+.ignitex-nav__logo:hover .ignitex-nav__logo-img {
+  transform: scale(1.06);
+}
+
 .ignitex-nav__logo:hover {
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
 .ignitex-nav__logo-tm {
@@ -178,9 +185,9 @@
   top: -0.5em;
 }
 
-/* Hamburger toggle */
+/* Hamburger toggle (hidden on desktop) */
 .ignitex-nav__hamburger {
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   gap: 6px;
@@ -469,10 +476,13 @@
   .ignitex-nav__links {
     display: none;
   }
+  .ignitex-nav__hamburger {
+    display: flex;
+  }
   .ignitex-hero__bottom {
     flex-direction: column-reverse;
     align-items: flex-start;
-    gap: 32px;
+    gap: 28px;
   }
   .ignitex-hero__bottom-right {
     align-items: flex-start;
@@ -489,22 +499,51 @@
 
 @media (max-width: 520px) {
   .ignitex-nav {
-    padding: 20px 20px;
+    padding: 18px 20px;
   }
   .ignitex-hero__center {
     padding: 0 20px;
   }
   .ignitex-hero__bottom {
     padding: 16px 20px 32px;
+    gap: 24px;
   }
   .ignitex-hero__word {
-    font-size: clamp(52px, 16vw, 84px);
+    font-size: clamp(44px, 15vw, 76px);
   }
   .ignitex-hero__ampersand {
-    font-size: clamp(64px, 20vw, 100px);
+    font-size: clamp(54px, 18vw, 90px);
+  }
+  .ignitex-hero__desc {
+    font-size: 15px;
+    line-height: 1.6;
   }
   .ignitex-hero__cta-btn {
     width: 100%;
     justify-content: space-between;
+  }
+}
+
+@media (max-width: 400px) {
+  .ignitex-nav {
+    padding: 14px 16px;
+  }
+  .ignitex-hero__center {
+    padding: 0 16px;
+  }
+  .ignitex-hero__bottom {
+    padding: 12px 16px 28px;
+  }
+  .ignitex-hero__word {
+    font-size: clamp(38px, 14vw, 56px);
+  }
+  .ignitex-hero__ampersand {
+    font-size: clamp(46px, 16vw, 68px);
+  }
+  .ignitex-hero__cta-btn {
+    padding: 6px 6px 6px 18px;
+  }
+  .ignitex-hero__cta-text {
+    font-size: 13px;
   }
 }

@@ -224,7 +224,65 @@
 }
 
 @media (max-width: 768px) {
+  .swell-modal-backdrop {
+    padding: 16px;
+  }
+
+  .swell-modal-card {
+    max-height: 92vh;
+    border-radius: 20px;
+  }
+
+  .swell-modal-media {
+    min-height: 200px;
+    max-height: 260px;
+  }
+
   .swell-modal-info {
-    padding: 24px 20px;
+    padding: 20px 18px;
+  }
+
+  .swell-modal-title {
+    font-size: 20px;
+  }
+
+  .swell-modal-desc {
+    font-size: 13.5px;
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .swell-section__canvas-wrap {
+    height: 440px;
+  }
+
+  .swell-section__badge-pill {
+    bottom: 12px;
+    right: 14px;
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+
+  .swell-modal-backdrop {
+    padding: 10px;
+  }
+
+  .swell-modal-card {
+    border-radius: 16px;
+    max-height: 94vh;
+  }
+
+  .swell-modal-media {
+    min-height: 170px;
+    max-height: 210px;
+  }
+
+  .swell-modal-info {
+    padding: 16px 14px;
+  }
+
+  .swell-modal-title {
+    font-size: 18px;
   }
 }

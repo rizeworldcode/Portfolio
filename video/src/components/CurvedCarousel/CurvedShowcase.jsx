@@ -1,5 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { FiPlay, FiPause, FiArrowRight } from "react-icons/fi";
+import { HiArrowsRightLeft } from "react-icons/hi2";
+import { RiDragMove2Line } from "react-icons/ri";
+import { IoClose } from "react-icons/io5";
 import CurvedMediaCarousel from "./CurvedMediaCarousel";
 import "./CurvedShowcase.css";
 
@@ -225,17 +229,12 @@ export default function CurvedShowcase() {
             >
               {autoplay ? (
                 <>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                    <rect x="6" y="4" width="4" height="16" rx="1" />
-                    <rect x="14" y="4" width="4" height="16" rx="1" />
-                  </svg>
+                  <FiPause size={14} />
                   <span>Pause Motion</span>
                 </>
               ) : (
                 <>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                    <polygon points="5 3 19 12 5 21 5 3" />
-                  </svg>
+                  <FiPlay size={14} />
                   <span>Auto Flow</span>
                 </>
               )}
@@ -248,18 +247,13 @@ export default function CurvedShowcase() {
               onClick={() => setDirection(direction === "left" ? "right" : "left")}
               title="Reverse Direction"
             >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M7 16l-4-4m0 0l4-4m-4 4h18" />
-                <path d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
+              <HiArrowsRightLeft size={14} />
               <span>{direction === "left" ? "Dir: Left" : "Dir: Right"}</span>
             </button>
 
             {/* Drag hint badge */}
             <div className="curved-showcase__drag-hint">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-                <path d="M8 7h8M8 12h8M8 17h8" />
-              </svg>
+              <RiDragMove2Line size={15} />
               <span>Drag to Glide</span>
             </div>
           </div>
@@ -355,10 +349,7 @@ export default function CurvedShowcase() {
           onClick={() => setActiveItem(currentHighlight)}
         >
           <span>View Project Details</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-            <line x1="5" y1="12" x2="19" y2="12" />
-            <polyline points="12 5 19 12 12 19" />
-          </svg>
+          <FiArrowRight size={16} />
         </button>
       </div>
 
@@ -389,7 +380,7 @@ export default function CurvedShowcase() {
                 onClick={() => setActiveItem(null)}
                 aria-label="Close dialog"
               >
-                ✕
+                <IoClose size={22} />
               </button>
 
               {/* Media Container */}
@@ -419,9 +410,7 @@ export default function CurvedShowcase() {
                 <div className="curved-modal-actions">
                   <a href="#contact" className="curved-modal-cta" onClick={() => setActiveItem(null)}>
                     <span>Start a Project Like This</span>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-                      <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
+                    <FiArrowRight size={16} />
                   </a>
                 </div>
               </div>

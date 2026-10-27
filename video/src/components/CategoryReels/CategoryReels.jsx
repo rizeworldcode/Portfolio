@@ -1,16 +1,26 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { HiSparkles, HiBolt } from "react-icons/hi2";
+import {
+  RiHospitalLine,
+  RiGraduationCapLine,
+  RiRestaurant2Line,
+  RiBuilding4Line,
+  RiLeafLine,
+} from "react-icons/ri";
+import { IoPlay, IoClose } from "react-icons/io5";
+import { FiArrowRight } from "react-icons/fi";
 import "./CategoryReels.css";
 
 // Reel categories
 const CATEGORIES = [
-  { id: "all", name: "All Reels", icon: "✨" },
-  { id: "hospital", name: "Hospital & Healthcare", icon: "🏥" },
-  { id: "school", name: "School & Education", icon: "🎓" },
-  { id: "food", name: "Cafe & Restaurant", icon: "🍽️" },
-  { id: "realestate", name: "Real Estate & Infra", icon: "🏢" },
-  { id: "creative", name: "Commercial & 3D", icon: "⚡" },
-  { id: "lifestyle", name: "Lifestyle & Wellness", icon: "🌿" },
+  { id: "all", name: "All Reels", icon: <HiSparkles /> },
+  { id: "hospital", name: "Hospital & Healthcare", icon: <RiHospitalLine /> },
+  { id: "school", name: "School & Education", icon: <RiGraduationCapLine /> },
+  { id: "food", name: "Cafe & Restaurant", icon: <RiRestaurant2Line /> },
+  { id: "realestate", name: "Real Estate & Infra", icon: <RiBuilding4Line /> },
+  { id: "creative", name: "Commercial & 3D", icon: <HiBolt /> },
+  { id: "lifestyle", name: "Lifestyle & Wellness", icon: <RiLeafLine /> },
 ];
 
 // Authentic Video Portfolio dataset with authentic video frames (28 Unique Non-Duplicated Reels)
@@ -486,9 +496,7 @@ function SmartReelCard({ reel, index, onSelect }) {
         {/* Center Play Icon */}
         <div className="reel-card__center-play">
           <div className="reel-card__play-circle">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <polygon points="5 3 19 12 5 21 5 3" />
-            </svg>
+            <IoPlay size={18} style={{ marginLeft: "2px" }} />
           </div>
         </div>
 
@@ -496,22 +504,6 @@ function SmartReelCard({ reel, index, onSelect }) {
         <div className="reel-card__bottom">
           <p className="reel-card__client">{reel.client}</p>
           <h3 className="reel-card__title">{reel.title}</h3>
-
-          <div className="reel-card__stats">
-            <div className="reel-card__stat">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                <circle cx="12" cy="12" r="3" />
-              </svg>
-              <span>{reel.views}</span>
-            </div>
-            <div className="reel-card__stat">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-              </svg>
-              <span>{reel.likes}</span>
-            </div>
-          </div>
         </div>
       </div>
     </motion.div>
@@ -650,7 +642,7 @@ export default function CategoryReels() {
                 onClick={() => setSelectedReel(null)}
                 aria-label="Close modal"
               >
-                ✕
+                <IoClose size={22} />
               </button>
 
               {/* 9:16 Video Player Column */}
@@ -690,18 +682,6 @@ export default function CategoryReels() {
 
                 <p className="reel-modal-desc">{selectedReel.description}</p>
 
-                {/* Stats */}
-                <div className="reel-modal-stats-row">
-                  <div className="reel-modal-stat-box">
-                    <span className="reel-modal-stat-num">{selectedReel.views}</span>
-                    <span className="reel-modal-stat-label">Organic Reach</span>
-                  </div>
-                  <div className="reel-modal-stat-box">
-                    <span className="reel-modal-stat-num">{selectedReel.likes}</span>
-                    <span className="reel-modal-stat-label">Likes & Shares</span>
-                  </div>
-                </div>
-
                 {/* Tags */}
                 <div className="reel-modal-tags">
                   {selectedReel.tags?.map((t) => (
@@ -719,9 +699,7 @@ export default function CategoryReels() {
                     onClick={() => setSelectedReel(null)}
                   >
                     <span>Create a Reel Like This</span>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-                      <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
+                    <FiArrowRight size={16} />
                   </a>
                 </div>
               </div>

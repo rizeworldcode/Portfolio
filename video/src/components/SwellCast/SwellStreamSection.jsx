@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { HiSparkles } from "react-icons/hi2";
+import { IoClose } from "react-icons/io5";
+import { FiArrowRight } from "react-icons/fi";
 import SwellCastPro from "./SwellCastPro";
 import "./SwellStreamSection.css";
 
@@ -144,9 +147,7 @@ export default function SwellStreamSection() {
 
         {/* Bottom Right Minimal Badge (as seen in screenshot) */}
         <div className="swell-section__badge-pill">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-          </svg>
+          <HiSparkles size={13} style={{ marginRight: "5px" }} />
           <span>Made in Rizeworld</span>
         </div>
       </div>
@@ -175,7 +176,7 @@ export default function SwellStreamSection() {
                 onClick={() => setSelectedCard(null)}
                 aria-label="Close modal"
               >
-                ✕
+                <IoClose size={22} />
               </button>
 
               <div className="swell-modal-media">
@@ -213,9 +214,7 @@ export default function SwellStreamSection() {
                 <div className="swell-modal-footer">
                   <a href="#contact" className="swell-modal-cta" onClick={() => setSelectedCard(null)}>
                     <span>Inquire for Similar Project</span>
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-                      <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
+                    <FiArrowRight size={15} style={{ marginLeft: "4px" }} />
                   </a>
                 </div>
               </div>

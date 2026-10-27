@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
+import { FiMapPin } from "react-icons/fi";
 import "./Hero.css";
 
 export default function Hero() {
@@ -63,11 +64,12 @@ export default function Hero() {
       >
         {/* Brand Logo */}
         <a href="#home" className="ignitex-nav__logo" aria-label="Rizeworld Homepage">
-          Rizeworld<span className="ignitex-nav__logo-tm"></span>
+          <img src="/RW.png" alt="Rizeworld" className="ignitex-nav__logo-img" />
         </a>
 
         {/* Center Location */}
         <div className="ignitex-nav__location">
+          <FiMapPin size={13} style={{ display: "inline-block", marginRight: "6px", verticalAlign: "middle", color: "#60a5fa" }} />
           Based in: <strong>Alwar, Rajasthan</strong>
         </div>
 
@@ -81,18 +83,13 @@ export default function Hero() {
               </a>
             </li>
             <li>
-              <a href="#about" className="ignitex-nav__link">
-                About us
-              </a>
-            </li>
-            <li>
               <a href="#projects" className="ignitex-nav__link">
-                Projects <sup className="ignitex-nav__sup">(07)</sup>
+                Projects <sup className="ignitex-nav__sup">(08)</sup>
               </a>
             </li>
             <li>
-              <a href="#contact" className="ignitex-nav__link">
-                Contact
+              <a href="#reels" className="ignitex-nav__link">
+                Reels <sup className="ignitex-nav__sup">(28)</sup>
               </a>
             </li>
           </ul>
@@ -128,25 +125,18 @@ export default function Hero() {
             Home
           </a>
           <a
-            href="#about"
-            onClick={() => setMobileMenuOpen(false)}
-            className="ignitex-mobile-drawer__link"
-          >
-            About us
-          </a>
-          <a
             href="#projects"
             onClick={() => setMobileMenuOpen(false)}
             className="ignitex-mobile-drawer__link"
           >
-            Projects (07)
+            Projects (08)
           </a>
           <a
-            href="#contact"
+            href="#reels"
             onClick={() => setMobileMenuOpen(false)}
             className="ignitex-mobile-drawer__link"
           >
-            Contact
+            Reels (28)
           </a>
         </motion.div>
       )}
