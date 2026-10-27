@@ -1,0 +1,223 @@
+/* ============================================================
+   SWELLSTREAM SECTION STYLES (MATCHING SCREENSHOT)
+   Pure minimal white canvas with dual curved flowing streams
+   ============================================================ */
+
+.swell-section {
+  position: relative;
+  width: 100%;
+  background-color: #ffffff;
+  color: #111111;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Canvas Container */
+.swell-section__canvas-wrap {
+  position: relative;
+  width: 100%;
+  height: 980px;
+  min-height: 95vh;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+@media (max-width: 1200px) {
+  .swell-section__canvas-wrap {
+    height: 860px;
+    min-height: 85vh;
+  }
+}
+
+@media (max-width: 900px) {
+  .swell-section__canvas-wrap {
+    height: 720px;
+  }
+}
+
+@media (max-width: 600px) {
+  .swell-section__canvas-wrap {
+    height: 540px;
+  }
+}
+
+/* Minimal watermark badge at bottom right */
+.swell-section__badge-pill {
+  position: absolute;
+  bottom: 20px;
+  right: 24px;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 6px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: #111111;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  pointer-events: none;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* ============================================================
+   CARD DETAILS MODAL
+   ============================================================ */
+.swell-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.swell-modal-card {
+  position: relative;
+  width: 100%;
+  max-width: 860px;
+  background: #ffffff;
+  color: #111111;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.35);
+}
+
+@media (min-width: 768px) {
+  .swell-modal-card {
+    flex-direction: row;
+    height: 480px;
+  }
+}
+
+.swell-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  color: #111111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  cursor: pointer;
+  z-index: 20;
+  transition: all 0.2s ease;
+}
+
+.swell-modal-close:hover {
+  background: rgba(0, 0, 0, 0.16);
+  transform: scale(1.08);
+}
+
+.swell-modal-media {
+  flex: 1.2;
+  background: #f1f5f9;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 260px;
+}
+
+.swell-modal-video,
+.swell-modal-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swell-modal-info {
+  flex: 1;
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-y: auto;
+}
+
+.swell-modal-badge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #2563eb;
+  background: rgba(37, 99, 235, 0.08);
+  padding: 4px 10px;
+  border-radius: 6px;
+  align-self: flex-start;
+  margin-bottom: 12px;
+}
+
+.swell-modal-title {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: #111111;
+  margin-bottom: 8px;
+}
+
+.swell-modal-client {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.6);
+  margin-bottom: 12px;
+}
+
+.swell-modal-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(0, 0, 0, 0.7);
+  margin-bottom: 24px;
+}
+
+.swell-modal-footer {
+  margin-top: auto;
+}
+
+.swell-modal-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 13px 20px;
+  background: #111111;
+  color: #ffffff;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.swell-modal-cta:hover {
+  background: #333333;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
+  .swell-modal-info {
+    padding: 24px 20px;
+  }
+}

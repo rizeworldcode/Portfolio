@@ -25,15 +25,14 @@
   overflow: hidden;
 }
 
-.ignitex-hero__bg-img {
+.ignitex-hero__bg-img,
+.ignitex-hero__bg-video {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center right;
-  opacity: 0.95;
-  filter: contrast(1.05) brightness(0.92);
-  transform: scale(1.02);
-  transition: transform 6s ease-out;
+  object-position: center;
+  opacity: 0.85;
+  filter: contrast(1.05) brightness(0.9);
 }
 
 /* Left Vignette / Gradient to make text pop effortlessly */
@@ -317,7 +316,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  max-width: 380px;
+  max-width: 480px;
 }
 
 .ignitex-hero__desc-box {
@@ -327,20 +326,21 @@
 }
 
 .ignitex-hero__sparkle {
-  font-size: 15px;
+  font-size: 18px;
   color: #cbd5e1;
   flex-shrink: 0;
-  margin-top: 3px;
+  margin-top: 4px;
   user-select: none;
 }
 
 .ignitex-hero__desc {
   font-family: "Inter", sans-serif;
-  font-size: 13.5px;
-  line-height: 1.55;
-  color: #cbd5e1;
+  font-size: 18px;
+  line-height: 1.45;
+  color: #f1f5f9;
   margin: 0;
-  font-weight: 400;
+  font-weight: 500;
+  letter-spacing: -0.01em;
 }
 
 .ignitex-hero__copyright {

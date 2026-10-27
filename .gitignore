@@ -26,3 +26,8 @@ Thumbs.db
 .vscode/*
 !.vscode/settings.json
 !.vscode/extensions.json
+
+# Large media files (exceeds GitHub 100MB limit)
+*.mp4
+*.mov
+video/public/hero-video.mp4

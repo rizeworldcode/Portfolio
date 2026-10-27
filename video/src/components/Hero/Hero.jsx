@@ -1,17 +1,20 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import "./Hero.css";
 
 export default function Hero() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const videoRef = useRef(null);
 
-  // Services list matching reference
-  const services = [
-    { num: "(01)", label: "Brand identity design" },
-    { num: "(02)", label: "Framer development" },
-    { num: "(03)", label: "UI/UX strategy" },
-    { num: "(04)", label: "Creative campaigns" },
-  ];
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.defaultMuted = true;
+      videoRef.current.muted = true;
+      videoRef.current.play().catch(() => {
+        // Handled silently if browser restrictions apply
+      });
+    }
+  }, []);
 
   // Motion variants
   const fadeUp = {
@@ -30,14 +33,19 @@ export default function Hero() {
 
   return (
     <header className="ignitex-hero" id="home">
-      {/* 3D Metallic Sculpture Background */}
+      {/* Background Video & Overlays */}
       <div className="ignitex-hero__bg-wrap" aria-hidden="true">
-        <img
-          src="/hero-bg.jpg"
-          alt="3D Dark Chrome Sculpture Background"
-          className="ignitex-hero__bg-img"
-        />
-        {/* Cinematic Vignette Overlays for Maximum Readability */}
+        <video
+          ref={videoRef}
+          className="ignitex-hero__bg-video"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+        >
+          <source src="/hero-video.mp4" type="video/mp4" />
+        </video>
         <div className="ignitex-hero__overlay-left" />
         <div className="ignitex-hero__overlay-top" />
         <div className="ignitex-hero__overlay-bottom" />
@@ -54,13 +62,13 @@ export default function Hero() {
         aria-label="Main Navigation"
       >
         {/* Brand Logo */}
-        <a href="#home" className="ignitex-nav__logo" aria-label="IGNITEX Homepage">
-          IGNITEX<span className="ignitex-nav__logo-tm">™</span>
+        <a href="#home" className="ignitex-nav__logo" aria-label="Rizeworld Homepage">
+          Rizeworld<span className="ignitex-nav__logo-tm"></span>
         </a>
 
         {/* Center Location */}
         <div className="ignitex-nav__location">
-          Based in: <strong>Los Angeles, USA</strong>
+          Based in: <strong>Alwar, Rajasthan</strong>
         </div>
 
         {/* Right Menu Links */}
@@ -92,9 +100,8 @@ export default function Hero() {
           {/* Hamburger Menu Toggle (Mobile) */}
           <button
             type="button"
-            className={`ignitex-nav__hamburger ${
-              mobileMenuOpen ? "is-open" : ""
-            }`}
+            className={`ignitex-nav__hamburger ${mobileMenuOpen ? "is-open" : ""
+              }`}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle navigation menu"
             aria-expanded={mobileMenuOpen}
@@ -144,33 +151,6 @@ export default function Hero() {
         </motion.div>
       )}
 
-      {/* ========================================================
-          2. CENTER HERO TYPOGRAPHY (Design & Strategy)
-          ======================================================== */}
-      <div className="ignitex-hero__center">
-        <h1 className="ignitex-hero__headline">
-          <motion.div
-            className="ignitex-hero__line ignitex-hero__line--1"
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            custom={1}
-          >
-            <span className="ignitex-hero__word">Design</span>
-          </motion.div>
-
-          <motion.div
-            className="ignitex-hero__line ignitex-hero__line--2"
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            custom={2}
-          >
-            <span className="ignitex-hero__ampersand">&amp;</span>
-            <span className="ignitex-hero__word">Strategy</span>
-          </motion.div>
-        </h1>
-      </div>
 
       {/* ========================================================
           3. BOTTOM AREA (Description on Left, Services & CTA on Right)
@@ -185,53 +165,14 @@ export default function Hero() {
           custom={3}
         >
           <div className="ignitex-hero__desc-box">
-            <span className="ignitex-hero__sparkle" aria-hidden="true">
-              ✦
-            </span>
+
             <p className="ignitex-hero__desc">
-              We turn bold ideas into standout brands and sleek websites. Let's
-              bring your vision to life.
+              Rizeworld video graphic design portfolio
             </p>
           </div>
-          <p className="ignitex-hero__copyright">© 2026 Ignitex creative agency</p>
+          <p className="ignitex-hero__copyright">© 2026 Rizeworld </p>
         </motion.div>
 
-        {/* Bottom Right: Services List + Pill CTA Button */}
-        <motion.div
-          className="ignitex-hero__bottom-right"
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-          custom={4}
-        >
-          <ul className="ignitex-hero__services" aria-label="Services List">
-            {services.map((item, index) => (
-              <li key={index} className="ignitex-hero__service-item">
-                <span className="ignitex-hero__service-num">{item.num}</span>
-                <span className="ignitex-hero__service-label">{item.label}</span>
-              </li>
-            ))}
-          </ul>
-
-          <a href="#contact" className="ignitex-hero__cta-btn">
-            <span className="ignitex-hero__cta-text">Let's work together</span>
-            <span className="ignitex-hero__cta-arrow" aria-hidden="true">
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <line x1="5" y1="12" x2="19" y2="12" />
-                <polyline points="12 5 19 12 12 19" />
-              </svg>
-            </span>
-          </a>
-        </motion.div>
       </div>
     </header>
   );

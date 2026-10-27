@@ -1,0 +1,226 @@
+/* ============================================================
+   MINIMAL EDITORIAL FOOTER STYLES (MATCHING SCREENSHOT)
+   Pure white, high-contrast typography, mammoth center title
+   ============================================================ */
+
+.minimal-footer {
+  position: relative;
+  width: 100%;
+  background-color: #ffffff;
+  color: #0a0a0a;
+  padding: 100px 0 36px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.minimal-footer__container {
+  width: 100%;
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 0 44px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ============================================================
+   1. TOP COLUMNS (SOCIALS, MENU, CONTACT)
+   ============================================================ */
+.minimal-footer__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 50px;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.minimal-footer__col {
+  display: flex;
+  flex-direction: column;
+  min-width: 130px;
+}
+
+.minimal-footer__col--contact {
+  margin-left: auto;
+  text-align: right;
+  align-items: flex-end;
+}
+
+.minimal-footer__label {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #888888;
+  margin-bottom: 18px;
+  display: block;
+}
+
+.minimal-footer__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.minimal-footer__link {
+  font-family: "Plus Jakarta Sans", "Inter", -apple-system, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #0a0a0a;
+  text-decoration: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  display: inline-block;
+  letter-spacing: -0.01em;
+}
+
+.minimal-footer__link:hover {
+  opacity: 0.6;
+  transform: translateX(2px);
+}
+
+.minimal-footer__contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-end;
+}
+
+.minimal-footer__contact-item {
+  font-family: "Plus Jakarta Sans", "Inter", -apple-system, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #0a0a0a;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+  letter-spacing: -0.01em;
+}
+
+.minimal-footer__contact-item:hover {
+  opacity: 0.6;
+}
+
+.minimal-footer__location {
+  font-size: 13px;
+  color: #888888;
+  margin-top: 4px;
+}
+
+/* ============================================================
+   2. GIANT MAMMOTH BRAND HEADLINE
+   ============================================================ */
+.minimal-footer__giant-wrap {
+  width: 100%;
+  text-align: center;
+  margin: 20px 0 40px;
+  overflow: hidden;
+}
+
+.minimal-footer__giant-title {
+  font-family: "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(70px, 15.5vw, 250px);
+  font-weight: 800;
+  line-height: 0.88;
+  letter-spacing: -0.045em;
+  color: #0a0a0a;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  text-align: center;
+  white-space: nowrap;
+  display: block;
+  transform: scaleY(1.02);
+}
+
+/* ============================================================
+   3. BOTTOM SUB-BAR
+   ============================================================ */
+.minimal-footer__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 26px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #777777;
+}
+
+.minimal-footer__bottom-link {
+  color: #777777;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.minimal-footer__bottom-link:hover {
+  color: #0a0a0a;
+}
+
+.minimal-footer__top-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #777777;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: color 0.2s ease, transform 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0;
+}
+
+.minimal-footer__top-btn:hover {
+  color: #0a0a0a;
+  transform: translateY(-2px);
+}
+
+.minimal-footer__year {
+  color: #888888;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .minimal-footer {
+    padding: 70px 0 28px;
+  }
+
+  .minimal-footer__container {
+    padding: 0 24px;
+  }
+
+  .minimal-footer__top {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .minimal-footer__col--contact {
+    margin-left: 0;
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .minimal-footer__contact-details {
+    align-items: flex-start;
+  }
+
+  .minimal-footer__giant-wrap {
+    margin: 15px 0 30px;
+  }
+
+  .minimal-footer__bottom {
+    flex-direction: column;
+    gap: 14px;
+    align-items: center;
+    text-align: center;
+  }
+}
