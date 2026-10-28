@@ -5,6 +5,12 @@ import CrowdBuyers from "./components/CrowdBuyers/CrowdBuyers";
 import Channels from "./components/Channels/Channels";
 import CaseStudies from "./components/CaseStudies/CaseStudies";
 import FunnelProcess from "./components/FunnelProcess/FunnelProcess";
+import ClientNumbers from "./components/ClientNumbers/ClientNumbers";
+import SocialGrid from "./components/SocialGrid/SocialGrid";
+import TeamRoster from "./components/TeamRoster/TeamRoster";
+import ClientReviews from "./components/ClientReviews/ClientReviews";
+import PricingPlans from "./components/PricingPlans/PricingPlans";
+import FAQ from "./components/FAQ/FAQ";
 import BlogInsights from "./components/BlogInsights/BlogInsights";
 import FreeAudit from "./components/FreeAudit/FreeAudit";
 import Footer from "./components/Footer/Footer";
@@ -13,37 +19,55 @@ import "./App.css";
 function App() {
   return (
     <div className="seo-portfolio-wrapper">
-      {/* Top Floating Navbar */}
+      {/* Top Floating Glassmorphic Navbar */}
       <Navbar />
 
-      {/* Main Sections */}
+      {/* Main Sequential Portfolio Sections */}
       <main>
-        {/* Section 1: Hero */}
+        {/* 01: Hero with Spotlight & Radar */}
         <Hero />
 
-        {/* Section 2: Clients on Radar */}
+        {/* 02: Clients on Radar */}
         <RadarClients />
 
-        {/* Section 3: Why Reachwise / Crowd Buyers */}
+        {/* 03: Why Reachwise / Crowd Buyers */}
         <CrowdBuyers />
 
-        {/* Section 4: Six channels. One growth plan. */}
+        {/* 04: Six channels. One growth plan. */}
         <Channels />
 
-        {/* Section 5: Results you can count. (Before/After Slider) */}
+        {/* 05: Results you can count (Split Slider) */}
         <CaseStudies />
 
-        {/* Section 6: From attention to clients. (Conversion Funnel) */}
+        {/* 06: From attention to clients (Conversion Funnel) */}
         <FunnelProcess />
 
-        {/* Section 7: Ideas we test first. (Blog & Insights) */}
+        {/* 07: What our clients got last year (The Numbers & Ticker) */}
+        <ClientNumbers />
+
+        {/* 08: Content that stops the scroll (Social Media Gallery) */}
+        <SocialGrid />
+
+        {/* 09: Specialists, not generalists (Team Roster) */}
+        <TeamRoster />
+
+        {/* 10: Clients who stayed (Reviews & iPhone Mockup) */}
+        <ClientReviews />
+
+        {/* 11: Simple monthly retainers (Pricing Cards) */}
+        <PricingPlans />
+
+        {/* 12: Questions, answered (Accordion FAQ) */}
+        <FAQ />
+
+        {/* 13: Ideas we test first (Blog & Insights) */}
         <BlogInsights />
 
-        {/* Section 8: Ready to be seen? (Free Audit CTA) */}
+        {/* 14: Ready to be seen? (Free Audit CTA) */}
         <FreeAudit />
       </main>
 
-      {/* Section 9: Giant Wordmark Footer */}
+      {/* 15: Giant Wordmark Editorial Footer */}
       <Footer />
     </div>
   );
