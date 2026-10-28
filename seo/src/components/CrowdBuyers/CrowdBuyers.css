@@ -1,6 +1,7 @@
 /* ============================================================
    CROWD BUYERS SECTION (SECTION 3)
    "Everyone is a crowd. We find your buyers."
+   Exact reproduction of reference design & video
    ============================================================ */
 
 .crowd-section {
@@ -8,7 +9,7 @@
   width: 100%;
   background-color: #ebeee8;
   color: #11141a;
-  padding: 100px 60px 120px;
+  padding: 40px 60px 100px;
   overflow: hidden;
 }
 
@@ -17,7 +18,7 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 56px;
+  gap: 44px;
 }
 
 /* ============================================================
@@ -167,216 +168,4 @@
   color: #94a3b8;
 }
 
-/* ============================================================
-   BOTTOM INTERACTIVE CROWD BOX (IMAGE 1 & 2)
-   ============================================================ */
-
-.crowd-box {
-  position: relative;
-  width: 100%;
-  height: 480px;
-  border-radius: 28px;
-  background: #090a0d;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow:
-    0 24px 60px -15px rgba(0, 0, 0, 0.5),
-    inset 0 1px 1px rgba(255, 255, 255, 0.1);
-  overflow: hidden;
-  user-select: none;
-}
-
-/* Starry crowd particle canvas */
-.crowd-canvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-
-/* ---- Top Left Tag inside box ---- */
-.crowd-box__tag {
-  position: absolute;
-  top: 26px;
-  left: 28px;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.crowd-box__dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #d4ff00;
-  box-shadow: 0 0 8px #d4ff00;
-}
-
-.crowd-box__tag-text {
-  font-family: var(--font-main);
-  font-size: 10.5px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  color: #a3e635;
-  text-transform: uppercase;
-}
-
-/* ---- Bottom Left Big Ratio Stat ---- */
-.crowd-box__stat {
-  position: absolute;
-  bottom: 28px;
-  left: 32px;
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.crowd-box__ratio {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-}
-
-.crowd-box__prefix {
-  font-family: var(--font-display);
-  font-size: 38px;
-  font-weight: 700;
-  color: #ffffff;
-  letter-spacing: -0.03em;
-}
-
-.crowd-box__number {
-  font-family: var(--font-display);
-  font-size: clamp(54px, 6.5vw, 92px);
-  font-weight: 900;
-  color: #d4ff00;
-  letter-spacing: -0.04em;
-  line-height: 1;
-  text-shadow: 0 0 35px rgba(212, 255, 0, 0.5);
-  transition: all 0.3s ease;
-}
-
-.crowd-box__label {
-  font-family: var(--font-display);
-  font-size: 22px;
-  font-weight: 700;
-  color: #ffffff;
-  letter-spacing: -0.02em;
-}
-
-/* ============================================================
-   TARGET CLUSTERS (SEARCH, FEEDS, AUDIENCES)
-   ============================================================ */
-
-.crowd-cluster {
-  position: absolute;
-  z-index: 5;
-  transform: translate(-50%, -50%);
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Faint circle showing audience boundary */
-.crowd-cluster__circle {
-  width: 170px;
-  height: 170px;
-  border-radius: 50%;
-  border: 1px dashed rgba(212, 255, 0, 0.25);
-  position: absolute;
-  pointer-events: none;
-  transition: all 0.35s ease;
-}
-
-.crowd-cluster:hover .crowd-cluster__circle,
-.crowd-cluster--active .crowd-cluster__circle {
-  border-color: rgba(212, 255, 0, 0.7);
-  box-shadow: 0 0 35px rgba(212, 255, 0, 0.25);
-  transform: scale(1.08);
-}
-
-/* Pill Tag and Subtitle Text */
-.crowd-cluster__info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  position: relative;
-  z-index: 10;
-  transform: translateY(-90px);
-  pointer-events: none;
-}
-
-.crowd-cluster:nth-child(even) .crowd-cluster__info {
-  transform: translateY(90px);
-}
-
-.crowd-cluster__pill {
-  display: inline-block;
-  background: #d4ff00;
-  color: #000000;
-  font-family: var(--font-main);
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  padding: 3px 12px;
-  border-radius: 9999px;
-  box-shadow: 0 0 16px rgba(212, 255, 0, 0.5);
-  text-transform: uppercase;
-}
-
-.crowd-cluster__detail {
-  font-family: var(--font-main);
-  font-size: 11px;
-  font-weight: 600;
-  color: #ffffff;
-  letter-spacing: -0.01em;
-  white-space: nowrap;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
-}
-
-/* ============================================================
-   RESPONSIVENESS
-   ============================================================ */
-
-@media (max-width: 990px) {
-  .crowd-header {
-    grid-template-columns: 1fr;
-    gap: 36px;
-  }
-  .crowd-header__right {
-    max-width: 100%;
-  }
-  .crowd-box {
-    height: 420px;
-  }
-}
-
-@media (max-width: 640px) {
-  .crowd-section {
-    padding: 70px 20px;
-  }
-  .crowd-box {
-    height: 380px;
-  }
-  .crowd-box__prefix {
-    font-size: 28px;
-  }
-  .crowd-box__number {
-    font-size: 44px;
-  }
-  .crowd-box__label {
-    font-size: 17px;
-  }
-  .crowd-cluster__circle {
-    width: 120px;
-    height: 120px;
-  }
-  .crowd-cluster__detail {
-    font-size: 9px;
-  }
-}
+/* Bottom crowd box removed - ready to rebuild from fresh reference */

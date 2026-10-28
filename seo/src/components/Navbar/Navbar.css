@@ -4,16 +4,20 @@
    ============================================================ */
 
 .rw-header {
-  position: absolute;
+  position: sticky;
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 50;
-  padding: 24px 44px;
+  z-index: 100;
+  padding: 18px 44px;
+  background: rgba(235, 238, 232, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: all 0.25s ease;
 }
 
 .rw-header__container {
-  max-width: 1440px;
+  max-width: 1380px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -25,7 +29,7 @@
 .rw-brand {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   text-decoration: none;
   cursor: pointer;
   user-select: none;
@@ -33,29 +37,31 @@
 
 .rw-brand__icon {
   position: relative;
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #11141a;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .rw-brand__dot {
-  width: 9px;
-  height: 9px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: #d4ff00;
-  box-shadow: 0 0 10px rgba(212, 255, 0, 0.7);
+  box-shadow: 0 0 8px rgba(212, 255, 0, 0.8);
   z-index: 2;
 }
 
 .rw-brand__wave {
   position: absolute;
-  width: 22px;
-  height: 22px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
-  border: 2px solid #d4ff00;
-  opacity: 0.9;
+  border: 1.5px solid #d4ff00;
+  opacity: 0.85;
 }
 
 .rw-brand__wave--left {
@@ -74,27 +80,27 @@
 
 .rw-brand__name {
   font-family: var(--font-display);
-  font-size: 21px;
+  font-size: 20px;
   font-weight: 700;
   letter-spacing: -0.02em;
-  color: #ffffff;
+  color: #11141a;
 }
 
 /* ---- Center Pill Navigation ---- */
 .rw-nav {
-  background: rgba(22, 25, 33, 0.72);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 9999px;
-  padding: 5px 8px;
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  padding: 4px 6px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
 }
 
 .rw-nav__list {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 2px;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -103,23 +109,23 @@
 .rw-nav__link {
   display: inline-block;
   font-family: var(--font-main);
-  font-size: 13.5px;
-  font-weight: 500;
-  color: #9ca3af;
-  padding: 7px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #4b5563;
+  padding: 6px 16px;
   border-radius: 9999px;
   text-decoration: none;
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .rw-nav__link:hover {
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.06);
+  color: #0f1217;
+  background: rgba(0, 0, 0, 0.05);
 }
 
 .rw-nav__link--active {
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.09);
+  color: #0f1217;
+  background: rgba(0, 0, 0, 0.07);
   font-weight: 600;
 }
 
@@ -127,42 +133,37 @@
 .rw-btn-book {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   background: #d4ff00;
   color: #050608;
   font-family: var(--font-main);
-  font-size: 13.5px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: -0.01em;
-  padding: 6px 7px 6px 18px;
+  padding: 8px 18px;
   border-radius: 9999px;
   text-decoration: none;
-  box-shadow: 0 4px 20px rgba(212, 255, 0, 0.3);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 3px 12px rgba(212, 255, 0, 0.35);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   user-select: none;
 }
 
 .rw-btn-book:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(212, 255, 0, 0.45);
+  box-shadow: 0 6px 22px rgba(212, 255, 0, 0.5);
   background: #dcff1a;
 }
 
 .rw-btn-book__icon {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: #050608;
-  color: #d4ff00;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
+  color: #050608;
   transition: transform 0.25s ease;
 }
 
 .rw-btn-book:hover .rw-btn-book__icon {
-  transform: rotate(12deg) scale(1.05);
+  transform: translate(2px, -2px);
 }
 
 /* ---- Responsive Breakpoints ---- */

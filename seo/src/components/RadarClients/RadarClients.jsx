@@ -42,7 +42,7 @@ export default function RadarClients() {
           {/* Section Pill */}
           <div className="radar-pill">
             <span className="radar-pill__dot" />
-            <span className="radar-pill__text">(02) Clients</span>
+            <span className="radar-pill__text">(03) Clients</span>
           </div>
 
           {/* Headline */}
