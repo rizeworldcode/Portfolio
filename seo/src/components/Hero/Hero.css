@@ -1,0 +1,643 @@
+/* ============================================================
+   REACHWISE HERO SECTION STYLES
+   Exact reproduction of reference design
+   ============================================================ */
+
+.hero-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  padding: 120px 48px 48px;
+  background-color: #0d0f12;
+}
+
+/* ============================================================
+   BACKGROUND CROWD & SPOTLIGHT
+   ============================================================ */
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.hero-bg__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: contrast(1.1) brightness(0.92);
+  transform: scale(1.03);
+  transition: transform 6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-section:hover .hero-bg__img {
+  transform: scale(1.05);
+}
+
+/* Top & Bottom dark fades for crisp text contrast */
+.hero-bg__overlay-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 280px;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 11, 14, 0.95) 0%,
+    rgba(10, 11, 14, 0.7) 45%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+.hero-bg__overlay-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 320px;
+  background: linear-gradient(
+    0deg,
+    rgba(10, 11, 14, 0.98) 0%,
+    rgba(10, 11, 14, 0.75) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+.hero-bg__overlay-radial {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(10, 11, 14, 0.35) 0%,
+    rgba(10, 11, 14, 0.7) 100%
+  );
+  pointer-events: none;
+}
+
+/* Dynamic Lime Spotlight Beam cutting across the crowd */
+.hero-spotlight-beam {
+  position: absolute;
+  top: -20%;
+  left: 20%;
+  width: 280px;
+  height: 160%;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(212, 255, 0, 0.03) 25%,
+    rgba(212, 255, 0, 0.22) 48%,
+    rgba(212, 255, 0, 0.32) 52%,
+    rgba(212, 255, 0, 0.04) 75%,
+    transparent 100%
+  );
+  filter: blur(28px);
+  transform: rotate(-24deg);
+  transform-origin: top center;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  z-index: 1;
+  transition: left 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s ease;
+}
+
+/* ============================================================
+   TOP RIGHT RADAR TRACKER
+   ============================================================ */
+
+.hero-radar-tracker {
+  position: absolute;
+  top: 96px;
+  right: 56px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.hero-radar-tracker__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hero-radar-tracker__pulse-ring {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1.5px solid #d4ff00;
+  position: relative;
+  display: inline-block;
+  animation: radarPing 2.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes radarPing {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.9;
+  }
+  75%, 100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+.hero-radar-tracker__text {
+  font-family: var(--font-main);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #d4ff00;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px rgba(212, 255, 0, 0.4);
+}
+
+.hero-radar-circle {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  border: 1px dashed rgba(212, 255, 0, 0.65);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(18, 20, 26, 0.45);
+  backdrop-filter: blur(6px);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hero-radar-circle:hover {
+  border-color: #d4ff00;
+  box-shadow: 0 0 24px rgba(212, 255, 0, 0.35);
+  transform: scale(1.08);
+}
+
+.hero-radar-circle__sweep {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 280deg,
+    rgba(212, 255, 0, 0.25) 360deg
+  );
+  animation: radarSweep 4s linear infinite;
+}
+
+@keyframes radarSweep {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.hero-radar-circle__crosshair-h {
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background: rgba(212, 255, 0, 0.2);
+}
+
+.hero-radar-circle__crosshair-v {
+  position: absolute;
+  height: 100%;
+  width: 1px;
+  background: rgba(212, 255, 0, 0.2);
+}
+
+.hero-radar-circle__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #d4ff00;
+  box-shadow: 0 0 10px #d4ff00;
+  z-index: 2;
+  position: absolute;
+  top: 38%;
+}
+
+.hero-radar-circle__label {
+  font-family: var(--font-main);
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: #d4ff00;
+  z-index: 2;
+  position: absolute;
+  bottom: 14px;
+}
+
+/* ============================================================
+   MAIN CENTER CONTENT
+   ============================================================ */
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  max-width: 980px;
+  margin: auto 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  padding: 40px 16px 20px;
+}
+
+/* ---- Status Pill Badge ---- */
+.hero-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(24, 27, 36, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 6px 18px;
+  border-radius: 9999px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  margin-bottom: 6px;
+}
+
+.hero-status-pill__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #f43f5e;
+  box-shadow: 0 0 10px #f43f5e;
+  display: inline-block;
+  animation: pulseDot 2s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0.6;
+  }
+}
+
+.hero-status-pill__text {
+  font-family: var(--font-main);
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #e2e8f0;
+  letter-spacing: -0.01em;
+}
+
+/* ---- Main Headline ---- */
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 8.5vw, 108px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.02;
+  color: #ffffff;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-title__row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* The iconic Lime Badge Pills */
+.hero-badge-pill {
+  display: inline-block;
+  background: #d4ff00;
+  color: #000000;
+  padding: 0px 22px 4px;
+  border-radius: 28px;
+  box-shadow:
+    0 0 45px rgba(212, 255, 0, 0.45),
+    0 12px 30px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
+}
+
+.hero-badge-pill:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow:
+    0 0 60px rgba(212, 255, 0, 0.65),
+    0 16px 36px rgba(0, 0, 0, 0.4);
+}
+
+/* ---- Subtitle Description ---- */
+.hero-subtitle {
+  font-family: var(--font-main);
+  font-size: clamp(15px, 1.8vw, 17px);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.78);
+  max-width: 620px;
+  margin: 6px auto 14px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+/* ---- CTA Buttons ---- */
+.hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Primary Button: Book Strategy Call */
+.hero-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  background: #080a0d;
+  color: #ffffff;
+  font-family: var(--font-main);
+  font-size: 14.5px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  padding: 6px 8px 6px 26px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow:
+    0 10px 30px -6px rgba(0, 0, 0, 0.6),
+    inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  text-decoration: none;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.hero-btn-primary:hover {
+  background: #11141a;
+  border-color: rgba(212, 255, 0, 0.5);
+  transform: translateY(-3px);
+  box-shadow:
+    0 16px 40px -8px rgba(212, 255, 0, 0.25),
+    inset 0 1px 2px rgba(255, 255, 255, 0.25);
+}
+
+.hero-btn-primary__icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #d4ff00;
+  color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 10px rgba(212, 255, 0, 0.4);
+  transition: transform 0.25s ease;
+}
+
+.hero-btn-primary:hover .hero-btn-primary__icon {
+  transform: rotate(15deg) scale(1.08);
+}
+
+/* Secondary Button: See Our Work */
+.hero-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: #ffffff;
+  font-family: var(--font-main);
+  font-size: 14.5px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  padding: 13px 28px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 10px 25px -8px rgba(0, 0, 0, 0.4);
+  text-decoration: none;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.hero-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.24);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.5);
+}
+
+.hero-btn-secondary__arrow {
+  transition: transform 0.25s ease;
+}
+
+.hero-btn-secondary:hover .hero-btn-secondary__arrow {
+  transform: translate(3px, -3px);
+}
+
+/* ============================================================
+   BOTTOM BAR (3 Columns: Metrics, Filter Tabs, Social Proof)
+   ============================================================ */
+
+.hero-bottom-bar {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  padding-top: 24px;
+}
+
+/* ---- Left Column: People Reached Metric ---- */
+.hero-stat-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hero-stat-card__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-main);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.hero-stat-card__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #d4ff00;
+  box-shadow: 0 0 8px #d4ff00;
+  display: inline-block;
+}
+
+.hero-stat-card__number {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.2vw, 42px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  line-height: 1;
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+}
+
+/* ---- Center Column: Interactive Service Pills ---- */
+.hero-service-tabs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(18, 20, 26, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 6px 8px;
+  border-radius: 9999px;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+.hero-tab-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: transparent;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  color: #9ca3af;
+  font-family: var(--font-main);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.hero-tab-pill__num {
+  font-family: var(--font-main);
+  font-size: 12px;
+  font-weight: 800;
+  color: #d4ff00;
+}
+
+.hero-tab-pill__label {
+  color: inherit;
+}
+
+.hero-tab-pill:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.hero-tab-pill--active {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* ---- Right Column: Social Proof ---- */
+.hero-social-proof {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+  text-align: right;
+}
+
+.hero-social-proof__stars-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hero-social-proof__stars {
+  color: #facc15;
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+
+.hero-social-proof__rating {
+  font-family: var(--font-main);
+  font-size: 13px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.hero-social-proof__sub {
+  font-family: var(--font-main);
+  font-size: 12.5px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ============================================================
+   RESPONSIVE MEDIA QUERIES
+   ============================================================ */
+
+@media (max-width: 1100px) {
+  .hero-bottom-bar {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    text-align: center;
+  }
+  .hero-social-proof {
+    align-items: center;
+    text-align: center;
+  }
+  .hero-stat-card {
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 100px 20px 36px;
+  }
+  .hero-radar-tracker {
+    display: none;
+  }
+  .hero-title {
+    font-size: clamp(38px, 10vw, 56px);
+  }
+  .hero-badge-pill {
+    padding: 0 14px 2px;
+    border-radius: 18px;
+  }
+  .hero-service-tabs {
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 20px;
+  }
+  .hero-tab-pill {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}

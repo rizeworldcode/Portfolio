@@ -1,18 +1,28 @@
-import './App.css'
+import Navbar from "./components/Navbar/Navbar";
+import Hero from "./components/Hero/Hero";
+import CrowdBuyers from "./components/CrowdBuyers/CrowdBuyers";
+import RadarClients from "./components/RadarClients/RadarClients";
+import "./App.css";
 
 function App() {
   return (
-    <div className="seo-portfolio">
-      <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '16px' }}>
-        <h1 style={{ color: '#fff', fontSize: '32px', fontWeight: 700, fontFamily: 'var(--font-display)' }}>
-          SEO Portfolio
-        </h1>
-        <p style={{ color: 'var(--text-secondary)', fontSize: '16px' }}>
-          Ready for section design!
-        </p>
-      </div>
+    <div className="seo-portfolio-wrapper">
+      {/* Top Floating Navbar */}
+      <Navbar />
+
+      {/* Main Sections */}
+      <main>
+        {/* Section 1: Hero */}
+        <Hero />
+
+        {/* Section 2: Clients on Radar */}
+        <RadarClients />
+
+        {/* Section 3: Why Reachwise / Crowd Buyers */}
+        <CrowdBuyers />
+      </main>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
