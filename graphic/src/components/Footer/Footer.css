@@ -19,7 +19,7 @@
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 1120px;
+  max-width: 1380px;
   border-radius: 36px;
   background: linear-gradient(
     180deg,
@@ -33,7 +33,7 @@
     0 8px 20px -6px rgba(15, 23, 42, 0.08),
     inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.95),
     inset 0 -1.5px 2px 0 rgba(0, 0, 0, 0.06);
-  padding: 42px 48px 30px;
+  padding: 44px 54px 30px;
   display: flex;
   flex-direction: column;
   gap: 36px;
@@ -62,7 +62,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  max-width: 380px;
+  max-width: 420px;
 }
 
 .vitrio-card__brand {
@@ -224,8 +224,8 @@
 
 /* ---- Google Map Box ---- */
 .vitrio-card__map-box {
-  width: 280px;
-  height: 140px;
+  width: 320px;
+  height: 145px;
   border-radius: 18px;
   overflow: hidden;
   position: relative;
