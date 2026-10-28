@@ -82,7 +82,16 @@ export default function TeamRoster() {
                 idx === activeMember ? "team-card--active" : ""
               }`}
               onClick={() => setActiveMember(idx)}
+              onMouseEnter={() => setActiveMember(idx)}
             >
+              {idx === activeMember && (
+                <div className="team-card__target-ring" aria-hidden="true">
+                  <span className="team-card__target-corner team-card__target-corner--tl" />
+                  <span className="team-card__target-corner team-card__target-corner--tr" />
+                  <span className="team-card__target-corner team-card__target-corner--bl" />
+                  <span className="team-card__target-corner team-card__target-corner--br" />
+                </div>
+              )}
               <div className="team-card__image-wrap">
                 <img src={m.img} alt={m.name} className="team-card__img" />
                 <span className="team-card__role-tag">{m.role}</span>

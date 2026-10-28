@@ -120,7 +120,7 @@ export default function FunnelProcess() {
   };
 
   return (
-    <section className="funnel-section" id="how-it-works">
+    <section ref={sectionRef} className="funnel-section" id="how-it-works">
       <div className="funnel-container">
         {/* ============================================================
             LEFT COLUMN: TYPOGRAPHY & TIMELINE STEPS
@@ -154,8 +154,8 @@ export default function FunnelProcess() {
                 className={`funnel-step-item ${
                   activeStep === idx ? "funnel-step-item--active" : ""
                 }`}
-                onClick={() => setActiveStep(idx)}
-                onMouseEnter={() => setActiveStep(idx)}
+                onClick={() => handleStepClick(idx)}
+                onMouseEnter={() => handleStepClick(idx)}
               >
                 <div className="funnel-step-item__num">{st.num}</div>
                 <div className="funnel-step-item__content">
@@ -180,7 +180,7 @@ export default function FunnelProcess() {
               className={`funnel-tier funnel-tier--1 ${
                 activeStep >= 0 ? "funnel-tier--filled-lime" : ""
               }`}
-              onClick={() => setActiveStep(0)}
+              onClick={() => handleStepClick(0)}
             >
               {/* Floating ambient crowd particles */}
               <div className="funnel-particles-layer" aria-hidden="true">
@@ -203,7 +203,7 @@ export default function FunnelProcess() {
                   <span className="funnel-tier__label">REACH</span>
                 </div>
                 <div className="funnel-tier__number">
-                  {activeStep >= 0 ? "1,284,300" : "0"}
+                  {counts.reach > 0 ? counts.reach.toLocaleString() : "0"}
                 </div>
               </div>
             </div>
@@ -213,7 +213,7 @@ export default function FunnelProcess() {
               className={`funnel-tier funnel-tier--2 ${
                 activeStep >= 1 ? "funnel-tier--filled-lime" : ""
               }`}
-              onClick={() => setActiveStep(1)}
+              onClick={() => handleStepClick(1)}
             >
               <div className="funnel-tier__content">
                 <div className="funnel-tier__tag">
@@ -221,8 +221,23 @@ export default function FunnelProcess() {
                   <span className="funnel-tier__label">CLICKS</span>
                 </div>
                 <div className="funnel-tier__number">
-                  {activeStep >= 1 ? "48,120" : "0"}
+                  {counts.clicks > 0 ? counts.clicks.toLocaleString() : "0"}
                 </div>
+
+                {/* Video 00:13 badge */}
+                {activeStep >= 1 && (
+                  <motion.div
+                    className="funnel-conversion-badge funnel-conversion-badge--clicks"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  >
+                    <span className="funnel-conversion-badge__dot" />
+                    <span className="funnel-conversion-badge__text">
+                      ~0.2% become leads
+                    </span>
+                  </motion.div>
+                )}
               </div>
             </div>
 
@@ -231,7 +246,7 @@ export default function FunnelProcess() {
               className={`funnel-tier funnel-tier--3 ${
                 activeStep >= 2 ? "funnel-tier--filled-lime" : ""
               }`}
-              onClick={() => setActiveStep(2)}
+              onClick={() => handleStepClick(2)}
             >
               <div className="funnel-tier__content">
                 <div className="funnel-tier__tag">
@@ -239,15 +254,7 @@ export default function FunnelProcess() {
                   <span className="funnel-tier__label">LEADS</span>
                 </div>
                 <div className="funnel-tier__number">
-                  {activeStep >= 2 ? "2,940" : "0"}
-                </div>
-
-                {/* Conversion Pill Badge */}
-                <div className="funnel-conversion-badge">
-                  <span className="funnel-conversion-badge__dot" />
-                  <span className="funnel-conversion-badge__text">
-                    11% become clients
-                  </span>
+                  {counts.leads > 0 ? counts.leads.toLocaleString() : "0"}
                 </div>
               </div>
             </div>
@@ -257,7 +264,7 @@ export default function FunnelProcess() {
               className={`funnel-tier funnel-tier--4 ${
                 activeStep >= 3 ? "funnel-tier--filled-lime" : ""
               }`}
-              onClick={() => setActiveStep(3)}
+              onClick={() => handleStepClick(3)}
             >
               <div className="funnel-tier__content">
                 <div className="funnel-tier__tag">
@@ -265,8 +272,23 @@ export default function FunnelProcess() {
                   <span className="funnel-tier__label">CLIENTS</span>
                 </div>
                 <div className="funnel-tier__number">
-                  {activeStep >= 3 ? "312" : "0"}
+                  {counts.clients > 0 ? counts.clients.toLocaleString() : "0"}
                 </div>
+
+                {/* Conversion Pill Badge - Pops in at step 4 (video 00:17) */}
+                {activeStep >= 3 && (
+                  <motion.div
+                    className="funnel-conversion-badge"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ type: "spring", stiffness: 350, damping: 22 }}
+                  >
+                    <span className="funnel-conversion-badge__dot" />
+                    <span className="funnel-conversion-badge__text">
+                      11% become clients
+                    </span>
+                  </motion.div>
+                )}
               </div>
             </div>
           </div>

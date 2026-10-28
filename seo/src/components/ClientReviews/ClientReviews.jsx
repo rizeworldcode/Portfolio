@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import "./ClientReviews.css";
 
 export default function ClientReviews() {
@@ -74,7 +75,13 @@ export default function ClientReviews() {
 
         {/* Right Column: Realistic iPhone Notification Chat UI */}
         <div className="reviews-right">
-          <div className="iphone-mockup">
+          <motion.div
+            className="iphone-mockup"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
             {/* Dynamic Island / Notch */}
             <div className="iphone-notch">
               <span className="iphone-camera" />
@@ -101,9 +108,34 @@ export default function ClientReviews() {
             </div>
 
             {/* Incoming Message Notification Cards */}
-            <div className="iphone-messages-list">
+            <motion.div
+              className="iphone-messages-list"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.4 }}
+              variants={{
+                hidden: { opacity: 0 },
+                visible: {
+                  opacity: 1,
+                  transition: { staggerChildren: 0.25, delayChildren: 0.2 },
+                },
+              }}
+            >
               {notifications.map((n) => (
-                <div key={n.id} className="iphone-notif-card">
+                <motion.div
+                  key={n.id}
+                  className="iphone-notif-card"
+                  variants={{
+                    hidden: { opacity: 0, y: 24, scale: 0.94 },
+                    visible: {
+                      opacity: 1,
+                      y: 0,
+                      scale: 1,
+                      transition: { type: "spring", stiffness: 320, damping: 24 },
+                    },
+                  }}
+                  whileHover={{ scale: 1.02 }}
+                >
                   <div className="iphone-notif-card__top">
                     <img
                       src={n.avatar}
@@ -118,10 +150,10 @@ export default function ClientReviews() {
                     <span className="iphone-notif-time">{n.time}</span>
                   </div>
                   <p className="iphone-notif-text">{n.text}</p>
-                </div>
+                </motion.div>
               ))}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>

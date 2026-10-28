@@ -299,21 +299,22 @@
 
 .rw-footer__wordmark-spotlight {
   position: absolute;
-  width: 320px;
-  height: 320px;
+  width: 260px;
+  height: 260px;
   border-radius: 50%;
   background: radial-gradient(
     circle,
     rgba(212, 255, 0, 0.45) 0%,
-    rgba(212, 255, 0, 0.15) 40%,
+    rgba(212, 255, 0, 0.2) 40%,
     transparent 70%
   );
+  border: 1.5px solid rgba(212, 255, 0, 0.5);
+  box-shadow: 0 0 40px rgba(212, 255, 0, 0.4), inset 0 0 30px rgba(212, 255, 0, 0.2);
   transform: translate(-50%, -50%);
   pointer-events: none;
-  mix-blend-mode: color-dodge;
-  filter: blur(12px);
+  filter: blur(4px);
   z-index: 2;
-  transition: left 0.1s ease-out, top 0.1s ease-out;
+  transition: left 0.08s ease-out, top 0.08s ease-out;
 }
 
 .rw-footer__wordmark-text {
@@ -322,16 +323,33 @@
   font-weight: 900;
   letter-spacing: -0.05em;
   line-height: 0.85;
-  color: #cfd4cc;
-  transition: color 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), text-shadow 0.4s ease;
   text-align: center;
   display: block;
+  user-select: none;
 }
 
-.rw-footer__giant-wordmark:hover .rw-footer__wordmark-text {
-  color: #ffffff;
-  text-shadow: 0 0 80px rgba(212, 255, 0, 0.35);
-  transform: scale(1.02);
+.rw-footer__wordmark-text--base {
+  color: #cdd3ca;
+  transition: color 0.3s ease;
+}
+
+.rw-footer__wordmark-text--lime {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #d4ff00;
+  text-shadow: 0 0 40px rgba(212, 255, 0, 0.8), 0 0 80px rgba(212, 255, 0, 0.5);
+  clip-path: circle(130px at var(--mouse-x, 50%) var(--mouse-y, 50%));
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.rw-footer__wordmark-text--visible {
+  opacity: 1;
 }
 
 /* ============================================================

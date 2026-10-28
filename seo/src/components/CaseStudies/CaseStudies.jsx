@@ -15,10 +15,10 @@ export default function CaseStudies() {
       year: "2025",
       metricLabel: "ORGANIC VISITS A MONTH",
       beforeVal: "4,200",
-      afterVal: "32,524",
+      afterVal: "38,900",
       metricUnit: "",
       avatar: "/dental-clinic.jpg",
-      summary: "4,200 → 32,524",
+      summary: "4,200 → 38,900",
     },
     {
       id: "kettlebrook",
@@ -212,16 +212,22 @@ export default function CaseStudies() {
                 </linearGradient>
               </defs>
               {/* Shaded Area Under Curve */}
-              <path
+              <motion.path
                 d="M 280 380 Q 500 340, 650 300 T 1000 180 L 1000 400 L 280 400 Z"
                 fill="url(#limeFill)"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 1.2, delay: 0.2 }}
               />
-              {/* Highlighting Curve Line */}
-              <path
+              {/* Highlighting Curve Line with path draw animation */}
+              <motion.path
                 d="M 280 380 Q 500 340, 650 300 T 1000 180"
                 fill="none"
                 stroke="#d4ff00"
-                strokeWidth="4"
+                strokeWidth="4.5"
+                initial={{ pathLength: 0 }}
+                whileInView={{ pathLength: 1 }}
+                transition={{ duration: 1.6, ease: "easeOut" }}
               />
             </svg>
 

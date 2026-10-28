@@ -171,8 +171,27 @@ export default function Footer() {
           onMouseMove={handleWordmarkMouseMove}
           onMouseEnter={() => setIsOverWordmark(true)}
           onMouseLeave={() => setIsOverWordmark(false)}
+          style={{
+            "--mouse-x": `${wordmarkPos.x}%`,
+            "--mouse-y": `${wordmarkPos.y}%`,
+          }}
         >
-          <span className="rw-footer__wordmark-text">Rizeworld</span>
+          {/* Base Light-Gray Text Layer */}
+          <span className="rw-footer__wordmark-text rw-footer__wordmark-text--base">
+            Reachwise
+          </span>
+
+          {/* Glowing Lime Text Layer (Clipped to circular torch around mouse) */}
+          <span
+            className={`rw-footer__wordmark-text rw-footer__wordmark-text--lime ${
+              isOverWordmark ? "rw-footer__wordmark-text--visible" : ""
+            }`}
+            aria-hidden="true"
+          >
+            Reachwise
+          </span>
+
+          {/* Lime Spotlight Halo Ring */}
           {isOverWordmark && (
             <div
               className="rw-footer__wordmark-spotlight"
