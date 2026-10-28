@@ -20,12 +20,17 @@ export default function RadarClients() {
     { id: 10, name: "kettlebrook coffee", x: 74, y: 46, tier: "GLOBAL", growth: "+225%" },
   ];
 
-  // Rotate "last ping" every few seconds
+  const [sweptBrandId, setSweptBrandId] = useState(10); // default kettlebrook like in video
+
+  // Auto-cycle radar scanner hit on brands matching video at 00:01
   useEffect(() => {
+    let index = 0;
     const interval = setInterval(() => {
-      const randomBrand = brands[Math.floor(Math.random() * brands.length)];
-      setLastPing({ name: randomBrand.name.toUpperCase(), growth: randomBrand.growth });
-    }, 3500);
+      index = (index + 1) % brands.length;
+      const b = brands[index];
+      setSweptBrandId(b.id);
+      setLastPing({ name: b.name.toUpperCase(), growth: b.growth });
+    }, 1800);
     return () => clearInterval(interval);
   }, []);
 
@@ -116,31 +121,36 @@ export default function RadarClients() {
             </div>
 
             {/* Brand Blips */}
-            {brands.map((brand) => (
-              <div
-                key={brand.id}
-                className={`radar-blip ${
-                  activeBrand?.id === brand.id ? "radar-blip--active" : ""
-                }`}
-                style={{
-                  left: `${brand.x}%`,
-                  top: `${brand.y}%`,
-                }}
-                onMouseEnter={() => {
-                  setActiveBrand(brand);
-                  setLastPing({ name: brand.name.toUpperCase(), growth: brand.growth });
-                }}
-                onMouseLeave={() => setActiveBrand(null)}
-              >
-                <span className="radar-blip__dot" />
-                <span className="radar-blip__name">{brand.name}</span>
-                {activeBrand?.id === brand.id && (
-                  <div className="radar-blip__tooltip">
-                    <span>{brand.tier}</span> · <strong>{brand.growth}</strong>
-                  </div>
-                )}
-              </div>
-            ))}
+            {brands.map((brand) => {
+              const isHighlight = activeBrand?.id === brand.id || sweptBrandId === brand.id;
+              return (
+                <div
+                  key={brand.id}
+                  className={`radar-blip ${
+                    isHighlight ? "radar-blip--active radar-blip--swept" : ""
+                  }`}
+                  style={{
+                    left: `${brand.x}%`,
+                    top: `${brand.y}%`,
+                  }}
+                  onMouseEnter={() => {
+                    setActiveBrand(brand);
+                    setLastPing({ name: brand.name.toUpperCase(), growth: brand.growth });
+                  }}
+                  onMouseLeave={() => setActiveBrand(null)}
+                >
+                  <span className="radar-blip__dot" />
+                  <span className={`radar-blip__name ${isHighlight ? "radar-blip__name--lime" : ""}`}>
+                    {brand.name}
+                  </span>
+                  {activeBrand?.id === brand.id && (
+                    <div className="radar-blip__tooltip">
+                      <span>{brand.tier}</span> · <strong>{brand.growth}</strong>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

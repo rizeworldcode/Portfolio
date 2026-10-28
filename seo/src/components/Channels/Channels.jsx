@@ -174,7 +174,10 @@ export default function Channels() {
             ============================================================ */}
         <div className="channels-deck">
           {/* Active Expanded Card */}
-          <div className="channels-active-card">
+          <div
+            className={`channels-active-card channels-active-card--${currentChannel.id}`}
+            style={{ backgroundColor: currentChannel.bgColor }}
+          >
             {/* Top Left Number Circle */}
             <div className="channels-card-badge channels-card-badge--top">
               {currentChannel.id}
@@ -182,55 +185,113 @@ export default function Channels() {
 
             {/* Card Content Split: Left Mockup, Right Details */}
             <div className="channels-card-inner">
-              {/* Left Side: Mockup Browser / SERP Window */}
-              <div className="channels-mockup">
-                {/* Search Header */}
-                <div className="channels-mockup__search-bar">
-                  <span className="channels-mockup__search-icon">🔍</span>
-                  <span className="channels-mockup__search-text">dentist near me</span>
-                  <span className="channels-mockup__cursor">|</span>
-                </div>
-
-                <div className="channels-mockup__meta">
-                  About 2,140,000 results · 0.42 s
-                </div>
-
-                {/* Search Result 1 */}
-                <div className="channels-mockup__item channels-mockup__item--dim">
-                  <div className="channels-mockup__url">citydentalcare.com</div>
-                  <div className="channels-mockup__line channels-mockup__line--short" />
-                </div>
-
-                {/* Search Result 2 */}
-                <div className="channels-mockup__item channels-mockup__item--dim">
-                  <div className="channels-mockup__url">yelp.com · dentists</div>
-                  <div className="channels-mockup__line" />
-                </div>
-
-                {/* Search Result 3 (Highlighted Client Result) */}
-                <div className="channels-mockup__item channels-mockup__item--highlight">
-                  <div className="channels-mockup__item-header">
-                    <span className="channels-mockup__live-dot" />
-                    <span className="channels-mockup__brand-url">yoursite.com</span>
+              {/* Left Side: Mockup Window depending on channel */}
+              {currentChannel.id === "03" ? (
+                /* Paid Ads Mockup (matching video 00:07) */
+                <div className="channels-mockup channels-mockup--ads">
+                  <div className="channels-ads-box">
+                    <span className="channels-ads-pill">SPONSORED</span>
+                    <h5 className="channels-ads-headline">
+                      Free whitening with every new-patient visit
+                    </h5>
+                    <div className="channels-ads-metrics">
+                      <div className="channels-ads-metric">
+                        <span className="channels-ads-val">4.2%</span>
+                        <span className="channels-ads-sub">CTR</span>
+                      </div>
+                      <div className="channels-ads-metric">
+                        <span className="channels-ads-val">4.8x</span>
+                        <span className="channels-ads-sub">ROAS</span>
+                      </div>
+                    </div>
+                    {/* Bar Chart */}
+                    <div className="channels-ads-chart">
+                      <span style={{ height: "30%" }} />
+                      <span style={{ height: "45%" }} />
+                      <span style={{ height: "60%" }} />
+                      <span style={{ height: "80%" }} />
+                      <span style={{ height: "100%" }} className="active-bar" />
+                    </div>
                   </div>
-                  <div className="channels-mockup__brand-title">
-                    Your brand · dentist near me
+                </div>
+              ) : currentChannel.id === "04" ? (
+                /* Content Mockup (matching video 00:08) */
+                <div className="channels-mockup channels-mockup--content">
+                  <div className="channels-content-card">
+                    <div className="channels-content-header">
+                      <span className="channels-content-tag">4 MIN READ</span>
+                    </div>
+                    <h4 className="channels-content-title">How to |</h4>
+                    <p className="channels-content-sub">Premise editorial</p>
+                    <div className="channels-content-reads">
+                      <span>▲ 41 reads this week</span>
+                    </div>
                   </div>
-                  <span className="channels-mockup__rank-pill">#3</span>
                 </div>
+              ) : currentChannel.id === "05" ? (
+                /* Web Design Mockup (matching video 00:09) */
+                <div className="channels-mockup channels-mockup--web">
+                  <div className="channels-web-wireframe">
+                    <div className="channels-web-nav-dots">
+                      <span /><span /><span />
+                    </div>
+                    <div className="channels-web-hero-block" />
+                    <div className="channels-web-code-row">
+                      <span className="channels-web-code-pill">Conversion · 8.2%</span>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                /* Default SEO / Search SERP Mockup */
+                <div className="channels-mockup">
+                  {/* Search Header */}
+                  <div className="channels-mockup__search-bar">
+                    <span className="channels-mockup__search-icon">🔍</span>
+                    <span className="channels-mockup__search-text">dentist near me</span>
+                    <span className="channels-mockup__cursor">|</span>
+                  </div>
 
-                {/* Search Result 4 */}
-                <div className="channels-mockup__item channels-mockup__item--dim">
-                  <div className="channels-mockup__url">smilecentre.co</div>
-                  <div className="channels-mockup__line" />
-                </div>
+                  <div className="channels-mockup__meta">
+                    About 2,140,000 results · 0.42 s
+                  </div>
 
-                {/* Search Result 5 */}
-                <div className="channels-mockup__item channels-mockup__item--dim">
-                  <div className="channels-mockup__url">healthgrades.com</div>
-                  <div className="channels-mockup__line channels-mockup__line--short" />
+                  {/* Search Result 1 */}
+                  <div className="channels-mockup__item channels-mockup__item--dim">
+                    <div className="channels-mockup__url">citydentalcare.com</div>
+                    <div className="channels-mockup__line channels-mockup__line--short" />
+                  </div>
+
+                  {/* Search Result 2 */}
+                  <div className="channels-mockup__item channels-mockup__item--dim">
+                    <div className="channels-mockup__url">yelp.com · dentists</div>
+                    <div className="channels-mockup__line" />
+                  </div>
+
+                  {/* Search Result 3 (Highlighted Client Result) */}
+                  <div className="channels-mockup__item channels-mockup__item--highlight">
+                    <div className="channels-mockup__item-header">
+                      <span className="channels-mockup__live-dot" />
+                      <span className="channels-mockup__brand-url">yoursite.com</span>
+                    </div>
+                    <div className="channels-mockup__brand-title">
+                      Your brand · dentist near me
+                    </div>
+                    <span className="channels-mockup__rank-pill">#3</span>
+                  </div>
+
+                  {/* Search Result 4 */}
+                  <div className="channels-mockup__item channels-mockup__item--dim">
+                    <div className="channels-mockup__url">smilecentre.co</div>
+                    <div className="channels-mockup__line" />
+                  </div>
+
+                  {/* Search Result 5 */}
+                  <div className="channels-mockup__item channels-mockup__item--dim">
+                    <div className="channels-mockup__url">healthgrades.com</div>
+                    <div className="channels-mockup__line channels-mockup__line--short" />
+                  </div>
                 </div>
-              </div>
+              )}
 
               {/* Right Side: Channel Information & Deliverables */}
               <div className="channels-info">

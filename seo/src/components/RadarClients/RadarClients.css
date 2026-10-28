@@ -459,6 +459,16 @@
   font-weight: 700;
 }
 
+.radar-blip__name--lime {
+  background: #d4ff00;
+  color: #000000 !important;
+  padding: 2px 8px;
+  border-radius: 6px;
+  box-shadow: 0 0 16px rgba(212, 255, 0, 0.6);
+  font-weight: 800 !important;
+  transform: scale(1.05);
+}
+
 .radar-blip__tooltip {
   position: absolute;
   bottom: calc(100% + 8px);

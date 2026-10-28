@@ -328,6 +328,170 @@
   border-radius: 9999px;
 }
 
+/* Paid Ads Mockup Box (Video 00:07) */
+.channels-ads-box {
+  background: #0f1217;
+  color: #ffffff;
+  border-radius: 20px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.channels-ads-pill {
+  background: rgba(255, 255, 255, 0.1);
+  color: #d4ff00;
+  font-family: var(--font-main);
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  padding: 2px 8px;
+  border-radius: 6px;
+  width: fit-content;
+}
+
+.channels-ads-headline {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.channels-ads-metrics {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.channels-ads-metric {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 8px 12px;
+}
+
+.channels-ads-val {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 800;
+  color: #d4ff00;
+}
+
+.channels-ads-sub {
+  font-family: var(--font-main);
+  font-size: 9.5px;
+  font-weight: 700;
+  color: #94a3b8;
+}
+
+.channels-ads-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  height: 60px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.channels-ads-chart span {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px 4px 0 0;
+}
+
+.channels-ads-chart span.active-bar {
+  background: #d4ff00;
+  box-shadow: 0 0 10px rgba(212, 255, 0, 0.5);
+}
+
+/* Content Mockup Card (Video 00:08) */
+.channels-content-card {
+  background: #ffffff;
+  color: #0f1217;
+  border-radius: 20px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.channels-content-tag {
+  background: #0f1217;
+  color: #d4ff00;
+  font-family: var(--font-main);
+  font-size: 9.5px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 9999px;
+}
+
+.channels-content-title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 800;
+  margin: 0;
+}
+
+.channels-content-sub {
+  font-family: var(--font-main);
+  font-size: 12px;
+  color: #64748b;
+  margin: 0;
+}
+
+.channels-content-reads {
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 700;
+  color: #10b981;
+}
+
+/* Web Design Wireframe Mockup (Video 00:09) */
+.channels-web-wireframe {
+  background: #000000;
+  border-radius: 20px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.channels-web-nav-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.channels-web-nav-dots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.channels-web-hero-block {
+  width: 100%;
+  height: 90px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+}
+
+.channels-web-code-pill {
+  background: #d4ff00;
+  color: #000000;
+  font-family: var(--font-main);
+  font-size: 10px;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 9999px;
+}
+
 /* ---- Right Info & Features ---- */
 .channels-info {
   display: flex;

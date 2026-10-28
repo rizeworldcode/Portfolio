@@ -3,42 +3,63 @@ import { motion } from "framer-motion";
 import "./CrowdBuyers.css";
 
 export default function CrowdBuyers() {
-  const [activeCluster, setActiveCluster] = useState("SEARCH");
-  const [ratio, setRatio] = useState(97);
+  const [activeCluster, setActiveCluster] = useState("FEEDS");
+  const [ratio, setRatio] = useState(848);
   const canvasRef = useRef(null);
 
   const clusters = [
     {
       id: "SEARCH",
       label: "SEARCH",
-      cx: 38,
-      cy: 48,
+      cx: 34,
+      cy: 50,
       radius: 14,
-      detail: '179 searching "dentist near me"',
-      count: 179,
-      ratioVal: 97,
+      detail: '299 searching "dentist near me"',
+      count: 299,
+      ratioVal: 32,
     },
     {
       id: "FEEDS",
       label: "FEEDS",
-      cx: 60,
-      cy: 35,
+      cx: 58,
+      cy: 32,
       radius: 16,
-      detail: "692 following #coffee",
-      count: 692,
-      ratioVal: 84,
+      detail: "1,892 following #coffee",
+      count: 1892,
+      ratioVal: 12,
     },
     {
       id: "AUDIENCES",
       label: "AUDIENCES",
-      cx: 78,
-      cy: 52,
+      cx: 80,
+      cy: 56,
       radius: 15,
-      detail: "51 lookalikes",
-      count: 51,
-      ratioVal: 62,
+      detail: "78 lookalikes",
+      count: 78,
+      ratioVal: 24,
     },
   ];
+
+  // Animate ratio down when switching clusters
+  const handleClusterSelect = (cl) => {
+    setActiveCluster(cl.id);
+    const start = ratio;
+    const end = cl.ratioVal;
+    const duration = 600;
+    const startTime = performance.now();
+
+    const animateNumber = (currentTime) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      setRatio(Math.floor(start + (end - start) * ease));
+
+      if (progress < 1) {
+        requestAnimationFrame(animateNumber);
+      }
+    };
+    requestAnimationFrame(animateNumber);
+  };
 
   // Draw particle starry crowd on Canvas for ultra-smooth 60fps rendering
   useEffect(() => {
@@ -226,10 +247,8 @@ export default function CrowdBuyers() {
                 left: `${cl.cx}%`,
                 top: `${cl.cy}%`,
               }}
-              onClick={() => {
-                setActiveCluster(cl.id);
-                setRatio(cl.ratioVal);
-              }}
+              onClick={() => handleClusterSelect(cl)}
+              onMouseEnter={() => handleClusterSelect(cl)}
             >
               {/* Outer boundary circle */}
               <div className="crowd-cluster__circle" />
