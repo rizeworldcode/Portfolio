@@ -3,9 +3,11 @@ import { motion } from "framer-motion";
 import "./CrowdBuyers.css";
 
 export default function CrowdBuyers() {
-  const [activeCluster, setActiveCluster] = useState("FEEDS");
+  const [activeCluster, setActiveCluster] = useState(null);
   const [ratio, setRatio] = useState(848);
+  const [hasAnimatedIn, setHasAnimatedIn] = useState(false);
   const canvasRef = useRef(null);
+  const sectionRef = useRef(null);
 
   const clusters = [
     {
@@ -14,8 +16,8 @@ export default function CrowdBuyers() {
       cx: 34,
       cy: 50,
       radius: 14,
-      detail: '299 searching "dentist near me"',
-      count: 299,
+      detail: '32 searching "dentist near me"',
+      count: 32,
       ratioVal: 32,
     },
     {
@@ -24,8 +26,8 @@ export default function CrowdBuyers() {
       cx: 58,
       cy: 32,
       radius: 16,
-      detail: "1,892 following #coffee",
-      count: 1892,
+      detail: "1,882 following #coffee",
+      count: 1882,
       ratioVal: 12,
     },
     {
@@ -34,31 +36,72 @@ export default function CrowdBuyers() {
       cx: 80,
       cy: 56,
       radius: 15,
-      detail: "78 lookalikes",
+      detail: "78 in-market",
       count: 78,
       ratioVal: 24,
     },
   ];
 
-  // Animate ratio down when switching clusters
+  // Helper to smoothly animate the number
+  const animateRatioTo = (targetVal, duration = 800) => {
+    setRatio((prev) => {
+      const start = prev;
+      const startTime = performance.now();
+
+      const step = (now) => {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+        setRatio(Math.floor(start + (targetVal - start) * ease));
+
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        }
+      };
+      requestAnimationFrame(step);
+      return prev;
+    });
+  };
+
+  // Scroll into view auto-sequence: 848 -> 32 -> 12 (matching video 00:02 to 00:05)
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !hasAnimatedIn) {
+          setHasAnimatedIn(true);
+
+          // Step 1: at 600ms, light up SEARCH cluster and drop to 32
+          const timer1 = setTimeout(() => {
+            setActiveCluster("SEARCH");
+            animateRatioTo(32, 900);
+          }, 800);
+
+          // Step 2: at 2000ms, light up FEEDS cluster and drop to 12
+          const timer2 = setTimeout(() => {
+            setActiveCluster("FEEDS");
+            animateRatioTo(12, 800);
+          }, 2400);
+
+          return () => {
+            clearTimeout(timer1);
+            clearTimeout(timer2);
+          };
+        }
+      },
+      { threshold: 0.35 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [hasAnimatedIn]);
+
+  // Animate ratio down when manually clicking/hovering clusters
   const handleClusterSelect = (cl) => {
     setActiveCluster(cl.id);
-    const start = ratio;
-    const end = cl.ratioVal;
-    const duration = 600;
-    const startTime = performance.now();
-
-    const animateNumber = (currentTime) => {
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const ease = 1 - Math.pow(1 - progress, 3);
-      setRatio(Math.floor(start + (end - start) * ease));
-
-      if (progress < 1) {
-        requestAnimationFrame(animateNumber);
-      }
-    };
-    requestAnimationFrame(animateNumber);
+    animateRatioTo(cl.ratioVal, 500);
   };
 
   // Draw particle starry crowd on Canvas for ultra-smooth 60fps rendering
@@ -151,7 +194,7 @@ export default function CrowdBuyers() {
   }, []);
 
   return (
-    <section className="crowd-section" id="why-us">
+    <section ref={sectionRef} className="crowd-section" id="why-us">
       <div className="crowd-container">
         {/* ============================================================
             TOP HEADER AREA (FROM IMAGE 2)

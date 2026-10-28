@@ -652,6 +652,8 @@
 
 .channels-tab-strip {
   width: 62px;
+  flex-shrink: 0;
+  min-height: 520px;
   border-radius: 26px;
   border: 1px solid rgba(0, 0, 0, 0.08);
   display: flex;
@@ -660,7 +662,7 @@
   align-items: center;
   padding: 24px 10px;
   cursor: pointer;
-  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
 }
 

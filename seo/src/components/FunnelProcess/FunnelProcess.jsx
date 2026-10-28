@@ -1,15 +1,17 @@
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import "./FunnelProcess.css";
 
 export default function FunnelProcess() {
-  const [activeStep, setActiveStep] = useState(0);
-  const [funnelCounts, setFunnelCounts] = useState({
+  const [activeStep, setActiveStep] = useState(-1);
+  const [hasTriggered, setHasTriggered] = useState(false);
+  const [counts, setCounts] = useState({
     reach: 0,
     clicks: 0,
     leads: 0,
     clients: 0,
   });
+  const sectionRef = useRef(null);
 
   const steps = [
     {
@@ -42,39 +44,80 @@ export default function FunnelProcess() {
     },
   ];
 
-  const targetFunnel = {
-    reach: 124800,
-    clicks: 14250,
-    leads: 1580,
-    clients: 174,
+  const targets = {
+    reach: 1284300,
+    clicks: 48120,
+    leads: 2940,
+    clients: 312,
   };
 
-  // Animate funnel filling when in view
-  useEffect(() => {
-    let frameId;
-    const duration = 2200;
+  // Helper to animate count of a specific metric
+  const animateMetric = (key, targetVal, duration = 800) => {
     const startTime = performance.now();
-
-    const animate = (time) => {
-      const elapsed = time - startTime;
+    const step = (now) => {
+      const elapsed = now - startTime;
       const progress = Math.min(elapsed / duration, 1);
       const ease = 1 - Math.pow(1 - progress, 3);
-
-      setFunnelCounts({
-        reach: Math.floor(targetFunnel.reach * ease),
-        clicks: Math.floor(targetFunnel.clicks * ease),
-        leads: Math.floor(targetFunnel.leads * ease),
-        clients: Math.floor(targetFunnel.clients * ease),
-      });
-
+      setCounts((prev) => ({
+        ...prev,
+        [key]: Math.floor(targetVal * ease),
+      }));
       if (progress < 1) {
-        frameId = requestAnimationFrame(animate);
+        requestAnimationFrame(step);
       }
     };
+    requestAnimationFrame(step);
+  };
 
-    frameId = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(frameId);
-  }, []);
+  // Sequential progression matching video 00:12 -> 00:17
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !hasTriggered) {
+          setHasTriggered(true);
+
+          // Step 1: Audit (00:13)
+          setTimeout(() => {
+            setActiveStep(0);
+            animateMetric("reach", targets.reach, 800);
+          }, 400);
+
+          // Step 2: Launch (00:14)
+          setTimeout(() => {
+            setActiveStep(1);
+            animateMetric("clicks", targets.clicks, 800);
+          }, 1400);
+
+          // Step 3: Optimise (00:15)
+          setTimeout(() => {
+            setActiveStep(2);
+            animateMetric("leads", targets.leads, 700);
+          }, 2400);
+
+          // Step 4: Scale (00:16-00:17)
+          setTimeout(() => {
+            setActiveStep(3);
+            animateMetric("clients", targets.clients, 600);
+          }, 3300);
+        }
+      },
+      { threshold: 0.35 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [hasTriggered]);
+
+  const handleStepClick = (idx) => {
+    setActiveStep(idx);
+    if (idx >= 0 && counts.reach === 0) animateMetric("reach", targets.reach, 600);
+    if (idx >= 1 && counts.clicks === 0) animateMetric("clicks", targets.clicks, 600);
+    if (idx >= 2 && counts.leads === 0) animateMetric("leads", targets.leads, 600);
+    if (idx >= 3 && counts.clients === 0) animateMetric("clients", targets.clients, 600);
+  };
 
   return (
     <section className="funnel-section" id="how-it-works">
