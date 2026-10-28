@@ -1,0 +1,655 @@
+/* ============================================================
+   CHANNELS SECTION (SECTION 4)
+   "Six channels. One growth plan."
+   ============================================================ */
+
+.channels-section {
+  position: relative;
+  width: 100%;
+  background-color: #ebeee8;
+  color: #11141a;
+  padding: 110px 60px 120px;
+  overflow: hidden;
+}
+
+.channels-container {
+  max-width: 1380px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+/* ============================================================
+   HEADER AREA
+   ============================================================ */
+
+.channels-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+
+.channels-header__left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.channels-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 5px 14px;
+  border-radius: 9999px;
+}
+
+.channels-pill__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #a3e635;
+  box-shadow: 0 0 6px #a3e635;
+}
+
+.channels-pill__text {
+  font-family: var(--font-main);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #555b66;
+  text-transform: uppercase;
+}
+
+.channels-title {
+  font-family: var(--font-display);
+  font-size: clamp(38px, 4.8vw, 64px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  color: #0f1217;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.channels-title__row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.channels-badge {
+  display: inline-block;
+  background: #d4ff00;
+  color: #000000;
+  padding: 0 16px 2px;
+  border-radius: 18px;
+  box-shadow: 0 4px 14px rgba(212, 255, 0, 0.4);
+  transform: translateY(-2px);
+  user-select: none;
+}
+
+.channels-header__right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+  max-width: 440px;
+  padding-top: 24px;
+}
+
+.channels-desc {
+  font-family: var(--font-main);
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: #555e6c;
+  margin: 0;
+}
+
+.channels-btn-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  color: #11141a;
+  font-family: var(--font-main);
+  font-size: 13.5px;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all 0.22s ease;
+}
+
+.channels-btn-all:hover {
+  background: rgba(0, 0, 0, 0.08);
+  border-color: rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   ACCORDION DECK: ACTIVE CARD + VERTICAL TABS
+   ============================================================ */
+
+.channels-deck {
+  display: flex;
+  align-items: stretch;
+  gap: 14px;
+  width: 100%;
+}
+
+/* ---- Active Expanded Card ---- */
+.channels-active-card {
+  position: relative;
+  flex: 1;
+  background: #dfe3dc;
+  border-radius: 32px;
+  padding: 44px 50px 38px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.channels-card-badge {
+  position: absolute;
+  left: 20px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #d4ff00;
+  color: #000000;
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.channels-card-badge--top {
+  top: 24px;
+}
+
+.channels-card-badge--bottom {
+  bottom: 24px;
+  font-size: 15px;
+  line-height: 1;
+}
+
+.channels-card-inner {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  align-items: center;
+  gap: 48px;
+  width: 100%;
+}
+
+/* ---- Left Mockup SERP Browser ---- */
+.channels-mockup {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 380px;
+}
+
+.channels-mockup__search-bar {
+  background: #ffffff;
+  border-radius: 9999px;
+  padding: 10px 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+}
+
+.channels-mockup__search-icon {
+  font-size: 13px;
+}
+
+.channels-mockup__search-text {
+  font-family: var(--font-main);
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #11141a;
+}
+
+.channels-mockup__cursor {
+  font-weight: 300;
+  color: #3b82f6;
+  animation: blinkCursor 1s step-end infinite;
+}
+
+@keyframes blinkCursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.channels-mockup__meta {
+  font-family: var(--font-main);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #717d8e;
+  padding-left: 6px;
+}
+
+.channels-mockup__item {
+  border-radius: 14px;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.channels-mockup__item--dim {
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.channels-mockup__url {
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.channels-mockup__line {
+  height: 6px;
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+  width: 85%;
+}
+
+.channels-mockup__line--short {
+  width: 60%;
+}
+
+/* Highlighted Client Rank #3 Card */
+.channels-mockup__item--highlight {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  padding: 14px 18px;
+}
+
+.channels-mockup__item-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.channels-mockup__live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: 1.5px solid #a3e635;
+  background: #d4ff00;
+}
+
+.channels-mockup__brand-url {
+  font-family: var(--font-main);
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #11141a;
+}
+
+.channels-mockup__brand-title {
+  font-family: var(--font-main);
+  font-size: 13px;
+  font-weight: 700;
+  color: #11141a;
+  letter-spacing: -0.01em;
+}
+
+.channels-mockup__rank-pill {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #11141a;
+  color: #d4ff00;
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 9999px;
+}
+
+/* ---- Right Info & Features ---- */
+.channels-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.channels-info__title {
+  font-family: var(--font-display);
+  font-size: 38px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #0f1217;
+  margin: 0;
+  line-height: 1;
+}
+
+.channels-info__desc {
+  font-family: var(--font-main);
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: #555e6c;
+  margin: 0;
+}
+
+.channels-info__included-label {
+  font-family: var(--font-main);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #717d8e;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.channels-info__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.channels-info__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-main);
+  font-size: 13px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.channels-info__check {
+  color: #84cc16;
+  font-size: 12px;
+}
+
+/* Footer of active card */
+.channels-info__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 14px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.channels-info__meta {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.channels-info__badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #d4ff00;
+  color: #000000;
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  box-shadow: 0 2px 8px rgba(212, 255, 0, 0.3);
+}
+
+.channels-info__badge-dot {
+  font-size: 12px;
+}
+
+.channels-info__price-box {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.channels-info__price-label {
+  font-family: var(--font-main);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #717d8e;
+}
+
+.channels-info__price-val {
+  font-family: var(--font-main);
+  font-size: 13px;
+  font-weight: 800;
+  color: #0f1217;
+}
+
+.channels-btn-explore {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #0f1217;
+  color: #ffffff;
+  font-family: var(--font-main);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 6px 6px 6px 18px;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  user-select: none;
+}
+
+.channels-btn-explore:hover {
+  background: #1a1f28;
+  transform: translateY(-2px);
+}
+
+.channels-btn-explore__icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #d4ff00;
+  color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   VERTICAL COLLAPSED TABS
+   ============================================================ */
+
+.channels-tabs-rail {
+  display: flex;
+  gap: 12px;
+}
+
+.channels-tab-strip {
+  width: 62px;
+  border-radius: 26px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 10px;
+  cursor: pointer;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+}
+
+.channels-tab-strip:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+.channels-tab-strip__num {
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.channels-tab-strip__title {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: var(--font-main);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  margin: auto 0;
+}
+
+.channels-tab-strip__plus {
+  font-family: var(--font-main);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+/* ============================================================
+   BOTTOM PROGRESS & HINT BAR
+   ============================================================ */
+
+.channels-bottom-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-top: 10px;
+  flex-wrap: wrap;
+}
+
+.channels-progress {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.channels-progress__bars {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.channels-progress__segment {
+  width: 32px;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.channels-progress__segment:hover {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.channels-progress__segment--active {
+  background: #0f1217;
+  height: 3.5px;
+}
+
+.channels-progress__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #d4ff00;
+  color: #000000;
+  padding: 3px 12px;
+  border-radius: 6px;
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.channels-hint {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.channels-hint__icon {
+  color: #f43f5e;
+  font-size: 9px;
+}
+
+.channels-hint__text {
+  font-family: var(--font-main);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #717d8e;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   RESPONSIVENESS
+   ============================================================ */
+
+@media (max-width: 1100px) {
+  .channels-card-inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .channels-mockup {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 900px) {
+  .channels-deck {
+    flex-direction: column;
+  }
+  .channels-tabs-rail {
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: 8px;
+  }
+  .channels-tab-strip {
+    width: auto;
+    min-width: 120px;
+    height: 52px;
+    flex-direction: row;
+    padding: 10px 16px;
+  }
+  .channels-tab-strip__title {
+    writing-mode: horizontal-tb;
+    transform: none;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 600px) {
+  .channels-section {
+    padding: 70px 20px;
+  }
+  .channels-active-card {
+    padding: 32px 20px;
+  }
+  .channels-card-badge {
+    display: none;
+  }
+}
