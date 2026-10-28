@@ -1,0 +1,404 @@
+/* ============================================================
+   REACHWISE EDITORIAL FOOTER (SECTION 9)
+   Colossal wordmark, 5 columns, social pills, live clock
+   ============================================================ */
+
+.rw-footer {
+  position: relative;
+  width: 100%;
+  background-color: #07080a;
+  color: #ffffff;
+  padding: 100px 48px 36px;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.rw-footer__container {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ============================================================
+   TOP 5-COLUMN GRID
+   ============================================================ */
+
+.rw-footer__top {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr 1.25fr;
+  gap: 40px;
+  align-items: flex-start;
+  margin-bottom: 60px;
+}
+
+/* ---- Column 1: Brand Info ---- */
+.rw-footer__col--brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  max-width: 320px;
+}
+
+.rw-footer__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.rw-footer__brand-icon {
+  position: relative;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rw-footer__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #d4ff00;
+  box-shadow: 0 0 8px rgba(212, 255, 0, 0.8);
+  z-index: 2;
+}
+
+.rw-footer__wave {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #d4ff00;
+}
+
+.rw-footer__wave--left {
+  border-right-color: transparent;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+}
+
+.rw-footer__wave--right {
+  border-left-color: transparent;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+}
+
+.rw-footer__brand-name {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.rw-footer__tagline {
+  font-family: var(--font-main);
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: #94a3b8;
+  margin: 0;
+}
+
+.rw-footer__status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 4px 12px;
+  border-radius: 9999px;
+  margin-top: 4px;
+}
+
+.rw-footer__status-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #f43f5e;
+}
+
+.rw-footer__status-text {
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 500;
+  color: #d1d5db;
+}
+
+.rw-footer__btn-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #d4ff00;
+  color: #000000;
+  font-family: var(--font-main);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 6px 6px 6px 16px;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all 0.22s ease;
+  margin-top: 6px;
+  user-select: none;
+}
+
+.rw-footer__btn-cta:hover {
+  background: #dcff1a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 18px rgba(212, 255, 0, 0.4);
+}
+
+.rw-footer__btn-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #000000;
+  color: #d4ff00;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---- Nav Columns ---- */
+.rw-footer__col-heading {
+  font-family: var(--font-main);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #64748b;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.rw-footer__links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.rw-footer__links a {
+  font-family: var(--font-main);
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #cbd5e1;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.rw-footer__links a:hover {
+  color: #d4ff00;
+  padding-left: 4px;
+}
+
+/* ---- Contact Column ---- */
+.rw-footer__contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.rw-footer__contact-link {
+  font-family: var(--font-main);
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #cbd5e1;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.rw-footer__contact-link:hover {
+  color: #d4ff00;
+}
+
+.rw-footer__contact-text {
+  font-family: var(--font-main);
+  font-size: 13px;
+  color: #64748b;
+}
+
+.rw-footer__social-pills {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rw-footer__social-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rw-social-pill {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #cbd5e1;
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.rw-social-pill:hover {
+  background: #ffffff;
+  color: #0f1217;
+  border-color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   MID BAR: DIVIDER & HINT
+   ============================================================ */
+
+.rw-footer__mid-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.rw-footer__divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.rw-footer__hint {
+  font-family: var(--font-main);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   COLOSSAL GIANT WORDMARK
+   ============================================================ */
+
+.rw-footer__giant-wordmark {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0 30px;
+  cursor: pointer;
+  user-select: none;
+  overflow: hidden;
+}
+
+.rw-footer__wordmark-text {
+  font-family: var(--font-display);
+  font-size: clamp(80px, 19.5vw, 290px);
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  line-height: 0.85;
+  color: #cfd4cc;
+  transition: color 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), text-shadow 0.4s ease;
+  text-align: center;
+  display: block;
+}
+
+.rw-footer__giant-wordmark:hover .rw-footer__wordmark-text {
+  color: #ffffff;
+  text-shadow: 0 0 80px rgba(212, 255, 0, 0.35);
+  transform: scale(1.02);
+}
+
+/* ============================================================
+   BOTTOM SUB-FOOTER
+   ============================================================ */
+
+.rw-footer__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  flex-wrap: wrap;
+}
+
+.rw-footer__copyright {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-family: var(--font-main);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.rw-footer__copyright a {
+  color: #64748b;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.rw-footer__copyright a:hover {
+  color: #ffffff;
+}
+
+.rw-footer__clock {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-main);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #94a3b8;
+  text-transform: uppercase;
+}
+
+.rw-footer__clock-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #a3e635;
+  box-shadow: 0 0 6px #a3e635;
+}
+
+/* ============================================================
+   RESPONSIVENESS
+   ============================================================ */
+
+@media (max-width: 1040px) {
+  .rw-footer__top {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  .rw-footer__col--brand {
+    grid-column: span 2;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .rw-footer {
+    padding: 70px 20px 30px;
+  }
+  .rw-footer__top {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .rw-footer__col--brand {
+    grid-column: span 1;
+  }
+  .rw-footer__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+}

@@ -1,0 +1,434 @@
+/* ============================================================
+   FREE AUDIT SECTION (SECTION 8)
+   "Ready to be seen?"
+   ============================================================ */
+
+.audit-section {
+  position: relative;
+  width: 100%;
+  background-color: #08090c;
+  color: #ffffff;
+  padding: 130px 60px 140px;
+  overflow: hidden;
+}
+
+/* Concentric Radar Ripple Waves */
+.audit-radar-waves {
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  width: 1000px;
+  height: 1000px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.audit-wave {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px solid rgba(212, 255, 0, 0.12);
+}
+
+.audit-wave--1 {
+  width: 380px;
+  height: 380px;
+}
+
+.audit-wave--2 {
+  width: 620px;
+  height: 620px;
+}
+
+.audit-wave--3 {
+  width: 900px;
+  height: 900px;
+}
+
+.audit-wave--4 {
+  width: 1250px;
+  height: 1250px;
+}
+
+.audit-container {
+  position: relative;
+  z-index: 5;
+  max-width: 1380px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.15fr 0.95fr;
+  align-items: center;
+  gap: 70px;
+}
+
+/* ============================================================
+   LEFT COLUMN: TYPOGRAPHY & FORM
+   ============================================================ */
+
+.audit-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 22px;
+  max-width: 620px;
+}
+
+.audit-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 5px 14px;
+  border-radius: 9999px;
+}
+
+.audit-pill__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #d4ff00;
+  box-shadow: 0 0 6px #d4ff00;
+}
+
+.audit-pill__text {
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #d1d5db;
+  text-transform: uppercase;
+}
+
+.audit-title {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 6.8vw, 92px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 0.98;
+  color: #ffffff;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.audit-title__row {
+  color: #ffffff;
+}
+
+.audit-title__highlight {
+  color: #d4ff00;
+  text-shadow: 0 0 45px rgba(212, 255, 0, 0.4);
+}
+
+.audit-desc {
+  font-family: var(--font-main);
+  font-size: 16px;
+  line-height: 1.6;
+  color: #94a3b8;
+  margin: 6px 0 10px;
+}
+
+/* Inline Form Bar */
+.audit-form {
+  display: flex;
+  align-items: center;
+  background: rgba(18, 20, 26, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
+  padding: 6px 8px;
+  gap: 10px;
+  width: 100%;
+  box-shadow: 0 12px 36px -10px rgba(0, 0, 0, 0.5);
+}
+
+.audit-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  flex: 1.1;
+  min-width: 160px;
+}
+
+.audit-input-icon {
+  font-size: 13px;
+  color: #64748b;
+}
+
+.audit-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-family: var(--font-main);
+  font-size: 13.5px;
+  width: 100%;
+}
+
+.audit-input::placeholder {
+  color: #64748b;
+}
+
+.audit-input-end-badge {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.audit-select-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 9999px;
+  padding: 4px 14px;
+}
+
+.audit-select {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #cbd5e1;
+  font-family: var(--font-main);
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 18px;
+}
+
+.audit-select option {
+  background: #11141a;
+  color: #ffffff;
+}
+
+.audit-select-arrow {
+  position: absolute;
+  right: 10px;
+  font-size: 11px;
+  color: #94a3b8;
+  pointer-events: none;
+}
+
+.audit-btn-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #d4ff00;
+  color: #000000;
+  font-family: var(--font-main);
+  font-size: 13.5px;
+  font-weight: 700;
+  padding: 8px 8px 8px 20px;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+  box-shadow: 0 4px 18px rgba(212, 255, 0, 0.35);
+  user-select: none;
+}
+
+.audit-btn-submit:hover {
+  background: #dcff1a;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 26px rgba(212, 255, 0, 0.5);
+}
+
+.audit-btn-submit__icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #000000;
+  color: #d4ff00;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.audit-note {
+  font-family: var(--font-main);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #64748b;
+  text-transform: uppercase;
+  padding-left: 14px;
+}
+
+/* ============================================================
+   RIGHT COLUMN: AVAILABILITY CARD
+   ============================================================ */
+
+.audit-card {
+  background: rgba(18, 21, 28, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  padding: 38px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7);
+  max-width: 480px;
+  margin-left: auto;
+}
+
+.audit-card__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.audit-card__tag-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #f43f5e;
+}
+
+.audit-card__tag-text {
+  font-family: var(--font-main);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #717d8e;
+  text-transform: uppercase;
+}
+
+.audit-card__title {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  margin: 0;
+  line-height: 1.1;
+}
+
+/* Progress Segment Bars (5 booked, 3 open in lime) */
+.audit-segments {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.audit-segment {
+  flex: 1;
+  height: 6px;
+  border-radius: 3px;
+}
+
+.audit-segment--filled {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.audit-segment--open {
+  background: #d4ff00;
+  box-shadow: 0 0 10px rgba(212, 255, 0, 0.5);
+}
+
+.audit-card__caption {
+  font-family: var(--font-main);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.audit-clock-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.audit-clock-label {
+  font-family: var(--font-main);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #717d8e;
+  text-transform: uppercase;
+}
+
+.audit-clock-time {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+}
+
+.audit-team-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.audit-avatars-group {
+  display: flex;
+  align-items: center;
+}
+
+.audit-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #11141a;
+  object-fit: cover;
+  margin-left: -8px;
+}
+
+.audit-avatar:first-child {
+  margin-left: 0;
+}
+
+.audit-team-count {
+  font-family: var(--font-main);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+/* ============================================================
+   RESPONSIVENESS
+   ============================================================ */
+
+@media (max-width: 1080px) {
+  .audit-container {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+  .audit-card {
+    margin-left: 0;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 700px) {
+  .audit-section {
+    padding: 80px 20px;
+  }
+  .audit-form {
+    flex-direction: column;
+    border-radius: 24px;
+    padding: 14px;
+    align-items: stretch;
+  }
+  .audit-btn-submit {
+    justify-content: center;
+  }
+}
