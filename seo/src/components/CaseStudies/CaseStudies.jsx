@@ -315,6 +315,31 @@ export default function CaseStudies() {
             </div>
           </div>
         </div>
+
+        {/* Bottom Case Details Bar (matching video at 00:11) */}
+        <div className="cases-detail-bar">
+          <div className="cases-detail-bar__left">
+            <div className="cases-detail-bar__cat">DENTAL CLINIC · 2025</div>
+            <h3 className="cases-detail-bar__title">
+              From page 4 to the top 3 for "dentist near me"
+            </h3>
+          </div>
+
+          <div className="cases-detail-bar__right">
+            <p className="cases-detail-bar__desc">
+              A local SEO rebuild: 88 location pages, 580 reviews and a content
+              plan for every treatment.
+            </p>
+            <div className="cases-detail-bar__actions">
+              <span className="cases-detail-pill">SEO</span>
+              <span className="cases-detail-pill">Content</span>
+              <a href="#read-case" className="cases-detail-btn">
+                <span>READ THE CASE</span>
+                <span className="cases-detail-btn__arrow">↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

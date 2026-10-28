@@ -1,0 +1,181 @@
+/* ============================================================
+   SOCIAL MEDIA GALLERY SECTION (VIDEO 00:19)
+   "Content that stops the scroll."
+   ============================================================ */
+
+.social-section {
+  position: relative;
+  width: 100%;
+  background-color: #0c0e12;
+  color: #ffffff;
+  padding: 120px 60px 130px;
+  overflow: hidden;
+}
+
+.social-container {
+  max-width: 1380px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.social-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+
+.social-header__left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.social-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 5px 14px;
+  border-radius: 9999px;
+}
+
+.social-pill__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #d4ff00;
+  box-shadow: 0 0 6px #d4ff00;
+}
+
+.social-pill__text {
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #d1d5db;
+  text-transform: uppercase;
+}
+
+.social-title {
+  font-family: var(--font-display);
+  font-size: clamp(38px, 5.2vw, 68px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  color: #ffffff;
+  margin: 0;
+}
+
+.social-header__right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  max-width: 480px;
+  padding-top: 14px;
+}
+
+.social-desc {
+  font-family: var(--font-main);
+  font-size: 15px;
+  line-height: 1.6;
+  color: #94a3b8;
+  margin: 0;
+}
+
+.social-stats-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-main);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #d4ff00;
+  text-transform: uppercase;
+}
+
+/* 5-Column Masonry/Grid */
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+
+.social-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  height: 270px;
+  background: #181b24;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+
+.social-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.social-card:hover .social-card__img {
+  transform: scale(1.08);
+}
+
+.social-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.1) 50%,
+    transparent 100%
+  );
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 14px 16px;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
+.social-card:hover .social-card__overlay {
+  opacity: 1;
+}
+
+.social-card__handle {
+  font-family: var(--font-main);
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.social-card__likes {
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 600;
+  color: #d4ff00;
+}
+
+/* Responsiveness */
+@media (max-width: 1100px) {
+  .social-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 650px) {
+  .social-section {
+    padding: 80px 20px;
+  }
+  .social-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

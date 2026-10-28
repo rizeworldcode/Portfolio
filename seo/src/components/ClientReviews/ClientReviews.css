@@ -1,0 +1,365 @@
+/* ============================================================
+   CLIENT REVIEWS SECTION (VIDEO 00:22)
+   "Clients who stayed" + iPhone Notification Mockup
+   ============================================================ */
+
+.reviews-section {
+  position: relative;
+  width: 100%;
+  background-color: #ebeee8;
+  color: #11141a;
+  padding: 120px 60px 130px;
+  overflow: hidden;
+}
+
+.reviews-container {
+  max-width: 1380px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 80px;
+}
+
+/* Left info */
+.reviews-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+  max-width: 520px;
+}
+
+.reviews-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 5px 14px;
+  border-radius: 9999px;
+}
+
+.reviews-pill__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #a3e635;
+  box-shadow: 0 0 6px #a3e635;
+}
+
+.reviews-pill__text {
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #555b66;
+  text-transform: uppercase;
+}
+
+.reviews-rating-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.reviews-score {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 900;
+  color: #0f1217;
+  line-height: 1;
+}
+
+.reviews-stars {
+  color: #0f1217;
+  letter-spacing: 2px;
+  font-size: 14px;
+}
+
+.reviews-count {
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.reviews-badges-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.reviews-badge-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-main);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #717d8e;
+  text-transform: uppercase;
+}
+
+.reviews-badge-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #a3e635;
+}
+
+.reviews-title {
+  font-family: var(--font-display);
+  font-size: clamp(38px, 5.2vw, 64px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  color: #0f1217;
+  margin: 6px 0 0;
+}
+
+.reviews-desc {
+  font-family: var(--font-main);
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555e6c;
+  margin: 0;
+}
+
+.reviews-btn-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  color: #11141a;
+  font-family: var(--font-main);
+  font-size: 13.5px;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  margin-top: 8px;
+}
+
+.reviews-btn-all:hover {
+  background: rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   RIGHT COLUMN: IPHONE MOCKUP
+   ============================================================ */
+
+.reviews-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.iphone-mockup {
+  width: 380px;
+  max-width: 100%;
+  background: #0f1217;
+  border-radius: 46px;
+  padding: 24px 20px 36px;
+  border: 5px solid #232733;
+  box-shadow:
+    0 30px 70px -15px rgba(0, 0, 0, 0.4),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+}
+
+/* Dynamic island */
+.iphone-notch {
+  width: 100px;
+  height: 24px;
+  background: #000000;
+  border-radius: 20px;
+  margin: 0 auto 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.iphone-camera {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #11141a;
+  border: 1px solid #222631;
+}
+
+.iphone-sensor {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #11141a;
+}
+
+.iphone-status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+  font-family: var(--font-main);
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.iphone-icons {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+}
+
+.iphone-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin: 6px 0;
+}
+
+.iphone-date {
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.iphone-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(212, 255, 0, 0.15);
+  border: 1px solid rgba(212, 255, 0, 0.3);
+  color: #d4ff00;
+  padding: 3px 12px;
+  border-radius: 9999px;
+  font-family: var(--font-main);
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.iphone-badge__dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #d4ff00;
+  box-shadow: 0 0 6px #d4ff00;
+}
+
+/* Notification Cards */
+.iphone-messages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.iphone-notif-card {
+  background: rgba(28, 32, 42, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease;
+}
+
+.iphone-notif-card:hover {
+  transform: scale(1.02);
+}
+
+.iphone-notif-card__top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.iphone-notif-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.iphone-notif-sender-info {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+}
+
+.iphone-notif-name {
+  font-family: var(--font-main);
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.iphone-notif-company {
+  font-family: var(--font-main);
+  font-size: 10.5px;
+  color: #94a3b8;
+}
+
+.iphone-notif-pill {
+  background: #d4ff00;
+  color: #000000;
+  font-family: var(--font-main);
+  font-size: 9px;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 9999px;
+}
+
+.iphone-notif-time {
+  font-family: var(--font-main);
+  font-size: 9.5px;
+  color: #64748b;
+}
+
+.iphone-notif-text {
+  font-family: var(--font-main);
+  font-size: 12px;
+  line-height: 1.45;
+  color: #e2e8f0;
+  margin: 0;
+}
+
+/* Responsiveness */
+@media (max-width: 1000px) {
+  .reviews-container {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+  .reviews-left {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .reviews-section {
+    padding: 80px 20px;
+  }
+  .iphone-mockup {
+    width: 320px;
+    padding: 20px 14px 28px;
+  }
+}

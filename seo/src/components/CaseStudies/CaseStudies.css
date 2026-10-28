@@ -424,6 +424,105 @@
 }
 
 /* ============================================================
+   BOTTOM CASE DETAIL BAR (VIDEO 00:11)
+   ============================================================ */
+
+.cases-detail-bar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 48px;
+  padding-top: 14px;
+  flex-wrap: wrap;
+}
+
+.cases-detail-bar__left {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 480px;
+}
+
+.cases-detail-bar__cat {
+  font-family: var(--font-main);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #717d8e;
+  text-transform: uppercase;
+}
+
+.cases-detail-bar__title {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.cases-detail-bar__right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  max-width: 480px;
+}
+
+.cases-detail-bar__desc {
+  font-family: var(--font-main);
+  font-size: 14px;
+  line-height: 1.6;
+  color: #94a3b8;
+  margin: 0;
+}
+
+.cases-detail-bar__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cases-detail-pill {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #cbd5e1;
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  text-transform: uppercase;
+}
+
+.cases-detail-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #d4ff00;
+  color: #000000;
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.cases-detail-btn:hover {
+  background: #dcff1a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(212, 255, 0, 0.4);
+}
+
+.cases-detail-btn__arrow {
+  font-size: 12px;
+}
+
+/* ============================================================
    RESPONSIVENESS
    ============================================================ */
 

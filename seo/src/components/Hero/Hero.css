@@ -110,6 +110,90 @@
   transition: left 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s ease;
 }
 
+/* Cursor tracking spotlight circle */
+.hero-cursor-spotlight {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(212, 255, 0, 0.28) 0%,
+    rgba(212, 255, 0, 0.08) 50%,
+    transparent 70%
+  );
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  mix-blend-mode: screen;
+  filter: blur(14px);
+  z-index: 2;
+  transition: left 0.15s ease-out, top 0.15s ease-out;
+}
+
+/* Floating Pills over Crowd */
+.hero-floating-pills {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.hero-float-pill {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(18, 20, 26, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 6px 14px;
+  border-radius: 9999px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  animation: floatAmbient 5s ease-in-out infinite alternate;
+}
+
+.hero-float-pill--1 {
+  top: 58%;
+  left: 12%;
+  animation-delay: 0s;
+}
+
+.hero-float-pill--2 {
+  top: 64%;
+  right: 28%;
+  animation-delay: 1.5s;
+}
+
+.hero-float-pill--3 {
+  top: 62%;
+  right: 10%;
+  animation-delay: 3s;
+}
+
+@keyframes floatAmbient {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-10px); }
+}
+
+.hero-float-pill__icon {
+  font-size: 11px;
+}
+
+.hero-float-pill__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #d4ff00;
+  box-shadow: 0 0 8px #d4ff00;
+}
+
+.hero-float-pill__text {
+  font-family: var(--font-main);
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
 /* ============================================================
    TOP RIGHT RADAR TRACKER
    ============================================================ */

@@ -286,6 +286,7 @@
    ============================================================ */
 
 .rw-footer__giant-wordmark {
+  position: relative;
   width: 100%;
   display: flex;
   align-items: center;
@@ -294,6 +295,25 @@
   cursor: pointer;
   user-select: none;
   overflow: hidden;
+}
+
+.rw-footer__wordmark-spotlight {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(212, 255, 0, 0.45) 0%,
+    rgba(212, 255, 0, 0.15) 40%,
+    transparent 70%
+  );
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  mix-blend-mode: color-dodge;
+  filter: blur(12px);
+  z-index: 2;
+  transition: left 0.1s ease-out, top 0.1s ease-out;
 }
 
 .rw-footer__wordmark-text {

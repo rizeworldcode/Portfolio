@@ -64,7 +64,7 @@ export default function Hero() {
         <div className="hero-bg__overlay-bottom" />
         <div className="hero-bg__overlay-radial" />
 
-        {/* Dynamic Lime Spotlight Beam */}
+        {/* Dynamic Lime Spotlight Beam & Cursor Spotlight */}
         <div
           className="hero-spotlight-beam"
           style={{
@@ -73,6 +73,31 @@ export default function Hero() {
           }}
           aria-hidden="true"
         />
+        {/* Cursor tracking spotlight circle */}
+        <div
+          className="hero-cursor-spotlight"
+          style={{
+            left: `${mousePos.x}%`,
+            top: `${mousePos.y}%`,
+          }}
+          aria-hidden="true"
+        />
+
+        {/* Floating Social Proof Event Pills over the crowd */}
+        <div className="hero-floating-pills" aria-hidden="true">
+          <div className="hero-float-pill hero-float-pill--1">
+            <span className="hero-float-pill__icon">⭐</span>
+            <span className="hero-float-pill__text">5 star review</span>
+          </div>
+          <div className="hero-float-pill hero-float-pill--2">
+            <span className="hero-float-pill__dot" />
+            <span className="hero-float-pill__text">17 leads today</span>
+          </div>
+          <div className="hero-float-pill hero-float-pill--3">
+            <span className="hero-float-pill__icon">⚡</span>
+            <span className="hero-float-pill__text">28 new followers</span>
+          </div>
+        </div>
       </div>
 
       {/* Top Right Radar Tracker */}

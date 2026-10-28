@@ -26,6 +26,16 @@ export default function Footer() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const [wordmarkPos, setWordmarkPos] = useState({ x: 50, y: 50 });
+  const [isOverWordmark, setIsOverWordmark] = useState(false);
+
+  const handleWordmarkMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    setWordmarkPos({ x, y });
+  };
+
   return (
     <footer className="rw-footer" id="contact">
       <div className="rw-footer__container">
@@ -120,12 +130,12 @@ export default function Footer() {
             <div className="rw-footer__col-heading">CONTACT</div>
             <div className="rw-footer__contact-details">
               <a href="mailto:hello@reachwisestudio.com" className="rw-footer__contact-link">
-                hello@reachwisestudio.com
+                hr.rizeworld@gmail.com
               </a>
               <a href="tel:+12125550186" className="rw-footer__contact-link">
-                +1 (212) 555-0186
+                +91 90246 15510
               </a>
-              <span className="rw-footer__contact-text">New York</span>
+              <span className="rw-footer__contact-text">INDIA</span>
             </div>
 
             {/* Social Pills */}
@@ -134,18 +144,12 @@ export default function Footer() {
                 <a href="https://instagram.com" target="_blank" rel="noreferrer" className="rw-social-pill">
                   Instagram
                 </a>
-                <a href="https://tiktok.com" target="_blank" rel="noreferrer" className="rw-social-pill">
-                  TikTok
+                <a href="https://facebook.com" target="_blank" rel="noreferrer" className="rw-social-pill">
+                  Facebook
                 </a>
               </div>
-              <div className="rw-footer__social-row">
-                <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="rw-social-pill">
-                  LinkedIn
-                </a>
-                <a href="https://x.com" target="_blank" rel="noreferrer" className="rw-social-pill">
-                  X
-                </a>
-              </div>
+
+
             </div>
           </div>
         </div>
@@ -159,10 +163,26 @@ export default function Footer() {
         </div>
 
         {/* ============================================================
-            COLOSSAL GIANT WORDMARK
+            COLOSSAL GIANT WORDMARK WITH SPOTLIGHT
             ============================================================ */}
-        <div className="rw-footer__giant-wordmark" onClick={scrollToTop}>
-          <span className="rw-footer__wordmark-text">Reachwise</span>
+        <div
+          className="rw-footer__giant-wordmark"
+          onClick={scrollToTop}
+          onMouseMove={handleWordmarkMouseMove}
+          onMouseEnter={() => setIsOverWordmark(true)}
+          onMouseLeave={() => setIsOverWordmark(false)}
+        >
+          <span className="rw-footer__wordmark-text">Rizeworld</span>
+          {isOverWordmark && (
+            <div
+              className="rw-footer__wordmark-spotlight"
+              style={{
+                left: `${wordmarkPos.x}%`,
+                top: `${wordmarkPos.y}%`,
+              }}
+              aria-hidden="true"
+            />
+          )}
         </div>
 
         {/* ============================================================
@@ -170,15 +190,13 @@ export default function Footer() {
             ============================================================ */}
         <div className="rw-footer__bottom">
           <div className="rw-footer__copyright">
-            <span>© 2026 REACHWISE</span>
-            <a href="#privacy">PRIVACY</a>
-            <a href="#terms">TERMS</a>
-            <a href="#cookies">COOKIES</a>
+            <span>© 2026 RIZEWORLD</span>
+
           </div>
 
           <div className="rw-footer__clock">
             <span className="rw-footer__clock-dot" />
-            <span>LOCAL TIME {nyTime || "12:00"} · NEW YORK</span>
+            <span>LOCAL TIME {nyTime || "12:00"} · INDIA</span>
           </div>
         </div>
       </div>

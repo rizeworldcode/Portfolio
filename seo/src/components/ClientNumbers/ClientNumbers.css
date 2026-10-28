@@ -1,0 +1,274 @@
+/* ============================================================
+   CLIENT NUMBERS & MARQUEE SECTION (VIDEO 00:18)
+   "What our clients got last year."
+   ============================================================ */
+
+.numbers-section {
+  position: relative;
+  width: 100%;
+  background-color: #d4ff00; /* Vibrant lime background matching video at 00:18! */
+  color: #0f1217;
+  padding: 110px 0 0;
+  overflow: hidden;
+}
+
+.numbers-container {
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 0 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+/* Header */
+.numbers-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+
+.numbers-header__left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.numbers-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  padding: 5px 14px;
+  border-radius: 9999px;
+}
+
+.numbers-pill__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #000000;
+}
+
+.numbers-pill__text {
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #0f1217;
+  text-transform: uppercase;
+}
+
+.numbers-title {
+  font-family: var(--font-display);
+  font-size: clamp(38px, 5.2vw, 68px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  color: #0f1217;
+  margin: 0;
+}
+
+.numbers-header__right {
+  max-width: 420px;
+  padding-top: 14px;
+}
+
+.numbers-desc {
+  font-family: var(--font-main);
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: #262b33;
+  margin: 0;
+}
+
+/* Filters row */
+.numbers-filters {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.numbers-filter-btn {
+  background: rgba(0, 0, 0, 0.08);
+  border: none;
+  color: #0f1217;
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.numbers-filter-btn:hover {
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.numbers-filter-btn--active {
+  background: #0f1217;
+  color: #d4ff00;
+}
+
+.numbers-timeframe {
+  margin-left: auto;
+  font-family: var(--font-main);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: #0f1217;
+}
+
+/* 4 Dark Cards Grid */
+.numbers-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  width: 100%;
+}
+
+.numbers-card {
+  background: #0c0e12;
+  border-radius: 24px;
+  padding: 24px 22px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.numbers-card__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.numbers-card__num {
+  font-family: var(--font-main);
+  font-size: 10px;
+  font-weight: 800;
+  color: #d4ff00;
+}
+
+.numbers-card__label {
+  font-family: var(--font-main);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #94a3b8;
+  text-transform: uppercase;
+}
+
+.numbers-card__val {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 4.5vw, 68px);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.numbers-card__sparkline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.numbers-card__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(212, 255, 0, 0.15);
+  color: #d4ff00;
+  border: 1px solid rgba(212, 255, 0, 0.3);
+  padding: 3px 10px;
+  border-radius: 9999px;
+  font-family: var(--font-main);
+  font-size: 9.5px;
+  font-weight: 800;
+  width: fit-content;
+}
+
+.numbers-sparkline-svg {
+  width: 100%;
+  height: 60px;
+}
+
+.numbers-card__months {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-main);
+  font-size: 9px;
+  font-weight: 700;
+  color: #64748b;
+  letter-spacing: 0.1em;
+}
+
+/* Scrolling Ticker Marquee */
+.numbers-ticker-wrap {
+  width: 100%;
+  background: #000000;
+  color: #d4ff00;
+  padding: 16px 0;
+  overflow: hidden;
+  margin-top: 48px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.numbers-ticker {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  white-space: nowrap;
+  animation: tickerScroll 24s linear infinite;
+}
+
+@keyframes tickerScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.numbers-ticker__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-main);
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.numbers-ticker__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #d4ff00;
+  box-shadow: 0 0 6px #d4ff00;
+}
+
+/* Responsiveness */
+@media (max-width: 1100px) {
+  .numbers-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .numbers-container {
+    padding: 0 20px;
+  }
+  .numbers-grid {
+    grid-template-columns: 1fr;
+  }
+}

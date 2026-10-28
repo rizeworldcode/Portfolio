@@ -135,8 +135,9 @@ export default function FunnelProcess() {
             {/* Stage 1: REACH */}
             <div
               className={`funnel-tier funnel-tier--1 ${
-                activeStep === 0 ? "funnel-tier--active" : ""
+                activeStep >= 0 ? "funnel-tier--filled-lime" : ""
               }`}
+              onClick={() => setActiveStep(0)}
             >
               {/* Floating ambient crowd particles */}
               <div className="funnel-particles-layer" aria-hidden="true">
@@ -159,9 +160,7 @@ export default function FunnelProcess() {
                   <span className="funnel-tier__label">REACH</span>
                 </div>
                 <div className="funnel-tier__number">
-                  {funnelCounts.reach > 0
-                    ? funnelCounts.reach.toLocaleString()
-                    : "0"}
+                  {activeStep >= 0 ? "1,284,300" : "0"}
                 </div>
               </div>
             </div>
@@ -169,8 +168,9 @@ export default function FunnelProcess() {
             {/* Stage 2: CLICKS */}
             <div
               className={`funnel-tier funnel-tier--2 ${
-                activeStep === 1 ? "funnel-tier--active" : ""
+                activeStep >= 1 ? "funnel-tier--filled-lime" : ""
               }`}
+              onClick={() => setActiveStep(1)}
             >
               <div className="funnel-tier__content">
                 <div className="funnel-tier__tag">
@@ -178,9 +178,7 @@ export default function FunnelProcess() {
                   <span className="funnel-tier__label">CLICKS</span>
                 </div>
                 <div className="funnel-tier__number">
-                  {funnelCounts.clicks > 0
-                    ? funnelCounts.clicks.toLocaleString()
-                    : "0"}
+                  {activeStep >= 1 ? "48,120" : "0"}
                 </div>
               </div>
             </div>
@@ -188,8 +186,9 @@ export default function FunnelProcess() {
             {/* Stage 3: LEADS */}
             <div
               className={`funnel-tier funnel-tier--3 ${
-                activeStep === 2 ? "funnel-tier--active" : ""
+                activeStep >= 2 ? "funnel-tier--filled-lime" : ""
               }`}
+              onClick={() => setActiveStep(2)}
             >
               <div className="funnel-tier__content">
                 <div className="funnel-tier__tag">
@@ -197,9 +196,7 @@ export default function FunnelProcess() {
                   <span className="funnel-tier__label">LEADS</span>
                 </div>
                 <div className="funnel-tier__number">
-                  {funnelCounts.leads > 0
-                    ? funnelCounts.leads.toLocaleString()
-                    : "0"}
+                  {activeStep >= 2 ? "2,940" : "0"}
                 </div>
 
                 {/* Conversion Pill Badge */}
@@ -215,8 +212,9 @@ export default function FunnelProcess() {
             {/* Stage 4: CLIENTS */}
             <div
               className={`funnel-tier funnel-tier--4 ${
-                activeStep === 3 ? "funnel-tier--active" : ""
+                activeStep >= 3 ? "funnel-tier--filled-lime" : ""
               }`}
+              onClick={() => setActiveStep(3)}
             >
               <div className="funnel-tier__content">
                 <div className="funnel-tier__tag">
@@ -224,9 +222,7 @@ export default function FunnelProcess() {
                   <span className="funnel-tier__label">CLIENTS</span>
                 </div>
                 <div className="funnel-tier__number">
-                  {funnelCounts.clients > 0
-                    ? funnelCounts.clients.toLocaleString()
-                    : "0"}
+                  {activeStep >= 3 ? "312" : "0"}
                 </div>
               </div>
             </div>

@@ -229,6 +229,16 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
 }
 
+.funnel-tier--filled-lime {
+  background-color: #d4ff00 !important;
+  box-shadow: 0 8px 30px rgba(212, 255, 0, 0.35);
+}
+
+.funnel-tier--filled-lime .funnel-tier__number {
+  color: #000000;
+  text-shadow: 0 0 20px rgba(212, 255, 0, 0.4);
+}
+
 /* Trapezoid Geometry */
 .funnel-tier--1 {
   clip-path: polygon(0% 0%, 100% 0%, 92% 100%, 8% 100%);
