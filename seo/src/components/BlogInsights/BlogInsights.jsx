@@ -5,34 +5,34 @@ export default function BlogInsights() {
   const articles = {
     featured: {
       id: "featured",
-      category: "SEO",
-      date: "SEP 18, 2026",
-      readTime: "7 MIN READ",
-      readsBadge: "2.4k reads this week",
-      title: "Local SEO in 2026: what still moves the map pack",
+      category: "ON-PAGE SEO — CASE STUDY 2026",
+      date: "OCTOBER 2026",
+      readTime: "CASE STUDY",
+      readsBadge: "Search Intent Focus",
+      title: "On-Page SEO: Structuring Content Around User Search Intent",
       excerpt:
-        "Reviews, pages and links: the three things that still decide who shows up first near you.",
+        "The website content and page structure were optimized around relevant services and search intent, making important information easier for users and search engines to understand.",
       img: "/city-intersection.jpg",
     },
     stacked: [
       {
         id: "article-2",
-        category: "SOCIAL MEDIA",
-        date: "SEP 04, 2026",
-        readTime: "5 MIN READ",
-        title: "Reels that sell: the 3-second rule we use for every client",
+        category: "LOCAL SEO — CASE STUDY 2026",
+        date: "OCTOBER 2026",
+        readTime: "ALWAR PACK",
+        title: "Local SEO Strategy: Improving Search Visibility in Alwar",
         excerpt:
-          "Why the first three seconds decide whether anyone sees the other twenty-seven.",
+          "A local SEO strategy focused on improving visibility for relevant digital marketing and web development searches in Alwar and surrounding areas.",
         img: "/barista-reels.jpg",
       },
       {
         id: "article-3",
-        category: "PAID ADS",
-        date: "AUG 21, 2026",
-        readTime: "8 MIN READ",
-        title: "ROAS is not profit: how we report paid ads",
+        category: "TECHNICAL SEO — CASE STUDY 2026",
+        date: "OCTOBER 2026",
+        readTime: "CORE VITALS",
+        title: "Technical SEO: Crawl-Friendly Foundation & URL Structure",
         excerpt:
-          "A 6× return can still lose money. Here is the number we report instead.",
+          "Technical improvements focused on creating a cleaner website structure, improving crawlability, strengthening URL organization, and supporting better search-engine accessibility.",
         img: "/laptop-analytics.jpg",
       },
     ],
@@ -48,38 +48,21 @@ export default function BlogInsights() {
           <div className="blog-header__left">
             <div className="blog-pill">
               <span className="blog-pill__dot" />
-              <span className="blog-pill__text">(06) Insights</span>
+              <span className="blog-pill__text">(06) SEO Deep-Dive</span>
             </div>
 
             <h2 className="blog-title">
-              <span className="blog-title__line">Ideas we</span>
+              <span className="blog-title__line">SEO Strategy</span>
               <span className="blog-title__line">
-                <span className="blog-badge">test</span> first.
+                <span className="blog-badge">In-Depth</span> Analysis.
               </span>
             </h2>
           </div>
 
           <div className="blog-header__right">
             <p className="blog-desc">
-              What we learn running campaigns every week, written up so you can
-              use it too.
+              A closer look at the SEO framework used across on-page SEO, local search, technical optimization, and content strategy.
             </p>
-            <a href="#all-articles" className="blog-btn-all">
-              <span>All articles</span>
-              <svg
-                width="13"
-                height="13"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <line x1="7" y1="17" x2="17" y2="7" />
-                <polyline points="7 7 17 7 17 17" />
-              </svg>
-            </a>
           </div>
         </div>
 

@@ -17,27 +17,27 @@ export default function FunnelProcess() {
   const steps = [
     {
       num: "01",
-      title: "Audit",
-      time: "WEEK 1",
-      desc: "We study your site, ads and competitors and find the fastest wins.",
+      title: "Keyword Research & Intent",
+      time: "PHASE 01",
+      desc: "Targeted keyword research, competitor analysis, and search-intent mapping to identify relevant commercial and local opportunities.",
     },
     {
       num: "02",
-      title: "Launch",
-      time: "WEEK 2-3",
-      desc: "Campaigns, content and fixes go live.",
+      title: "On-Page & Structure",
+      time: "PHASE 02",
+      desc: "SEO-friendly page structure, metadata optimization, heading hierarchy, relevant content, and contextual internal linking.",
     },
     {
       num: "03",
-      title: "Optimise",
-      time: "MONTH 2",
-      desc: "We test creatives, keywords and pages every week.",
+      title: "Technical & Local SEO",
+      time: "PHASE 03",
+      desc: "Crawl-friendly URLs, mobile usability, image optimization, technical improvements, and local search targeting for Alwar.",
     },
     {
       num: "04",
-      title: "Scale",
-      time: "MONTH 3+",
-      desc: "We put more budget and content behind what works.",
+      title: "Content & Long-Term Growth",
+      time: "PHASE 04",
+      desc: "Reviewing content relevance, improving search accessibility, and continuously refining pages based on search behaviour and performance data.",
     },
   ];
 
@@ -189,21 +189,20 @@ export default function FunnelProcess() {
           {/* Pill Badge */}
           <div className="funnel-pill">
             <span className="funnel-pill__dot" />
-            <span className="funnel-pill__text">(05) How we work</span>
+            <span className="funnel-pill__text">(04) SEO Implementation</span>
           </div>
 
           {/* Headline */}
           <h2 className="funnel-title">
-            <span className="funnel-title__line">From attention</span>
+            <span className="funnel-title__line">From Search Intent</span>
             <span className="funnel-title__line">
-              to <span className="funnel-badge">clients.</span>
+              to <span className="funnel-badge">Organic Growth.</span>
             </span>
           </h2>
 
           {/* Subtitle */}
           <p className="funnel-desc">
-            Every retainer runs the same four steps. You see the funnel fill in
-            your report every week.
+            SEO starts with understanding what people are searching for. RizeWorld’s approach maps relevant keywords to search intent before optimizing the website, helping each page serve a clear purpose.
           </p>
 
           {/* 4 Steps Timeline */}
@@ -237,7 +236,7 @@ export default function FunnelProcess() {
             ============================================================ */}
         <div className="funnel-right">
           <div className="funnel-visual">
-            {/* Stage 1: REACH */}
+            {/* Stage 1: SEARCH REACH */}
             <div
               className={`funnel-tier funnel-tier--1 ${
                 activeStep >= 0 ? "funnel-tier--filled-lime" : ""
@@ -248,10 +247,10 @@ export default function FunnelProcess() {
               <div className="funnel-tier__content">
                 <div className="funnel-tier__tag">
                   <span className="funnel-tier__num">01</span>
-                  <span className="funnel-tier__label">REACH</span>
+                  <span className="funnel-tier__label">SEARCH REACH</span>
                 </div>
-                <div className="funnel-tier__number">
-                  {counts.reach.toLocaleString()}
+                <div className="funnel-tier__desc-text">
+                  Relevant users discovering the website
                 </div>
               </div>
             </div>
@@ -269,20 +268,8 @@ export default function FunnelProcess() {
                   <span className="funnel-tier__num">02</span>
                   <span className="funnel-tier__label">CLICKS</span>
                 </div>
-                <div className="funnel-tier__number-wrap">
-                  <span className="funnel-tier__number">
-                    {counts.clicks.toLocaleString()}
-                  </span>
-
-                  {/* Conversion Callout Badge */}
-                  {activeStep >= 1 && (
-                    <div className="funnel-conversion-badge">
-                      <span className="funnel-conversion-badge__dot" />
-                      <span className="funnel-conversion-badge__text">
-                        ~0.2% become leads
-                      </span>
-                    </div>
-                  )}
+                <div className="funnel-tier__desc-text">
+                  Users visiting relevant pages
                 </div>
               </div>
             </div>
@@ -300,8 +287,8 @@ export default function FunnelProcess() {
                   <span className="funnel-tier__num">03</span>
                   <span className="funnel-tier__label">LEADS</span>
                 </div>
-                <div className="funnel-tier__number">
-                  {counts.leads.toLocaleString()}
+                <div className="funnel-tier__desc-text">
+                  Potential customers taking action
                 </div>
               </div>
             </div>
@@ -319,8 +306,8 @@ export default function FunnelProcess() {
                   <span className="funnel-tier__num">04</span>
                   <span className="funnel-tier__label">CLIENTS</span>
                 </div>
-                <div className="funnel-tier__number">
-                  {counts.clients.toLocaleString()}
+                <div className="funnel-tier__desc-text">
+                  Business enquiries becoming customers
                 </div>
               </div>
             </div>
@@ -330,7 +317,7 @@ export default function FunnelProcess() {
           <div className="funnel-footer-caption">
             <span className="funnel-footer-caption__dot" />
             <span className="funnel-footer-caption__text">
-              A TYPICAL CLIENT FUNNEL · LAST 90 DAYS
+              A typical organic search journey — tracked over time
             </span>
           </div>
         </div>

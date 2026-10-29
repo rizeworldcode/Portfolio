@@ -328,15 +328,15 @@
   justify-content: center;
 }
 
-.funnel-tier__number {
-  font-family: var(--font-display);
-  font-size: clamp(32px, 3.8vw, 42px);
-  font-weight: 900;
-  color: #0f1217;
-  letter-spacing: -0.03em;
-  line-height: 1;
-  font-variant-numeric: tabular-nums;
-  transition: color 0.3s ease;
+.funnel-tier__desc-text {
+  font-family: var(--font-main);
+  font-size: clamp(12px, 1.1vw, 14px);
+  font-weight: 600;
+  color: #11141a;
+  text-align: center;
+  max-width: 240px;
+  line-height: 1.35;
+  margin-top: 4px;
 }
 
 /* Stage 2 Conversion Callout Pill (~0.2% become leads) */

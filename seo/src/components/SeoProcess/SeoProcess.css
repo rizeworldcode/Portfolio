@@ -1,0 +1,271 @@
+/* ============================================================
+   SEO PROCESS SECTION (PAGE 07)
+   "Building SEO Step by Step."
+   ============================================================ */
+
+.process-section {
+  position: relative;
+  width: 100%;
+  background-color: #0f1217;
+  color: #ffffff;
+  padding: 100px 60px;
+  overflow: hidden;
+}
+
+.process-container {
+  max-width: 1380px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+/* Header */
+.process-header {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: flex-end;
+  gap: 40px;
+}
+
+.process-header__left {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.process-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 5px 14px;
+  border-radius: 9999px;
+  width: fit-content;
+}
+
+.process-pill__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #d4ff00;
+  box-shadow: 0 0 8px #d4ff00;
+}
+
+.process-pill__text {
+  font-family: var(--font-main);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #94a3b8;
+  text-transform: uppercase;
+}
+
+.process-title {
+  font-family: var(--font-display);
+  font-size: clamp(38px, 4.8vw, 64px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.06;
+  color: #ffffff;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.process-title__row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.process-badge {
+  display: inline-block;
+  background: #d4ff00;
+  color: #000000;
+  padding: 0 16px 2px;
+  border-radius: 18px;
+  box-shadow: 0 4px 14px rgba(212, 255, 0, 0.35);
+  transform: translateY(-2px);
+}
+
+.process-desc {
+  font-family: var(--font-main);
+  font-size: 16px;
+  line-height: 1.6;
+  color: #94a3b8;
+  margin: 0;
+  max-width: 520px;
+}
+
+/* 5-Step Cards Grid */
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  width: 100%;
+}
+
+.process-card {
+  position: relative;
+  background: #171b22;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  cursor: pointer;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.process-card:hover,
+.process-card--active {
+  background: #1d222b;
+  border-color: rgba(212, 255, 0, 0.5);
+  transform: translateY(-6px);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.4), 0 0 20px rgba(212, 255, 0, 0.08);
+}
+
+.process-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.process-card__num {
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #0f1217;
+  background: #d4ff00;
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.process-card__phase {
+  font-family: var(--font-mono, monospace);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.process-card--active .process-card__phase {
+  color: #d4ff00;
+}
+
+.process-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.process-card__title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.process-card__tagline {
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 700;
+  color: #d4ff00;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.process-card__desc {
+  font-family: var(--font-main);
+  font-size: 13px;
+  line-height: 1.55;
+  color: #94a3b8;
+  margin: 4px 0 0;
+  min-height: 60px;
+}
+
+.process-card__divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.process-card__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.process-card__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-family: var(--font-main);
+  font-size: 11.5px;
+  line-height: 1.4;
+  color: #cbd5e1;
+}
+
+.process-card__check {
+  color: #d4ff00;
+  font-size: 11px;
+  margin-top: 1px;
+  flex-shrink: 0;
+}
+
+.process-card__indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: transparent;
+  transition: background 0.25s ease;
+}
+
+.process-card--active .process-card__indicator {
+  background: #d4ff00;
+  box-shadow: 0 0 10px #d4ff00;
+}
+
+/* Responsiveness */
+@media (max-width: 1200px) {
+  .process-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .process-section {
+    padding: 70px 30px;
+  }
+  .process-header {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .process-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .process-section {
+    padding: 60px 18px;
+  }
+  .process-grid {
+    grid-template-columns: 1fr;
+  }
+}

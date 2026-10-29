@@ -8,117 +8,117 @@ export default function Channels() {
   const channelsData = [
     {
       id: "01",
-      name: "SEO",
-      verticalName: "SEO",
+      name: "On-Page SEO",
+      verticalName: "On-Page SEO",
       bgColor: "#e0e3de",
       pillBg: "#11141a",
       textColor: "#ffffff",
-      desc: "Technical fixes, content and links that move you up the page for the words your customers type.",
-      badge: "#1 for 212 keywords",
-      price: "$1,500/mo",
+      desc: "Optimizing page structure, metadata, headings, content, images, and internal links.",
+      badge: "Structure & Metadata",
+      price: "Pillar 01",
       features: [
-        "Technical audit",
-        "Keyword map",
-        "4 articles a month",
-        "Link building",
-        "Monthly ranking report",
+        "Page structure & heading hierarchy",
+        "Meta titles & meta descriptions",
+        "Search-intent focused content",
+        "Image optimization & alt tags",
+        "Contextual internal linking",
       ],
       type: "search",
     },
     {
       id: "02",
-      name: "Social media",
-      verticalName: "Social media",
+      name: "Local SEO",
+      verticalName: "Local SEO",
       bgColor: "#11141a",
       pillBg: "#11141a",
       textColor: "#ffffff",
-      desc: "High-retention shortform video, daily community hooks, and viral reels that build an engaged following.",
-      badge: "4.8M monthly views",
-      price: "$2,200/mo",
+      desc: "Improving local relevance through Google Business Profile, citations, and location-focused optimization.",
+      badge: "Ranked #1 in Alwar",
+      price: "Pillar 02",
       features: [
-        "Content calendar & scripts",
-        "Short-form video editing",
-        "Creator outreach & collabs",
-        "Community management",
-        "Viral hook optimization",
+        "Google Business Profile (GBP) audit",
+        "Primary & secondary category targeting",
+        "Local citation building & NAP audit",
+        "Location-focused landing pages",
+        "Alwar local search pack dominance",
       ],
-      type: "social",
+      type: "local",
     },
     {
       id: "03",
-      name: "Paid ads",
-      verticalName: "Paid ads",
+      name: "Technical SEO",
+      verticalName: "Technical SEO",
       bgColor: "#ffffff",
       pillBg: "#ffffff",
       textColor: "#11141a",
-      desc: "High-converting Google Search & Meta ad funnels engineered for profitable ROAS and lowest CPA.",
-      badge: "5.4x average ROAS",
-      price: "$2,500/mo",
+      desc: "Strengthening crawlability, indexability, website structure, page performance, and technical foundations.",
+      badge: "Crawl-Friendly",
+      price: "Pillar 03",
       features: [
-        "Campaign architecture",
-        "Creative testing sprint",
-        "Retargeting funnels",
-        "Server-side tracking (CAPI)",
-        "Bi-weekly live optimizations",
+        "Crawlability & indexation health",
+        "Clean URL hierarchy & taxonomy",
+        "Page load performance & Core Web Vitals",
+        "Structured data & schema markup",
+        "Mobile usability & responsive UX",
       ],
-      type: "ads",
+      type: "tech",
     },
     {
       id: "04",
-      name: "Content",
-      verticalName: "Content",
+      name: "Content Optimization",
+      verticalName: "Content & Intent",
       bgColor: "#d4ff00",
       pillBg: "#d4ff00",
       textColor: "#11141a",
-      desc: "Thought leadership articles, case studies, and lead magnets that position your brand as industry authority.",
-      badge: "92% organic lift",
-      price: "$1,800/mo",
+      desc: "Creating relevant, readable content that addresses what users are actually searching for.",
+      badge: "Search Intent",
+      price: "Pillar 04",
       features: [
-        "In-depth research briefs",
-        "Ghostwritten articles",
-        "Interactive downloadable guides",
-        "Email newsletter issues",
-        "Distribution & repurposing",
+        "Search-intent mapping & queries",
+        "Reader-first content depth",
+        "Clear answering of search intent",
+        "User experience & dwell time signals",
+        "Content freshening & updates",
       ],
       type: "content",
     },
     {
       id: "05",
-      name: "Web design",
-      verticalName: "Web design",
+      name: "Target Keywords",
+      verticalName: "Target Keywords",
       bgColor: "#11141a",
       pillBg: "#11141a",
       textColor: "#ffffff",
-      desc: "Lightning-fast, conversion-optimized landing pages and websites crafted to turn traffic into paying clients.",
-      badge: "99/100 Lighthouse score",
-      price: "$3,400/mo",
+      desc: "Mapping relevant commercial and local search terms to the pages where they make the most sense.",
+      badge: "Commercial & Local",
+      price: "Pillar 05",
       features: [
-        "Modern UX/UI wireframing",
-        "React & modern tech stack",
-        "Micro-animations & interactions",
-        "Mobile-first responsive",
-        "Conversion rate optimization",
+        "Commercial & transactional keyword mapping",
+        "Local Alwar search query discovery",
+        "Competitor keyword opportunity analysis",
+        "Logical page-to-keyword assignment",
+        "Search volume & conversion intent",
       ],
-      type: "web",
+      type: "keywords",
     },
     {
       id: "06",
-      name: "Branding",
-      verticalName: "Branding",
+      name: "Organic Results",
+      verticalName: "Organic Results",
       bgColor: "#e7eae5",
       pillBg: "#e7eae5",
       textColor: "#11141a",
-      desc: "Distinct visual identity, custom typography, color systems, and guidelines that make your brand unforgettable.",
-      badge: "Complete Brand Kit",
-      price: "$2,800/mo",
+      desc: "Monitoring search visibility and using performance data to guide ongoing SEO improvements.",
+      badge: "Data-Guided",
+      price: "Pillar 06",
       features: [
-        "Brand strategy & positioning",
-        "Logo suite & icon system",
-        "Design tokens & color guide",
-        "Typography hierarchy",
-        "Marketing collateral templates",
+        "Search Console visibility monitoring",
+        "Local map pack rank tracking",
+        "Click-through rate (CTR) optimization",
+        "Actionable performance data reviews",
+        "Continuous iterative refinement",
       ],
-      type: "branding",
+      type: "results",
     },
   ];
 
@@ -134,38 +134,21 @@ export default function Channels() {
           <div className="channels-header__left">
             <div className="channels-pill">
               <span className="channels-pill__dot" />
-              <span className="channels-pill__text">(02) Services</span>
+              <span className="channels-pill__text">(03) SEO Strategy</span>
             </div>
 
             <h2 className="channels-title">
-              <span className="channels-title__row">Six channels.</span>
+              <span className="channels-title__row">SEO Strategy.</span>
               <span className="channels-title__row">
-                <span className="channels-badge">One</span> growth plan.
+                <span className="channels-badge">Six</span> Core Pillars.
               </span>
             </h2>
           </div>
 
           <div className="channels-header__right">
             <p className="channels-desc">
-              SEO, social, ads, content, web and brand under one retainer, one
-              team and one monthly report.
+              RizeWorld’s SEO process brings together technical foundations, content relevance, local search optimization, and ongoing performance analysis. Each activity supports a specific stage of the organic search journey.
             </p>
-            <a href="#all-services" className="channels-btn-all">
-              <span>All services</span>
-              <svg
-                width="13"
-                height="13"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <line x1="7" y1="17" x2="17" y2="7" />
-                <polyline points="7 7 17 7 17 17" />
-              </svg>
-            </a>
           </div>
         </div>
 
@@ -209,72 +192,71 @@ export default function Channels() {
 
                   {/* Card Content Split: Left Mockup, Right Details */}
                   <div className="channels-card-inner">
-                    {/* Left Side: Mockup Window depending on channel */}
+                    {/* Left Side: Mockup Window depending on SEO pillar */}
                     {ch.id === "02" ? (
-                      /* Social Media Reel Mockup */
+                      /* Local SEO Google Map & Business Pack Mockup */
                       <div className="channels-mockup channels-mockup--social">
-                        <div className="channels-social-reel-box">
+                        <div className="channels-social-reel-box" style={{ background: "#0a0c10" }}>
                           <div className="channels-social-reel-header">
-                            <span className="channels-social-reel-tag">VIRAL REEL</span>
-                            <span className="channels-social-reel-views">4.8M views</span>
+                            <span className="channels-social-reel-tag">GOOGLE MAP PACK</span>
+                            <span className="channels-social-reel-views">#1 IN ALWAR</span>
                           </div>
-                          <div className="channels-social-reel-body">
-                            <div className="channels-social-play-btn">▶</div>
-                            <div className="channels-social-audio-wave">
-                              <span /><span /><span /><span /><span />
-                            </div>
+                          <div className="channels-social-reel-body" style={{ flexDirection: "column", gap: "8px", alignItems: "flex-start" }}>
+                            <div style={{ color: "#d4ff00", fontSize: "14px", fontWeight: "700" }}>★ ★ ★ ★ ★ (5.0)</div>
+                            <div style={{ color: "#ffffff", fontSize: "13px", fontWeight: "600" }}>RizeWorld — Digital Agency Alwar</div>
+                            <div style={{ color: "#94a3b8", fontSize: "11px" }}>📍 Shalimar Nagar, UIT Colony, Alwar</div>
                           </div>
                           <div className="channels-social-reel-footer">
-                            <div className="channels-social-handle">@reachwise.growth</div>
-                            <div className="channels-social-caption">Hook them in the first 2 seconds 🚀</div>
-                            <div className="channels-social-stats">❤️ 142k · 💬 3.4k · ↗ 82k shares</div>
+                            <div className="channels-social-handle">100% NAP Consistency</div>
+                            <div className="channels-social-caption">Google Business Profile fully optimized & verified</div>
+                            <div className="channels-social-stats">✔ Verified · ✔ Citations active · ✔ #1 Local Pack</div>
                           </div>
                         </div>
                       </div>
                     ) : ch.id === "03" ? (
-                      /* Paid Ads Mockup (matching video 00:07) */
+                      /* Technical SEO Crawl & Health Mockup */
                       <div className="channels-mockup channels-mockup--ads">
                         <div className="channels-ads-box">
-                          <span className="channels-ads-pill">SPONSORED</span>
+                          <span className="channels-ads-pill">TECHNICAL AUDIT</span>
                           <h5 className="channels-ads-headline">
-                            Free whitening with every new-patient visit
+                            Crawlability, Core Web Vitals & Clean URL Architecture
                           </h5>
                           <div className="channels-ads-metrics">
                             <div className="channels-ads-metric">
-                              <span className="channels-ads-val">4.2%</span>
-                              <span className="channels-ads-sub">CTR</span>
+                              <span className="channels-ads-val">99%</span>
+                              <span className="channels-ads-sub">CRAWL HEALTH</span>
                             </div>
                             <div className="channels-ads-metric">
-                              <span className="channels-ads-val">4.8x</span>
-                              <span className="channels-ads-sub">ROAS</span>
+                              <span className="channels-ads-val">0.4s</span>
+                              <span className="channels-ads-sub">LCP SPEED</span>
                             </div>
                           </div>
                           {/* Bar Chart */}
                           <div className="channels-ads-chart">
-                            <span style={{ height: "30%" }} />
-                            <span style={{ height: "45%" }} />
-                            <span style={{ height: "60%" }} />
+                            <span style={{ height: "40%" }} />
+                            <span style={{ height: "65%" }} />
                             <span style={{ height: "80%" }} />
+                            <span style={{ height: "92%" }} />
                             <span style={{ height: "100%" }} className="active-bar" />
                           </div>
                         </div>
                       </div>
                     ) : ch.id === "04" ? (
-                      /* Content Mockup (matching video 00:08) */
+                      /* Content Optimization Mockup */
                       <div className="channels-mockup channels-mockup--content">
                         <div className="channels-content-card">
                           <div className="channels-content-header">
-                            <span className="channels-content-tag">4 MIN READ</span>
+                            <span className="channels-content-tag">SEARCH INTENT</span>
                           </div>
-                          <h4 className="channels-content-title">How to |</h4>
-                          <p className="channels-content-sub">Premise editorial</p>
+                          <h4 className="channels-content-title">User Intent |</h4>
+                          <p className="channels-content-sub">Comprehensive topic clusters & answers</p>
                           <div className="channels-content-reads">
-                            <span>▲ 41 reads this week</span>
+                            <span>▲ Matched to high-converting queries</span>
                           </div>
                         </div>
                       </div>
                     ) : ch.id === "05" ? (
-                      /* Web Design Mockup */
+                      /* Target Keywords Mockup */
                       <div className="channels-mockup channels-mockup--web">
                         <div className="channels-web-wireframe">
                           <div className="channels-web-browser-bar">
@@ -283,71 +265,61 @@ export default function Channels() {
                               <span className="dot--yellow" />
                               <span className="dot--green" />
                             </div>
-                            <div className="channels-web-url-bar">yoursite.com/offer</div>
+                            <div className="channels-web-url-bar">rizeworld.com/services</div>
                           </div>
                           <div className="channels-web-hero-block">
                             <div className="channels-web-block-header">
-                              <span className="channels-web-badge-mini">NEW LAUNCH</span>
-                              <span className="channels-web-speed-badge">⚡ 99/100</span>
+                              <span className="channels-web-badge-mini">KEYWORD MAP</span>
+                              <span className="channels-web-speed-badge">RANK #1</span>
                             </div>
-                            <div className="channels-web-headline-bar" />
+                            <div style={{ color: "#ffffff", fontSize: "12px", margin: "8px 0" }}>
+                              Target: "seo company alwar" → /seo-services
+                            </div>
                             <div className="channels-web-sub-bar" />
-                            <div className="channels-web-btn-mock">Book Demo →</div>
+                            <div className="channels-web-btn-mock">Mapped Intent →</div>
                           </div>
                           <div className="channels-web-code-row">
-                            <span className="channels-web-code-pill">Conversion · 8.2%</span>
-                            <span className="channels-web-meta-pill">+214% ROI</span>
+                            <span className="channels-web-code-pill">Commercial Intent</span>
+                            <span className="channels-web-meta-pill">High Conversion</span>
                           </div>
                         </div>
                       </div>
                     ) : (
-                      /* Default SEO / Search SERP Mockup */
+                      /* Default On-Page / Search SERP Mockup */
                       <div className="channels-mockup">
                         {/* Search Header */}
                         <div className="channels-mockup__search-bar">
                           <span className="channels-mockup__search-icon">🔍</span>
-                          <span className="channels-mockup__search-text">dentist near me</span>
+                          <span className="channels-mockup__search-text">seo company in alwar</span>
                           <span className="channels-mockup__cursor">|</span>
                         </div>
 
                         <div className="channels-mockup__meta">
-                          About 2,140,000 results · 0.42 s
+                          About 184,000 results · 0.28 s
                         </div>
 
-                        {/* Search Result 1 */}
-                        <div className="channels-mockup__item channels-mockup__item--dim">
-                          <div className="channels-mockup__url">citydentalcare.com</div>
-                          <div className="channels-mockup__line channels-mockup__line--short" />
+                        {/* Search Result 1 (Highlighted Client Result) */}
+                        <div className="channels-mockup__item channels-mockup__item--highlight">
+                          <div className="channels-mockup__item-header">
+                            <span className="channels-mockup__live-dot" />
+                            <span className="channels-mockup__brand-url">rizeworld.com</span>
+                          </div>
+                          <div className="channels-mockup__brand-title">
+                            RizeWorld — SEO Objective & Online Visibility
+                          </div>
+                          <span className="channels-mockup__rank-pill">#1</span>
                         </div>
 
                         {/* Search Result 2 */}
                         <div className="channels-mockup__item channels-mockup__item--dim">
-                          <div className="channels-mockup__url">yelp.com · dentists</div>
-                          <div className="channels-mockup__line" />
-                        </div>
-
-                        {/* Search Result 3 (Highlighted Client Result) */}
-                        <div className="channels-mockup__item channels-mockup__item--highlight">
-                          <div className="channels-mockup__item-header">
-                            <span className="channels-mockup__live-dot" />
-                            <span className="channels-mockup__brand-url">yoursite.com</span>
-                          </div>
-                          <div className="channels-mockup__brand-title">
-                            Your brand · dentist near me
-                          </div>
-                          <span className="channels-mockup__rank-pill">#3</span>
-                        </div>
-
-                        {/* Search Result 4 */}
-                        <div className="channels-mockup__item channels-mockup__item--dim">
-                          <div className="channels-mockup__url">smilecentre.co</div>
-                          <div className="channels-mockup__line" />
-                        </div>
-
-                        {/* Search Result 5 */}
-                        <div className="channels-mockup__item channels-mockup__item--dim">
-                          <div className="channels-mockup__url">healthgrades.com</div>
+                          <div className="channels-mockup__url">directory-alwar.com</div>
                           <div className="channels-mockup__line channels-mockup__line--short" />
+                        </div>
+
+                        {/* Search Result 3 */}
+                        <div className="channels-mockup__item channels-mockup__item--dim">
+                          <div className="channels-mockup__url">marketing-portal.in</div>
+                          <div className="channels-mockup__line" />
                         </div>
                       </div>
                     )}

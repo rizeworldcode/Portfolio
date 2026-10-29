@@ -2,19 +2,19 @@ import { useState, useEffect } from "react";
 import "./Footer.css";
 
 export default function Footer() {
-  const [nyTime, setNyTime] = useState("");
+  const [alwarTime, setAlwarTime] = useState("");
 
-  // Live New York Time
+  // Live Alwar, India Time (Asia/Kolkata)
   useEffect(() => {
     const updateTime = () => {
       const now = new Date();
       const options = {
-        timeZone: "America/New_York",
+        timeZone: "Asia/Kolkata",
         hour12: false,
         hour: "2-digit",
         minute: "2-digit",
       };
-      setNyTime(now.toLocaleTimeString("en-US", options));
+      setAlwarTime(now.toLocaleTimeString("en-US", options));
     };
 
     updateTime();
@@ -40,7 +40,7 @@ export default function Footer() {
     <footer className="rw-footer" id="contact">
       <div className="rw-footer__container">
         {/* ============================================================
-            TOP 5-COLUMN GRID
+            TOP 4-COLUMN GRID
             ============================================================ */}
         <div className="rw-footer__top">
           {/* Column 1: Brand Info & CTA */}
@@ -51,25 +51,24 @@ export default function Footer() {
                 <span className="rw-footer__dot" />
                 <span className="rw-footer__wave rw-footer__wave--right" />
               </div>
-              <span className="rw-footer__brand-name">Reachwise</span>
+              <span className="rw-footer__brand-name">RizeWorld</span>
             </a>
 
             <p className="rw-footer__tagline">
-              SEO, social media and paid ads that bring the right people to your
-              door.
+              RizeWorld’s SEO strategy combines on-page SEO, technical optimization, content strategy, and local SEO to create a stronger digital presence and reach potential customers through organic search.
             </p>
 
             {/* Availability Pill */}
             <div className="rw-footer__status-pill">
               <span className="rw-footer__status-dot" />
               <span className="rw-footer__status-text">
-                Now booking Q4 · 3 spots left
+                Ranked #1 in Alwar & Local Pack
               </span>
             </div>
 
             {/* CTA Button */}
-            <a href="#audit" className="rw-footer__btn-cta">
-              <span>Book a strategy call</span>
+            <a href="mailto:hr.rizeworld@gmail.com" className="rw-footer__btn-cta">
+              <span>Contact RizeWorld</span>
               <span className="rw-footer__btn-icon">
                 <svg
                   width="13"
@@ -81,10 +80,8 @@ export default function Footer() {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 >
-                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                  <line x1="16" y1="2" x2="16" y2="6" />
-                  <line x1="8" y1="2" x2="8" y2="6" />
-                  <line x1="3" y1="10" x2="21" y2="10" />
+                  <line x1="7" y1="17" x2="17" y2="7" />
+                  <polyline points="7 7 17 7 17 17" />
                 </svg>
               </span>
             </a>
@@ -94,48 +91,39 @@ export default function Footer() {
           <div className="rw-footer__col">
             <div className="rw-footer__col-heading">SERVICES</div>
             <ul className="rw-footer__links">
-              <li><a href="#services">SEO</a></li>
-              <li><a href="#services">Social media</a></li>
-              <li><a href="#services">Paid ads</a></li>
-              <li><a href="#services">Content</a></li>
-              <li><a href="#services">Web design</a></li>
-              <li><a href="#services">Branding</a></li>
+              <li><a href="#services">SEO Services & Optimization</a></li>
+              <li><a href="#why-us">Local SEO in Alwar</a></li>
+              <li><a href="#services">Technical SEO Structure</a></li>
+              <li><a href="#services">On-Page SEO Optimization</a></li>
+              <li><a href="#services">Web Development Company</a></li>
+              <li><a href="#services">Digital Marketing Agency</a></li>
             </ul>
           </div>
 
-          {/* Column 3: COMPANY */}
+          {/* Column 3: QUICK LINKS */}
           <div className="rw-footer__col">
-            <div className="rw-footer__col-heading">COMPANY</div>
+            <div className="rw-footer__col-heading">PORTFOLIO</div>
             <ul className="rw-footer__links">
-              <li><a href="#why-us">About</a></li>
-              <li><a href="#clients">Work</a></li>
-              <li><a href="#audit">Team</a></li>
-              <li><a href="#careers">Careers</a></li>
-              <li><a href="#audit">Contact</a></li>
+              <li><a href="#clients">(01) Project Overview</a></li>
+              <li><a href="#why-us">(02) Local SEO Strategy</a></li>
+              <li><a href="#services">(03) SEO Strategy Pillars</a></li>
+              <li><a href="#how-it-works">(04) Search Intent Funnel</a></li>
+              <li><a href="#results">(05) SEO Results</a></li>
+              <li><a href="#blog">(06) Deep-Dive Analysis</a></li>
+              <li><a href="#process">(07) Step-by-Step Process</a></li>
             </ul>
           </div>
 
-          {/* Column 4: RESOURCES */}
-          <div className="rw-footer__col">
-            <div className="rw-footer__col-heading">RESOURCES</div>
-            <ul className="rw-footer__links">
-              <li><a href="#blog">Blog</a></li>
-              <li><a href="#services">Pricing</a></li>
-              <li><a href="#faq">FAQ</a></li>
-            </ul>
-          </div>
-
-          {/* Column 5: CONTACT */}
+          {/* Column 4: CONTACT & LOCATION */}
           <div className="rw-footer__col rw-footer__col--contact">
             <div className="rw-footer__col-heading">CONTACT</div>
             <div className="rw-footer__contact-details">
-              <a href="mailto:hello@reachwisestudio.com" className="rw-footer__contact-link">
+              <a href="mailto:hr.rizeworld@gmail.com" className="rw-footer__contact-link">
                 hr.rizeworld@gmail.com
               </a>
-              <a href="tel:+12125550186" className="rw-footer__contact-link">
-                +91 90246 15510
-              </a>
-              <span className="rw-footer__contact-text">INDIA</span>
+              <span className="rw-footer__contact-text" style={{ lineHeight: "1.5", fontSize: "12px", color: "#94a3b8" }}>
+                C-198, near Telco Circle, UIT Colony, Shalimar Nagar, Alwar, Rajasthan 301001, India
+              </span>
             </div>
 
             {/* Social Pills */}
@@ -148,8 +136,6 @@ export default function Footer() {
                   Facebook
                 </a>
               </div>
-
-
             </div>
           </div>
         </div>
@@ -183,8 +169,9 @@ export default function Footer() {
 
           {/* Glowing Lime Text Layer (Clipped to circular torch around mouse) */}
           <span
-            className={`rw-footer__wordmark-text rw-footer__wordmark-text--lime ${isOverWordmark ? "rw-footer__wordmark-text--visible" : ""
-              }`}
+            className={`rw-footer__wordmark-text rw-footer__wordmark-text--lime ${
+              isOverWordmark ? "rw-footer__wordmark-text--visible" : ""
+            }`}
             aria-hidden="true"
           >
             RizeWorld
@@ -208,13 +195,12 @@ export default function Footer() {
             ============================================================ */}
         <div className="rw-footer__bottom">
           <div className="rw-footer__copyright">
-            <span>© 2026 RIZEWORLD</span>
-
+            <span>© 2026 RIZEWORLD — SEO PORTFOLIO</span>
           </div>
 
           <div className="rw-footer__clock">
             <span className="rw-footer__clock-dot" />
-            <span>LOCAL TIME {nyTime || "12:00"} · INDIA</span>
+            <span>LOCAL TIME {alwarTime || "12:21"} — ALWAR, INDIA</span>
           </div>
         </div>
       </div>

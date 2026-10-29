@@ -4,20 +4,20 @@ import "./RadarClients.css";
 
 export default function RadarClients() {
   const [activeBrand, setActiveBrand] = useState(null);
-  const [lastPing, setLastPing] = useState({ name: "NORTHSIDE DENTAL", growth: "+212%" });
+  const [lastPing, setLastPing] = useState({ name: "RIZEWORLD SEO ALWAR", growth: "#1 RANK" });
 
-  // Brand data with coordinates on the radar (% from center or x,y on a 500x500 plane)
+  // Brand & Keyword entities targeted across Alwar and regional search
   const brands = [
-    { id: 1, name: "brightline", x: 28, y: 22, tier: "GLOBAL", growth: "+184%" },
-    { id: 2, name: "Northside Dental", x: 38, y: 28, tier: "NATIONAL", growth: "+212%" },
-    { id: 3, name: "VERDE STUDIO", x: 18, y: 39, tier: "GLOBAL", growth: "+145%" },
-    { id: 4, name: "PARCEL & CO", x: 19, y: 56, tier: "NATIONAL", growth: "+96%" },
-    { id: 5, name: "Tallow", x: 42, y: 58, tier: "LOCAL", growth: "+310%" },
-    { id: 6, name: "Lumen Skin", x: 58, y: 64, tier: "REGIONAL", growth: "+270%" },
-    { id: 7, name: "HAVEN REALTY", x: 62, y: 73, tier: "NATIONAL", growth: "+160%" },
-    { id: 8, name: "orbit legal", x: 40, y: 81, tier: "GLOBAL", growth: "+130%" },
-    { id: 9, name: "FITLOOP", x: 65, y: 53, tier: "REGIONAL", growth: "+195%" },
-    { id: 10, name: "kettlebrook coffee", x: 74, y: 46, tier: "GLOBAL", growth: "+225%" },
+    { id: 1, name: "SEO Agency Alwar", x: 28, y: 22, tier: "LOCAL PACK", growth: "#1 RANK" },
+    { id: 2, name: "Web Dev Alwar", x: 38, y: 28, tier: "REGIONAL", growth: "#1 RANK" },
+    { id: 3, name: "Digital Marketing", x: 18, y: 39, tier: "COMMERCIAL", growth: "TOP 3" },
+    { id: 4, name: "Shalimar Nagar Pack", x: 19, y: 56, tier: "LOCAL", growth: "RANK #1" },
+    { id: 5, name: "UIT Colony Search", x: 42, y: 58, tier: "GEO-TARGET", growth: "#1 RANK" },
+    { id: 6, name: "Telco Circle Pack", x: 58, y: 64, tier: "LOCAL", growth: "#1 RANK" },
+    { id: 7, name: "Rajasthan Tech SEO", x: 62, y: 73, tier: "STATEWIDE", growth: "TOP 5" },
+    { id: 8, name: "Local Citations NAP", x: 40, y: 81, tier: "AUTHORITY", growth: "100%" },
+    { id: 9, name: "Near Me Queries", x: 65, y: 53, tier: "LOCAL PACK", growth: "#1 RANK" },
+    { id: 10, name: "RizeWorld SEO Alwar", x: 74, y: 46, tier: "CORE BRAND", growth: "#1 RANK" },
   ];
 
   const [sweptBrandId, setSweptBrandId] = useState(10); // default kettlebrook like in video
@@ -42,23 +42,23 @@ export default function RadarClients() {
           {/* Section Pill */}
           <div className="radar-pill">
             <span className="radar-pill__dot" />
-            <span className="radar-pill__text">(03) Clients</span>
+            <span className="radar-pill__text">(01) Project Overview & SEO Objective</span>
           </div>
 
           {/* Headline */}
           <h2 className="radar-title">
-            <span className="radar-title__main">140+ brands</span>
+            <span className="radar-title__main">SEO Objective &</span>
             <span className="radar-title__badges">
-              <span className="radar-badge">on</span>{" "}
-              <span className="radar-badge">our</span>{" "}
-              <span className="radar-badge">radar.</span>
+              <span className="radar-badge">Online</span>{" "}
+              <span className="radar-badge">Visibility.</span>
             </span>
           </h2>
 
           {/* Subtitle */}
           <p className="radar-desc">
-            Local clinics, cafés and online shops to national brands. Every one
-            of them came to us to be found by more of the right people.
+            RizeWorld’s SEO strategy was focused on strengthening organic visibility, improving search relevance, and creating a structured website experience for businesses targeting Alwar and surrounding areas.
+            <br /><br />
+            The approach combined keyword research, on-page SEO, technical optimization, local search, and content strategy to build a stronger foundation for long-term organic growth.
           </p>
 
           <div className="radar-divider" />

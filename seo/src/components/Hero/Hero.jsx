@@ -128,7 +128,7 @@ export default function Hero() {
         >
           <span className="hero-status-pill__dot" />
           <span className="hero-status-pill__text">
-            Now booking Q4 · 3 spots left
+            RizeWorld · Ranked #1 in Alwar & Local Pack
           </span>
         </motion.div>
 
@@ -158,9 +158,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.35 }}
         >
-          Reachwise is a digital marketing agency. We run SEO, social media and
-          paid ads that put your brand in front of the people who buy, and we
-          report every result in plain numbers.
+          RizeWorld’s SEO strategy combines keyword research, on-page SEO, technical optimization, local search, and content strategy to build a stronger foundation for long-term organic growth.
         </motion.p>
 
         {/* CTA Buttons */}
@@ -171,8 +169,8 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.45 }}
         >
           {/* Primary Strategy Button */}
-          <a href="#strategy" className="hero-btn-primary">
-            <span>Book a strategy call</span>
+          <a href="#clients" className="hero-btn-primary">
+            <span>Explore SEO Strategy</span>
             <span className="hero-btn-primary__icon">
               <svg
                 width="16"
@@ -184,17 +182,15 @@ export default function Hero() {
                 strokeLinecap="round"
                 strokeLinejoin="round"
               >
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                <line x1="16" y1="2" x2="16" y2="6" />
-                <line x1="8" y1="2" x2="8" y2="6" />
-                <line x1="3" y1="10" x2="21" y2="10" />
+                <line x1="7" y1="17" x2="17" y2="7" />
+                <polyline points="7 7 17 7 17 17" />
               </svg>
             </span>
           </a>
 
           {/* Secondary Work Button */}
-          <a href="#work" className="hero-btn-secondary">
-            <span>See our work</span>
+          <a href="#results" className="hero-btn-secondary">
+            <span>See Results</span>
             <svg
               className="hero-btn-secondary__arrow"
               width="15"

@@ -10,70 +10,60 @@ export default function CaseStudies() {
 
   const clients = [
     {
-      id: "northside",
-      name: "Northside Dental",
-      year: "2025",
-      metricLabel: "ORGANIC VISITS A MONTH",
-      beforeVal: "4,200",
-      afterVal: "38,900",
+      id: "local-seo",
+      name: "Local SEO in Alwar",
+      year: "2026",
+      metricLabel: "LOCAL SEARCH VISIBILITY",
+      beforeVal: "Unranked",
+      afterVal: "#1 Local Pack",
       metricUnit: "",
-      avatar: "/dental-clinic.jpg",
-      summary: "4,200 → 38,900",
+      avatar: "/city-intersection.jpg",
+      summary: "Ranked #1 in Alwar",
+      desc: "Improved local search visibility and strengthened location relevance across Alwar & surrounding areas.",
+      tag1: "Local SEO",
+      tag2: "Alwar Pack",
     },
     {
-      id: "kettlebrook",
-      name: "Kettlebrook Coffee",
-      year: "2024",
-      metricLabel: "MONTHLY REVENUE",
-      beforeVal: "8,100",
-      afterVal: "96,400",
-      metricUnit: "$",
-      avatar: "/crowd-bg.jpg",
-      summary: "8,100 → 96,400",
-    },
-    {
-      id: "fitloop",
-      name: "Fitloop",
-      year: "2024",
-      metricLabel: "PAID AD ROAS",
-      beforeVal: "1.4x",
-      afterVal: "6.2x",
+      id: "target-keywords",
+      name: "Target Keywords",
+      year: "2026",
+      metricLabel: "SEARCH INTENT MAPPING",
+      beforeVal: "Scattered",
+      afterVal: "Structured",
       metricUnit: "",
-      avatar: "/crowd-bg.jpg",
-      summary: "1.4x → 6.2x",
+      avatar: "/laptop-analytics.jpg",
+      summary: "Commercial & Local",
+      desc: "Structured relevant commercial and local keywords around appropriate website pages.",
+      tag1: "Keywords",
+      tag2: "Search Intent",
     },
     {
-      id: "haven",
-      name: "Haven Realty",
-      year: "2025",
-      metricLabel: "QUALIFIED LEADS PER MO",
-      beforeVal: "14",
-      afterVal: "122",
-      metricUnit: "",
-      avatar: "/dental-clinic.jpg",
-      summary: "14 → 122",
-    },
-    {
-      id: "lumen",
-      name: "Lumen Skin",
-      year: "2024",
-      metricLabel: "ECOMMERCE REVENUE",
-      beforeVal: "$18k",
-      afterVal: "$142k",
+      id: "technical-seo",
+      name: "Technical SEO",
+      year: "2026",
+      metricLabel: "CRAWLABILITY & HEALTH",
+      beforeVal: "48%",
+      afterVal: "99%",
       metricUnit: "",
       avatar: "/crowd-bg.jpg",
-      summary: "$18k → $142k",
+      summary: "Crawl-Friendly Setup",
+      desc: "Improved the website’s technical foundation, crawlability, and search-friendly structure.",
+      tag1: "Technical",
+      tag2: "Core Web Vitals",
     },
     {
-      id: "orbit",
-      name: "Orbit Legal",
-      year: "2025",
-      metricLabel: "CLIENT INQUIRIES / MO",
-      beforeVal: "9",
-      afterVal: "57",
+      id: "on-page-seo",
+      name: "On-Page SEO",
+      year: "2026",
+      metricLabel: "METADATA & HEADINGS",
+      beforeVal: "Basic",
+      afterVal: "Optimized",
       metricUnit: "",
       avatar: "/dental-clinic.jpg",
-      summary: "9 → 57",
+      summary: "Page Relevance",
+      desc: "Refined content, metadata, headings, images, and internal linking for clearer page relevance.",
+      tag1: "On-Page",
+      tag2: "Internal Links",
     },
   ];
 
@@ -110,36 +100,19 @@ export default function CaseStudies() {
           <div className="cases-header__left">
             <div className="cases-pill">
               <span className="cases-pill__dot" />
-              <span className="cases-pill__text">(04) Results</span>
+              <span className="cases-pill__text">(05) SEO Results & Visibility</span>
             </div>
 
             <h2 className="cases-title">
-              <span className="cases-title__row">Results you can</span>
-              <span className="cases-title__highlight">count.</span>
+              <span className="cases-title__row">Results You Can</span>
+              <span className="cases-title__highlight">Count.</span>
             </h2>
           </div>
 
           <div className="cases-header__right">
             <p className="cases-desc">
-              Six clients, six channels, one rule: we report the number that
-              pays the bills, before and after.
+              The SEO work focused on building a stronger organic-search foundation for RizeWorld by improving local relevance, keyword targeting, technical structure, and on-page optimization.
             </p>
-            <a href="#case-studies" className="cases-btn-all">
-              <span>All case studies</span>
-              <svg
-                width="13"
-                height="13"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <line x1="7" y1="17" x2="17" y2="7" />
-                <polyline points="7 7 17 7 17 17" />
-              </svg>
-            </a>
           </div>
         </div>
 
@@ -183,7 +156,7 @@ export default function CaseStudies() {
           <div className="cases-card__badge-left">
             <span className="cases-card__badge-dot" />
             <span className="cases-card__badge-text">
-              {current.name} · {current.year}
+              {current.name} · Alwar Local Search — 2026
             </span>
           </div>
 
@@ -327,27 +300,22 @@ export default function CaseStudies() {
           </div>
         </div>
 
-        {/* Bottom Case Details Bar (matching video at 00:11) */}
+        {/* Bottom Case Details Bar */}
         <div className="cases-detail-bar">
           <div className="cases-detail-bar__left">
-            <div className="cases-detail-bar__cat">DENTAL CLINIC · 2025</div>
+            <div className="cases-detail-bar__cat">Alwar Local Search — 2026</div>
             <h3 className="cases-detail-bar__title">
-              From page 4 to the top 3 for "dentist near me"
+              {current.name}
             </h3>
           </div>
 
           <div className="cases-detail-bar__right">
             <p className="cases-detail-bar__desc">
-              A local SEO rebuild: 88 location pages, 580 reviews and a content
-              plan for every treatment.
+              {current.desc}
             </p>
             <div className="cases-detail-bar__actions">
-              <span className="cases-detail-pill">SEO</span>
-              <span className="cases-detail-pill">Content</span>
-              <a href="#read-case" className="cases-detail-btn">
-                <span>READ THE CASE</span>
-                <span className="cases-detail-btn__arrow">↗</span>
-              </a>
+              <span className="cases-detail-pill">{current.tag1}</span>
+              <span className="cases-detail-pill">{current.tag2}</span>
             </div>
           </div>
         </div>

@@ -11,13 +11,13 @@ export default function CrowdBuyers() {
           <div className="crowd-header__left">
             <div className="crowd-pill">
               <span className="crowd-pill__dot" />
-              <span className="crowd-pill__text">(01) Project Overview & SEO Objective</span>
+              <span className="crowd-pill__text">(02) Local SEO Strategy (Alwar)</span>
             </div>
 
             <h2 className="crowd-title">
-              <span className="crowd-title__line">SEO Objective &</span>
+              <span className="crowd-title__line">Local SEO Dominance.</span>
               <span className="crowd-title__line">
-                <span className="crowd-badge">Online Visibility.</span>
+                Ranked #1 in <span className="crowd-badge">Alwar & Local Pack.</span>
               </span>
             </h2>
           </div>
@@ -25,40 +25,47 @@ export default function CrowdBuyers() {
           {/* Right Description, Button & Meta */}
           <div className="crowd-header__right">
             <p className="crowd-desc">
-              RizeWorld’s SEO strategy was focused on strengthening organic visibility,
-              improving search relevance, and creating a structured website experience
-              for businesses targeting Alwar and surrounding areas. The approach combined
-              keyword research, on-page SEO, technical optimization, local SEO, and content architecture.
+              A local SEO strategy was developed to improve RizeWorld’s visibility for relevant searches in Alwar. The focus was on strengthening Google Business Profile signals, local relevance, citations, and location-based website optimization.
             </p>
-
-            <a href="#results" className="crowd-btn-about">
-              <span>View Case Results</span>
-              <svg
-                width="13"
-                height="13"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <line x1="7" y1="17" x2="17" y2="7" />
-                <polyline points="7 7 17 7 17 17" />
-              </svg>
-            </a>
 
             <div className="crowd-stats-row">
               <span className="crowd-stat-item">
-                <span className="crowd-stat-bullet">•</span> RIZEWORLD SEO
+                <span className="crowd-stat-bullet">•</span> GOOGLE BUSINESS PROFILE
               </span>
               <span className="crowd-stat-item">
-                <span className="crowd-stat-bullet">•</span> ALWAR & REGIONAL
+                <span className="crowd-stat-bullet">•</span> NAP CONSISTENCY
               </span>
               <span className="crowd-stat-item">
-                <span className="crowd-stat-bullet">•</span> LOCAL SEARCH INTENT
+                <span className="crowd-stat-bullet">•</span> ALWAR LOCAL SEARCH
               </span>
             </div>
+          </div>
+        </div>
+
+        {/* Three Local SEO Strategy Cards */}
+        <div className="crowd-cards-grid">
+          <div className="crowd-card">
+            <div className="crowd-card__badge">01</div>
+            <h3 className="crowd-card__title">Google Business Profile (GBP)</h3>
+            <p className="crowd-card__desc">
+              Optimized business information, primary categories, services, and local signals to improve visibility for relevant searches.
+            </p>
+          </div>
+
+          <div className="crowd-card">
+            <div className="crowd-card__badge">02</div>
+            <h3 className="crowd-card__title">Local Citations & NAP Consistency</h3>
+            <p className="crowd-card__desc">
+              Maintained consistent business information across relevant directories, listings, and citation sources.
+            </p>
+          </div>
+
+          <div className="crowd-card">
+            <div className="crowd-card__badge">03</div>
+            <h3 className="crowd-card__title">Location-Based On-Page Signals</h3>
+            <p className="crowd-card__desc">
+              Strengthened location relevance through locally focused content, headings, structured data, and service information.
+            </p>
           </div>
         </div>
 

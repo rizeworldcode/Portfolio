@@ -1,34 +1,33 @@
 import React, { useEffect, useRef, useState, useMemo } from "react";
 import "./CrowdBox.css";
 
-// Cluster configurations matching the reference video
+// Cluster configurations matching Alwar Local SEO Strategy
 const CLUSTERS = [
   {
-    id: "search",
-    tag: "SEARCH",
-    count: "245",
-    desc: 'searching "services in Alwar"',
-    // Normalized position coordinates (percentage of canvas)
+    id: "gbp",
+    tag: "01 GBP",
+    count: "#1 RANK",
+    desc: "Google Business Profile in Alwar",
     xPercent: 41,
     yPercent: 54,
     radius: 46,
     particleCount: 55,
   },
   {
-    id: "feeds",
-    tag: "FEEDS",
-    count: "1,284",
-    desc: "following #localbusiness",
+    id: "citations",
+    tag: "02 CITATIONS",
+    count: "100% NAP",
+    desc: "Consistent directory signals",
     xPercent: 62,
     yPercent: 32,
     radius: 52,
     particleCount: 65,
   },
   {
-    id: "audiences",
-    tag: "AUDIENCES",
-    count: "78",
-    desc: "high-intent buyers",
+    id: "onpage",
+    tag: "03 ON-PAGE",
+    count: "ALWAR PACK",
+    desc: "Location-based content & schemas",
     xPercent: 81,
     yPercent: 62,
     radius: 44,
@@ -309,7 +308,7 @@ export default function CrowdBox() {
       {/* Top Left Tag */}
       <div className="crowd-box__top-tag">
         <span className="crowd-box__top-dot" />
-        <span className="crowd-box__top-text">1,200 PEOPLE IN THE CROWD</span>
+        <span className="crowd-box__top-text">ALWAR LOCAL SEARCH DOMINANCE</span>
       </div>
 
       {/* Interactive Cluster Overlay Labels */}
@@ -345,10 +344,10 @@ export default function CrowdBox() {
       {/* Bottom Left Dynamic Stat Counter */}
       <div className="crowd-box__bottom-stat">
         <div className="crowd-stat__headline">
-          <span className="crowd-stat__prefix">1 in</span>
-          <span className="crowd-stat__counter">{formattedRatio}</span>
+          <span className="crowd-stat__prefix">Ranked</span>
+          <span className="crowd-stat__counter">#1</span>
         </div>
-        <div className="crowd-stat__subline">is your buyer</div>
+        <div className="crowd-stat__subline">in Alwar Local 3-Pack & Maps</div>
       </div>
     </div>
   );
