@@ -189,7 +189,7 @@ export default function FunnelProcess() {
           {/* Pill Badge */}
           <div className="funnel-pill">
             <span className="funnel-pill__dot" />
-            <span className="funnel-pill__text">(04) How we work</span>
+            <span className="funnel-pill__text">(05) How we work</span>
           </div>
 
           {/* Headline */}

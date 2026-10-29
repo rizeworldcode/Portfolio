@@ -189,6 +189,7 @@ export default function Channels() {
         >
           {channelsData.map((ch) => {
             const isActive = ch.id === activeChannel;
+            const isDarkCard = ch.bgColor === "#11141a" || ch.bgColor === "#000000" || ch.bgColor === "#0a0b0e";
 
             if (isActive) {
               return (
@@ -196,7 +197,9 @@ export default function Channels() {
                   key={ch.id}
                   layout
                   transition={{ type: "spring", stiffness: 320, damping: 30 }}
-                  className={`channels-active-card channels-active-card--${ch.id}`}
+                  className={`channels-active-card channels-active-card--${ch.id} ${
+                    isDarkCard ? "channels-active-card--dark" : "channels-active-card--light"
+                  }`}
                   style={{ backgroundColor: ch.bgColor }}
                 >
                   {/* Top Left Number Circle */}
@@ -207,7 +210,28 @@ export default function Channels() {
                   {/* Card Content Split: Left Mockup, Right Details */}
                   <div className="channels-card-inner">
                     {/* Left Side: Mockup Window depending on channel */}
-                    {ch.id === "03" ? (
+                    {ch.id === "02" ? (
+                      /* Social Media Reel Mockup */
+                      <div className="channels-mockup channels-mockup--social">
+                        <div className="channels-social-reel-box">
+                          <div className="channels-social-reel-header">
+                            <span className="channels-social-reel-tag">VIRAL REEL</span>
+                            <span className="channels-social-reel-views">4.8M views</span>
+                          </div>
+                          <div className="channels-social-reel-body">
+                            <div className="channels-social-play-btn">▶</div>
+                            <div className="channels-social-audio-wave">
+                              <span /><span /><span /><span /><span />
+                            </div>
+                          </div>
+                          <div className="channels-social-reel-footer">
+                            <div className="channels-social-handle">@reachwise.growth</div>
+                            <div className="channels-social-caption">Hook them in the first 2 seconds 🚀</div>
+                            <div className="channels-social-stats">❤️ 142k · 💬 3.4k · ↗ 82k shares</div>
+                          </div>
+                        </div>
+                      </div>
+                    ) : ch.id === "03" ? (
                       /* Paid Ads Mockup (matching video 00:07) */
                       <div className="channels-mockup channels-mockup--ads">
                         <div className="channels-ads-box">
@@ -250,15 +274,29 @@ export default function Channels() {
                         </div>
                       </div>
                     ) : ch.id === "05" ? (
-                      /* Web Design Mockup (matching video 00:09) */
+                      /* Web Design Mockup */
                       <div className="channels-mockup channels-mockup--web">
                         <div className="channels-web-wireframe">
-                          <div className="channels-web-nav-dots">
-                            <span /><span /><span />
+                          <div className="channels-web-browser-bar">
+                            <div className="channels-web-nav-dots">
+                              <span className="dot--red" />
+                              <span className="dot--yellow" />
+                              <span className="dot--green" />
+                            </div>
+                            <div className="channels-web-url-bar">yoursite.com/offer</div>
                           </div>
-                          <div className="channels-web-hero-block" />
+                          <div className="channels-web-hero-block">
+                            <div className="channels-web-block-header">
+                              <span className="channels-web-badge-mini">NEW LAUNCH</span>
+                              <span className="channels-web-speed-badge">⚡ 99/100</span>
+                            </div>
+                            <div className="channels-web-headline-bar" />
+                            <div className="channels-web-sub-bar" />
+                            <div className="channels-web-btn-mock">Book Demo →</div>
+                          </div>
                           <div className="channels-web-code-row">
                             <span className="channels-web-code-pill">Conversion · 8.2%</span>
+                            <span className="channels-web-meta-pill">+214% ROI</span>
                           </div>
                         </div>
                       </div>

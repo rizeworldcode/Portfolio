@@ -452,34 +452,233 @@
   color: #10b981;
 }
 
-/* Web Design Wireframe Mockup (Video 00:09) */
+/* Social Media Reel Mockup */
+.channels-mockup--social {
+  width: 100%;
+  max-width: 380px;
+}
+
+.channels-social-reel-box {
+  background: #080a0e;
+  border-radius: 22px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.channels-social-reel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.channels-social-reel-tag {
+  background: #f43f5e;
+  color: #ffffff;
+  font-family: var(--font-main);
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 3px 10px;
+  border-radius: 9999px;
+}
+
+.channels-social-reel-views {
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 700;
+  color: #d4ff00;
+}
+
+.channels-social-reel-body {
+  height: 90px;
+  background: linear-gradient(135deg, rgba(212, 255, 0, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.channels-social-play-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #d4ff00;
+  color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 900;
+  padding-left: 3px;
+  box-shadow: 0 4px 14px rgba(212, 255, 0, 0.4);
+}
+
+.channels-social-audio-wave {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 24px;
+}
+
+.channels-social-audio-wave span {
+  width: 3px;
+  background: #d4ff00;
+  border-radius: 99px;
+  animation: audioWave 1.2s ease-in-out infinite alternate;
+}
+
+.channels-social-audio-wave span:nth-child(1) { height: 12px; animation-delay: 0.1s; }
+.channels-social-audio-wave span:nth-child(2) { height: 22px; animation-delay: 0.3s; }
+.channels-social-audio-wave span:nth-child(3) { height: 16px; animation-delay: 0.2s; }
+.channels-social-audio-wave span:nth-child(4) { height: 26px; animation-delay: 0.4s; }
+.channels-social-audio-wave span:nth-child(5) { height: 10px; animation-delay: 0.15s; }
+
+@keyframes audioWave {
+  0% { transform: scaleY(0.4); }
+  100% { transform: scaleY(1.2); }
+}
+
+.channels-social-reel-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.channels-social-handle {
+  font-family: var(--font-main);
+  font-size: 12px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.channels-social-caption {
+  font-family: var(--font-main);
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+.channels-social-stats {
+  font-family: var(--font-main);
+  font-size: 10.5px;
+  font-weight: 600;
+  color: #d4ff00;
+  margin-top: 4px;
+}
+
+/* Web Design Wireframe Mockup */
 .channels-web-wireframe {
-  background: #000000;
+  background: #090c10;
   border-radius: 20px;
-  padding: 18px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
+.channels-web-browser-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .channels-web-nav-dots {
   display: flex;
-  gap: 6px;
+  gap: 5px;
 }
 
 .channels-web-nav-dots span {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
+}
+
+.dot--red { background: #ef4444; }
+.dot--yellow { background: #eab308; }
+.dot--green { background: #22c55e; }
+
+.channels-web-url-bar {
+  font-family: var(--font-main);
+  font-size: 10.5px;
+  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 3px 12px;
+  border-radius: 6px;
+  flex: 1;
 }
 
 .channels-web-hero-block {
   width: 100%;
-  height: 90px;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.channels-web-block-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.channels-web-badge-mini {
+  font-family: var(--font-main);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #d4ff00;
+}
+
+.channels-web-speed-badge {
+  font-family: var(--font-main);
+  font-size: 9.5px;
+  font-weight: 700;
+  color: #22c55e;
+}
+
+.channels-web-headline-bar {
+  width: 75%;
+  height: 10px;
+  background: #ffffff;
+  border-radius: 4px;
+}
+
+.channels-web-sub-bar {
+  width: 50%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 4px;
+}
+
+.channels-web-btn-mock {
+  display: inline-block;
+  align-self: flex-start;
+  margin-top: 4px;
+  background: #d4ff00;
+  color: #000000;
+  font-family: var(--font-main);
+  font-size: 10px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.channels-web-code-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .channels-web-code-pill {
@@ -490,6 +689,69 @@
   font-weight: 800;
   padding: 3px 10px;
   border-radius: 9999px;
+}
+
+.channels-web-meta-pill {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-family: var(--font-main);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 9999px;
+}
+
+/* ============================================================
+   DARK ACTIVE CARD OVERRIDES (02 Social Media & 05 Web Design)
+   ============================================================ */
+
+.channels-active-card--dark {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4) !important;
+}
+
+.channels-active-card--dark .channels-info__title {
+  color: #ffffff !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.channels-active-card--dark .channels-info__desc {
+  color: #cbd5e1 !important;
+}
+
+.channels-active-card--dark .channels-info__included-label {
+  color: #94a3b8 !important;
+}
+
+.channels-active-card--dark .channels-info__item {
+  color: #f8fafc !important;
+}
+
+.channels-active-card--dark .channels-info__check {
+  color: #d4ff00 !important;
+}
+
+.channels-active-card--dark .channels-info__footer {
+  border-top-color: rgba(255, 255, 255, 0.14) !important;
+}
+
+.channels-active-card--dark .channels-info__price-label {
+  color: #94a3b8 !important;
+}
+
+.channels-active-card--dark .channels-info__price-val {
+  color: #ffffff !important;
+}
+
+.channels-active-card--dark .channels-btn-explore {
+  background: rgba(255, 255, 255, 0.12) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+}
+
+.channels-active-card--dark .channels-btn-explore:hover {
+  background: rgba(255, 255, 255, 0.22) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
 }
 
 /* ---- Right Info & Features ---- */

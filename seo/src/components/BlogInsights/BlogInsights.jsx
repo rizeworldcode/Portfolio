@@ -46,6 +46,11 @@ export default function BlogInsights() {
             ============================================================ */}
         <div className="blog-header">
           <div className="blog-header__left">
+            <div className="blog-pill">
+              <span className="blog-pill__dot" />
+              <span className="blog-pill__text">(06) Insights</span>
+            </div>
+
             <h2 className="blog-title">
               <span className="blog-title__line">Ideas we</span>
               <span className="blog-title__line">

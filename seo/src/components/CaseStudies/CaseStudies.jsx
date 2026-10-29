@@ -108,6 +108,11 @@ export default function CaseStudies() {
             ============================================================ */}
         <div className="cases-header">
           <div className="cases-header__left">
+            <div className="cases-pill">
+              <span className="cases-pill__dot" />
+              <span className="cases-pill__text">(04) Results</span>
+            </div>
+
             <h2 className="cases-title">
               <span className="cases-title__row">Results you can</span>
               <span className="cases-title__highlight">count.</span>

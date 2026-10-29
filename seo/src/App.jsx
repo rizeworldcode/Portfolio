@@ -1,8 +1,8 @@
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
-import RadarClients from "./components/RadarClients/RadarClients";
 import CrowdBuyers from "./components/CrowdBuyers/CrowdBuyers";
 import Channels from "./components/Channels/Channels";
+import RadarClients from "./components/RadarClients/RadarClients";
 import CaseStudies from "./components/CaseStudies/CaseStudies";
 import FunnelProcess from "./components/FunnelProcess/FunnelProcess";
 import BlogInsights from "./components/BlogInsights/BlogInsights";
@@ -15,31 +15,31 @@ function App() {
       {/* Top Floating Glassmorphic Navbar */}
       <Navbar />
 
-      {/* Main Sequential Portfolio Sections */}
+      {/* Main Sequential Portfolio Sections (01 to 06 in exact order) */}
       <main>
-        {/* 01: Hero with Spotlight & Radar */}
+        {/* Hero with Spotlight & Crowd */}
         <Hero />
 
-        {/* 02: Clients on Radar */}
-        <RadarClients />
-
-        {/* 03: Why Reachwise / Crowd Buyers */}
+        {/* 01: Why Reachwise / Crowd & Buyers */}
         <CrowdBuyers />
 
-        {/* 04: Six channels. One growth plan. */}
+        {/* 02: Six channels. One growth plan. */}
         <Channels />
 
-        {/* 05: Results you can count (Split Slider) */}
+        {/* 03: Clients on Radar */}
+        <RadarClients />
+
+        {/* 04: Results you can count (Split Slider) */}
         <CaseStudies />
 
-        {/* 06: From attention to clients (Conversion Funnel) */}
+        {/* 05: From attention to clients (Conversion Funnel) */}
         <FunnelProcess />
 
-        {/* 13: Ideas we test first (Blog & Insights) */}
+        {/* 06: Ideas we test first (Blog & Insights) */}
         <BlogInsights />
       </main>
 
-      {/* 15: Giant Wordmark Editorial Footer */}
+      {/* Giant Wordmark Editorial Footer */}
       <Footer />
     </div>
   );

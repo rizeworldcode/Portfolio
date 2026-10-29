@@ -35,6 +35,35 @@
 .blog-header__left {
   display: flex;
   flex-direction: column;
+  gap: 16px;
+}
+
+.blog-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 5px 14px;
+  border-radius: 9999px;
+  align-self: flex-start;
+}
+
+.blog-pill__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #a3e635;
+  box-shadow: 0 0 6px #a3e635;
+}
+
+.blog-pill__text {
+  font-family: var(--font-main);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #555b66;
+  text-transform: uppercase;
 }
 
 .blog-title {

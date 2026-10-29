@@ -11,13 +11,13 @@ export default function CrowdBuyers() {
           <div className="crowd-header__left">
             <div className="crowd-pill">
               <span className="crowd-pill__dot" />
-              <span className="crowd-pill__text">(01) Why Reachwise</span>
+              <span className="crowd-pill__text">(01) Project Overview & SEO Objective</span>
             </div>
 
             <h2 className="crowd-title">
-              <span className="crowd-title__line">Everyone is a crowd.</span>
+              <span className="crowd-title__line">SEO Objective &</span>
               <span className="crowd-title__line">
-                We find <span className="crowd-badge">your buyers.</span>
+                <span className="crowd-badge">Online Visibility.</span>
               </span>
             </h2>
           </div>
@@ -25,13 +25,14 @@ export default function CrowdBuyers() {
           {/* Right Description, Button & Meta */}
           <div className="crowd-header__right">
             <p className="crowd-desc">
-              Most brands aren't invisible. They're talking to the wrong people.
-              We find the searches, feeds and audiences where your buyers
-              already are — and put you there.
+              RizeWorld’s SEO strategy was focused on strengthening organic visibility,
+              improving search relevance, and creating a structured website experience
+              for businesses targeting Alwar and surrounding areas. The approach combined
+              keyword research, on-page SEO, technical optimization, local SEO, and content architecture.
             </p>
 
-            <a href="#about" className="crowd-btn-about">
-              <span>About us</span>
+            <a href="#results" className="crowd-btn-about">
+              <span>View Case Results</span>
               <svg
                 width="13"
                 height="13"
@@ -49,13 +50,13 @@ export default function CrowdBuyers() {
 
             <div className="crowd-stats-row">
               <span className="crowd-stat-item">
-                <span className="crowd-stat-bullet">•</span> FOUNDED 2018
+                <span className="crowd-stat-bullet">•</span> RIZEWORLD SEO
               </span>
               <span className="crowd-stat-item">
-                <span className="crowd-stat-bullet">•</span> 16 PEOPLE
+                <span className="crowd-stat-bullet">•</span> ALWAR & REGIONAL
               </span>
               <span className="crowd-stat-item">
-                <span className="crowd-stat-bullet">•</span> NEW YORK • REMOTE
+                <span className="crowd-stat-bullet">•</span> LOCAL SEARCH INTENT
               </span>
             </div>
           </div>
