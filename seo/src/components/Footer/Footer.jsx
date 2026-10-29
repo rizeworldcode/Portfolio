@@ -26,15 +26,7 @@ export default function Footer() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const [wordmarkPos, setWordmarkPos] = useState({ x: 50, y: 50 });
-  const [isOverWordmark, setIsOverWordmark] = useState(false);
 
-  const handleWordmarkMouseMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-    setWordmarkPos({ x, y });
-  };
 
   return (
     <footer className="rw-footer" id="contact">
@@ -124,54 +116,20 @@ export default function Footer() {
         </div>
 
         {/* ============================================================
-            DIVIDER & "MOVE OVER THE NAME" HINT
+            DIVIDER
             ============================================================ */}
         <div className="rw-footer__mid-bar">
           <div className="rw-footer__divider" />
-          <div className="rw-footer__hint">MOVE OVER THE NAME</div>
         </div>
 
         {/* ============================================================
-            COLOSSAL GIANT WORDMARK WITH SPOTLIGHT
+            COLOSSAL GIANT WORDMARK (RIZE IN ORANGE + WORLD IN GREEN)
             ============================================================ */}
-        <div
-          className="rw-footer__giant-wordmark"
-          onClick={scrollToTop}
-          onMouseMove={handleWordmarkMouseMove}
-          onMouseEnter={() => setIsOverWordmark(true)}
-          onMouseLeave={() => setIsOverWordmark(false)}
-          style={{
-            "--mouse-x": `${wordmarkPos.x}%`,
-            "--mouse-y": `${wordmarkPos.y}%`,
-          }}
-        >
-          {/* Base Light-Gray Text Layer */}
-          <span className="rw-footer__wordmark-text rw-footer__wordmark-text--base">
-            RizeWorld
-          </span>
-
-          {/* Glowing Dual-Tone Brand Text Layer (Rize in Orange + World in Green) */}
-          <span
-            className={`rw-footer__wordmark-text rw-footer__wordmark-text--dual ${
-              isOverWordmark ? "rw-footer__wordmark-text--visible" : ""
-            }`}
-            aria-hidden="true"
-          >
+        <div className="rw-footer__giant-wordmark" onClick={scrollToTop}>
+          <span className="rw-footer__wordmark-text">
             <span className="rw-wordmark-rize">Rize</span>
             <span className="rw-wordmark-world">World</span>
           </span>
-
-          {/* Lime Spotlight Halo Ring */}
-          {isOverWordmark && (
-            <div
-              className="rw-footer__wordmark-spotlight"
-              style={{
-                left: `${wordmarkPos.x}%`,
-                top: `${wordmarkPos.y}%`,
-              }}
-              aria-hidden="true"
-            />
-          )}
         </div>
 
         {/* ============================================================
