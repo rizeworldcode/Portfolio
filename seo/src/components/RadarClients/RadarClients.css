@@ -453,6 +453,13 @@
   transform: scale(1.25);
 }
 
+.radar-blip--green.radar-blip--active .radar-blip__dot,
+.radar-blip--green:hover .radar-blip__dot {
+  box-shadow:
+    0 0 0 3px #22c55e,
+    0 0 14px #22c55e;
+}
+
 .radar-blip__name {
   font-family: var(--font-main);
   font-size: 11px;

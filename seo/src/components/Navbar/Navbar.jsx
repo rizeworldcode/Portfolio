@@ -32,7 +32,10 @@ export default function Navbar() {
           <div className="rw-brand__logo-wrap">
             <img src="/RW.png" alt="RizeWorld" className="rw-brand__logo-img" />
           </div>
-          <span className="rw-brand__name">RizeWorld</span>
+          <span className="rw-brand__name">
+            <span style={{ color: "#ff6b35" }}>Rize</span>
+            <span style={{ color: "#22c55e" }}>World</span>
+          </span>
         </a>
 
         {/* Center Pill Navigation */}

@@ -256,9 +256,19 @@
   background-color: #cbd0c6;
 }
 
-/* When filled with lime green/yellow (Matching Video) */
+/* When filled with brand colors */
 .funnel-tier--filled-lime {
   background-color: #ff6b35 !important;
+}
+
+.funnel-tier--2.funnel-tier--filled-lime,
+.funnel-tier--4.funnel-tier--filled-lime {
+  background-color: #22c55e !important;
+}
+
+.funnel-tier--2 .funnel-tier__num,
+.funnel-tier--4 .funnel-tier__num {
+  color: #22c55e;
 }
 
 .funnel-tier--filled-lime .funnel-tier__number {

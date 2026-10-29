@@ -222,8 +222,8 @@ export default function CaseStudies() {
             >
               <defs>
                 <linearGradient id="limeFill" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#ff6b35" stopOpacity="0.45" />
-                  <stop offset="100%" stopColor="#ff6b35" stopOpacity="0.0" />
+                  <stop offset="0%" stopColor="#22c55e" stopOpacity="0.45" />
+                  <stop offset="100%" stopColor="#22c55e" stopOpacity="0.0" />
                 </linearGradient>
               </defs>
               {/* Shaded Area Under Curve */}
@@ -238,7 +238,7 @@ export default function CaseStudies() {
               <motion.path
                 d="M 280 380 Q 500 340, 650 300 T 1000 180"
                 fill="none"
-                stroke="#ff6b35"
+                stroke="#22c55e"
                 strokeWidth="4.5"
                 initial={{ pathLength: 0 }}
                 whileInView={{ pathLength: 1 }}

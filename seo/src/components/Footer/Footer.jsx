@@ -49,7 +49,10 @@ export default function Footer() {
               <div className="rw-footer__brand-logo-wrap">
                 <img src="/RW.png" alt="RizeWorld" className="rw-footer__brand-logo-img" />
               </div>
-              <span className="rw-footer__brand-name">RizeWorld</span>
+              <span className="rw-footer__brand-name">
+                <span style={{ color: "#ff6b35" }}>Rize</span>
+                <span style={{ color: "#22c55e" }}>World</span>
+              </span>
             </a>
 
             <p className="rw-footer__tagline">

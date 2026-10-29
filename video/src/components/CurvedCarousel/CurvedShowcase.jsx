@@ -49,7 +49,7 @@ const SHOWCASE_ITEMS = [
     id: "item-4",
     title: "3D Infrastructure CGI Walkthrough",
     category: "Product Promo · 3D VFX",
-    client: "Bhavik Infra CGI",
+    client: "Skyline Infra CGI",
     year: "2025",
     description:
       "Dynamic 3D product and architectural animation highlighting textures, lighting, and realistic structural modeling.",

@@ -123,12 +123,13 @@ export default function RadarClients() {
             {/* Brand Blips */}
             {brands.map((brand) => {
               const isHighlight = activeBrand?.id === brand.id || sweptBrandId === brand.id;
+              const isGreen = brand.tier === "LOCAL PACK" || brand.tier === "LOCAL" || brand.tier === "GEO-TARGET";
               return (
                 <div
                   key={brand.id}
                   className={`radar-blip ${
                     isHighlight ? "radar-blip--active radar-blip--swept" : ""
-                  }`}
+                  } ${isGreen ? "radar-blip--green" : "radar-blip--orange"}`}
                   style={{
                     left: `${brand.x}%`,
                     top: `${brand.y}%`,

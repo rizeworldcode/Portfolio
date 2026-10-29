@@ -45,7 +45,7 @@ export default function CrowdBuyers() {
         {/* Three Local SEO Strategy Cards */}
         <div className="crowd-cards-grid">
           <div className="crowd-card">
-            <div className="crowd-card__badge">01</div>
+            <div className="crowd-card__badge crowd-card__badge--orange">01</div>
             <h3 className="crowd-card__title">Google Business Profile (GBP)</h3>
             <p className="crowd-card__desc">
               Optimized business information, primary categories, services, and local signals to improve visibility for relevant searches.
@@ -53,7 +53,7 @@ export default function CrowdBuyers() {
           </div>
 
           <div className="crowd-card">
-            <div className="crowd-card__badge">02</div>
+            <div className="crowd-card__badge crowd-card__badge--green">02</div>
             <h3 className="crowd-card__title">Local Citations & NAP Consistency</h3>
             <p className="crowd-card__desc">
               Maintained consistent business information across relevant directories, listings, and citation sources.
@@ -61,7 +61,7 @@ export default function CrowdBuyers() {
           </div>
 
           <div className="crowd-card">
-            <div className="crowd-card__badge">03</div>
+            <div className="crowd-card__badge crowd-card__badge--orange">03</div>
             <h3 className="crowd-card__title">Location-Based On-Page Signals</h3>
             <p className="crowd-card__desc">
               Strengthened location relevance through locally focused content, headings, structured data, and service information.
@@ -70,7 +70,7 @@ export default function CrowdBuyers() {
         </div>
 
         {/* Interactive Crowd & Buyer Targeting Box */}
-        <CrowdBox />
+        <CrowdBox key="crowd-box-dual-color-v2" />
       </div>
     </section>
   );

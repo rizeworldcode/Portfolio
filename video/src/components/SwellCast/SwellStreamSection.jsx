@@ -59,11 +59,11 @@ const STREAM_CARDS = [
   {
     media: "video",
     video: "/videos-compressed/bhau-final.mp4",
-    title: "Bhau High-Octane Action Cinema",
+    title: "High-Octane Cinematic Action Showcase",
     category: "Action Cinema",
-    client: "Bhau Productions",
+    client: "Apex Motion Pictures",
     year: "2025",
-    description: "Gritty cinematic drama and dynamic chase sequences edited with pulse-pounding rhythm.",
+    description: "Dynamic stunt choreography, gritty cinematic drama, and high-speed chase sequences edited with pulse-pounding rhythm.",
   },
   {
     media: "video",

@@ -12,6 +12,8 @@ const CLUSTERS = [
     yPercent: 54,
     radius: 46,
     particleCount: 55,
+    color: "#ff6b35",
+    rgb: "255, 107, 53",
   },
   {
     id: "citations",
@@ -22,6 +24,8 @@ const CLUSTERS = [
     yPercent: 32,
     radius: 52,
     particleCount: 65,
+    color: "#22c55e",
+    rgb: "34, 197, 94",
   },
   {
     id: "onpage",
@@ -32,6 +36,8 @@ const CLUSTERS = [
     yPercent: 62,
     radius: 44,
     particleCount: 45,
+    color: "#ff6b35",
+    rgb: "255, 107, 53",
   },
 ];
 
@@ -91,6 +97,8 @@ export default function CrowdBox() {
           jitterSpeed: Math.random() * 0.08 + 0.04,
           size: Math.random() * 2.2 + 1.2,
           alpha: Math.random() * 0.4 + 0.6,
+          color: cluster.color,
+          rgb: cluster.rgb,
         });
       }
     });
@@ -164,36 +172,41 @@ export default function CrowdBox() {
         // Cluster scale and opacity tied to scroll progress
         const clusterOpacity = Math.min(1, curProgress * 1.25);
         const clusterScale = 0.65 + 0.35 * curProgress;
+        const rgb = cluster.rgb || "255, 107, 53";
 
         if (clusterOpacity > 0.05) {
           ctx.save();
           ctx.translate(cx, cy);
           ctx.scale(clusterScale, clusterScale);
 
-          // Soft radial glow aura
-          const auraGrad = ctx.createRadialGradient(0, 0, 0, 0, 0, r * 1.5);
-          auraGrad.addColorStop(0, `rgba(255, 107, 53, ${0.22 * clusterOpacity})`);
-          auraGrad.addColorStop(0.6, `rgba(255, 107, 53, ${0.06 * clusterOpacity})`);
-          auraGrad.addColorStop(1, "rgba(255, 107, 53, 0)");
+          // Soft radial glow aura matching cluster color
+          const auraGrad = ctx.createRadialGradient(0, 0, 0, 0, 0, r * 1.6);
+          auraGrad.addColorStop(0, `rgba(${rgb}, ${0.35 * clusterOpacity})`);
+          auraGrad.addColorStop(0.5, `rgba(${rgb}, ${0.12 * clusterOpacity})`);
+          auraGrad.addColorStop(1, `rgba(${rgb}, 0)`);
           ctx.fillStyle = auraGrad;
           ctx.beginPath();
-          ctx.arc(0, 0, r * 1.5, 0, Math.PI * 2);
+          ctx.arc(0, 0, r * 1.6, 0, Math.PI * 2);
           ctx.fill();
 
-          // Outer dashed / pulsating targeting circle
+          // Outer dashed / pulsating targeting circle with bright colored glow!
+          ctx.save();
+          ctx.shadowColor = cluster.color;
+          ctx.shadowBlur = 12;
           ctx.beginPath();
           ctx.arc(0, 0, r, 0, Math.PI * 2);
-          ctx.strokeStyle = `rgba(255, 107, 53, ${0.85 * clusterOpacity})`;
-          ctx.lineWidth = 1.4;
-          ctx.setLineDash([4, 4]);
-          ctx.lineDashOffset = -time * 12;
+          ctx.strokeStyle = `rgba(${rgb}, ${0.95 * clusterOpacity})`;
+          ctx.lineWidth = 2.0;
+          ctx.setLineDash([5, 4]);
+          ctx.lineDashOffset = -time * 14;
           ctx.stroke();
+          ctx.restore();
 
           // Inner solid subtle circle
           ctx.beginPath();
           ctx.arc(0, 0, r * 0.96, 0, Math.PI * 2);
-          ctx.strokeStyle = `rgba(255, 107, 53, ${0.35 * clusterOpacity})`;
-          ctx.lineWidth = 1;
+          ctx.strokeStyle = `rgba(${rgb}, ${0.45 * clusterOpacity})`;
+          ctx.lineWidth = 1.2;
           ctx.setLineDash([]);
           ctx.stroke();
 
@@ -240,7 +253,6 @@ export default function CrowdBox() {
 
           const cx = (clusterConfig.xPercent / 100) * width;
           const cy = (clusterConfig.yPercent / 100) * height;
-          const r = clusterConfig.radius;
 
           // Orbit and jitter
           p.angle += p.orbitSpeed;
@@ -255,14 +267,18 @@ export default function CrowdBox() {
 
           const clusterOpacity = Math.min(1, curProgress * 1.2);
 
-          // Glowing orange dot
-          ctx.fillStyle = `rgba(255, 107, 53, ${p.alpha * clusterOpacity})`;
-          ctx.shadowColor = "#ff6b35";
-          ctx.shadowBlur = 6;
+          const rgb = p.rgb || clusterConfig.rgb || "255, 107, 53";
+          const dotColor = p.color || clusterConfig.color || "#ff6b35";
+
+          // Glowing dot in cluster brand color (Orange or Green)
+          ctx.save();
+          ctx.fillStyle = `rgba(${rgb}, ${Math.min(1, p.alpha * clusterOpacity * 1.4)})`;
+          ctx.shadowColor = dotColor;
+          ctx.shadowBlur = 10;
           ctx.beginPath();
-          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.arc(p.x, p.y, p.size * 1.15, 0, Math.PI * 2);
           ctx.fill();
-          ctx.shadowBlur = 0; // reset
+          ctx.restore();
         }
       }
 
@@ -329,7 +345,16 @@ export default function CrowdBox() {
               onMouseLeave={() => setActiveCluster(null)}
             >
               {/* Badge (Pill) */}
-              <div className="cluster-badge">{cluster.tag}</div>
+              <div
+                className="cluster-badge"
+                style={{
+                  background: cluster.color,
+                  color: cluster.color === "#22c55e" ? "#06230f" : "#ffffff",
+                  boxShadow: `0 0 16px ${cluster.color}66`,
+                }}
+              >
+                {cluster.tag}
+              </div>
 
               {/* Description */}
               <div className="cluster-label">
