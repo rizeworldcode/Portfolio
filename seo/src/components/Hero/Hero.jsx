@@ -105,10 +105,10 @@ export default function Hero() {
           <span className="hero-title__row">Get seen by</span>
           <span className="hero-title__row">
             the{" "}
-            <span className="hero-badge-pill">
+            <span className="hero-badge-pill hero-badge-pill--orange">
               right
             </span>{" "}
-            <span className="hero-badge-pill">
+            <span className="hero-badge-pill hero-badge-pill--green">
               crowd.
             </span>
           </span>

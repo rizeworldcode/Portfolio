@@ -147,14 +147,15 @@ export default function Footer() {
             RizeWorld
           </span>
 
-          {/* Glowing Brand Orange Text Layer (Clipped to circular torch around mouse) */}
+          {/* Glowing Dual-Tone Brand Text Layer (Rize in Orange + World in Green) */}
           <span
-            className={`rw-footer__wordmark-text rw-footer__wordmark-text--orange ${
+            className={`rw-footer__wordmark-text rw-footer__wordmark-text--dual ${
               isOverWordmark ? "rw-footer__wordmark-text--visible" : ""
             }`}
             aria-hidden="true"
           >
-            RizeWorld
+            <span className="rw-wordmark-rize">Rize</span>
+            <span className="rw-wordmark-world">World</span>
           </span>
 
           {/* Lime Spotlight Halo Ring */}

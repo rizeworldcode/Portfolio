@@ -20,11 +20,18 @@
   --text-primary: #ffffff;
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
+  --brand-orange: #ff6b35;
+  --brand-orange-glow: rgba(255, 107, 53, 0.4);
+  --brand-green: #22c55e;
+  --brand-green-glow: rgba(34, 197, 94, 0.4);
+  --brand-gradient: linear-gradient(135deg, #ff6b35 0%, #22c55e 100%);
   --accent-brand: #ff6b35;
   --accent-brand-glow: rgba(255, 107, 53, 0.4);
-  --accent-green: #ff6b35;
-  --accent-cyan: #ff8552;
-  --accent-blue: #ff6b35;
+  --accent-green: #22c55e;
+  --accent-green-glow: rgba(34, 197, 94, 0.4);
+  --accent-orange: #ff6b35;
+  --accent-cyan: #22c55e;
+  --accent-blue: #22c55e;
   --border-color: rgba(255, 255, 255, 0.08);
 }
 

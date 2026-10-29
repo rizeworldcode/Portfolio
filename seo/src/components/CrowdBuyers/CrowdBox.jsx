@@ -172,8 +172,8 @@ export default function CrowdBox() {
 
           // Soft radial glow aura
           const auraGrad = ctx.createRadialGradient(0, 0, 0, 0, 0, r * 1.5);
-          auraGrad.addColorStop(0, `rgba(212, 255, 0, ${0.18 * clusterOpacity})`);
-          auraGrad.addColorStop(0.6, `rgba(212, 255, 0, ${0.05 * clusterOpacity})`);
+          auraGrad.addColorStop(0, `rgba(255, 107, 53, ${0.22 * clusterOpacity})`);
+          auraGrad.addColorStop(0.6, `rgba(255, 107, 53, ${0.06 * clusterOpacity})`);
           auraGrad.addColorStop(1, "rgba(255, 107, 53, 0)");
           ctx.fillStyle = auraGrad;
           ctx.beginPath();
@@ -183,7 +183,7 @@ export default function CrowdBox() {
           // Outer dashed / pulsating targeting circle
           ctx.beginPath();
           ctx.arc(0, 0, r, 0, Math.PI * 2);
-          ctx.strokeStyle = `rgba(212, 255, 0, ${0.75 * clusterOpacity})`;
+          ctx.strokeStyle = `rgba(255, 107, 53, ${0.85 * clusterOpacity})`;
           ctx.lineWidth = 1.4;
           ctx.setLineDash([4, 4]);
           ctx.lineDashOffset = -time * 12;
@@ -192,7 +192,7 @@ export default function CrowdBox() {
           // Inner solid subtle circle
           ctx.beginPath();
           ctx.arc(0, 0, r * 0.96, 0, Math.PI * 2);
-          ctx.strokeStyle = `rgba(212, 255, 0, ${0.25 * clusterOpacity})`;
+          ctx.strokeStyle = `rgba(255, 107, 53, ${0.35 * clusterOpacity})`;
           ctx.lineWidth = 1;
           ctx.setLineDash([]);
           ctx.stroke();
@@ -255,8 +255,8 @@ export default function CrowdBox() {
 
           const clusterOpacity = Math.min(1, curProgress * 1.2);
 
-          // Glowing lime yellow dot
-          ctx.fillStyle = `rgba(212, 255, 0, ${p.alpha * clusterOpacity})`;
+          // Glowing orange dot
+          ctx.fillStyle = `rgba(255, 107, 53, ${p.alpha * clusterOpacity})`;
           ctx.shadowColor = "#ff6b35";
           ctx.shadowBlur = 6;
           ctx.beginPath();

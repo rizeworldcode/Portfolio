@@ -49,8 +49,8 @@ export default function RadarClients() {
           <h2 className="radar-title">
             <span className="radar-title__main">SEO Objective &</span>
             <span className="radar-title__badges">
-              <span className="radar-badge">Online</span>{" "}
-              <span className="radar-badge">Visibility.</span>
+              <span className="radar-badge radar-badge--orange">Online</span>{" "}
+              <span className="radar-badge radar-badge--green">Visibility.</span>
             </span>
           </h2>
 
