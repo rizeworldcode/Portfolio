@@ -1,31 +1,10 @@
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { useState } from "react";
 import "./FreeAudit.css";
 
 export default function FreeAudit() {
   const [email, setEmail] = useState("");
   const [budget, setBudget] = useState("$2,500 - $5,000");
-  const [nyTime, setNyTime] = useState("");
   const [submitted, setSubmitted] = useState(false);
-
-  // Live New York Clock
-  useEffect(() => {
-    const updateTime = () => {
-      const now = new Date();
-      const options = {
-        timeZone: "America/New_York",
-        hour12: false,
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-      };
-      setNyTime(now.toLocaleTimeString("en-US", options));
-    };
-
-    updateTime();
-    const interval = setInterval(updateTime, 1000);
-    return () => clearInterval(interval);
-  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,14 +13,6 @@ export default function FreeAudit() {
       setTimeout(() => setSubmitted(false), 4000);
     }
   };
-
-  const teamAvatars = [
-    "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop&crop=face",
-    "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
-    "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face",
-    "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face",
-    "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&h=100&fit=crop&crop=face",
-  ];
 
   return (
     <section className="audit-section" id="audit">
@@ -55,13 +26,13 @@ export default function FreeAudit() {
 
       <div className="audit-container">
         {/* ============================================================
-            LEFT COLUMN: TYPOGRAPHY & FORM
+            MAIN COLUMN: TYPOGRAPHY & FORM
             ============================================================ */}
         <div className="audit-left">
           {/* Pill Badge */}
           <div className="audit-pill">
             <span className="audit-pill__dot" />
-            <span className="audit-pill__text">(11) Free audit</span>
+            <span className="audit-pill__text">(06) Free audit</span>
           </div>
 
           {/* Headline */}
@@ -131,61 +102,6 @@ export default function FreeAudit() {
           {/* Micro Footer Note */}
           <div className="audit-note">
             NO SPAM. WE REPLY WITHIN 2 HOURS.
-          </div>
-        </div>
-
-        {/* ============================================================
-            RIGHT COLUMN: AVAILABILITY CARD
-            ============================================================ */}
-        <div className="audit-right">
-          <div className="audit-card">
-            {/* Availability Pill */}
-            <div className="audit-card__tag">
-              <span className="audit-card__tag-dot" />
-              <span className="audit-card__tag-text">AVAILABILITY</span>
-            </div>
-
-            {/* Title */}
-            <h3 className="audit-card__title">3 spots left for Q4</h3>
-
-            {/* Progress Segment Bars (5 booked, 3 open in lime) */}
-            <div className="audit-segments">
-              <span className="audit-segment audit-segment--filled" />
-              <span className="audit-segment audit-segment--filled" />
-              <span className="audit-segment audit-segment--filled" />
-              <span className="audit-segment audit-segment--filled" />
-              <span className="audit-segment audit-segment--filled" />
-              <span className="audit-segment audit-segment--open" />
-              <span className="audit-segment audit-segment--open" />
-              <span className="audit-segment audit-segment--open" />
-            </div>
-
-            <div className="audit-card__caption">
-              NEW CLIENTS START ON THE 1ST OF EACH MONTH
-            </div>
-
-            {/* Live New York Clock */}
-            <div className="audit-clock-row">
-              <span className="audit-clock-label">OUR TIME · NEW YORK</span>
-              <span className="audit-clock-time">{nyTime || "12:00:00"}</span>
-            </div>
-
-            {/* Team Avatars */}
-            <div className="audit-team-row">
-              <div className="audit-avatars-group">
-                {teamAvatars.map((src, idx) => (
-                  <img
-                    key={idx}
-                    src={src}
-                    alt={`Team specialist ${idx + 1}`}
-                    className="audit-avatar"
-                  />
-                ))}
-              </div>
-              <span className="audit-team-count">
-                38 specialists on the team
-              </span>
-            </div>
           </div>
         </div>
       </div>

@@ -168,4 +168,52 @@
   color: #94a3b8;
 }
 
-/* Bottom crowd box removed - ready to rebuild from fresh reference */
+/* ============================================================
+   RESPONSIVENESS
+   ============================================================ */
+
+@media (max-width: 960px) {
+  .crowd-section {
+    padding: 80px 32px 90px;
+  }
+
+  .crowd-header {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .crowd-header__right {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .crowd-section {
+    padding: 60px 18px 70px;
+  }
+
+  .crowd-container {
+    gap: 32px;
+  }
+
+  .crowd-title {
+    font-size: clamp(30px, 8.5vw, 42px);
+  }
+
+  .crowd-badge {
+    padding: 0 12px 2px;
+    border-radius: 14px;
+  }
+
+  .crowd-desc {
+    font-size: 14.5px;
+  }
+
+  .crowd-stats-row {
+    gap: 10px;
+  }
+
+  .crowd-stat-item {
+    font-size: 9.5px;
+  }
+}

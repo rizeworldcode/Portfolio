@@ -708,8 +708,11 @@
   .hero-radar-tracker {
     display: none;
   }
+  .hero-floating-pills {
+    display: none;
+  }
   .hero-title {
-    font-size: clamp(38px, 10vw, 56px);
+    font-size: clamp(34px, 9vw, 54px);
   }
   .hero-badge-pill {
     padding: 0 14px 2px;
@@ -723,5 +726,30 @@
   .hero-tab-pill {
     padding: 6px 12px;
     font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    padding: 90px 16px 28px;
+  }
+  .hero-content {
+    padding: 20px 8px 16px;
+    gap: 16px;
+  }
+  .hero-title {
+    font-size: clamp(30px, 8.5vw, 42px);
+  }
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+    gap: 12px;
+  }
+  .hero-btn-primary,
+  .hero-btn-secondary {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
   }
 }

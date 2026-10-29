@@ -6,7 +6,6 @@ import Channels from "./components/Channels/Channels";
 import CaseStudies from "./components/CaseStudies/CaseStudies";
 import FunnelProcess from "./components/FunnelProcess/FunnelProcess";
 import BlogInsights from "./components/BlogInsights/BlogInsights";
-import FreeAudit from "./components/FreeAudit/FreeAudit";
 import Footer from "./components/Footer/Footer";
 import "./App.css";
 
@@ -38,9 +37,6 @@ function App() {
 
         {/* 13: Ideas we test first (Blog & Insights) */}
         <BlogInsights />
-
-        {/* 14: Ready to be seen? (Free Audit CTA) */}
-        <FreeAudit />
       </main>
 
       {/* 15: Giant Wordmark Editorial Footer */}

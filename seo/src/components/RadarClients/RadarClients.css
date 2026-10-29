@@ -522,14 +522,14 @@
 
 @media (max-width: 580px) {
   .radar-section {
-    padding: 80px 20px;
+    padding: 70px 18px;
   }
   .radar-display {
-    width: 320px;
-    height: 320px;
+    width: min(320px, calc(100vw - 36px));
+    height: min(320px, calc(100vw - 36px));
   }
   .radar-blip__name {
-    font-size: 9px;
+    font-size: 8.5px;
   }
   .radar-ring__label {
     font-size: 7px;

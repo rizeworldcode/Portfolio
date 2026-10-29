@@ -429,19 +429,26 @@
 
 @media (max-width: 640px) {
   .funnel-section {
-    padding: 80px 20px;
+    padding: 80px 18px 90px;
+  }
+  .funnel-title {
+    font-size: clamp(32px, 8.5vw, 42px);
   }
   .funnel-tier {
-    height: 92px;
+    height: 88px;
+  }
+  .funnel-tier__number-wrap {
+    flex-direction: column;
+    gap: 3px;
   }
   .funnel-tier__number {
-    font-size: 28px;
+    font-size: 26px;
   }
   .funnel-conversion-badge {
     position: static;
     transform: none;
-    margin-left: 8px;
+    margin-left: 0;
     font-size: 8.5px;
-    padding: 3px 8px;
+    padding: 2px 7px;
   }
 }
