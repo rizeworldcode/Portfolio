@@ -1,0 +1,118 @@
+.bottom-dock-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 10px 24px 18px;
+  z-index: 10;
+}
+
+.bottom-dock {
+  background: var(--surface-white);
+  border-radius: 36px;
+  padding: 6px 8px 6px 8px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  max-width: 95%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Year Pill */
+.bottom-dock__year-pill {
+  background: var(--accent-dark);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+/* Center Dock Items */
+.bottom-dock__items {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dock-btn {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dock-btn:hover {
+  background: #f1f2ed;
+  color: var(--text-main);
+  transform: translateY(-2px);
+}
+
+.dock-btn--active {
+  background: #ebebe5 !important;
+  color: var(--text-main) !important;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.dock-btn__badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 8px;
+  background: var(--accent-yellow);
+  color: #1f2327;
+  font-size: 9px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(234, 179, 8, 0.4);
+}
+
+/* Right Dark Capsule */
+.bottom-dock__dark-capsule {
+  background: var(--accent-dark);
+  border-radius: 24px;
+  padding: 6px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dock-launch-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #d1d5db;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.dock-launch-link:hover {
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.capsule-divider {
+  width: 1px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.2);
+}
