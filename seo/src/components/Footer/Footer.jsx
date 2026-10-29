@@ -178,17 +178,16 @@ export default function Footer() {
         >
           {/* Base Light-Gray Text Layer */}
           <span className="rw-footer__wordmark-text rw-footer__wordmark-text--base">
-            Reachwise
+            RizeWorld
           </span>
 
           {/* Glowing Lime Text Layer (Clipped to circular torch around mouse) */}
           <span
-            className={`rw-footer__wordmark-text rw-footer__wordmark-text--lime ${
-              isOverWordmark ? "rw-footer__wordmark-text--visible" : ""
-            }`}
+            className={`rw-footer__wordmark-text rw-footer__wordmark-text--lime ${isOverWordmark ? "rw-footer__wordmark-text--visible" : ""
+              }`}
             aria-hidden="true"
           >
-            Reachwise
+            RizeWorld
           </span>
 
           {/* Lime Spotlight Halo Ring */}

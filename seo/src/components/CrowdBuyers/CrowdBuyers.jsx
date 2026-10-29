@@ -1,3 +1,4 @@
+import CrowdBox from "./CrowdBox";
 import "./CrowdBuyers.css";
 
 export default function CrowdBuyers() {
@@ -60,7 +61,8 @@ export default function CrowdBuyers() {
           </div>
         </div>
 
-        {/* Box design removed as requested by user - ready to rebuild freshly */}
+        {/* Interactive Crowd & Buyer Targeting Box */}
+        <CrowdBox />
       </div>
     </section>
   );

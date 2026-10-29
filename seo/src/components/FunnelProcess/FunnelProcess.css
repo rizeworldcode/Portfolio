@@ -1,6 +1,7 @@
 /* ============================================================
    FUNNEL & PROCESS SECTION (SECTION 6)
    "From attention to clients."
+   Sequential animated conversion funnel matching reference video
    ============================================================ */
 
 .funnel-section {
@@ -8,7 +9,7 @@
   width: 100%;
   background-color: #ebeee8;
   color: #11141a;
-  padding: 120px 60px 130px;
+  padding: 160px 60px 180px;
   overflow: hidden;
 }
 
@@ -16,7 +17,7 @@
   max-width: 1380px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1.15fr;
+  grid-template-columns: 1fr 1.18fr;
   align-items: center;
   gap: 80px;
 }
@@ -121,28 +122,30 @@
 }
 
 .funnel-step-item__num {
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 1.5px solid rgba(0, 0, 0, 0.22);
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-main);
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 700;
   color: #64748b;
   flex-shrink: 0;
   margin-top: 2px;
-  transition: all 0.25s ease;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.funnel-step-item--active .funnel-step-item__num,
-.funnel-step-item:hover .funnel-step-item__num {
+/* Active Step: Solid Black with Neon Lime Text */
+.funnel-step-item--active .funnel-step-item__num {
   background: #0f1217;
   color: #d4ff00;
   border-color: #0f1217;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  font-weight: 800;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+  transform: scale(1.08);
 }
 
 .funnel-step-item__content {
@@ -159,11 +162,16 @@
 
 .funnel-step-item__title {
   font-family: var(--font-display);
-  font-size: 18px;
+  font-size: 18.5px;
   font-weight: 700;
   color: #0f1217;
   margin: 0;
   letter-spacing: -0.01em;
+  transition: color 0.2s ease;
+}
+
+.funnel-step-item--active .funnel-step-item__title {
+  color: #000000;
 }
 
 .funnel-step-item__badge {
@@ -194,7 +202,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
+  gap: 22px;
   width: 100%;
 }
 
@@ -204,68 +212,64 @@
   max-width: 580px;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 3px;
 }
 
 /* Funnel Tiers (Trapezoid segments) */
 .funnel-tier {
   position: relative;
   width: 100%;
-  height: 105px;
+  height: 106px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: background-color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.45s ease,
+              transform 0.2s ease;
   cursor: pointer;
-  background-color: #dfe3dc;
+  overflow: visible;
 }
 
 .funnel-tier:hover {
-  filter: brightness(1.04);
+  filter: brightness(1.02);
 }
 
-.funnel-tier--active {
-  background-color: #d6dbd2 !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-}
-
-.funnel-tier--filled-lime {
-  background-color: #d4ff00 !important;
-  box-shadow: 0 8px 30px rgba(212, 255, 0, 0.35);
-}
-
-.funnel-tier--filled-lime .funnel-tier__number {
-  color: #000000;
-  text-shadow: 0 0 20px rgba(212, 255, 0, 0.4);
-}
-
-/* Trapezoid Geometry */
+/* Trapezoid Geometry matching seamless downward tapering funnel */
 .funnel-tier--1 {
   clip-path: polygon(0% 0%, 100% 0%, 92% 100%, 8% 100%);
-  background-color: #e4e7e1;
+  background-color: #e2e6df;
 }
 
 .funnel-tier--2 {
   clip-path: polygon(8% 0%, 92% 0%, 84% 100%, 16% 100%);
-  background-color: #ded1cb2b;
-  background-color: #dde1d9;
+  background-color: #dbe0d7;
 }
 
 .funnel-tier--3 {
   clip-path: polygon(16% 0%, 84% 0%, 76% 100%, 24% 100%);
-  background-color: #d6dbd2;
+  background-color: #d3d8cf;
 }
 
 .funnel-tier--4 {
   clip-path: polygon(24% 0%, 76% 0%, 68% 100%, 32% 100%);
-  background-color: #ced4ca;
+  background-color: #cbd0c6;
 }
 
-/* Particle dots on Tier 1 */
+/* When filled with lime green/yellow (Matching Video) */
+.funnel-tier--filled-lime {
+  background-color: #d4ff00 !important;
+}
+
+.funnel-tier--filled-lime .funnel-tier__number {
+  color: #000000 !important;
+}
+
+/* Ambient Particle Dots across Funnel Tiers */
 .funnel-particles-layer {
   position: absolute;
   inset: 0;
   pointer-events: none;
+  z-index: 2;
 }
 
 .funnel-particle {
@@ -273,23 +277,29 @@
   width: 3.5px;
   height: 3.5px;
   border-radius: 50%;
-  background: rgba(30, 41, 59, 0.35);
-  animation: floatParticle 3s ease-in-out infinite alternate;
+  background: rgba(15, 18, 23, 0.32);
+  animation: floatParticle 3.2s ease-in-out infinite alternate;
 }
 
 @keyframes floatParticle {
-  from { transform: translateY(0); }
-  to { transform: translateY(-4px); }
+  0% {
+    transform: translateY(0px) scale(0.9);
+    opacity: 0.25;
+  }
+  100% {
+    transform: translateY(-5px) scale(1.15);
+    opacity: 0.65;
+  }
 }
 
-/* Tier Content (Tag + Number) */
+/* Tier Content (Pill Tag + Big Number) */
 .funnel-tier__content {
   position: relative;
   z-index: 5;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
 }
 
 .funnel-tier__tag {
@@ -304,42 +314,62 @@
   font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.1em;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .funnel-tier__num {
   color: #d4ff00;
 }
 
+.funnel-tier__number-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .funnel-tier__number {
   font-family: var(--font-display);
-  font-size: 38px;
+  font-size: clamp(32px, 3.8vw, 42px);
   font-weight: 900;
   color: #0f1217;
   letter-spacing: -0.03em;
   line-height: 1;
+  font-variant-numeric: tabular-nums;
+  transition: color 0.3s ease;
 }
 
-/* Stage 3 Conversion Callout Pill */
+/* Stage 2 Conversion Callout Pill (~0.2% become leads) */
 .funnel-conversion-badge {
   position: absolute;
-  left: 65%;
+  left: calc(100% + 10px);
   top: 50%;
   transform: translateY(-50%);
   background: #0f1217;
   color: #ffffff;
-  padding: 5px 12px;
+  padding: 4px 11px;
   border-radius: 9999px;
   display: inline-flex;
   align-items: center;
   gap: 6px;
   font-family: var(--font-main);
-  font-size: 10.5px;
+  font-size: 10px;
   font-weight: 700;
   white-space: nowrap;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
   z-index: 10;
-  pointer-events: none;
+  animation: badgePop 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes badgePop {
+  0% {
+    opacity: 0;
+    transform: translateY(-50%) scale(0.7);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+  }
 }
 
 .funnel-conversion-badge__dot {
@@ -354,7 +384,14 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-top: 8px;
+  margin-top: 10px;
+  cursor: pointer;
+  user-select: none;
+  transition: opacity 0.2s ease;
+}
+
+.funnel-footer-caption:hover {
+  opacity: 0.8;
 }
 
 .funnel-footer-caption__dot {
@@ -390,19 +427,21 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 640px) {
   .funnel-section {
     padding: 80px 20px;
   }
   .funnel-tier {
-    height: 90px;
+    height: 92px;
   }
   .funnel-tier__number {
     font-size: 28px;
   }
   .funnel-conversion-badge {
-    left: auto;
-    right: 6%;
-    font-size: 9px;
+    position: static;
+    transform: none;
+    margin-left: 8px;
+    font-size: 8.5px;
+    padding: 3px 8px;
   }
 }

@@ -5,12 +5,6 @@ import CrowdBuyers from "./components/CrowdBuyers/CrowdBuyers";
 import Channels from "./components/Channels/Channels";
 import CaseStudies from "./components/CaseStudies/CaseStudies";
 import FunnelProcess from "./components/FunnelProcess/FunnelProcess";
-import ClientNumbers from "./components/ClientNumbers/ClientNumbers";
-import SocialGrid from "./components/SocialGrid/SocialGrid";
-import TeamRoster from "./components/TeamRoster/TeamRoster";
-import ClientReviews from "./components/ClientReviews/ClientReviews";
-import PricingPlans from "./components/PricingPlans/PricingPlans";
-import FAQ from "./components/FAQ/FAQ";
 import BlogInsights from "./components/BlogInsights/BlogInsights";
 import FreeAudit from "./components/FreeAudit/FreeAudit";
 import Footer from "./components/Footer/Footer";
@@ -41,24 +35,6 @@ function App() {
 
         {/* 06: From attention to clients (Conversion Funnel) */}
         <FunnelProcess />
-
-        {/* 07: What our clients got last year (The Numbers & Ticker) */}
-        <ClientNumbers />
-
-        {/* 08: Content that stops the scroll (Social Media Gallery) */}
-        <SocialGrid />
-
-        {/* 09: Specialists, not generalists (Team Roster) */}
-        <TeamRoster />
-
-        {/* 10: Clients who stayed (Reviews & iPhone Mockup) */}
-        <ClientReviews />
-
-        {/* 11: Simple monthly retainers (Pricing Cards) */}
-        <PricingPlans />
-
-        {/* 12: Questions, answered (Accordion FAQ) */}
-        <FAQ />
 
         {/* 13: Ideas we test first (Blog & Insights) */}
         <BlogInsights />

@@ -1,23 +1,35 @@
 /* ============================================================
    REACHWISE TOP NAVBAR STYLES
-   Exact reproduction of modern dark pill navigation
+   Transparent floating header with dark frosted pill navigation
+   and neon lime CTA button matching reference design
    ============================================================ */
 
 .rw-header {
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 100;
-  padding: 18px 44px;
-  background: rgba(235, 238, 232, 0.88);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  transition: all 0.25s ease;
+  padding: 24px 52px;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Subtle frosted backdrop only when scrolled down page */
+.rw-header.rw-header--scrolled {
+  background: rgba(9, 11, 15, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 14px 52px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .rw-header__container {
-  max-width: 1380px;
+  max-width: 1440px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -25,7 +37,10 @@
   gap: 24px;
 }
 
-/* ---- Brand Logo ---- */
+/* ============================================================
+   BRAND LOGO (White text + Neon Radar Icon)
+   ============================================================ */
+
 .rw-brand {
   display: inline-flex;
   align-items: center;
@@ -40,7 +55,8 @@
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: #11141a;
+  background: #000000;
+  border: 1.5px solid rgba(212, 255, 0, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -51,7 +67,7 @@
   height: 8px;
   border-radius: 50%;
   background: #d4ff00;
-  box-shadow: 0 0 8px rgba(212, 255, 0, 0.8);
+  box-shadow: 0 0 10px rgba(212, 255, 0, 0.9);
   z-index: 2;
 }
 
@@ -80,21 +96,25 @@
 
 .rw-brand__name {
   font-family: var(--font-display);
-  font-size: 20px;
+  font-size: 21px;
   font-weight: 700;
   letter-spacing: -0.02em;
-  color: #11141a;
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
 }
 
-/* ---- Center Pill Navigation ---- */
+/* ============================================================
+   CENTER PILL NAVIGATION (Dark Glassmorphic Pill)
+   ============================================================ */
+
 .rw-nav {
-  background: rgba(255, 255, 255, 0.65);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: rgba(22, 25, 33, 0.78);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 9999px;
   padding: 4px 6px;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
 }
 
 .rw-nav__list {
@@ -111,68 +131,86 @@
   font-family: var(--font-main);
   font-size: 13px;
   font-weight: 600;
-  color: #4b5563;
-  padding: 6px 16px;
+  color: #cbd5e1;
+  padding: 7px 18px;
   border-radius: 9999px;
   text-decoration: none;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .rw-nav__link:hover {
-  color: #0f1217;
-  background: rgba(0, 0, 0, 0.05);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .rw-nav__link--active {
-  color: #0f1217;
-  background: rgba(0, 0, 0, 0.07);
-  font-weight: 600;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.14);
 }
 
-/* ---- Right CTA Button ---- */
+/* ============================================================
+   RIGHT CTA BUTTON (Neon Lime Pill + Dark Calendar Badge)
+   ============================================================ */
+
+.rw-header__actions {
+  display: flex;
+  align-items: center;
+}
+
 .rw-btn-book {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   background: #d4ff00;
-  color: #050608;
+  color: #000000;
   font-family: var(--font-main);
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 700;
   letter-spacing: -0.01em;
-  padding: 8px 18px;
+  padding: 5px 6px 5px 18px;
   border-radius: 9999px;
   text-decoration: none;
-  box-shadow: 0 3px 12px rgba(212, 255, 0, 0.35);
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px rgba(212, 255, 0, 0.35);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   user-select: none;
 }
 
 .rw-btn-book:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 22px rgba(212, 255, 0, 0.5);
   background: #dcff1a;
+  box-shadow: 0 8px 26px rgba(212, 255, 0, 0.55);
 }
 
 .rw-btn-book__icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #000000;
+  color: #d4ff00;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #050608;
+  flex-shrink: 0;
   transition: transform 0.25s ease;
 }
 
 .rw-btn-book:hover .rw-btn-book__icon {
-  transform: translate(2px, -2px);
+  transform: scale(1.08);
 }
 
-/* ---- Responsive Breakpoints ---- */
+/* ============================================================
+   RESPONSIVE BREAKPOINTS
+   ============================================================ */
+
 @media (max-width: 900px) {
   .rw-header {
-    padding: 16px 20px;
+    padding: 16px 24px;
+  }
+  .rw-header.rw-header--scrolled {
+    padding: 12px 24px;
   }
   .rw-nav {
-    display: none; /* Can be opened with mobile hamburger or kept minimal */
+    display: none;
   }
 }
 
@@ -182,6 +220,10 @@
   }
   .rw-btn-book {
     font-size: 12.5px;
-    padding: 5px 6px 5px 14px;
+    padding: 4px 5px 4px 14px;
+  }
+  .rw-btn-book__icon {
+    width: 22px;
+    height: 22px;
   }
 }

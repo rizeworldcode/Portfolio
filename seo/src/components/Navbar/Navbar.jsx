@@ -1,13 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Navbar.css";
 
 export default function Navbar() {
   const [activeLink, setActiveLink] = useState("Services");
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 40);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navLinks = ["Services", "Work", "Pricing", "About", "Blog"];
 
   return (
-    <header className="rw-header">
+    <header className={`rw-header ${isScrolled ? "rw-header--scrolled" : ""}`}>
       <div className="rw-header__container">
         {/* Brand Logo */}
         <a href="#" className="rw-brand" aria-label="Reachwise Home">
@@ -44,10 +54,11 @@ export default function Navbar() {
         <div className="rw-header__actions">
           <a href="#book-call" className="rw-btn-book">
             <span>Book a call</span>
-            <span className="rw-btn-book__icon">
+            <span className="rw-btn-book__icon" aria-hidden="true">
+              {/* Calendar icon matching screenshot */}
               <svg
-                width="13"
-                height="13"
+                width="12"
+                height="12"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -55,8 +66,10 @@ export default function Navbar() {
                 strokeLinecap="round"
                 strokeLinejoin="round"
               >
-                <line x1="7" y1="17" x2="17" y2="7" />
-                <polyline points="7 7 17 7 17 17" />
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                <line x1="16" y1="2" x2="16" y2="6" />
+                <line x1="8" y1="2" x2="8" y2="6" />
+                <line x1="3" y1="10" x2="21" y2="10" />
               </svg>
             </span>
           </a>
