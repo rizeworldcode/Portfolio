@@ -1,365 +1,330 @@
-/* ===========================
-   HERO SECTION STYLES
-   Inspired by Framer "Hero Adoo Animation"
-   =========================== */
+/* ============================================================
+   MONUMENTAL FULL-PAGE HERO: RIZEWORLD GRAPHIC PORTFOLIO
+   High-End Design Agency Aesthetic (Pure Typographic & Kinetic)
+   ============================================================ */
 
-.hero {
+.hero-monumental {
   position: relative;
   width: 100%;
-  height: 100vh;
-  height: 100dvh;
-  min-height: 540px;
+  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
+  background-color: #06070a;
+  color: #ffffff;
   overflow: hidden;
-  background: #000;
+  padding: 100px 24px 80px;
 }
 
-/* ---- Background Images Layer ---- */
-.hero__bg-layer {
+/* ============================================================
+   AMBIENT MESH GLOW & BACKGROUND GRID
+   ============================================================ */
+
+.hero-mesh-bg {
   position: absolute;
   inset: 0;
+  pointer-events: none;
+  overflow: hidden;
   z-index: 1;
 }
 
-.hero__bg-image {
+/* Subtle architectural design grid */
+.hero-grid-pattern {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(circle at 50% 50%, black 40%, transparent 85%);
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, black 40%, transparent 85%);
 }
 
-/* ---- Bottom Blur Gradient Overlay ---- */
-.hero__blur-overlay {
+/* Ambient Colorful Glow Orbs */
+.hero-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.35;
+  pointer-events: none;
+  animation: glowFloat 12s ease-in-out infinite alternate;
+}
+
+.hero-glow--orange {
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, #ff6b35 0%, rgba(255, 107, 53, 0) 70%);
+  top: 10%;
+  left: 20%;
+  animation-duration: 14s;
+}
+
+.hero-glow--green {
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, #10b981 0%, rgba(16, 185, 129, 0) 70%);
+  bottom: 12%;
+  right: 18%;
+  animation-duration: 16s;
+  animation-delay: -4s;
+}
+
+.hero-glow--cyan {
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, #06b6d4 0%, rgba(6, 182, 212, 0) 70%);
+  top: 45%;
+  left: 55%;
+  opacity: 0.22;
+  animation-duration: 18s;
+  animation-delay: -8s;
+}
+
+@keyframes glowFloat {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(40px, -30px) scale(1.15);
+  }
+  100% {
+    transform: translate(-30px, 40px) scale(0.92);
+  }
+}
+
+/* Interactive Cursor Spotlight */
+.hero-cursor-beam {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.06) 0%, transparent 65%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+/* ============================================================
+   CORNER TECHNICAL METADATA TAGS
+   ============================================================ */
+
+.hero-corner {
+  position: absolute;
+  z-index: 10;
+  font-family: var(--font-secondary, 'Inter', sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.45);
+  text-transform: uppercase;
+  user-select: none;
+  pointer-events: none;
+}
+
+.hero-corner--tl,
+.hero-corner-brand {
+  position: absolute;
+  top: 32px;
+  left: 40px;
+  right: auto;
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
+  z-index: 25;
+}
+
+.hero-corner-brand:hover {
+  transform: scale(1.08);
+}
+
+.hero-corner-logo {
+  height: 58px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 4px 16px rgba(255, 107, 53, 0.4));
+}
+
+.hero-corner--tr {
+  top: 32px;
+  right: 36px;
+}
+
+
+
+
+/* ============================================================
+   MAIN HERO STAGE & MONUMENTAL TYPOGRAPHY
+   ============================================================ */
+
+.hero-stage {
+  position: relative;
+  z-index: 5;
+  max-width: 1240px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Top Kicker Pill */
+.hero-kicker-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 6px 18px;
+  border-radius: 9999px;
+  font-family: var(--font-secondary, 'Inter', sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.85);
+  text-transform: uppercase;
+  margin-bottom: 22px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  user-select: none;
+}
+
+.hero-kicker-pill__star {
+  color: #ff6b35;
+  font-size: 12px;
+}
+
+/* ============================================================
+   FRAMER SCATTER GRID STAGE (Interactive Dot-Matrix Physics)
+   ============================================================ */
+
+.hero-stage--scatter {
+  max-width: 1300px;
+  width: 100%;
+}
+
+.hero-scatter-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1240px;
+  height: clamp(340px, 52vw, 540px);
+  margin: 16px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: crosshair;
+  user-select: none;
+}
+
+.hero-scatter-canvas {
+  width: 100%;
+  height: 100%;
+}
+
+
+/* ============================================================
+   BOTTOM KINETIC TICKER / MARQUEE
+   ============================================================ */
+
+.hero-marquee-container {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 220px;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0) 100%);
-  z-index: 2;
-  pointer-events: none;
-}
-
-/* Subtle top darkening */
-.hero__top-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 200px;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%);
-  z-index: 2;
-  pointer-events: none;
-}
-
-/* ---- Center Text Block ---- */
-.hero__content {
-  position: relative;
-  z-index: 3;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  flex: 1;
-  padding: 42px 0 0;
-  text-align: center;
-}
-
-/* ---- Hero Logo Badge ---- */
-.hero__logo-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 76px;
-  height: 76px;
-  border-radius: 22px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.22);
+  height: 44px;
+  background: rgba(8, 9, 13, 0.85);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  box-shadow: 
-    0 12px 30px rgba(0, 0, 0, 0.6),
-    inset 0 1px 1px rgba(255, 255, 255, 0.35),
-    0 0 28px rgba(255, 107, 53, 0.18);
-  margin-bottom: 22px;
-  padding: 12px;
-  cursor: pointer;
-  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
-              box-shadow 0.35s ease,
-              border-color 0.3s ease;
-}
-
-.hero__logo-badge:hover {
-  transform: translateY(-4px) scale(1.06);
-  border-color: rgba(255, 255, 255, 0.45);
-  box-shadow: 
-    0 18px 45px rgba(0, 0, 0, 0.75),
-    inset 0 1px 1px rgba(255, 255, 255, 0.55),
-    0 0 38px rgba(255, 107, 53, 0.35);
-}
-
-.hero__logo-img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
-}
-
-.hero__main-title {
-  font-family: 'Anton', sans-serif;
-  font-size: clamp(80px, 12vw, 160px);
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  color: #ffffff;
-  line-height: 0.9;
-  text-transform: uppercase;
-  user-select: none;
-  margin: 0;
-}
-
-.hero__sub-title {
-  font-family: 'Antonio', sans-serif;
-  font-size: clamp(20px, 3vw, 32px);
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.9);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-top: 8px;
-  user-select: none;
-}
-
-/* ---- Bottom Thumbnail Row ---- */
-.hero__thumbnails {
-  position: relative;
-  z-index: 4;
   display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-  justify-content: center;
-  gap: 12px;
-  width: 100%;
-  padding: 32px;
-}
-
-.hero__thumb {
-  position: relative;
-  overflow: hidden;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-              box-shadow 0.3s ease,
-              outline 0.2s ease;
-  outline: 2px solid transparent;
-  outline-offset: 2px;
-}
-
-.hero__thumb:hover {
-  transform: translateY(-4px) scale(1.04);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-}
-
-.hero__thumb--sm {
-  width: 80px;
-  height: 52px;
-}
-
-.hero__thumb--md {
-  width: 130px;
-  height: 80px;
-}
-
-.hero__thumb--active {
-  outline: 2px solid rgba(255, 255, 255, 0.85);
-}
-
-.hero__thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  border-radius: 6px;
-  pointer-events: none;
-}
-
-/* ---- Scroll indicator ---- */
-.hero__scroll-hint {
-  position: absolute;
-  bottom: 150px;
-  right: 40px;
-  z-index: 4;
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 8px;
-  opacity: 0.6;
+  overflow: hidden;
+  z-index: 10;
+  user-select: none;
 }
 
-.hero__scroll-hint span {
-  font-family: 'Outfit', sans-serif;
-  font-size: 11px;
-  letter-spacing: 0.15em;
+.hero-marquee-track {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  animation: marqueeScroll 32s linear infinite;
+  will-change: transform;
+}
+
+.hero-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.hero-marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 16px;
+}
+
+.hero-marquee-text {
+  font-family: var(--font-secondary, 'Inter', sans-serif);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.65);
   text-transform: uppercase;
-  color: #fff;
-  writing-mode: vertical-rl;
 }
 
-.hero__scroll-line {
-  width: 1px;
-  height: 48px;
-  background: linear-gradient(to bottom, #fff, transparent);
-  animation: scrollLine 2s ease-in-out infinite;
+.hero-marquee-separator {
+  color: #ff6b35;
+  font-size: 10px;
 }
 
-@keyframes scrollLine {
-  0% { transform: scaleY(0); transform-origin: top; }
-  50% { transform: scaleY(1); transform-origin: top; }
-  51% { transform: scaleY(1); transform-origin: bottom; }
-  100% { transform: scaleY(0); transform-origin: bottom; }
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.333%); }
 }
 
-/* ---- Responsive ---- */
-@media (max-width: 990px) {
-  .hero__main-title {
-    font-size: clamp(70px, 14vw, 130px);
-  }
-  .hero__scroll-hint {
-    right: 20px;
-    bottom: 120px;
-  }
-}
+/* ============================================================
+   RESPONSIVENESS
+   ============================================================ */
 
-@media (max-width: 768px) {
-  .hero__logo-badge {
-    width: 62px;
-    height: 62px;
-    border-radius: 18px;
-    padding: 10px;
-    margin-bottom: 14px;
+@media (max-width: 900px) {
+  .hero-monumental {
+    padding: 90px 20px 80px;
   }
-
-  .hero__main-title {
-    font-size: clamp(54px, 16vw, 92px);
+  .hero-corner--tr, .hero-corner--bl, .hero-corner--br {
+    display: none;
   }
-
-  .hero__sub-title {
-    font-size: clamp(16px, 3.5vw, 22px);
-    letter-spacing: 0.06em;
+  .hero-corner-brand {
+    top: 24px;
+    left: 20px;
   }
-
-  .hero__thumbnails {
-    gap: 10px;
-    padding: 32px 16px;
-  }
-
-  .hero__thumb--sm {
-    width: 64px;
+  .hero-corner-logo {
     height: 42px;
   }
-
-  .hero__thumb--md {
-    width: 96px;
-    height: 62px;
-  }
-
-  .hero__scroll-hint {
-    display: none;
+  .hero-scatter-wrapper {
+    height: clamp(300px, 55vw, 440px);
+    margin: 12px auto 0;
   }
 }
 
-@media (max-width: 480px) {
-  .hero {
-    min-height: 480px;
-  }
-
-  .hero__content {
-    padding: 24px 16px 0;
-  }
-
-  .hero__logo-badge {
-    width: 52px;
-    height: 52px;
-    border-radius: 16px;
-    padding: 8px;
-    margin-bottom: 10px;
-  }
-
-  .hero__main-title {
-    font-size: clamp(44px, 14vw, 68px);
-  }
-
-  .hero__sub-title {
-    font-size: clamp(13px, 3.8vw, 17px);
-    letter-spacing: 0.04em;
-    margin-top: 6px;
-  }
-
-  .hero__thumbnails {
-    gap: 8px;
-    padding: 20px 12px 24px;
-  }
-
-  .hero__thumb--sm {
-    width: 52px;
-    height: 35px;
-  }
-
-  .hero__thumb--md {
-    width: 78px;
-    height: 50px;
-  }
-}
-
-/* Landscape on mobile phones */
-@media (max-height: 520px) {
-  .hero {
+@media (max-width: 600px) {
+  .hero-monumental {
+    padding: 80px 16px 70px;
     min-height: 100vh;
-    min-height: 100dvh;
-    justify-content: center;
   }
-
-  .hero__content {
-    padding: 10px 0 0;
+  .hero-kicker-pill {
+    font-size: 9.5px;
+    padding: 5px 14px;
+    letter-spacing: 0.12em;
+    margin-bottom: 12px;
   }
-
-  .hero__logo-badge {
-    width: 40px;
-    height: 40px;
-    border-radius: 12px;
-    padding: 6px;
-    margin-bottom: 6px;
-  }
-
-  .hero__main-title {
-    font-size: clamp(38px, 10vw, 60px);
-  }
-
-  .hero__sub-title {
-    font-size: 13px;
-  }
-
-  .hero__thumbnails {
-    padding: 12px;
-    gap: 6px;
-  }
-
-  .hero__thumb--sm {
-    width: 46px;
-    height: 30px;
-  }
-
-  .hero__thumb--md {
-    width: 68px;
-    height: 44px;
-  }
-
-  .hero__scroll-hint {
-    display: none;
+  .hero-scatter-wrapper {
+    height: clamp(260px, 68vw, 380px);
+    margin: 10px auto 0;
   }
 }

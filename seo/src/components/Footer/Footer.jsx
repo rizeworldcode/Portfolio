@@ -66,20 +66,7 @@ export default function Footer() {
 
           </div>
 
-          {/* Column 2: SERVICES */}
-          <div className="rw-footer__col">
-            <div className="rw-footer__col-heading">SERVICES</div>
-            <ul className="rw-footer__links">
-              <li><a href="#services">SEO Services & Optimization</a></li>
-              <li><a href="#why-us">Local SEO in Alwar</a></li>
-              <li><a href="#services">Technical SEO Structure</a></li>
-              <li><a href="#services">On-Page SEO Optimization</a></li>
-              <li><a href="#services">Web Development Company</a></li>
-              <li><a href="#services">Digital Marketing Agency</a></li>
-            </ul>
-          </div>
-
-          {/* Column 3: QUICK LINKS */}
+          {/* Column 2: PORTFOLIO */}
           <div className="rw-footer__col">
             <div className="rw-footer__col-heading">PORTFOLIO</div>
             <ul className="rw-footer__links">

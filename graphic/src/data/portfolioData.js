@@ -932,5 +932,32 @@ export const PORTFOLIO_CATEGORIES = [
         "src": "/Graphic portfolio/RW ROADMAP.png"
       }
     ]
+  },
+  {
+    "id": "automotive_retail",
+    "title": "Automobile & Retail",
+    "category": "Showrooms · Dealerships · Retail Branding",
+    "tag": "Automotive & Retail",
+    "description": "High-impact automotive marketing creatives, vehicle care banners, showroom branding, dealership promotions, and commercial retail collaterals.",
+    "coverImage": "/automobile/hydrowash-1.jpeg",
+    "itemCount": 4,
+    "images": [
+      {
+        "name": "Hydrowash Banner 1",
+        "src": "/automobile/hydrowash-1.jpeg"
+      },
+      {
+        "name": "Hydro Ceramic Wash 2",
+        "src": "/automobile/hydrowash-2.jpeg"
+      },
+      {
+        "name": "Hydrowash Service 3",
+        "src": "/automobile/hydrowash-3.jpeg"
+      },
+      {
+        "name": "Hydrowash Detail 4",
+        "src": "/automobile/hydrowash-4.jpeg"
+      }
+    ]
   }
 ];

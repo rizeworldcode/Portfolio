@@ -26,8 +26,8 @@
 
 .rw-footer__top {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1fr 1.25fr;
-  gap: 40px;
+  grid-template-columns: 1.6fr 1fr 1.4fr;
+  gap: 50px;
   align-items: flex-start;
   margin-bottom: 60px;
 }

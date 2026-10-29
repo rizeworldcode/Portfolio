@@ -1,11 +1,12 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import "./CaseStudies.css";
 
 export default function CaseStudies() {
   const [activeClientIndex, setActiveClientIndex] = useState(0);
-  const [sliderPos, setSliderPos] = useState(32); // percentage split
+  const [sliderPos, setSliderPos] = useState(38); // percentage split
   const [isDragging, setIsDragging] = useState(false);
+  const [cardWidth, setCardWidth] = useState(1380);
   const containerRef = useRef(null);
 
   const clients = [
@@ -69,26 +70,56 @@ export default function CaseStudies() {
 
   const current = clients[activeClientIndex];
 
+  // Keep cardWidth synchronized with real container width
+  useEffect(() => {
+    const updateWidth = () => {
+      if (containerRef.current) {
+        setCardWidth(containerRef.current.offsetWidth);
+      }
+    };
+    updateWidth();
+    window.addEventListener("resize", updateWidth);
+    return () => window.removeEventListener("resize", updateWidth);
+  }, []);
+
   // Drag & Move handler for the before/after split slider
-  const handleMove = (clientX) => {
+  const handleMove = useCallback((clientX) => {
     if (!containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
     const x = Math.max(0, Math.min(clientX - rect.left, rect.width));
     const percent = Math.round((x / rect.width) * 100);
     setSliderPos(percent);
-  };
+  }, []);
 
-  const handleMouseMove = (e) => {
-    if (isDragging) {
-      handleMove(e.clientX);
-    }
-  };
+  // Global pointer/touch listeners while dragging so fast drags never break
+  useEffect(() => {
+    if (!isDragging) return;
 
-  const handleTouchMove = (e) => {
-    if (isDragging && e.touches[0]) {
-      handleMove(e.touches[0].clientX);
-    }
-  };
+    const onPointerMove = (e) => {
+      const clientX = e.touches && e.touches[0] ? e.touches[0].clientX : e.clientX;
+      if (clientX !== undefined) {
+        handleMove(clientX);
+      }
+    };
+
+    const onPointerUp = () => {
+      setIsDragging(false);
+    };
+
+    window.addEventListener("mousemove", onPointerMove);
+    window.addEventListener("mouseup", onPointerUp);
+    window.addEventListener("touchmove", onPointerMove, { passive: true });
+    window.addEventListener("touchend", onPointerUp);
+    window.addEventListener("touchcancel", onPointerUp);
+
+    return () => {
+      window.removeEventListener("mousemove", onPointerMove);
+      window.removeEventListener("mouseup", onPointerUp);
+      window.removeEventListener("touchmove", onPointerMove);
+      window.removeEventListener("touchend", onPointerUp);
+      window.removeEventListener("touchcancel", onPointerUp);
+    };
+  }, [isDragging, handleMove]);
 
   return (
     <section className="cases-section" id="results">
@@ -145,24 +176,30 @@ export default function CaseStudies() {
             ============================================================ */}
         <div
           ref={containerRef}
-          className="cases-card"
-          onMouseMove={handleMouseMove}
-          onMouseUp={() => setIsDragging(false)}
-          onMouseLeave={() => setIsDragging(false)}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={() => setIsDragging(false)}
+          className={`cases-card ${isDragging ? "cases-card--dragging" : ""}`}
+          onMouseDown={(e) => {
+            setIsDragging(true);
+            handleMove(e.clientX);
+          }}
+          onTouchStart={(e) => {
+            if (e.touches && e.touches[0]) {
+              setIsDragging(true);
+              handleMove(e.touches[0].clientX);
+            }
+          }}
         >
-          {/* Top Left Tag: Client Name + Year */}
-          <div className="cases-card__badge-left">
-            <span className="cases-card__badge-dot" />
-            <span className="cases-card__badge-text">
-              {current.name} · Alwar Local Search — 2026
-            </span>
-          </div>
+          {/* Top Badges Row (Flex container prevents overlap) */}
+          <div className="cases-card__top-bar">
+            <div className="cases-card__badge-left">
+              <span className="cases-card__badge-dot" />
+              <span className="cases-card__badge-text">
+                {current.name} · 2026
+              </span>
+            </div>
 
-          {/* Top Right Tag: Metric Label */}
-          <div className="cases-card__badge-right">
-            <span>{current.metricLabel}</span>
+            <div className="cases-card__badge-right">
+              <span>{current.metricLabel}</span>
+            </div>
           </div>
 
           {/* ============================================================
@@ -228,7 +265,10 @@ export default function CaseStudies() {
             className="cases-layer cases-layer--before"
             style={{ width: `${sliderPos}%` }}
           >
-            <div className="cases-layer__inner-wrapper">
+            <div
+              className="cases-layer__inner-wrapper"
+              style={{ width: `${cardWidth}px` }}
+            >
               <img
                 src={current.avatar}
                 alt="Before transformation"
