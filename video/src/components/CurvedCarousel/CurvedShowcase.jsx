@@ -387,33 +387,6 @@ export default function CurvedShowcase() {
               <div className="curved-modal-media">
                 <CurvedModalVideo item={activeItem} />
               </div>
-
-              {/* Information */}
-              <div className="curved-modal-info">
-                <div className="curved-modal-badge-row">
-                  <span className="curved-modal-badge">{activeItem.category}</span>
-                  <span className="curved-modal-year">{activeItem.year}</span>
-                </div>
-
-                <h3 className="curved-modal-title">{activeItem.title}</h3>
-                <p className="curved-modal-client">Client: {activeItem.client}</p>
-                <p className="curved-modal-desc">{activeItem.description}</p>
-
-                <div className="curved-modal-tags">
-                  {activeItem.tags?.map((tag) => (
-                    <span key={tag} className="curved-modal-tag">
-                      #{tag}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="curved-modal-actions">
-                  <a href="#contact" className="curved-modal-cta" onClick={() => setActiveItem(null)}>
-                    <span>Start a Project Like This</span>
-                    <FiArrowRight size={16} />
-                  </a>
-                </div>
-              </div>
             </motion.div>
           </motion.div>
         )}

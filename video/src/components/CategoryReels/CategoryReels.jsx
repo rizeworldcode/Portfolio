@@ -654,39 +654,6 @@ export default function CategoryReels() {
                   />
                 </div>
               </div>
-
-              {/* Info Column */}
-              <div className="reel-modal-info-col">
-                <div className="reel-modal-badge-row">
-                  <span className="reel-modal-badge">{selectedReel.categoryLabel}</span>
-                </div>
-
-                <h3 className="reel-modal-title">{selectedReel.title}</h3>
-                <p className="reel-modal-client">Client: {selectedReel.client}</p>
-
-                <p className="reel-modal-desc">{selectedReel.description}</p>
-
-                {/* Tags */}
-                <div className="reel-modal-tags">
-                  {selectedReel.tags?.map((t) => (
-                    <span key={t} className="reel-modal-tag">
-                      #{t}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Actions */}
-                <div className="reel-modal-actions">
-                  <a
-                    href="#contact"
-                    className="reel-modal-cta"
-                    onClick={() => setSelectedReel(null)}
-                  >
-                    <span>Create a Reel Like This</span>
-                    <FiArrowRight size={16} />
-                  </a>
-                </div>
-              </div>
             </motion.div>
           </motion.div>
         )}

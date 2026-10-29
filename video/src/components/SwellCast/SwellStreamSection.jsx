@@ -200,24 +200,6 @@ export default function SwellStreamSection() {
                   className="swell-modal-video"
                 />
               </div>
-
-              <div className="swell-modal-info">
-                <span className="swell-modal-badge">{selectedCard.category || "Showcase"}</span>
-                <h3 className="swell-modal-title">{selectedCard.title}</h3>
-                {selectedCard.client && (
-                  <p className="swell-modal-client">Client: {selectedCard.client}</p>
-                )}
-                {selectedCard.description && (
-                  <p className="swell-modal-desc">{selectedCard.description}</p>
-                )}
-
-                <div className="swell-modal-footer">
-                  <a href="#contact" className="swell-modal-cta" onClick={() => setSelectedCard(null)}>
-                    <span>Inquire for Similar Project</span>
-                    <FiArrowRight size={15} style={{ marginLeft: "4px" }} />
-                  </a>
-                </div>
-              </div>
             </motion.div>
           </motion.div>
         )}
