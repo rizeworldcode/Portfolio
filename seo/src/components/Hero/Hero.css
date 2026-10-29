@@ -549,8 +549,8 @@
   max-width: 1440px;
   margin: 0 auto;
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
   gap: 32px;
   padding-top: 24px;
 }

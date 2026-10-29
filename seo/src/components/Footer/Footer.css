@@ -48,42 +48,30 @@
   text-decoration: none;
 }
 
-.rw-footer__brand-icon {
+.rw-footer__brand-logo-wrap {
   position: relative;
-  width: 26px;
-  height: 26px;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: transform 0.25s ease, border-color 0.25s ease;
 }
 
-.rw-footer__dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #d4ff00;
-  box-shadow: 0 0 8px rgba(212, 255, 0, 0.8);
-  z-index: 2;
+.rw-footer__brand:hover .rw-footer__brand-logo-wrap {
+  transform: scale(1.05);
+  border-color: rgba(212, 255, 0, 0.5);
 }
 
-.rw-footer__wave {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  border: 2px solid #d4ff00;
-}
-
-.rw-footer__wave--left {
-  border-right-color: transparent;
-  border-top-color: transparent;
-  border-bottom-color: transparent;
-}
-
-.rw-footer__wave--right {
-  border-left-color: transparent;
-  border-top-color: transparent;
-  border-bottom-color: transparent;
+.rw-footer__brand-logo-img {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 .rw-footer__brand-name {
@@ -198,8 +186,23 @@
 .rw-footer__contact-details {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
   margin-bottom: 18px;
+}
+
+.rw-footer__contact-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.rw-footer__contact-label {
+  font-family: var(--font-main);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #64748b;
 }
 
 .rw-footer__contact-link {

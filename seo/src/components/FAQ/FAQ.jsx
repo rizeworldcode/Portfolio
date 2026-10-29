@@ -72,7 +72,7 @@ export default function FAQ() {
               way.
             </p>
             <a href="#audit" className="faq-card-box__btn">
-              <span>Book a call</span>
+              <span>Get Free SEO Audit</span>
               <span>↗</span>
             </a>
             <div className="faq-card-box__footer">

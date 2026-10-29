@@ -249,6 +249,9 @@ export default function FunnelProcess() {
                   <span className="funnel-tier__num">01</span>
                   <span className="funnel-tier__label">SEARCH REACH</span>
                 </div>
+                <div className="funnel-tier__number">
+                  {counts.reach.toLocaleString()}
+                </div>
                 <div className="funnel-tier__desc-text">
                   Relevant users discovering the website
                 </div>
@@ -267,6 +270,21 @@ export default function FunnelProcess() {
                 <div className="funnel-tier__tag">
                   <span className="funnel-tier__num">02</span>
                   <span className="funnel-tier__label">CLICKS</span>
+                </div>
+                <div className="funnel-tier__number-wrap">
+                  <span className="funnel-tier__number">
+                    {counts.clicks.toLocaleString()}
+                  </span>
+
+                  {/* Conversion Callout Badge */}
+                  {activeStep >= 1 && (
+                    <div className="funnel-conversion-badge">
+                      <span className="funnel-conversion-badge__dot" />
+                      <span className="funnel-conversion-badge__text">
+                        ~0.2% become leads
+                      </span>
+                    </div>
+                  )}
                 </div>
                 <div className="funnel-tier__desc-text">
                   Users visiting relevant pages
@@ -287,6 +305,9 @@ export default function FunnelProcess() {
                   <span className="funnel-tier__num">03</span>
                   <span className="funnel-tier__label">LEADS</span>
                 </div>
+                <div className="funnel-tier__number">
+                  {counts.leads.toLocaleString()}
+                </div>
                 <div className="funnel-tier__desc-text">
                   Potential customers taking action
                 </div>
@@ -306,8 +327,12 @@ export default function FunnelProcess() {
                   <span className="funnel-tier__num">04</span>
                   <span className="funnel-tier__label">CLIENTS</span>
                 </div>
+                <div className="funnel-tier__number">
+                  {counts.clients.toLocaleString()}
+                </div>
                 <div className="funnel-tier__desc-text">
-                  Business enquiries becoming customers
+                  Business enquiries <br />
+                  becoming customers
                 </div>
               </div>
             </div>

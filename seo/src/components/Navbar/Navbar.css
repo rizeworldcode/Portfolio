@@ -45,53 +45,36 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
+  min-width: 140px;
   text-decoration: none;
   cursor: pointer;
   user-select: none;
 }
 
-.rw-brand__icon {
+.rw-brand__logo-wrap {
   position: relative;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: #000000;
-  border: 1.5px solid rgba(212, 255, 0, 0.4);
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: transform 0.25s ease, border-color 0.25s ease;
 }
 
-.rw-brand__dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #d4ff00;
-  box-shadow: 0 0 10px rgba(212, 255, 0, 0.9);
-  z-index: 2;
+.rw-brand:hover .rw-brand__logo-wrap {
+  transform: scale(1.05);
+  border-color: rgba(212, 255, 0, 0.5);
 }
 
-.rw-brand__wave {
-  position: absolute;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  border: 1.5px solid #d4ff00;
-  opacity: 0.85;
-}
-
-.rw-brand__wave--left {
-  border-right-color: transparent;
-  border-top-color: transparent;
-  border-bottom-color: transparent;
-  transform: scaleX(0.9);
-}
-
-.rw-brand__wave--right {
-  border-left-color: transparent;
-  border-top-color: transparent;
-  border-bottom-color: transparent;
-  transform: scaleX(0.9);
+.rw-brand__logo-img {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 .rw-brand__name {
@@ -155,6 +138,8 @@
 .rw-header__actions {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+  min-width: 140px;
 }
 
 .rw-btn-book {

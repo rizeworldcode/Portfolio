@@ -5,29 +5,7 @@ import "./Hero.css";
 export default function Hero() {
   const [activeTab, setActiveTab] = useState("01");
   const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
-  const [counter, setCounter] = useState(1280000);
   const heroRef = useRef(null);
-
-  // Animated counter for people reached
-  useEffect(() => {
-    const target = 1286432;
-    const duration = 2000;
-    const start = 1280000;
-    const startTime = performance.now();
-
-    const updateCounter = (currentTime) => {
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const easeOut = 1 - Math.pow(1 - progress, 3);
-      setCounter(Math.floor(start + (target - start) * easeOut));
-
-      if (progress < 1) {
-        requestAnimationFrame(updateCounter);
-      }
-    };
-
-    requestAnimationFrame(updateCounter);
-  }, []);
 
   // Track mouse for dynamic spotlight beam & radar effect
   const handleMouseMove = (e) => {
@@ -83,21 +61,6 @@ export default function Hero() {
           aria-hidden="true"
         />
 
-        {/* Floating Social Proof Event Pills over the crowd */}
-        <div className="hero-floating-pills" aria-hidden="true">
-          <div className="hero-float-pill hero-float-pill--1">
-            <span className="hero-float-pill__icon">⭐</span>
-            <span className="hero-float-pill__text">5 star review</span>
-          </div>
-          <div className="hero-float-pill hero-float-pill--2">
-            <span className="hero-float-pill__dot" />
-            <span className="hero-float-pill__text">17 leads today</span>
-          </div>
-          <div className="hero-float-pill hero-float-pill--3">
-            <span className="hero-float-pill__icon">⚡</span>
-            <span className="hero-float-pill__text">28 new followers</span>
-          </div>
-        </div>
       </div>
 
       {/* Top Right Radar Tracker */}
@@ -209,24 +172,13 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Bottom Hero Bar (3 Columns: Metrics, Filter Pills, Social Proof) */}
+      {/* Bottom Hero Bar */}
       <motion.div
         className="hero-bottom-bar"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.6 }}
       >
-        {/* Left Column: People Reached Metric */}
-        <div className="hero-stat-card">
-          <div className="hero-stat-card__eyebrow">
-            <span className="hero-stat-card__dot" />
-            <span>PEOPLE REACHED FOR CLIENTS THIS MONTH</span>
-          </div>
-          <div className="hero-stat-card__number">
-            {counter.toLocaleString()}
-          </div>
-        </div>
-
         {/* Center Column: Interactive Service Pills */}
         <div className="hero-service-tabs">
           {services.map((item) => (
@@ -242,21 +194,6 @@ export default function Hero() {
               <span className="hero-tab-pill__label">{item.label}</span>
             </button>
           ))}
-        </div>
-
-        {/* Right Column: Rating & Brand Trust */}
-        <div className="hero-social-proof">
-          <div className="hero-social-proof__stars-row">
-            <div className="hero-social-proof__stars">
-              {"★".repeat(5)}
-            </div>
-            <span className="hero-social-proof__rating">
-              4.9 · 126 client reviews
-            </span>
-          </div>
-          <div className="hero-social-proof__sub">
-            140+ brands grown
-          </div>
         </div>
       </motion.div>
     </section>

@@ -46,10 +46,8 @@ export default function Footer() {
           {/* Column 1: Brand Info & CTA */}
           <div className="rw-footer__col rw-footer__col--brand">
             <a href="#" onClick={scrollToTop} className="rw-footer__brand">
-              <div className="rw-footer__brand-icon">
-                <span className="rw-footer__wave rw-footer__wave--left" />
-                <span className="rw-footer__dot" />
-                <span className="rw-footer__wave rw-footer__wave--right" />
+              <div className="rw-footer__brand-logo-wrap">
+                <img src="/RW.png" alt="RizeWorld" className="rw-footer__brand-logo-img" />
               </div>
               <span className="rw-footer__brand-name">RizeWorld</span>
             </a>
@@ -66,25 +64,6 @@ export default function Footer() {
               </span>
             </div>
 
-            {/* CTA Button */}
-            <a href="mailto:hr.rizeworld@gmail.com" className="rw-footer__btn-cta">
-              <span>Contact RizeWorld</span>
-              <span className="rw-footer__btn-icon">
-                <svg
-                  width="13"
-                  height="13"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.4"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <line x1="7" y1="17" x2="17" y2="7" />
-                  <polyline points="7 7 17 7 17 17" />
-                </svg>
-              </span>
-            </a>
           </div>
 
           {/* Column 2: SERVICES */}
@@ -118,12 +97,26 @@ export default function Footer() {
           <div className="rw-footer__col rw-footer__col--contact">
             <div className="rw-footer__col-heading">CONTACT</div>
             <div className="rw-footer__contact-details">
-              <a href="mailto:hr.rizeworld@gmail.com" className="rw-footer__contact-link">
-                hr.rizeworld@gmail.com
-              </a>
-              <span className="rw-footer__contact-text" style={{ lineHeight: "1.5", fontSize: "12px", color: "#94a3b8" }}>
-                C-198, near Telco Circle, UIT Colony, Shalimar Nagar, Alwar, Rajasthan 301001, India
-              </span>
+              <div className="rw-footer__contact-item">
+                <span className="rw-footer__contact-label">Email</span>
+                <a href="mailto:hr.rizeworld@gmail.com" className="rw-footer__contact-link">
+                  hr.rizeworld@gmail.com
+                </a>
+              </div>
+
+              <div className="rw-footer__contact-item">
+                <span className="rw-footer__contact-label">Phone Number</span>
+                <a href="tel:+919024615510" className="rw-footer__contact-link">
+                  +91 90246 15510
+                </a>
+              </div>
+
+              <div className="rw-footer__contact-item">
+                <span className="rw-footer__contact-label">Address</span>
+                <span className="rw-footer__contact-text" style={{ lineHeight: "1.5", fontSize: "12px", color: "#94a3b8" }}>
+                  C-198, near Telco Circle, UIT Colony, Shalimar Nagar, Alwar, Rajasthan 301001, India
+                </span>
+              </div>
             </div>
 
             {/* Social Pills */}
