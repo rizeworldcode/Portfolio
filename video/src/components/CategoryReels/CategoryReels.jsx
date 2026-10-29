@@ -270,21 +270,7 @@ const REELS_DATA = [
     tags: ["Festive Feast", "Grand Celebrations", "Dining Ambience", "Navratri Special"],
   },
 
-  // --- Real Estate & Architecture Reels (4 Unique Reels) ---
-  {
-    id: "real-1",
-    title: "Eco Luxury Villa Architecture & Greens",
-    category: "realestate",
-    categoryLabel: "Architecture",
-    client: "Stone & Trees Residency",
-    duration: "0:45",
-    views: "165K",
-    likes: "12.7K",
-    video: "/videos-compressed/stone-trees.mp4",
-    description:
-      "Sun-drenched architectural views capturing natural stone masonry, open balconies, and peaceful villa layouts.",
-    tags: ["Eco Architecture", "Real Estate", "Nature Views"],
-  },
+  // --- Real Estate & Architecture Reels (5 Unique Reels) ---
   {
     id: "real-2",
     title: "Modern Skyline High-Rise Infrastructure",
@@ -327,8 +313,36 @@ const REELS_DATA = [
       "Mega construction milestones, structural engineering precision, and modern commercial facade reveal.",
     tags: ["Commercial Infra", "Construction", "Engineering"],
   },
+  {
+    id: "real-5",
+    title: "Ambhuti High-Performance Adhesives Reel 2.1",
+    category: "realestate",
+    categoryLabel: "Construction Infra",
+    client: "Ambhuti Chemicals",
+    duration: "0:40",
+    views: "160K",
+    likes: "12.5K",
+    video: "/videos-compressed/ambhuti-reel-2-1.mp4",
+    description:
+      "Industrial formulation strength demonstrated with high-speed macro splash and high-durability tensile bonding for construction.",
+    tags: ["Construction", "Adhesives", "Industrial Infra", "Build Tech"],
+  },
+  {
+    id: "real-6",
+    title: "Ambhuti Tile Adhesive Extreme Weather Grip",
+    category: "realestate",
+    categoryLabel: "Build Tech",
+    client: "Ambhuti Build",
+    duration: "0:36",
+    views: "148K",
+    likes: "11.1K",
+    video: "/videos-compressed/ambhuti-tile-2.mp4",
+    description:
+      "Waterproofing and high-thermal resistance test showing zero tile detachment under extreme construction testing.",
+    tags: ["Build Tech", "Waterproofing", "Tile Adhesive", "Infra Materials"],
+  },
 
-  // --- Brand Commercials & Products (6 Unique Reels) ---
+  // --- Brand Commercials & Products (4 Unique Reels) ---
   {
     id: "creative-1",
     title: "Shivaura Citirin Luxury Gemstone Film",
@@ -387,31 +401,17 @@ const REELS_DATA = [
   },
   {
     id: "creative-5",
-    title: "Ambhuti High-Performance Adhesives Reel 2.1",
+    title: "Shivaura Handcrafted Gemstone Tree Reel",
     category: "creative",
-    categoryLabel: "Product Power",
-    client: "Ambhuti Chemicals",
-    duration: "0:40",
-    views: "160K",
-    likes: "12.5K",
-    video: "/videos-compressed/ambhuti-reel-2-1.mp4",
+    categoryLabel: "Artisan Gemstones",
+    client: "Shivaura Gemstones",
+    duration: "0:45",
+    views: "185K",
+    likes: "15.4K",
+    video: "/videos-compressed/stone-trees.mp4",
     description:
-      "Industrial formulation strength demonstrated with high-speed macro splash and high-durability tensile bonding.",
-    tags: ["Adhesive", "Industrial Film", "Macro Strength"],
-  },
-  {
-    id: "creative-6",
-    title: "Ambhuti Tile Adhesive Extreme Weather Grip",
-    category: "creative",
-    categoryLabel: "Build Tech",
-    client: "Ambhuti Build",
-    duration: "0:36",
-    views: "148K",
-    likes: "11.1K",
-    video: "/videos-compressed/ambhuti-tile-2.mp4",
-    description:
-      "Waterproofing and high-thermal resistance test showing zero tile detachment under extreme construction testing.",
-    tags: ["Build Tech", "Waterproofing", "Tile Adhesive"],
+      "Decorative natural wire branch tree accented with healing crystals, tumbled stones, and handcrafted artisanal aesthetics.",
+    tags: ["Crystal Tree", "Healing Stones", "Artisan Gemstones", "Product Reel"],
   },
 
   // --- Lifestyle & Wellness Reels (2 Unique Reels) ---
