@@ -44,8 +44,8 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #a3e635;
-  box-shadow: 0 0 6px #a3e635;
+  background: #ff7d4d;
+  box-shadow: 0 0 6px #ff7d4d;
 }
 
 .reviews-pill__text {
@@ -109,7 +109,7 @@
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: #a3e635;
+  background: #ff7d4d;
 }
 
 .reviews-title {
@@ -243,9 +243,9 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: rgba(212, 255, 0, 0.15);
-  border: 1px solid rgba(212, 255, 0, 0.3);
-  color: #d4ff00;
+  background: rgba(255, 107, 53, 0.15);
+  border: 1px solid rgba(255, 107, 53, 0.3);
+  color: #ff6b35;
   padding: 3px 12px;
   border-radius: 9999px;
   font-family: var(--font-main);
@@ -258,8 +258,8 @@
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: #d4ff00;
-  box-shadow: 0 0 6px #d4ff00;
+  background: #ff6b35;
+  box-shadow: 0 0 6px #ff6b35;
 }
 
 /* Notification Cards */
@@ -320,7 +320,7 @@
 }
 
 .iphone-notif-pill {
-  background: #d4ff00;
+  background: #ff6b35;
   color: #000000;
   font-family: var(--font-main);
   font-size: 9px;

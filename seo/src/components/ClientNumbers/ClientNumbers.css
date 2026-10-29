@@ -6,7 +6,7 @@
 .numbers-section {
   position: relative;
   width: 100%;
-  background-color: #d4ff00; /* Vibrant lime background matching video at 00:18! */
+  background-color: #ff6b35; /* Vibrant lime background matching video at 00:18! */
   color: #0f1217;
   padding: 110px 0 0;
   overflow: hidden;
@@ -114,7 +114,7 @@
 
 .numbers-filter-btn--active {
   background: #0f1217;
-  color: #d4ff00;
+  color: #ff6b35;
 }
 
 .numbers-timeframe {
@@ -156,7 +156,7 @@
   font-family: var(--font-main);
   font-size: 10px;
   font-weight: 800;
-  color: #d4ff00;
+  color: #ff6b35;
 }
 
 .numbers-card__label {
@@ -188,9 +188,9 @@
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  background: rgba(212, 255, 0, 0.15);
-  color: #d4ff00;
-  border: 1px solid rgba(212, 255, 0, 0.3);
+  background: rgba(255, 107, 53, 0.15);
+  color: #ff6b35;
+  border: 1px solid rgba(255, 107, 53, 0.3);
   padding: 3px 10px;
   border-radius: 9999px;
   font-family: var(--font-main);
@@ -219,7 +219,7 @@
 .numbers-ticker-wrap {
   width: 100%;
   background: #000000;
-  color: #d4ff00;
+  color: #ff6b35;
   padding: 16px 0;
   overflow: hidden;
   margin-top: 48px;
@@ -253,8 +253,8 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #d4ff00;
-  box-shadow: 0 0 6px #d4ff00;
+  background: #ff6b35;
+  box-shadow: 0 0 6px #ff6b35;
 }
 
 /* Responsiveness */

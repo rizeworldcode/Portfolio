@@ -49,8 +49,8 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #a3e635;
-  box-shadow: 0 0 6px #a3e635;
+  background: #ff7d4d;
+  box-shadow: 0 0 6px #ff7d4d;
 }
 
 .team-pill__text {
@@ -152,15 +152,15 @@
 }
 
 .team-card--active {
-  border-color: #d4ff00;
-  box-shadow: 0 0 0 2px #d4ff00, 0 16px 36px rgba(212, 255, 0, 0.25);
+  border-color: #ff6b35;
+  box-shadow: 0 0 0 2px #ff6b35, 0 16px 36px rgba(255, 107, 53, 0.25);
 }
 
 .team-card__target-ring {
   position: absolute;
   inset: -6px;
   border-radius: 30px;
-  border: 2px dashed rgba(212, 255, 0, 0.8);
+  border: 2px dashed rgba(255, 107, 53, 0.8);
   pointer-events: none;
   animation: reticleSpin 20s linear infinite;
   z-index: 10;
@@ -189,7 +189,7 @@
   position: absolute;
   top: 12px;
   left: 12px;
-  background: #d4ff00;
+  background: #ff6b35;
   color: #000000;
   font-family: var(--font-main);
   font-size: 9.5px;
@@ -197,7 +197,7 @@
   letter-spacing: 0.1em;
   padding: 3px 10px;
   border-radius: 9999px;
-  box-shadow: 0 2px 8px rgba(212, 255, 0, 0.4);
+  box-shadow: 0 2px 8px rgba(255, 107, 53, 0.4);
 }
 
 .team-card__info {

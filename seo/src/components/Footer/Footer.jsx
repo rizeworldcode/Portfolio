@@ -147,9 +147,9 @@ export default function Footer() {
             RizeWorld
           </span>
 
-          {/* Glowing Lime Text Layer (Clipped to circular torch around mouse) */}
+          {/* Glowing Brand Orange Text Layer (Clipped to circular torch around mouse) */}
           <span
-            className={`rw-footer__wordmark-text rw-footer__wordmark-text--lime ${
+            className={`rw-footer__wordmark-text rw-footer__wordmark-text--orange ${
               isOverWordmark ? "rw-footer__wordmark-text--visible" : ""
             }`}
             aria-hidden="true"

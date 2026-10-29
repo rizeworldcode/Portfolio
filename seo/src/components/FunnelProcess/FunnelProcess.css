@@ -48,8 +48,8 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #a3e635;
-  box-shadow: 0 0 6px #a3e635;
+  background: #ff7d4d;
+  box-shadow: 0 0 6px #ff7d4d;
 }
 
 .funnel-pill__text {
@@ -83,11 +83,11 @@
 
 .funnel-badge {
   display: inline-block;
-  background: #d4ff00;
+  background: #ff6b35;
   color: #000000;
   padding: 0 16px 2px;
   border-radius: 18px;
-  box-shadow: 0 4px 14px rgba(212, 255, 0, 0.4);
+  box-shadow: 0 4px 14px rgba(255, 107, 53, 0.4);
   transform: translateY(-2px);
   user-select: none;
 }
@@ -141,7 +141,7 @@
 /* Active Step: Solid Black with Neon Lime Text */
 .funnel-step-item--active .funnel-step-item__num {
   background: #0f1217;
-  color: #d4ff00;
+  color: #ff6b35;
   border-color: #0f1217;
   font-weight: 800;
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
@@ -258,7 +258,7 @@
 
 /* When filled with lime green/yellow (Matching Video) */
 .funnel-tier--filled-lime {
-  background-color: #d4ff00 !important;
+  background-color: #ff6b35 !important;
 }
 
 .funnel-tier--filled-lime .funnel-tier__number {
@@ -319,7 +319,7 @@
 }
 
 .funnel-tier__num {
-  color: #d4ff00;
+  color: #ff6b35;
 }
 
 .funnel-tier__number-wrap {

@@ -50,8 +50,8 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #d4ff00;
-  box-shadow: 0 0 6px #d4ff00;
+  background: #ff6b35;
+  box-shadow: 0 0 6px #ff6b35;
 }
 
 .pricing-pill__text {
@@ -109,7 +109,7 @@
 }
 
 .pricing-toggle__btn--active {
-  background: #d4ff00;
+  background: #ff6b35;
   color: #000000;
 }
 
@@ -146,8 +146,8 @@
 }
 
 .pricing-card--popular {
-  border-color: rgba(212, 255, 0, 0.4);
-  box-shadow: 0 0 40px rgba(212, 255, 0, 0.12);
+  border-color: rgba(255, 107, 53, 0.4);
+  box-shadow: 0 0 40px rgba(255, 107, 53, 0.12);
   background: #171b26;
 }
 
@@ -161,16 +161,16 @@
   font-family: var(--font-main);
   font-size: 11px;
   font-weight: 800;
-  color: #d4ff00;
+  color: #ff6b35;
 }
 
 .pricing-popular-pill {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: rgba(212, 255, 0, 0.15);
-  border: 1px solid rgba(212, 255, 0, 0.3);
-  color: #d4ff00;
+  background: rgba(255, 107, 53, 0.15);
+  border: 1px solid rgba(255, 107, 53, 0.3);
+  color: #ff6b35;
   padding: 3px 10px;
   border-radius: 9999px;
   font-family: var(--font-main);
@@ -183,7 +183,7 @@
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: #d4ff00;
+  background: #ff6b35;
 }
 
 .pricing-card__name {
@@ -258,7 +258,7 @@
 }
 
 .pricing-check {
-  color: #d4ff00;
+  color: #ff6b35;
   font-size: 12px;
 }
 
@@ -284,16 +284,16 @@
 }
 
 .pricing-card__btn--lime {
-  background: #d4ff00 !important;
+  background: #ff6b35 !important;
   color: #000000 !important;
-  border-color: #d4ff00 !important;
-  box-shadow: 0 4px 20px rgba(212, 255, 0, 0.35);
+  border-color: #ff6b35 !important;
+  box-shadow: 0 4px 20px rgba(255, 107, 53, 0.35);
 }
 
 .pricing-card__btn--lime:hover {
-  background: #dcff1a !important;
+  background: #ff7d4d !important;
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(212, 255, 0, 0.5);
+  box-shadow: 0 8px 30px rgba(255, 107, 53, 0.5);
 }
 
 /* Bottom Bar */

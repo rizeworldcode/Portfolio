@@ -53,8 +53,8 @@
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: #a3e635;
-  box-shadow: 0 0 6px #a3e635;
+  background: #ff7d4d;
+  box-shadow: 0 0 6px #ff7d4d;
 }
 
 .crowd-box__top-text {
@@ -107,7 +107,7 @@
 
 /* Yellow/Lime Pill Badge */
 .cluster-badge {
-  background: #d4ff00;
+  background: #ff6b35;
   color: #090c10;
   font-family: var(--font-main);
   font-size: 10.5px;
@@ -116,12 +116,12 @@
   padding: 4px 12px;
   border-radius: 9999px;
   text-transform: uppercase;
-  box-shadow: 0 0 14px rgba(212, 255, 0, 0.35);
+  box-shadow: 0 0 14px rgba(255, 107, 53, 0.35);
   transition: all 0.25s ease;
 }
 
 .crowd-cluster-callout:hover .cluster-badge {
-  box-shadow: 0 0 20px rgba(212, 255, 0, 0.65);
+  box-shadow: 0 0 20px rgba(255, 107, 53, 0.65);
   transform: translateY(-2px);
 }
 
@@ -183,8 +183,8 @@
   font-size: clamp(48px, 6vw, 76px);
   font-weight: 800;
   letter-spacing: -0.04em;
-  color: #d4ff00;
-  text-shadow: 0 0 30px rgba(212, 255, 0, 0.4),
+  color: #ff6b35;
+  text-shadow: 0 0 30px rgba(255, 107, 53, 0.4),
                0 4px 15px rgba(0, 0, 0, 0.5);
   font-variant-numeric: tabular-nums;
   transition: color 0.2s ease;

@@ -67,8 +67,8 @@ export default function Channels() {
       id: "04",
       name: "Content Optimization",
       verticalName: "Content & Intent",
-      bgColor: "#d4ff00",
-      pillBg: "#d4ff00",
+      bgColor: "#ff6b35",
+      pillBg: "#ff6b35",
       textColor: "#11141a",
       desc: "Creating relevant, readable content that addresses what users are actually searching for.",
       badge: "Search Intent",
@@ -202,7 +202,7 @@ export default function Channels() {
                             <span className="channels-social-reel-views">#1 IN ALWAR</span>
                           </div>
                           <div className="channels-social-reel-body" style={{ flexDirection: "column", gap: "8px", alignItems: "flex-start" }}>
-                            <div style={{ color: "#d4ff00", fontSize: "14px", fontWeight: "700" }}>★ ★ ★ ★ ★ (5.0)</div>
+                            <div style={{ color: "#ff6b35", fontSize: "14px", fontWeight: "700" }}>★ ★ ★ ★ ★ (5.0)</div>
                             <div style={{ color: "#ffffff", fontSize: "13px", fontWeight: "600" }}>RizeWorld — Digital Agency Alwar</div>
                             <div style={{ color: "#94a3b8", fontSize: "11px" }}>📍 Shalimar Nagar, UIT Colony, Alwar</div>
                           </div>

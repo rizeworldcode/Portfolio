@@ -53,8 +53,8 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #a3e635;
-  box-shadow: 0 0 6px #a3e635;
+  background: #ff7d4d;
+  box-shadow: 0 0 6px #ff7d4d;
 }
 
 .blog-pill__text {
@@ -88,11 +88,11 @@
 
 .blog-badge {
   display: inline-block;
-  background: #d4ff00;
+  background: #ff6b35;
   color: #000000;
   padding: 0 16px 2px;
   border-radius: 18px;
-  box-shadow: 0 4px 14px rgba(212, 255, 0, 0.4);
+  box-shadow: 0 4px 14px rgba(255, 107, 53, 0.4);
   transform: translateY(-2px);
   user-select: none;
 }
@@ -276,7 +276,7 @@
 
 .blog-arrow-btn:hover {
   background: #0f1217;
-  color: #d4ff00;
+  color: #ff6b35;
   border-color: #0f1217;
   transform: translate(2px, -2px);
 }
@@ -338,7 +338,7 @@
 }
 
 .blog-stacked-card--clickable:focus-visible {
-  outline: 2px solid #a3e635;
+  outline: 2px solid #ff7d4d;
   outline-offset: 2px;
 }
 
@@ -374,7 +374,7 @@
   left: 8px;
   background: rgba(15, 18, 23, 0.88);
   backdrop-filter: blur(8px);
-  color: #d4ff00;
+  color: #ff6b35;
   font-family: var(--font-main);
   font-size: 10px;
   font-weight: 700;
@@ -390,14 +390,14 @@
 }
 
 .blog-stacked-card:hover .blog-stacked-card__thumb-badge {
-  background: #d4ff00;
+  background: #ff6b35;
   color: #000000;
   transform: scale(1.05);
 }
 
 .blog-stacked-card:hover .blog-arrow-btn {
   background: #0f1217;
-  color: #d4ff00;
+  color: #ff6b35;
   border-color: #0f1217;
   transform: translate(2px, -2px);
 }

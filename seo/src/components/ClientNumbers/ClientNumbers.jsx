@@ -107,7 +107,7 @@ export default function ClientNumbers() {
                   <path
                     d={st.points}
                     fill="none"
-                    stroke="#d4ff00"
+                    stroke="#ff6b35"
                     strokeWidth="3"
                   />
                   {/* Glowing shaded area */}
@@ -118,8 +118,8 @@ export default function ClientNumbers() {
                   />
                   <defs>
                     <linearGradient id="sparklineGrad" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#d4ff00" stopOpacity="0.8" />
-                      <stop offset="100%" stopColor="#d4ff00" stopOpacity="0" />
+                      <stop offset="0%" stopColor="#ff6b35" stopOpacity="0.8" />
+                      <stop offset="100%" stopColor="#ff6b35" stopOpacity="0" />
                     </linearGradient>
                   </defs>
                 </svg>

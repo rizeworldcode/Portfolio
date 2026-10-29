@@ -174,7 +174,7 @@ export default function CrowdBox() {
           const auraGrad = ctx.createRadialGradient(0, 0, 0, 0, 0, r * 1.5);
           auraGrad.addColorStop(0, `rgba(212, 255, 0, ${0.18 * clusterOpacity})`);
           auraGrad.addColorStop(0.6, `rgba(212, 255, 0, ${0.05 * clusterOpacity})`);
-          auraGrad.addColorStop(1, "rgba(212, 255, 0, 0)");
+          auraGrad.addColorStop(1, "rgba(255, 107, 53, 0)");
           ctx.fillStyle = auraGrad;
           ctx.beginPath();
           ctx.arc(0, 0, r * 1.5, 0, Math.PI * 2);
@@ -257,7 +257,7 @@ export default function CrowdBox() {
 
           // Glowing lime yellow dot
           ctx.fillStyle = `rgba(212, 255, 0, ${p.alpha * clusterOpacity})`;
-          ctx.shadowColor = "#d4ff00";
+          ctx.shadowColor = "#ff6b35";
           ctx.shadowBlur = 6;
           ctx.beginPath();
           ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);

@@ -30,7 +30,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  border: 1px solid rgba(212, 255, 0, 0.12);
+  border: 1px solid rgba(255, 107, 53, 0.12);
 }
 
 .audit-wave--1 {
@@ -92,8 +92,8 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #d4ff00;
-  box-shadow: 0 0 6px #d4ff00;
+  background: #ff6b35;
+  box-shadow: 0 0 6px #ff6b35;
 }
 
 .audit-pill__text {
@@ -122,8 +122,8 @@
 }
 
 .audit-title__highlight {
-  color: #d4ff00;
-  text-shadow: 0 0 45px rgba(212, 255, 0, 0.4);
+  color: #ff6b35;
+  text-shadow: 0 0 45px rgba(255, 107, 53, 0.4);
 }
 
 .audit-desc {
@@ -222,7 +222,7 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: #d4ff00;
+  background: #ff6b35;
   color: #000000;
   font-family: var(--font-main);
   font-size: 13.5px;
@@ -233,14 +233,14 @@
   cursor: pointer;
   transition: all 0.25s ease;
   white-space: nowrap;
-  box-shadow: 0 4px 18px rgba(212, 255, 0, 0.35);
+  box-shadow: 0 4px 18px rgba(255, 107, 53, 0.35);
   user-select: none;
 }
 
 .audit-btn-submit:hover {
-  background: #dcff1a;
+  background: #ff7d4d;
   transform: translateY(-2px);
-  box-shadow: 0 8px 26px rgba(212, 255, 0, 0.5);
+  box-shadow: 0 8px 26px rgba(255, 107, 53, 0.5);
 }
 
 .audit-btn-submit__icon {
@@ -248,7 +248,7 @@
   height: 28px;
   border-radius: 50%;
   background: #000000;
-  color: #d4ff00;
+  color: #ff6b35;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -335,8 +335,8 @@
 }
 
 .audit-segment--open {
-  background: #d4ff00;
-  box-shadow: 0 0 10px rgba(212, 255, 0, 0.5);
+  background: #ff6b35;
+  box-shadow: 0 0 10px rgba(255, 107, 53, 0.5);
 }
 
 .audit-card__caption {

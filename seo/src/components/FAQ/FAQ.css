@@ -45,8 +45,8 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #a3e635;
-  box-shadow: 0 0 6px #a3e635;
+  background: #ff7d4d;
+  box-shadow: 0 0 6px #ff7d4d;
 }
 
 .faq-pill__text {
@@ -86,7 +86,7 @@
   font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.14em;
-  color: #d4ff00;
+  color: #ff6b35;
   text-transform: uppercase;
 }
 
@@ -112,7 +112,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
-  background: #d4ff00;
+  background: #ff6b35;
   color: #000000;
   font-family: var(--font-main);
   font-size: 13px;
@@ -126,9 +126,9 @@
 }
 
 .faq-card-box__btn:hover {
-  background: #dcff1a;
+  background: #ff7d4d;
   transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(212, 255, 0, 0.4);
+  box-shadow: 0 4px 16px rgba(255, 107, 53, 0.4);
 }
 
 .faq-card-box__footer {
@@ -184,7 +184,7 @@
   font-family: var(--font-main);
   font-size: 11px;
   font-weight: 800;
-  color: #d4ff00;
+  color: #ff6b35;
   background: #0f1217;
   padding: 2px 7px;
   border-radius: 6px;
