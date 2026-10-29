@@ -5,24 +5,22 @@ import {
   TrendingUp, 
   Palette, 
   Layers, 
-  Activity, 
-  BarChart3, 
-  ExternalLink,
-  ShieldAlert,
-  Sliders
+  ExternalLink 
 } from 'lucide-react';
 import './BottomDock.css';
 
 export default function BottomDock({ 
   activeTab, 
-  setActiveTab 
+  setActiveTab,
+  graphicsCount = 42,
+  videosCount = 28,
+  seoCount = 14
 }) {
   const dockItems = [
-    { id: 'all', icon: Layers, badge: 84, label: 'All Items' },
-    { id: 'video', icon: Video, badge: 28, label: 'Video (5175)' },
-    { id: 'seo', icon: TrendingUp, badge: 14, label: 'SEO (5173)' },
-    { id: 'graphic', icon: Palette, badge: 42, label: 'Graphic (5174)' },
-    { id: 'analytics', icon: Activity, badge: 3, label: 'Live Metrics' },
+    { id: 'all', icon: Layers, badge: graphicsCount + videosCount + seoCount, label: 'All Portfolios' },
+    { id: 'graphic', icon: Palette, badge: graphicsCount, label: 'Graphic (Port 5174)' },
+    { id: 'video', icon: Video, badge: videosCount, label: 'Video (Port 5175)' },
+    { id: 'seo', icon: TrendingUp, badge: seoCount, label: 'SEO (Port 5173)' },
   ];
 
   return (
@@ -34,7 +32,7 @@ export default function BottomDock({
           <span>2026</span>
         </div>
 
-        {/* Center Icons with Yellow Badge Counters */}
+        {/* Center Icons with Badge Counters */}
         <div className="bottom-dock__items">
           {dockItems.map((item) => {
             const Icon = item.icon;
@@ -47,7 +45,7 @@ export default function BottomDock({
                 title={item.label}
               >
                 <Icon size={16} strokeWidth={2.2} />
-                {item.badge && (
+                {item.badge !== undefined && (
                   <span className="dock-btn__badge">{item.badge}</span>
                 )}
               </button>
@@ -57,6 +55,17 @@ export default function BottomDock({
 
         {/* Right Dark Capsule for Quick Launch to Ports */}
         <div className="bottom-dock__dark-capsule">
+          <a 
+            href="http://localhost:5174/" 
+            target="_blank" 
+            rel="noreferrer"
+            className="dock-launch-link"
+            title="Launch Graphic Portfolio (5174)"
+          >
+            <span>Graphic</span>
+            <ExternalLink size={10} />
+          </a>
+          <span className="capsule-divider" />
           <a 
             href="http://localhost:5175/" 
             target="_blank" 
@@ -76,17 +85,6 @@ export default function BottomDock({
             title="Launch SEO Portfolio (5173)"
           >
             <span>SEO</span>
-            <ExternalLink size={10} />
-          </a>
-          <span className="capsule-divider" />
-          <a 
-            href="http://localhost:5174/" 
-            target="_blank" 
-            rel="noreferrer"
-            className="dock-launch-link"
-            title="Launch Graphic Portfolio (5174)"
-          >
-            <span>Graphic</span>
             <ExternalLink size={10} />
           </a>
         </div>

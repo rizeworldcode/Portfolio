@@ -1,34 +1,39 @@
 .studio-canvas {
-  width: 100%;
-  max-width: 1240px;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: stretch;
+  justify-content: stretch;
   position: relative;
+  overflow: hidden;
 }
 
-/* Tablet Device Frame (matching the RonDesignLab style in target image) */
+/* Tablet Device Frame (Edge-to-Edge full width & height) */
 .device-frame {
   width: 100%;
+  height: 100%;
   background: var(--tablet-bezel);
-  border-radius: 46px;
-  padding: 14px;
-  box-shadow: var(--shadow-bezel);
+  border-radius: 0;
+  padding: 5px;
   position: relative;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: none;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Inner Screen with claymorphic background */
 .device-screen {
   width: 100%;
+  height: 100%;
+  flex: 1;
   background: var(--tablet-surface);
-  border-radius: 36px;
+  border-radius: 18px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   position: relative;
-  min-height: 680px;
   box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 

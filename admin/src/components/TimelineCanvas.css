@@ -1,17 +1,21 @@
 .timeline-canvas {
   position: relative;
   width: 100%;
-  padding: 14px 24px 28px;
+  flex: 1;
+  padding: 16px 36px 20px;
   overflow-x: auto;
-  overflow-y: hidden;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /* Horizontal Axis Line across the top */
 .timeline-canvas__axis-line {
   position: absolute;
-  top: 36px;
-  left: 24px;
-  right: 24px;
+  top: 40px;
+  left: 36px;
+  right: 36px;
   height: 1.5px;
   background: #d8d8d1;
   z-index: 1;
@@ -21,7 +25,7 @@
   display: flex;
   align-items: flex-start;
   gap: 36px;
-  min-width: 900px;
+  width: 100%;
   position: relative;
   z-index: 2;
 }
@@ -180,16 +184,16 @@
 /* Dynamic White Card */
 .dynamic-card {
   background: var(--surface-white);
-  border-radius: 20px;
-  padding: 14px 16px;
+  border-radius: 22px;
+  padding: 16px 18px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
   border: 1px solid rgba(0, 0, 0, 0.02);
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  min-width: 180px;
+  min-width: 250px;
 }
 
 .dynamic-card:hover {
@@ -204,14 +208,14 @@
 }
 
 .dynamic-card__title {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
   color: var(--text-main);
 }
 
 .dynamic-card__scale-icon {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   background: #f1f2ec;
   color: var(--text-muted);
@@ -224,7 +228,7 @@
 .dynamic-card__chart-wrap {
   position: relative;
   width: 100%;
-  height: 60px;
+  height: 82px;
   margin-top: 4px;
 }
 

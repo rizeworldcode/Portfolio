@@ -1,27 +1,25 @@
 import React from 'react';
 import { 
   Sliders, 
-  Activity, 
-  Eye, 
-  Flame, 
-  Sparkles, 
-  ShieldCheck, 
-  CheckCircle2 
+  Palette, 
+  Video, 
+  TrendingUp, 
+  Layers 
 } from 'lucide-react';
 import './StatsBar.css';
 
 export default function StatsBar({ 
-  filterSub, 
-  setFilterSub, 
-  selectedPortfolio 
+  selectedPortfolio,
+  onSelectPortfolio,
+  graphicsCount = 42,
+  videosCount = 28,
+  seoCount = 14
 }) {
   const subFilters = [
-    { id: 'all-works', label: 'All Portfolios' },
-    { id: 'video-reels', label: 'Video Reels (28)' },
-    { id: 'seo-audits', label: 'SEO Audits (14)' },
-    { id: 'brand-kits', label: 'Brand Kits (42)' },
-    { id: 'client-roster', label: 'Client Roster' },
-    { id: 'live-stream', label: 'Live Stream' },
+    { id: 'all', label: `All Portfolios (${graphicsCount + videosCount + seoCount})`, icon: Layers },
+    { id: 'graphic', label: `🎨 Graphic Design (${graphicsCount})`, icon: Palette },
+    { id: 'video', label: `🎬 Video Reels (${videosCount})`, icon: Video },
+    { id: 'seo', label: `🚀 SEO & Rankings (${seoCount})`, icon: TrendingUp },
   ];
 
   return (
@@ -32,33 +30,40 @@ export default function StatsBar({
           <div className="profile-card__avatar-wrap">
             <img 
               src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" 
-              alt="Creative Director" 
+              alt="Rize Director" 
               className="profile-card__avatar"
             />
             <span className="profile-card__online-dot" />
           </div>
           <div className="profile-card__info">
-            <span className="profile-card__role">Portfolio Director</span>
-            <span className="profile-card__name">Rize Studio Admin</span>
+            <span className="profile-card__role">Rize Admin</span>
+            <span className="profile-card__name">Studio Director</span>
           </div>
         </div>
 
-        {/* Diagnosis / Primary Status Title */}
+        {/* Primary Status Title */}
         <div className="stats-bar__status-block">
-          <span className="status-block__label">Current Production Cycle</span>
+          <span className="status-block__label">Active Portfolio Manager</span>
           <h2 className="status-block__title">
-            {selectedPortfolio === 'all' && 'Multi-Portfolio Production'}
-            {selectedPortfolio === 'video' && 'Video Cinema & Reels Hub'}
-            {selectedPortfolio === 'seo' && 'SEO Organic Domination'}
-            {selectedPortfolio === 'graphic' && 'Brand Identity & Visuals'}
-            {selectedPortfolio === 'analytics' && 'Growth Intelligence Labs'}
+            {selectedPortfolio === 'all' && 'RizeWorld Multi-Portfolio Studio'}
+            {selectedPortfolio === 'graphic' && 'Graphic Design, Posters & Branding'}
+            {selectedPortfolio === 'video' && 'Video Cinema & Reels Production'}
+            {selectedPortfolio === 'seo' && 'SEO Rank Dominance & Keywords'}
           </h2>
         </div>
 
-        {/* Dynamic Metric Columns */}
+        {/* 4 Dynamic Metrics Columns for RizeWorld */}
         <div className="stats-bar__metrics-row">
           <div className="metric-col">
-            <span className="metric-col__label">Total Reach</span>
+            <span className="metric-col__label">Graphic Assets</span>
+            <div className="metric-col__value-row">
+              <span className="metric-col__number">{graphicsCount}</span>
+              <span className="metric-col__unit">designs</span>
+            </div>
+          </div>
+
+          <div className="metric-col">
+            <span className="metric-col__label">Video Views</span>
             <div className="metric-col__value-row">
               <span className="metric-col__number">2.4M</span>
               <span className="metric-col__unit">views</span>
@@ -66,26 +71,18 @@ export default function StatsBar({
           </div>
 
           <div className="metric-col">
-            <span className="metric-col__label">Audience CTR</span>
+            <span className="metric-col__label">SEO Rankings</span>
             <div className="metric-col__value-row">
-              <span className="metric-col__number">14.8</span>
-              <span className="metric-col__unit">/20</span>
+              <span className="metric-col__number">85+</span>
+              <span className="metric-col__unit">#1 ranks</span>
             </div>
           </div>
 
           <div className="metric-col">
-            <span className="metric-col__label">SEO Health</span>
+            <span className="metric-col__label">Active Portfolios</span>
             <div className="metric-col__value-row">
-              <span className="metric-col__number">98</span>
-              <span className="metric-col__unit">%</span>
-            </div>
-          </div>
-
-          <div className="metric-col">
-            <span className="metric-col__label">System Uptime</span>
-            <div className="metric-col__value-row">
-              <span className="metric-col__number">99.9</span>
-              <span className="metric-col__unit">%</span>
+              <span className="metric-col__number">3</span>
+              <span className="metric-col__unit">live ports</span>
             </div>
           </div>
         </div>
@@ -93,18 +90,18 @@ export default function StatsBar({
 
       {/* Sub-pill filters row */}
       <div className="stats-bar__bottom">
-        <button className="sub-filter-icon-btn" title="Filter Controls">
+        <button className="sub-filter-icon-btn" title="Portfolio Selector">
           <Sliders size={14} strokeWidth={2.4} />
         </button>
 
         <div className="stats-bar__sub-pills">
           {subFilters.map((sub) => {
-            const isActive = filterSub === sub.id;
+            const isActive = selectedPortfolio === sub.id;
             return (
               <button
                 key={sub.id}
                 className={`sub-pill ${isActive ? 'sub-pill--active' : ''}`}
-                onClick={() => setFilterSub(sub.id)}
+                onClick={() => onSelectPortfolio(sub.id)}
               >
                 {sub.label}
               </button>

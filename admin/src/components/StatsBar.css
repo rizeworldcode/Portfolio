@@ -1,8 +1,8 @@
 .stats-bar {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  padding: 8px 24px 14px;
+  gap: 14px;
+  padding: 14px 28px 10px;
   position: relative;
   z-index: 5;
 }
@@ -11,7 +11,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
+  gap: 28px;
   flex-wrap: wrap;
 }
 
