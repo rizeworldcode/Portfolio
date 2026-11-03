@@ -31,13 +31,20 @@ export default function CategoryDetail({ category, onClose }) {
     };
   }, []);
 
-  const images = category.images;
+  const images = category?.images || [];
 
-  // Balanced column count: adapts so pages with fewer images never look empty or left-heavy
+  // True dynamic masonry height balancing: ensures all columns end at the exact same level!
   const effectiveCols = Math.min(columnCount, Math.max(1, images.length));
   const columns = Array.from({ length: effectiveCols }, () => []);
+  const colHeights = Array(effectiveCols).fill(0);
+
   images.forEach((img, idx) => {
-    columns[idx % effectiveCols].push({ img, idx });
+    let shortest = 0;
+    for (let c = 1; c < effectiveCols; c++) {
+      if (colHeights[c] < colHeights[shortest]) shortest = c;
+    }
+    columns[shortest].push({ img, idx });
+    colHeights[shortest] += (img.aspectRatio || 1.33);
   });
 
   // Keyboard navigation for lightbox & close

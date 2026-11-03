@@ -133,19 +133,16 @@ const headingVariants = {
 };
 
 export default function Categories() {
-  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedCategoryId, setSelectedCategoryId] = useState(null);
 
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace("#category-", "");
-      if (hash) {
-        const found = PORTFOLIO_CATEGORIES.find((c) => c.id === hash);
-        if (found) {
-          setSelectedCategory(found);
-          return;
-        }
+      if (hash && PORTFOLIO_CATEGORIES.some((c) => c.id === hash)) {
+        setSelectedCategoryId(hash);
+      } else {
+        setSelectedCategoryId(null);
       }
-      setSelectedCategory(null);
     };
 
     handleHashChange();
@@ -155,7 +152,7 @@ export default function Categories() {
 
   const openCategory = (cat) => {
     window.location.hash = `category-${cat.id}`;
-    setSelectedCategory(cat);
+    setSelectedCategoryId(cat.id);
   };
 
   const closeCategory = () => {
@@ -164,8 +161,12 @@ export default function Categories() {
       document.title,
       window.location.pathname + window.location.search
     );
-    setSelectedCategory(null);
+    setSelectedCategoryId(null);
   };
+
+  const selectedCategory = selectedCategoryId
+    ? PORTFOLIO_CATEGORIES.find((c) => c.id === selectedCategoryId)
+    : null;
 
   return (
     <>
