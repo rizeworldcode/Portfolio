@@ -4,6 +4,8 @@ import { PORTFOLIO_CATEGORIES } from "../../data/portfolioData";
 import CategoryDetail from "./CategoryDetail";
 import "./Categories.css";
 
+// 13 Active Portfolio Categories Including Gym & Fitness
+
 function ProjectCard({ category, onClick }) {
   const cardRef = useRef(null);
   const glossRef = useRef(null);
@@ -83,7 +85,9 @@ function ProjectCard({ category, onClick }) {
 
         <div className="project-card__badges">
           <div className="project-card__tag">{category.tag}</div>
-          <div className="project-card__count">{category.itemCount} Designs</div>
+          <div className="project-card__count">
+            {category.itemCount > 0 ? `${category.itemCount} Designs` : "Coming Soon"}
+          </div>
         </div>
 
         <div className="project-card__pill" aria-hidden="true">

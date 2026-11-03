@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 580" width="100%" height="100%">
+  <defs>
+    <linearGradient id="gymBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d0d12"/>
+      <stop offset="50%" stop-color="#17121e"/>
+      <stop offset="100%" stop-color="#08080a"/>
+    </linearGradient>
+
+    <linearGradient id="neonOrange" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ea580c"/>
+      <stop offset="50%" stop-color="#f97316"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+
+    <linearGradient id="metalPlate" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#374151"/>
+      <stop offset="50%" stop-color="#1f2937"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+
+    <radialGradient id="gymGlow" cx="50%" cy="45%" r="50%">
+      <stop offset="0%" stop-color="rgba(249, 115, 22, 0.3)"/>
+      <stop offset="60%" stop-color="rgba(234, 88, 12, 0.1)"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+
+    <filter id="gymBlur">
+      <feGaussianBlur stdDeviation="30"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="480" height="580" fill="url(#gymBg)"/>
+
+  <!-- Ambient Glow -->
+  <circle cx="240" cy="235" r="170" fill="url(#gymGlow)"/>
+  <circle cx="240" cy="230" r="90" fill="#f97316" opacity="0.18" filter="url(#gymBlur)"/>
+
+  <!-- Geometric Grid & Hexagonal Rings -->
+  <g opacity="0.12" stroke="#ffffff" stroke-width="1" stroke-dasharray="4 6">
+    <circle cx="240" cy="240" r="160" fill="none"/>
+    <polygon points="240,70 380,150 380,310 240,390 100,310 100,150" fill="none" stroke="url(#neonOrange)" stroke-width="1.5" opacity="0.4"/>
+  </g>
+
+  <!-- Fitness / Barbell & Dumbbell Centerpiece -->
+  <g transform="translate(240, 230)">
+    <!-- Central Barbell Steel Rod -->
+    <rect x="-140" y="-8" width="280" height="16" rx="8" fill="url(#metalPlate)" stroke="#4b5563" stroke-width="1.5"/>
+    <!-- Knurling texture on bar -->
+    <line x1="-70" y1="-7" x2="-20" y2="-7" stroke="#9ca3af" stroke-width="2" stroke-dasharray="3 3"/>
+    <line x1="20" y1="-7" x2="70" y2="-7" stroke="#9ca3af" stroke-width="2" stroke-dasharray="3 3"/>
+
+    <!-- Left Weight Plates -->
+    <rect x="-105" y="-55" width="20" height="110" rx="6" fill="url(#metalPlate)" stroke="url(#neonOrange)" stroke-width="2"/>
+    <rect x="-125" y="-45" width="16" height="90" rx="5" fill="url(#metalPlate)" stroke="url(#neonOrange)" stroke-width="1.8"/>
+    <rect x="-142" y="-35" width="14" height="70" rx="4" fill="url(#metalPlate)" stroke="#6b7280" stroke-width="1.5"/>
+    <rect x="-82" y="-18" width="8" height="36" rx="2" fill="#d97706"/>
+
+    <!-- Right Weight Plates -->
+    <rect x="85" y="-55" width="20" height="110" rx="6" fill="url(#metalPlate)" stroke="url(#neonOrange)" stroke-width="2"/>
+    <rect x="109" y="-45" width="16" height="90" rx="5" fill="url(#metalPlate)" stroke="url(#neonOrange)" stroke-width="1.8"/>
+    <rect x="128" y="-35" width="14" height="70" rx="4" fill="url(#metalPlate)" stroke="#6b7280" stroke-width="1.5"/>
+    <rect x="74" y="-18" width="8" height="36" rx="2" fill="#d97706"/>
+
+    <!-- Dynamic Speed Lines / Energy Wings -->
+    <path d="M -80,-80 L -30,-40" stroke="url(#neonOrange)" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+    <path d="M 80,-80 L 30,-40" stroke="url(#neonOrange)" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+    <path d="M -110,-100 L -60,-60" stroke="#f59e0b" stroke-width="1.8" stroke-linecap="round" opacity="0.5"/>
+    <path d="M 110,-100 L 60,-60" stroke="#f59e0b" stroke-width="1.8" stroke-linecap="round" opacity="0.5"/>
+
+    <!-- Center Pulse / Flame Icon -->
+    <g transform="translate(0, -5)">
+      <circle cx="0" cy="0" r="28" fill="#18181b" stroke="url(#neonOrange)" stroke-width="2"/>
+      <!-- Lightning bolt / energy pulse -->
+      <polygon points="-3,-16 6,-3 0,0 4,14 -7,-1 -1,-3" fill="url(#neonOrange)"/>
+    </g>
+  </g>
+
+  <!-- Sparkles -->
+  <g fill="#fde047" opacity="0.85">
+    <path d="M 120,130 Q 120,140 130,140 Q 120,140 120,150 Q 120,140 110,140 Q 120,140 120,130 Z"/>
+    <path d="M 360,110 Q 360,120 370,120 Q 360,120 360,130 Q 360,120 350,120 Q 360,120 360,110 Z"/>
+  </g>
+
+  <!-- Bottom Tag Badge -->
+  <g transform="translate(240, 480)" text-anchor="middle">
+    <rect x="-140" y="-30" width="280" height="38" rx="19" fill="rgba(255,255,255,0.06)" stroke="rgba(249,115,22,0.3)" stroke-width="1"/>
+    <text x="0" y="-6" fill="#f9fafb" font-family="'Inter', sans-serif" font-size="12" font-weight="700" letter-spacing="3.5">
+      STRENGTH &amp; FITNESS
+    </text>
+  </g>
+</svg>
+
