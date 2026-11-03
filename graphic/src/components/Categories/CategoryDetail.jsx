@@ -133,42 +133,53 @@ export default function CategoryDetail({ category, onClose }) {
 
       {/* ---- Balanced Gallery (Clean: No File Names on Cards!) ---- */}
       <div className="category-detail__gallery-wrapper">
-        <div className="category-detail__columns">
-          {columns.map((col, colIdx) => (
-            <div key={colIdx} className="category-detail__col">
-              {col.map(({ img, idx }) => (
-                <motion.div
-                  key={img.src}
-                  className="gallery-card"
-                  onClick={() => setActiveImageIndex(idx)}
-                  whileHover={{ y: -6 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <img
-                    src={encodeURI(img.src)}
-                    alt=""
-                    loading="lazy"
-                    className="gallery-card__img"
-                  />
-                  <div className="gallery-card__overlay">
-                    <span className="gallery-card__zoom-pill">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                        <path
-                          d="M15 3H21V9M9 21H3V15M21 3L14 10M3 21L10 14"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                      View Full Size
-                    </span>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          ))}
-        </div>
+        {images.length === 0 ? (
+          <div style={{ textAlign: "center", padding: "80px 20px", color: "rgba(255,255,255,0.6)" }}>
+            <p style={{ fontSize: "20px", fontWeight: "600", marginBottom: "8px", color: "#fff" }}>
+              Designs Coming Soon
+            </p>
+            <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.45)" }}>
+              Images for this category will be uploaded shortly.
+            </p>
+          </div>
+        ) : (
+          <div className="category-detail__columns">
+            {columns.map((col, colIdx) => (
+              <div key={colIdx} className="category-detail__col">
+                {col.map(({ img, idx }) => (
+                  <motion.div
+                    key={img.src}
+                    className="gallery-card"
+                    onClick={() => setActiveImageIndex(idx)}
+                    whileHover={{ y: -6 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <img
+                      src={encodeURI(img.src)}
+                      alt=""
+                      loading="lazy"
+                      className="gallery-card__img"
+                    />
+                    <div className="gallery-card__overlay">
+                      <span className="gallery-card__zoom-pill">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                          <path
+                            d="M15 3H21V9M9 21H3V15M21 3L14 10M3 21L10 14"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                        View Full Size
+                      </span>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* ---- Lightbox Modal ---- */}

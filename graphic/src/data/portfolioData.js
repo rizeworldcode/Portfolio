@@ -959,5 +959,60 @@ export const PORTFOLIO_CATEGORIES = [
         "src": "/automobile/hydrowash-4.jpeg"
       }
     ]
+  },
+  {
+    "id": "fashion_clothing",
+    "title": "Fashion & Clothing Design",
+    "category": "Bespoke Tailoring · Boutique Branding · Custom Apparel",
+    "tag": "Fashion & Clothing",
+    "description": "Tailored apparel showcases, custom uniform manufacturing creatives, corporate workwear branding, and bespoke fashion design collaterals for Dailyprints.",
+    "coverImage": "/design/Image-25624.jpg",
+    "itemCount": 11,
+    "images": [
+      {
+        "name": "Dailyprints Bespoke Suit Tailoring",
+        "src": "/design/Image-25624.jpg"
+      },
+      {
+        "name": "Dailyprints Corporate & Industry Uniforms",
+        "src": "/design/Image-30136.jpg"
+      },
+      {
+        "name": "Fashion Apparel Collection 1",
+        "src": "/design/Image-31036.jpg"
+      },
+      {
+        "name": "Custom Tailored Uniform Design",
+        "src": "/design/Image-35782.jpg"
+      },
+      {
+        "name": "Apparel Stitching & Branding",
+        "src": "/design/Image-37705.jpg"
+      },
+      {
+        "name": "Designer Workwear Showcase",
+        "src": "/design/Image-4243.jpg"
+      },
+      {
+        "name": "Bespoke Clothing Showcase",
+        "src": "/design/Image-44259.jpg"
+      },
+      {
+        "name": "Custom Outfit & Uniform Fits",
+        "src": "/design/Image-85394.jpg"
+      },
+      {
+        "name": "Traditional Stylish Corporate Wear",
+        "src": "/design/Image-90863.jpg"
+      },
+      {
+        "name": "Professional Tailoring Showcase",
+        "src": "/design/Image-92859.jpg"
+      },
+      {
+        "name": "Dailyprints Custom Apparel Fits",
+        "src": "/design/Image-93325.jpg"
+      }
+    ]
   }
 ];
