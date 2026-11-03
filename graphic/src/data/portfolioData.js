@@ -791,16 +791,16 @@ export const PORTFOLIO_CATEGORIES = [
       {
         "name": "Bhau alwar",
         "src": "/Graphic portfolio/Bhau alwar.png",
-        "aspectRatio": 1.25
-      },
-      {
-        "name": "BHAU",
-        "src": "/Graphic portfolio/BHAU.png",
         "aspectRatio": 1.33
       },
       {
         "name": "Tara EVM",
         "src": "/Graphic portfolio/Tara EVM.png",
+        "aspectRatio": 1.33
+      },
+      {
+        "name": "BHAU",
+        "src": "/Graphic portfolio/BHAU.png",
         "aspectRatio": 1.33
       }
     ]
