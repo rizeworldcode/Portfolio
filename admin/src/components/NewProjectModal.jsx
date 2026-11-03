@@ -1,16 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { 
-  X, 
-  Check, 
-  Palette, 
-  Video, 
-  TrendingUp, 
-  Upload, 
-  Image as ImageIcon,
-  Sparkles,
-  Globe,
-  Edit3
-} from 'lucide-react';
+  RiCloseLine, 
+  RiCheckLine,
+  RiPaletteLine, 
+  RiMovie2Line, 
+  RiRocketLine 
+} from 'react-icons/ri';
 import './NewProjectModal.css';
 
 export default function NewProjectModal({ 
@@ -125,16 +120,30 @@ export default function NewProjectModal({
       <div className="modal-content modal-content--wide" onClick={(e) => e.stopPropagation()}>
         {/* Modal Header */}
         <div className="modal-header">
-          <div className="modal-title-group">
-            <span className="modal-badge">
-              {editItem ? 'Edit & Update Asset' : 'Add New Portfolio Asset'}
-            </span>
-            <h3 className="modal-heading">
-              {editItem ? `Update ${activeMode.toUpperCase()}: ${title || client}` : 'Portfolio Asset & Content Manager'}
-            </h3>
+          <div className="modal-header-left">
+            <div className={`modal-header-icon-aura mode-${activeMode}`}>
+              {activeMode === 'graphic' && <RiPaletteLine size={22} />}
+              {activeMode === 'video' && <RiMovie2Line size={22} />}
+              {activeMode === 'seo' && <RiRocketLine size={22} />}
+            </div>
+            <div className="modal-title-group">
+              <div className="modal-badge-row">
+                <span className={`modal-badge badge--${activeMode}`}>
+                  {editItem ? 'Edit & Update Asset' : 'Add New Portfolio Asset'}
+                </span>
+                <span className="modal-mode-indicator">
+                  {activeMode === 'graphic' && '• Graphic Studio Asset'}
+                  {activeMode === 'video' && '• Video Reel Production'}
+                  {activeMode === 'seo' && '• SEO Dominance Partner'}
+                </span>
+              </div>
+              <h3 className="modal-heading">
+                {editItem ? (title || client) : 'Portfolio Asset & Content Manager'}
+              </h3>
+            </div>
           </div>
-          <button className="modal-close-btn" onClick={onClose}>
-            <X size={18} />
+          <button className="modal-close-btn" onClick={onClose} title="Close Modal">
+            <RiCloseLine size={20} />
           </button>
         </div>
 
@@ -147,7 +156,7 @@ export default function NewProjectModal({
               onClick={() => setActiveMode('graphic')}
             >
               <div className="mode-tab-icon">
-                <Palette size={16} />
+                <RiPaletteLine size={18} />
               </div>
               <div className="mode-tab-text">
                 <span className="mode-tab-title">Graphic Image</span>
@@ -161,7 +170,7 @@ export default function NewProjectModal({
               onClick={() => setActiveMode('video')}
             >
               <div className="mode-tab-icon">
-                <Video size={16} />
+                <RiMovie2Line size={18} />
               </div>
               <div className="mode-tab-text">
                 <span className="mode-tab-title">Video Reel</span>
@@ -175,7 +184,7 @@ export default function NewProjectModal({
               onClick={() => setActiveMode('seo')}
             >
               <div className="mode-tab-icon">
-                <TrendingUp size={16} />
+                <RiRocketLine size={18} />
               </div>
               <div className="mode-tab-text">
                 <span className="mode-tab-title">SEO Content</span>
@@ -267,8 +276,17 @@ export default function NewProjectModal({
                   onChange={(e) => setImageUrl(e.target.value)}
                 />
                 {imageUrl && (
-                  <div className="preview-image-box">
-                    <img src={imageUrl} alt="Live Preview" onError={(e) => e.target.style.display='none'} />
+                  <div className="modal-asset-showcase">
+                    <div className="showcase-header-bar">
+                      <div className="showcase-left-meta">
+                        <span className="showcase-status-indicator"></span>
+                        <span className="showcase-label">Live Artwork Preview Stage</span>
+                      </div>
+                      <span className="showcase-format-pill">{format || 'Poster Preview'}</span>
+                    </div>
+                    <div className="showcase-media-stage">
+                      <img src={imageUrl} alt="Live Preview" className="showcase-img" onError={(e) => e.target.style.display='none'} />
+                    </div>
                   </div>
                 )}
               </div>
@@ -439,7 +457,7 @@ export default function NewProjectModal({
               Cancel
             </button>
             <button type="submit" className="btn-submit">
-              <Check size={16} strokeWidth={2.4} />
+              <RiCheckLine size={18} />
               <span>
                 {editItem ? 'Save & Update Changes' : (
                   activeMode === 'graphic' ? 'Publish Graphic Image' :

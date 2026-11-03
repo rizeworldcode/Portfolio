@@ -5,90 +5,92 @@ import {
   TrendingUp, 
   Palette, 
   Layers, 
-  ExternalLink 
+  ExternalLink,
+  Sparkles
 } from 'lucide-react';
 import './BottomDock.css';
 
 export default function BottomDock({ 
   activeTab, 
   setActiveTab,
-  graphicsCount = 42,
-  videosCount = 28,
-  seoCount = 14
+  graphicsCount = 4,
+  videosCount = 5,
+  seoCount = 4
 }) {
   const dockItems = [
-    { id: 'all', icon: Layers, badge: graphicsCount + videosCount + seoCount, label: 'All Portfolios' },
-    { id: 'graphic', icon: Palette, badge: graphicsCount, label: 'Graphic (Port 5174)' },
-    { id: 'video', icon: Video, badge: videosCount, label: 'Video (Port 5175)' },
-    { id: 'seo', icon: TrendingUp, badge: seoCount, label: 'SEO (Port 5173)' },
+    { id: 'all', icon: Layers, badge: graphicsCount + videosCount + seoCount, label: 'All Portfolios', color: 'all' },
+    { id: 'graphic', icon: Palette, badge: graphicsCount, label: 'Graphic (Port 5174)', color: 'graphic' },
+    { id: 'video', icon: Video, badge: videosCount, label: 'Video (Port 5175)', color: 'video' },
+    { id: 'seo', icon: TrendingUp, badge: seoCount, label: 'SEO (Port 5173)', color: 'seo' },
   ];
 
   return (
-    <div className="bottom-dock-wrapper">
-      <div className="bottom-dock">
-        {/* Calendar Year Pill */}
-        <div className="bottom-dock__year-pill">
-          <Calendar size={14} strokeWidth={2.4} />
-          <span>2026</span>
+    <div className="luxury-dock-container">
+      <div className="luxury-dock">
+        {/* Calendar / Version Pill */}
+        <div className="dock-meta-capsule">
+          <Calendar size={13} strokeWidth={2.4} />
+          <span>2026 Studio</span>
         </div>
 
-        {/* Center Icons with Badge Counters */}
-        <div className="bottom-dock__items">
+        {/* Center Icons with Color Badges */}
+        <div className="dock-nav-group">
           {dockItems.map((item) => {
             const Icon = item.icon;
             const isActive = activeTab === item.id;
             return (
               <button
                 key={item.id}
-                className={`dock-btn ${isActive ? 'dock-btn--active' : ''}`}
+                className={`dock-nav-btn ${isActive ? 'dock-nav-btn--active' : ''} dock-nav-btn--${item.color}`}
                 onClick={() => setActiveTab(item.id)}
                 title={item.label}
               >
-                <Icon size={16} strokeWidth={2.2} />
+                <Icon size={16} strokeWidth={isActive ? 2.5 : 2} />
                 {item.badge !== undefined && (
-                  <span className="dock-btn__badge">{item.badge}</span>
+                  <span className={`dock-count-badge badge-${item.color}`}>{item.badge}</span>
                 )}
               </button>
             );
           })}
         </div>
 
-        {/* Right Dark Capsule for Quick Launch to Ports */}
-        <div className="bottom-dock__dark-capsule">
+        {/* Right Live Port Quick-Launcher */}
+        <div className="dock-live-ports-capsule">
           <a 
             href="http://localhost:5174/" 
             target="_blank" 
             rel="noreferrer"
-            className="dock-launch-link"
-            title="Launch Graphic Portfolio (5174)"
+            className="dock-port-link port-graphic"
+            title="Launch Graphic Studio Live (Port 5174)"
           >
-            <span>Graphic</span>
-            <ExternalLink size={10} />
+            <span>Graphic :5174</span>
+            <ExternalLink size={9} />
           </a>
-          <span className="capsule-divider" />
+          <span className="dock-divider" />
           <a 
             href="http://localhost:5175/" 
             target="_blank" 
             rel="noreferrer"
-            className="dock-launch-link"
-            title="Launch Video Portfolio (5175)"
+            className="dock-port-link port-video"
+            title="Launch Video Reels Studio Live (Port 5175)"
           >
-            <span>Video</span>
-            <ExternalLink size={10} />
+            <span>Video :5175</span>
+            <ExternalLink size={9} />
           </a>
-          <span className="capsule-divider" />
+          <span className="dock-divider" />
           <a 
             href="http://localhost:5173/" 
             target="_blank" 
             rel="noreferrer"
-            className="dock-launch-link"
-            title="Launch SEO Portfolio (5173)"
+            className="dock-port-link port-seo"
+            title="Launch SEO Rankings Live (Port 5173)"
           >
-            <span>SEO</span>
-            <ExternalLink size={10} />
+            <span>SEO :5173</span>
+            <ExternalLink size={9} />
           </a>
         </div>
       </div>
     </div>
   );
 }
+

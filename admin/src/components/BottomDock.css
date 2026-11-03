@@ -1,51 +1,62 @@
-.bottom-dock-wrapper {
-  position: relative;
-  width: 100%;
+/* Luxury Minimalist Light Bottom Dock (Apple macOS style) */
+.luxury-dock-container {
+  position: fixed;
+  bottom: 20px;
+  left: 0;
+  right: 0;
   display: flex;
   justify-content: center;
-  padding: 10px 24px 18px;
-  z-index: 10;
+  z-index: 50;
+  pointer-events: none;
 }
 
-.bottom-dock {
-  background: var(--surface-white);
-  border-radius: 36px;
-  padding: 6px 8px 6px 8px;
+.luxury-dock {
+  pointer-events: auto;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-light);
+  border-radius: 9999px;
+  padding: 6px 10px 6px 8px;
   display: flex;
   align-items: center;
-  gap: 16px;
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
-  border: 1px solid rgba(0, 0, 0, 0.04);
+  gap: 14px;
+  box-shadow: 0 12px 36px -4px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(226, 232, 240, 0.8);
   max-width: 95%;
-  flex-wrap: wrap;
-  justify-content: center;
+  transition: all 0.25s ease;
 }
 
-/* Year Pill */
-.bottom-dock__year-pill {
-  background: var(--accent-dark);
+.luxury-dock:hover {
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 16px 44px -4px rgba(15, 23, 42, 0.16), 0 0 0 1px rgba(203, 213, 225, 0.9);
+}
+
+/* Metadata Capsule (Year/Studio Tag) */
+.dock-meta-capsule {
+  background: #0f172a;
   color: #ffffff;
   display: flex;
   align-items: center;
   gap: 6px;
   padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 12px;
+  border-radius: 9999px;
+  font-size: 11px;
   font-weight: 800;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.2);
 }
 
-/* Center Dock Items */
-.bottom-dock__items {
+/* Center Icons Nav Group */
+.dock-nav-group {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 
-.dock-btn {
+.dock-nav-btn {
   position: relative;
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   background: transparent;
   color: var(--text-muted);
@@ -55,19 +66,20 @@
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.dock-btn:hover {
-  background: #f1f2ed;
+.dock-nav-btn:hover {
+  background: #f1f5f9;
   color: var(--text-main);
   transform: translateY(-2px);
 }
 
-.dock-btn--active {
-  background: #ebebe5 !important;
-  color: var(--text-main) !important;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.08);
+.dock-nav-btn--active {
+  background: #0f172a !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
 }
 
-.dock-btn__badge {
+/* Category Badge Dots */
+.dock-count-badge {
   position: absolute;
   top: -2px;
   right: -2px;
@@ -75,44 +87,75 @@
   height: 16px;
   padding: 0 4px;
   border-radius: 8px;
-  background: var(--accent-yellow);
-  color: #1f2327;
   font-size: 9px;
-  font-weight: 900;
+  font-weight: 800;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 4px rgba(234, 179, 8, 0.4);
+  border: 1.5px solid #ffffff;
 }
 
-/* Right Dark Capsule */
-.bottom-dock__dark-capsule {
-  background: var(--accent-dark);
-  border-radius: 24px;
-  padding: 6px 16px;
+.badge-all {
+  background: #64748b;
+  color: #ffffff;
+}
+
+.badge-graphic {
+  background: #6366f1;
+  color: #ffffff;
+}
+
+.badge-video {
+  background: #f97316;
+  color: #ffffff;
+}
+
+.badge-seo {
+  background: #10b981;
+  color: #ffffff;
+}
+
+/* Right Live Ports Launcher */
+.dock-live-ports-capsule {
+  background: #f8fafc;
+  border: 1px solid var(--border-light);
+  border-radius: 9999px;
+  padding: 4px 10px;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
 }
 
-.dock-launch-link {
+.dock-port-link {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 4px;
   font-size: 11px;
   font-weight: 700;
-  color: #d1d5db;
   text-decoration: none;
+  color: var(--text-body);
+  padding: 2px 6px;
+  border-radius: 6px;
   transition: all 0.15s ease;
 }
 
-.dock-launch-link:hover {
+.dock-port-link:hover {
+  background: #0f172a;
   color: #ffffff;
-  transform: translateY(-1px);
 }
 
-.capsule-divider {
+.port-graphic:hover { background: #6366f1; }
+.port-video:hover { background: #f97316; }
+.port-seo:hover { background: #10b981; }
+
+.dock-divider {
   width: 1px;
-  height: 12px;
-  background: rgba(255, 255, 255, 0.2);
+  height: 14px;
+  background: var(--border-light);
+}
+
+@media (max-width: 768px) {
+  .dock-live-ports-capsule {
+    display: none;
+  }
 }

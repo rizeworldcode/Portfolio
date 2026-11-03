@@ -1,179 +1,278 @@
-/* Dark Charcoal Top Navbar Bar matching user reference image */
-.dark-navbar-bar {
-  background: #3c3f44;
-  height: 56px;
+/* Luxury Minimalist Light Header Navbar (Apple & Stripe style) */
+.luxury-navbar {
+  height: 62px;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-light);
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
-  padding: 0 18px 0 14px;
-  position: relative;
-  z-index: 20;
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  padding: 0 28px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.02);
 }
 
-.dark-navbar__left {
+/* Brand & Logo Area */
+.navbar__brand-area {
   display: flex;
-  align-items: flex-end;
-  gap: 12px;
-  height: 100%;
+  align-items: center;
+  gap: 16px;
 }
 
-/* White Circle Close [X] Button */
-.dark-navbar__close-btn {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: #ffffff;
-  color: #1f2327;
+.navbar__logo-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+  background: transparent;
+  padding: 4px 6px;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+.navbar__logo-btn:hover {
+  background: rgba(241, 245, 249, 0.8);
+}
+
+.logo-badge-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  margin-bottom: 9px;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.15);
 }
 
-.dark-navbar__close-btn:hover {
-  transform: scale(1.08);
-  background: #f4f4ee;
-}
-
-/* Organic Tab Rising into Dark Bar ("Cardiology" shape) */
-.organic-tab-container {
-  position: relative;
-  height: 48px;
-  width: 230px;
+.brand-text-block {
   display: flex;
-  align-items: center;
-  padding-left: 18px;
+  flex-direction: column;
 }
 
-.organic-tab-svg {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.organic-tab-title {
-  position: relative;
-  z-index: 2;
+.brand-title {
   font-family: var(--font-heading);
-  font-size: 24px;
-  font-weight: 700;
-  color: #1a1d21;
-  letter-spacing: -0.025em;
-  line-height: 1;
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
-/* Right Side Pills sitting in dark header bar */
-.dark-navbar__right {
+.brand-title__rize {
+  color: #0f172a;
+}
+
+.brand-title__world {
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.brand-suite-tag {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-subtle);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.navbar__divider {
+  width: 1px;
+  height: 24px;
+  background: var(--border-light);
+}
+
+.live-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  padding: 4px 10px;
+  border-radius: 9999px;
+}
+
+.live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+  animation: livePulse 2s infinite ease-in-out;
+}
+
+@keyframes livePulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0.7;
+  }
+}
+
+.live-text {
+  font-size: 11px;
+  font-weight: 700;
+  color: #047857;
+  letter-spacing: -0.01em;
+}
+
+/* Center Segmented Tabs */
+.navbar__segmented-tabs {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 9px;
-  flex-wrap: nowrap;
+  background: #f1f5f9;
+  padding: 4px;
+  border-radius: 9999px;
+  gap: 3px;
+  border: 1px solid rgba(226, 232, 240, 0.8);
 }
 
-/* Each Pill on Dark Header */
-.dark-nav-pill {
-  height: 35px;
-  border-radius: 18px;
+.segmented-tab {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  padding: 0 15px;
+  padding: 6px 14px;
+  border-radius: 9999px;
   font-size: 13px;
   font-weight: 600;
-  color: #2b2f34;
-  background: #e8e8e2;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  color: var(--text-muted);
+  background: transparent;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   white-space: nowrap;
 }
 
-.dark-nav-pill:hover {
-  background: #ffffff;
-  color: #111315;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+.segmented-tab:hover {
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.5);
 }
 
-.dark-nav-pill--active {
+.segmented-tab--active {
   background: #ffffff !important;
-  color: #111315 !important;
-  font-weight: 700 !important;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.22) !important;
+  color: var(--text-main) !important;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(226, 232, 240, 0.6) !important;
 }
 
-.dark-nav-pill__icon {
-  color: #4b5563;
-  transition: color 0.15s ease;
+.tab-icon {
+  transition: transform 0.2s ease;
 }
 
-.dark-nav-pill--active .dark-nav-pill__icon {
-  color: #111315;
+.segmented-tab:hover .tab-icon {
+  transform: scale(1.08);
 }
 
-.dark-nav-pill__link {
-  color: #9ca3af;
+.tab-port-badge {
   display: inline-flex;
   align-items: center;
+  gap: 2px;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 5px;
+  background: #e2e8f0;
+  color: #475569;
+  text-decoration: none;
+  transition: all 0.15s ease;
   margin-left: 2px;
-  transition: color 0.15s ease;
 }
 
-.dark-nav-pill__link:hover {
-  color: var(--accent-orange);
+.tab-port-badge:hover {
+  background: #0f172a;
+  color: #ffffff;
 }
 
-/* Quick Action Buttons on Header */
-.navbar-quick-actions {
+/* Right Actions Area */
+.navbar__actions-area {
   display: flex;
   align-items: center;
-  gap: 6px;
-  margin-left: 6px;
-  padding-left: 8px;
-  border-left: 1px solid rgba(255, 255, 255, 0.15);
+  gap: 8px;
 }
 
-.quick-action-btn {
-  height: 33px;
-  border-radius: 17px;
-  padding: 0 13px;
+.action-btn {
   display: inline-flex;
   align-items: center;
   gap: 5px;
+  height: 34px;
+  padding: 0 14px;
+  border-radius: 9999px;
   font-size: 12px;
   font-weight: 700;
-  color: #ffffff;
-  border: none;
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
-  white-space: nowrap;
+  letter-spacing: -0.01em;
 }
 
-.quick-action-btn:hover {
+.action-btn:hover {
   transform: translateY(-1px);
-  filter: brightness(1.1);
 }
 
-.quick-action-btn--graphic {
-  background: #2563eb;
+.action-btn--graphic {
+  background: var(--accent-graphic-light);
+  color: var(--accent-graphic-dark);
+  border: 1px solid var(--accent-graphic-border);
 }
 
-.quick-action-btn--video {
-  background: var(--accent-orange);
+.action-btn--graphic:hover {
+  background: var(--accent-graphic-dark);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
 }
 
-.quick-action-btn--seo {
-  background: #16a34a;
+.action-btn--video {
+  background: var(--accent-video-light);
+  color: var(--accent-video-dark);
+  border: 1px solid var(--accent-video-border);
+}
+
+.action-btn--video:hover {
+  background: var(--accent-video-dark);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.25);
+}
+
+.action-btn--seo {
+  background: var(--accent-seo-light);
+  color: var(--accent-seo-dark);
+  border: 1px solid var(--accent-seo-border);
+}
+
+.action-btn--seo:hover {
+  background: var(--accent-seo-dark);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+}
+
+.navbar-icon-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--surface-pill);
+  border: 1px solid var(--border-light);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.navbar-icon-btn:hover {
+  background: #ffffff;
+  color: var(--text-main);
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
+}
+
+@media (max-width: 1024px) {
+  .luxury-navbar {
+    padding: 0 16px;
+  }
+  .navbar__segmented-tabs {
+    display: none;
+  }
 }

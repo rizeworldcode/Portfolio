@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import HeaderNav from './components/HeaderNav';
-import StatsBar from './components/StatsBar';
-import MasterOverview from './components/MasterOverview';
+import GlassStudioDashboard from './components/GlassStudioDashboard';
 import PortfolioView from './components/PortfolioView';
-import BottomDock from './components/BottomDock';
 import NewProjectModal from './components/NewProjectModal';
 import { 
   INITIAL_GRAPHICS, 
@@ -67,11 +64,6 @@ function App() {
     setTimeout(() => setToastMessage(''), 3500);
   };
 
-  const handleResetView = () => {
-    setActiveTab('all');
-    showToast('Switched to RizeWorld All Portfolios View');
-  };
-
   const handleOpenModalWithMode = (mode) => {
     setEditingItem(null);
     setModalMode(mode);
@@ -124,68 +116,62 @@ function App() {
   };
 
   return (
-    <div className="studio-canvas">
+    <div className="vision-glass-app">
       {/* Toast Notification */}
       {toastMessage && (
-        <div className="studio-toast">
+        <div className="vision-toast">
           <span>{toastMessage}</span>
         </div>
       )}
 
-      {/* Futuristic Device Frame matching target design */}
-      <div className="device-frame">
-        {/* Device Inner Screen */}
-        <div className="device-screen">
-          {/* Header Navigation with exact organic tab & Graphic/Video/SEO pills */}
-          <HeaderNav
-            activeTab={activeTab}
-            setActiveTab={setActiveTab}
-            onResetView={handleResetView}
+      {/* Primary VisionOS Frosted Glass Workspace */}
+      {activeTab === 'all' ? (
+        <GlassStudioDashboard
+          graphicsData={graphicsData}
+          videosData={videosData}
+          seoData={seoData}
+          onOpenModalWithMode={handleOpenModalWithMode}
+          onEditItem={handleEditItem}
+          onDeleteItem={handleDeleteItem}
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+          showToast={showToast}
+          onSaveItem={handleSaveItem}
+        />
+      ) : (
+        <div className="glass-dedicated-view-wrap">
+          {/* Header to return back to Glass Living Studio */}
+          <div className="glass-back-bar">
+            <button 
+              className="glass-back-btn" 
+              onClick={() => setActiveTab('all')}
+            >
+              ← Back to Living Studio
+            </button>
+            <span className="glass-view-title">
+              {activeTab === 'graphic' && '🎨 Graphic Portfolio Studio'}
+              {activeTab === 'video' && '🎬 Video Reels Studio'}
+              {activeTab === 'seo' && '🚀 SEO & Rankings Domination'}
+            </span>
+            <button 
+              className="glass-add-direct-btn"
+              onClick={() => handleOpenModalWithMode(activeTab)}
+            >
+              + Add New {activeTab.toUpperCase()}
+            </button>
+          </div>
+
+          <PortfolioView
+            viewType={activeTab}
+            graphicsData={graphicsData}
+            videosData={videosData}
+            seoData={seoData}
             onOpenModalWithMode={handleOpenModalWithMode}
-          />
-
-          {/* Stats & Profile Bar with Real Graphic, Video, and SEO metrics */}
-          <StatsBar
-            selectedPortfolio={activeTab}
-            onSelectPortfolio={setActiveTab}
-            graphicsCount={graphicsData.length}
-            videosCount={videosData.length}
-            seoCount={seoData.length}
-          />
-
-          {/* Main Content Area: Master Overview Hub OR Specific Portfolio View */}
-          {activeTab === 'all' ? (
-            <MasterOverview
-              graphicsData={graphicsData}
-              videosData={videosData}
-              seoData={seoData}
-              onOpenModalWithMode={handleOpenModalWithMode}
-              onEditItem={handleEditItem}
-              onDeleteItem={handleDeleteItem}
-              onSelectPortfolio={setActiveTab}
-            />
-          ) : (
-            <PortfolioView
-              viewType={activeTab}
-              graphicsData={graphicsData}
-              videosData={videosData}
-              seoData={seoData}
-              onOpenModalWithMode={handleOpenModalWithMode}
-              onEditItem={handleEditItem}
-              onDeleteItem={handleDeleteItem}
-            />
-          )}
-
-          {/* Floating Bottom Dock */}
-          <BottomDock
-            activeTab={activeTab}
-            setActiveTab={setActiveTab}
-            graphicsCount={graphicsData.length}
-            videosCount={videosData.length}
-            seoCount={seoData.length}
+            onEditItem={handleEditItem}
+            onDeleteItem={handleDeleteItem}
           />
         </div>
-      </div>
+      )}
 
       {/* Multi-Portfolio Action Modal (Graphic Image, Video Reel, or SEO Content) */}
       <NewProjectModal
@@ -203,3 +189,4 @@ function App() {
 }
 
 export default App;
+

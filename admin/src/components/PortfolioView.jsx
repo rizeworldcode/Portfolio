@@ -1,20 +1,19 @@
 import React, { useState } from 'react';
 import { 
-  Palette, 
-  Video, 
-  TrendingUp, 
-  Plus, 
-  ExternalLink, 
-  Eye, 
-  Heart, 
-  Globe, 
-  Award,
-  Sparkles,
-  Search,
-  CheckCircle2,
-  Trash2,
-  Edit3
-} from 'lucide-react';
+  HiPlus, 
+  HiEye, 
+  HiHeart, 
+  HiGlobeAlt, 
+  HiMagnifyingGlass, 
+  HiCheckCircle, 
+  HiPencilSquare 
+} from 'react-icons/hi2';
+import { 
+  RiBrush3Fill, 
+  RiMovie2Fill, 
+  RiRocket2Fill, 
+  RiDeleteBin6Line 
+} from 'react-icons/ri';
 import './PortfolioView.css';
 
 export default function PortfolioView({ 
@@ -41,7 +40,7 @@ export default function PortfolioView({
         <div className="manager-toolbar">
           <div className="toolbar-left">
             <div className="toolbar-badge-icon palette-bg">
-              <Palette size={16} />
+              <RiBrush3Fill size={18} />
             </div>
             <div>
               <h2 className="toolbar-title">Graphic Design & Creative Assets</h2>
@@ -51,7 +50,7 @@ export default function PortfolioView({
 
           <div className="toolbar-right">
             <div className="toolbar-search">
-              <Search size={14} />
+              <HiMagnifyingGlass size={16} />
               <input 
                 type="text" 
                 placeholder="Search graphic works..." 
@@ -64,20 +63,9 @@ export default function PortfolioView({
               className="btn-create-action btn-palette"
               onClick={() => onOpenModalWithMode('graphic')}
             >
-              <Plus size={16} strokeWidth={2.4} />
+              <HiPlus size={16} />
               <span>Upload Graphic Image</span>
             </button>
-
-            <a 
-              href="http://localhost:5174/" 
-              target="_blank" 
-              rel="noreferrer" 
-              className="btn-live-preview"
-              title="Preview Live Graphic Portfolio"
-            >
-              <span>Live Port: 5174</span>
-              <ExternalLink size={12} />
-            </a>
           </div>
         </div>
 
@@ -96,14 +84,14 @@ export default function PortfolioView({
                     onClick={() => onEditItem('graphic', item)}
                     title="Edit & update graphic details"
                   >
-                    <Edit3 size={13} />
+                    <HiPencilSquare size={14} />
                   </button>
                   <button 
                     className="card-action-btn delete-btn" 
                     onClick={() => onDeleteItem('graphic', item.id)}
                     title="Remove asset"
                   >
-                    <Trash2 size={13} />
+                    <RiDeleteBin6Line size={14} />
                   </button>
                 </div>
               </div>
@@ -128,7 +116,7 @@ export default function PortfolioView({
                   className="card-quick-edit-link"
                   onClick={() => onEditItem('graphic', item)}
                 >
-                  <Edit3 size={12} />
+                  <HiPencilSquare size={13} />
                   <span>Update Graphic</span>
                 </button>
               </div>
@@ -152,7 +140,7 @@ export default function PortfolioView({
         <div className="manager-toolbar">
           <div className="toolbar-left">
             <div className="toolbar-badge-icon video-bg">
-              <Video size={16} />
+              <RiMovie2Fill size={18} />
             </div>
             <div>
               <h2 className="toolbar-title">Video Cinema & Reels Production</h2>
@@ -162,7 +150,7 @@ export default function PortfolioView({
 
           <div className="toolbar-right">
             <div className="toolbar-search">
-              <Search size={14} />
+              <HiMagnifyingGlass size={16} />
               <input 
                 type="text" 
                 placeholder="Search reels..." 
@@ -175,20 +163,9 @@ export default function PortfolioView({
               className="btn-create-action btn-video"
               onClick={() => onOpenModalWithMode('video')}
             >
-              <Plus size={16} strokeWidth={2.4} />
+              <HiPlus size={16} />
               <span>Add Video Reel</span>
             </button>
-
-            <a 
-              href="http://localhost:5175/" 
-              target="_blank" 
-              rel="noreferrer" 
-              className="btn-live-preview"
-              title="Preview Live Video Portfolio"
-            >
-              <span>Live Port: 5175</span>
-              <ExternalLink size={12} />
-            </a>
           </div>
         </div>
 
@@ -207,7 +184,7 @@ export default function PortfolioView({
                   />
                 ) : (
                   <div className="video-placeholder">
-                    <Video size={32} />
+                    <RiMovie2Fill size={36} />
                   </div>
                 )}
                 <span className="video-card__duration-tag">{item.duration || '0:45'}</span>
@@ -219,14 +196,14 @@ export default function PortfolioView({
                     onClick={() => onEditItem('video', item)}
                     title="Edit & update reel details"
                   >
-                    <Edit3 size={13} />
+                    <HiPencilSquare size={14} />
                   </button>
                   <button 
                     className="card-action-btn delete-btn" 
                     onClick={() => onDeleteItem('video', item.id)}
                     title="Remove reel"
                   >
-                    <Trash2 size={13} />
+                    <RiDeleteBin6Line size={14} />
                   </button>
                 </div>
               </div>
@@ -237,11 +214,11 @@ export default function PortfolioView({
                 <span className="client-name">{item.client}</span>
                 <div className="video-metrics-bar">
                   <div className="metric-badge">
-                    <Eye size={12} />
+                    <HiEye size={13} />
                     <span>{item.views || '160K'}</span>
                   </div>
                   <div className="metric-badge">
-                    <Heart size={12} />
+                    <HiHeart size={13} />
                     <span>{item.likes || '12.4K'}</span>
                   </div>
                 </div>
@@ -250,7 +227,7 @@ export default function PortfolioView({
                   className="card-quick-edit-link"
                   onClick={() => onEditItem('video', item)}
                 >
-                  <Edit3 size={12} />
+                  <HiPencilSquare size={13} />
                   <span>Update Reel Content</span>
                 </button>
               </div>
@@ -274,7 +251,7 @@ export default function PortfolioView({
         <div className="manager-toolbar">
           <div className="toolbar-left">
             <div className="toolbar-badge-icon seo-bg">
-              <TrendingUp size={16} />
+              <RiRocket2Fill size={18} />
             </div>
             <div>
               <h2 className="toolbar-title">SEO Rank Growth & Organic Client Dominance</h2>
@@ -284,7 +261,7 @@ export default function PortfolioView({
 
           <div className="toolbar-right">
             <div className="toolbar-search">
-              <Search size={14} />
+              <HiMagnifyingGlass size={16} />
               <input 
                 type="text" 
                 placeholder="Search SEO accounts..." 
@@ -297,20 +274,9 @@ export default function PortfolioView({
               className="btn-create-action btn-seo"
               onClick={() => onOpenModalWithMode('seo')}
             >
-              <Plus size={16} strokeWidth={2.4} />
+              <HiPlus size={16} />
               <span>Update SEO Content</span>
             </button>
-
-            <a 
-              href="http://localhost:5173/" 
-              target="_blank" 
-              rel="noreferrer" 
-              className="btn-live-preview"
-              title="Preview Live SEO Portfolio"
-            >
-              <span>Live Port: 5173</span>
-              <ExternalLink size={12} />
-            </a>
           </div>
         </div>
 
@@ -321,7 +287,7 @@ export default function PortfolioView({
               <div className="seo-card__top">
                 <div className="seo-client-block">
                   <div className="seo-icon-box">
-                    <Globe size={18} />
+                    <HiGlobeAlt size={19} />
                   </div>
                   <div>
                     <h3 className="seo-client-name">{item.client}</h3>
@@ -331,7 +297,7 @@ export default function PortfolioView({
 
                 <div className="seo-card-top-right">
                   <div className="seo-status-pill">
-                    <CheckCircle2 size={13} />
+                    <HiCheckCircle size={14} />
                     <span>{item.status || 'Active #1'}</span>
                   </div>
                   <button 
@@ -339,14 +305,14 @@ export default function PortfolioView({
                     onClick={() => onEditItem('seo', item)}
                     title="Update SEO metrics & keywords"
                   >
-                    <Edit3 size={13} />
+                    <HiPencilSquare size={14} />
                   </button>
                   <button 
                     className="card-action-btn delete-btn" 
                     onClick={() => onDeleteItem('seo', item.id)}
                     title="Remove SEO partner"
                   >
-                    <Trash2 size={13} />
+                    <RiDeleteBin6Line size={14} />
                   </button>
                 </div>
               </div>
@@ -376,7 +342,7 @@ export default function PortfolioView({
                 className="card-quick-edit-link"
                 onClick={() => onEditItem('seo', item)}
               >
-                <Edit3 size={12} />
+                <HiPencilSquare size={13} />
                 <span>Update SEO Keywords & Metrics</span>
               </button>
             </div>
