@@ -595,7 +595,7 @@ export const PORTFOLIO_CATEGORIES = [
     "tag": "Products",
     "description": "Creative product showcases, commercial combo deals, festival offers, packaging designs, and retail branding collaterals.",
     "coverImage": "/Graphic portfolio/7 one combo.jpg",
-    "itemCount": 7,
+    "itemCount": 33,
     "images": [
       {
         "name": "K",
@@ -630,6 +630,136 @@ export const PORTFOLIO_CATEGORIES = [
       {
         "name": "SERUM G1",
         "src": "/Graphic portfolio/SERUM G1.jpg",
+        "aspectRatio": 1.33
+      },
+      {
+        "name": "7 ONE - Classic Eyewear Collection",
+        "src": "/Graphic portfolio/east eyes/7 ON C.jpg",
+        "aspectRatio": 1.25
+      },
+      {
+        "name": "7 ONE - Makar Sankranti Eyewear Fest",
+        "src": "/Graphic portfolio/east eyes/7 one 14.png",
+        "aspectRatio": 1.25
+      },
+      {
+        "name": "7 ONE - Lohri Celebration Offer",
+        "src": "/Graphic portfolio/east eyes/7 ONE LOHRI.png",
+        "aspectRatio": 1.25
+      },
+      {
+        "name": "7 ONE - Divine Festive Offer",
+        "src": "/Graphic portfolio/east eyes/7 one ram.jpg",
+        "aspectRatio": 1.33
+      },
+      {
+        "name": "7 ONE - Premium Eyewear Studio",
+        "src": "/Graphic portfolio/east eyes/7 ONE.jpg",
+        "aspectRatio": 1.25
+      },
+      {
+        "name": "7 ONE - Rangotsav Holi Special",
+        "src": "/Graphic portfolio/east eyes/7oneee holi 2.jpg",
+        "aspectRatio": 1.33
+      },
+      {
+        "name": "7 ONE - Trendy Frames Story",
+        "src": "/Graphic portfolio/east eyes/7oneeee.png",
+        "aspectRatio": 1.78
+      },
+      {
+        "name": "Easy Eye - Optical Elegance E3",
+        "src": "/Graphic portfolio/east eyes/E3.jpg",
+        "aspectRatio": 1.33
+      },
+      {
+        "name": "Easy Eye - Signature Spectacles 5",
+        "src": "/Graphic portfolio/east eyes/Eaasy eye 5.jpg",
+        "aspectRatio": 1.33
+      },
+      {
+        "name": "Easy Eye - Clear Vision Frames 2",
+        "src": "/Graphic portfolio/east eyes/easy 2.jpg",
+        "aspectRatio": 1.33
+      },
+      {
+        "name": "Easy Eye - Designer Sunglasses",
+        "src": "/Graphic portfolio/east eyes/Easy eye ....jpg",
+        "aspectRatio": 1.33
+      },
+      {
+        "name": "Easy Eye - Premium Eyewear 1",
+        "src": "/Graphic portfolio/east eyes/easy eye 1.jpg",
+        "aspectRatio": 1.33
+      },
+      {
+        "name": "Easy Eye - Urban Style Frames 2A",
+        "src": "/Graphic portfolio/east eyes/EASY EYE 2a.jpg",
+        "aspectRatio": 1.33
+      },
+      {
+        "name": "Easy Eye - Modern Optics 4",
+        "src": "/Graphic portfolio/east eyes/Easy eye 4.png",
+        "aspectRatio": 1.33
+      },
+      {
+        "name": "Easy Eye - Sleek Lightweight Frames 7",
+        "src": "/Graphic portfolio/east eyes/Easy eye 7.jpg",
+        "aspectRatio": 1.33
+      },
+      {
+        "name": "Easy Eye - High-Index Prescription 9",
+        "src": "/Graphic portfolio/east eyes/Easy eye 9.jpg",
+        "aspectRatio": 1.33
+      },
+      {
+        "name": "Easy Eye - Optical Story Showcase",
+        "src": "/Graphic portfolio/east eyes/Easy eye stry.jpg",
+        "aspectRatio": 1.78
+      },
+      {
+        "name": "Easy Eye - Studio Collection",
+        "src": "/Graphic portfolio/east eyes/easy eye.jpg",
+        "aspectRatio": 1.33
+      },
+      {
+        "name": "Easy Eye - Contemporary Eyewear 2",
+        "src": "/Graphic portfolio/east eyes/Easy eyes 2.png",
+        "aspectRatio": 1.33
+      },
+      {
+        "name": "Easy Eye - New Arrivals Announcement 2",
+        "src": "/Graphic portfolio/east eyes/easy news 2.jpg",
+        "aspectRatio": 1.25
+      },
+      {
+        "name": "Easy Eye - Exclusive Eyewear Launch",
+        "src": "/Graphic portfolio/east eyes/EASY NEWS.jpg",
+        "aspectRatio": 1.33
+      },
+      {
+        "name": "Easy Eye - Bold Red Frame Edition",
+        "src": "/Graphic portfolio/east eyes/easy red.jpg",
+        "aspectRatio": 1.33
+      },
+      {
+        "name": "Easy Eye - Summer Sunglasses Edition",
+        "src": "/Graphic portfolio/east eyes/EE SUN.jpg",
+        "aspectRatio": 1.33
+      },
+      {
+        "name": "Easy Eye - Luxury Minimalist Collection",
+        "src": "/Graphic portfolio/east eyes/EE.jpg",
+        "aspectRatio": 1.33
+      },
+      {
+        "name": "Easy Eye - Summer UV Protection Campaign",
+        "src": "/Graphic portfolio/east eyes/EYE SUMMER.jpg",
+        "aspectRatio": 1.49
+      },
+      {
+        "name": "Easy Eye - Google Business Profile Showcase",
+        "src": "/Graphic portfolio/east eyes/GMB EASY.jpg",
         "aspectRatio": 1.33
       }
     ]
