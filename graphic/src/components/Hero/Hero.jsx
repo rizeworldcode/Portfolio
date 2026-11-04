@@ -63,12 +63,13 @@ export default function Hero() {
           transition={{ duration: 0.9, delay: 0.2 }}
         >
           <ScatterGrid
-            text={"RIZEWORLD\nGRAPHIC PORTFOLIO"}
+            text={"RIZE WORLD\nGRAPHIC PORTFOLIO"}
             tag="h1"
             fontFamily='"Anton", "Outfit", sans-serif'
             fontWeight="400"
             dotSize={4}
             dotGap={2}
+            adaptive={true}
             radius={180}
             strength={2.5}
             stiffness={0.016}

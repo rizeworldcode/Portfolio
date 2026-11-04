@@ -221,6 +221,7 @@
   justify-content: center;
   cursor: crosshair;
   user-select: none;
+  touch-action: pan-y;
 }
 
 .hero-scatter-canvas {

@@ -298,7 +298,7 @@ export const PORTFOLIO_CATEGORIES = [
     "tag": "Institute",
     "description": "High-converting educational banners, course admissions, tech coaching promotions, and brand identity designs for institutes.",
     "coverImage": "/Graphic portfolio/RIZE INSTITUTE.jpg",
-    "itemCount": 16,
+    "itemCount": 15,
     "images": [
       {
         "name": "RIZE INSTITUTE",
@@ -353,11 +353,6 @@ export const PORTFOLIO_CATEGORIES = [
       {
         "name": "Rizeinstitute",
         "src": "/Graphic portfolio/Rizeinstitute.jpg",
-        "aspectRatio": 1.33
-      },
-      {
-        "name": "inst blood",
-        "src": "/Graphic portfolio/inst blood.jpg",
         "aspectRatio": 1.33
       },
       {

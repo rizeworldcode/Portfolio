@@ -47,16 +47,19 @@ function buildRamp(from, to) {
 }
 
 export default function ScatterGrid({
-  text = "RIZEWORLD\nGRAPHIC PORTFOLIO",
+  text = "RIZE WORLD\nGRAPHIC PORTFOLIO",
   tag = "h1",
   fontFamily = '"Anton", "Outfit", sans-serif',
   fontWeight = "400",
   fontStyle = "normal",
   fontSize,
-  letterSpacing = "-0.02em",
+  letterSpacing,
+  wordGap,
+  lineHeightRatio,
   fit = true,
   dotSize = 4,
   dotGap = 2,
+  adaptive = true,
   radius = 160,
   strength = 2.2,
   stiffness = 0.015,
@@ -83,8 +86,12 @@ export default function ScatterGrid({
       typeof window !== "undefined" &&
       window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
-    const minStep = Math.max(2, dotSize + dotGap);
-    let step = minStep;
+    let activeDotSize = dotSize;
+    let activeDotGap = dotGap;
+    let activeRadius = radius;
+    let isMobile = false;
+
+    let step = Math.max(2, dotSize + dotGap);
     let dots = [];
     let ripples = [];
     let width = 0;
@@ -103,16 +110,59 @@ export default function ScatterGrid({
       const rect = host.getBoundingClientRect();
       const boxW = Math.max(1, Math.round(rect.width));
       const boxH = Math.max(1, Math.round(rect.height));
-      width = boxW + bleed * 2;
-      height = boxH + bleed * 2;
+
+      isMobile = boxW < 600;
+      const isTablet = boxW >= 600 && boxW < 1024;
+
+      // ========================================================
+      // ADAPTIVE MOBILE DOT SIZE & DENSITY ENGINE
+      // ========================================================
+      // Dynamically adapts dot size and gap according to screen width.
+      // On mobile screens (<600px), standard 4px dots cause severe
+      // letter clipping and stroke dropouts. Adaptive micro-dots (2.0px-2.4px)
+      // deliver ultra-sharp typography and smooth fluid physics.
+      if (adaptive) {
+        if (boxW < 380) {
+          activeDotSize = 2.0;
+          activeDotGap = 1.0;
+        } else if (boxW < 520) {
+          activeDotSize = 2.2;
+          activeDotGap = 1.1;
+        } else if (boxW < 768) {
+          activeDotSize = 2.8;
+          activeDotGap = 1.4;
+        } else if (boxW < 1024) {
+          activeDotSize = 3.3;
+          activeDotGap = 1.6;
+        } else {
+          activeDotSize = dotSize;
+          activeDotGap = dotGap;
+        }
+      } else {
+        activeDotSize = dotSize;
+        activeDotGap = dotGap;
+      }
+
+      // Proportional interaction radius
+      if (isMobile) {
+        activeRadius = Math.min(radius, Math.max(65, Math.round(boxW * 0.24)));
+      } else if (isTablet) {
+        activeRadius = Math.min(radius, Math.max(110, Math.round(boxW * 0.22)));
+      } else {
+        activeRadius = radius;
+      }
+
+      const currentBleed = isMobile ? Math.min(bleed, 30) : bleed;
+      width = boxW + currentBleed * 2;
+      height = boxH + currentBleed * 2;
 
       const dpr = Math.min(2, window.devicePixelRatio || 1);
       canvas.width = Math.round(width * dpr);
       canvas.height = Math.round(height * dpr);
       canvas.style.width = width + "px";
       canvas.style.height = height + "px";
-      canvas.style.left = -bleed + "px";
-      canvas.style.top = -bleed + "px";
+      canvas.style.left = -currentBleed + "px";
+      canvas.style.top = -currentBleed + "px";
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
       const mask = document.createElement("canvas");
@@ -131,32 +181,104 @@ export default function ScatterGrid({
       let size = chosen;
       mctx.font = fontString(size);
 
+      // Letter spacing: subtle positive spacing so individual letters don't collide
+      const activeLetterSpacing =
+        letterSpacing !== undefined
+          ? letterSpacing
+          : isMobile
+          ? "0.035em"
+          : "0.015em";
+
+      if ("letterSpacing" in mctx) {
+        mctx.letterSpacing = activeLetterSpacing;
+      }
+
+      // Dynamic word gap calculator: precisely separates words (e.g. "RIZE" & "WORLD", "GRAPHIC" & "PORTFOLIO")
+      const getLineWidth = (lineStr, currentWordGap) => {
+        const words = lineStr.split(/\s+/).filter(Boolean);
+        if (words.length <= 1) {
+          return mctx.measureText(lineStr).width;
+        }
+        let total = 0;
+        words.forEach((w) => {
+          total += mctx.measureText(w).width;
+        });
+        total += (words.length - 1) * currentWordGap;
+        return total;
+      };
+
       if (fit) {
-        // Measure widest line to fit width
+        // Measure widest line to fit width with safe mobile margins
+        const gapRatio = isMobile ? 0.65 : 0.45;
         let maxLineW = 0;
         lines.forEach((l) => {
-          const w = mctx.measureText(l).width;
+          const w = getLineWidth(l, size * gapRatio);
           if (w > maxLineW) maxLineW = w;
         });
 
         if (maxLineW > 0) {
-          const fitWidthSize = size * ((boxW * 0.94) / maxLineW);
-          const fitHeightSize = (boxH * 0.9) / (lineCount * 1.15);
+          const fitMargin = boxW < 520 ? 0.88 : 0.94;
+          const fitWidthSize = size * ((boxW * fitMargin) / maxLineW);
+          const activeLineRatio =
+            lineHeightRatio !== undefined
+              ? lineHeightRatio
+              : isMobile
+              ? 1.38
+              : 1.24;
+          const fitHeightSize = (boxH * 0.86) / (lineCount * activeLineRatio);
           size = Math.min(size, fitWidthSize, fitHeightSize);
           mctx.font = fontString(size);
+          if ("letterSpacing" in mctx) {
+            mctx.letterSpacing = activeLetterSpacing;
+          }
         }
       }
+
+      // Responsive word gap: distinctly separates words with clear breathing room
+      const activeWordGap =
+        wordGap !== undefined
+          ? wordGap
+          : Math.max(
+              isMobile ? 22 : 28,
+              Math.round(size * (isMobile ? 0.65 : 0.45))
+            );
+
+      // Responsive line height: creates clean vertical space between line 1 and line 2
+      const activeLineHeight =
+        size *
+        (lineHeightRatio !== undefined
+          ? lineHeightRatio
+          : isMobile
+          ? 1.38
+          : 1.24);
 
       mctx.textAlign = "center";
       mctx.textBaseline = "middle";
       mctx.fillStyle = "#000000";
 
-      const lineHeight = size * 1.08;
-      const totalTextH = lineCount * lineHeight;
-      const startY = (height - totalTextH) / 2 + lineHeight / 2;
+      const totalTextH = lineCount * activeLineHeight;
+      const startY = (height - totalTextH) / 2 + activeLineHeight / 2;
 
       lines.forEach((line, idx) => {
-        mctx.fillText(line, width / 2, startY + idx * lineHeight);
+        const y = startY + idx * activeLineHeight;
+        const words = line.split(/\s+/).filter(Boolean);
+
+        if (words.length <= 1) {
+          mctx.fillText(line, width / 2, y);
+        } else {
+          // Render each word individually with explicit, generous gap
+          const wordWidths = words.map((w) => mctx.measureText(w).width);
+          const totalLineW =
+            wordWidths.reduce((a, b) => a + b, 0) +
+            (words.length - 1) * activeWordGap;
+          let startX = width / 2 - totalLineW / 2;
+
+          words.forEach((w, i) => {
+            const wWidth = wordWidths[i];
+            mctx.fillText(w, startX + wWidth / 2, y);
+            startX += wWidth + activeWordGap;
+          });
+        }
       });
 
       const data = mctx.getImageData(0, 0, width, height).data;
@@ -167,12 +289,13 @@ export default function ScatterGrid({
         for (let y = half; y < height; y += s) {
           for (let x = half; x < width; x += s) {
             const px = (Math.round(y) * width + Math.round(x)) * 4;
-            if (data[px + 3] > 128) n++;
+            if (data[px + 3] > 90) n++;
           }
         }
         return n;
       };
 
+      const minStep = Math.max(2, activeDotSize + activeDotGap);
       step = minStep;
       let count = countAt(step);
       let guard = 0;
@@ -187,7 +310,7 @@ export default function ScatterGrid({
       for (let y = half; y < height; y += step) {
         for (let x = half; x < width; x += step) {
           const px = (Math.round(y) * width + Math.round(x)) * 4;
-          if (data[px + 3] > 128) {
+          if (data[px + 3] > 90) {
             next.push({ hx: x, hy: y, x, y, vx: 0, vy: 0 });
           }
         }
@@ -196,7 +319,11 @@ export default function ScatterGrid({
     }
 
     function simulate() {
-      const r2 = radius * radius;
+      const r2 = activeRadius * activeRadius;
+      const currentStrength = isMobile ? Math.min(strength, 2.0) : strength;
+      const rippleBand = isMobile ? 22 : 30;
+      const rippleForce = isMobile ? 2.0 : 2.8;
+
       for (let i = 0; i < dots.length; i++) {
         const d = dots[i];
         const dx = d.x - pointerX;
@@ -206,7 +333,7 @@ export default function ScatterGrid({
         // Push dots away from pointer
         if (dist2 < r2 && dist2 > 0.5) {
           const dist = Math.sqrt(dist2);
-          const f = (1 - dist / radius) * strength;
+          const f = (1 - dist / activeRadius) * currentStrength;
           d.vx += (dx / dist) * f;
           d.vy += (dy / dist) * f;
         }
@@ -218,8 +345,8 @@ export default function ScatterGrid({
           const ry = d.y - rp.y;
           const rd = Math.sqrt(rx * rx + ry * ry) || 1;
           const band = Math.abs(rd - rp.r);
-          if (band < 30) {
-            const f = (1 - band / 30) * 2.8;
+          if (band < rippleBand) {
+            const f = (1 - band / rippleBand) * rippleForce;
             d.vx += (rx / rd) * f;
             d.vy += (ry / rd) * f;
           }
@@ -235,8 +362,9 @@ export default function ScatterGrid({
       }
 
       // Grow ripples
+      const rippleSpeed = isMobile ? 12 : 16;
       for (let j = ripples.length - 1; j >= 0; j--) {
-        ripples[j].r += 16;
+        ripples[j].r += rippleSpeed;
         if (ripples[j].r > Math.max(width, height) * 1.3) {
           ripples.splice(j, 1);
         }
@@ -247,6 +375,12 @@ export default function ScatterGrid({
       ctx.clearRect(0, 0, width, height);
       const wave = breathe && !reduced;
 
+      const freqX = isMobile ? 0.018 : 0.012;
+      const freqY = isMobile ? 0.024 : 0.016;
+      const speed = isMobile ? 2.2 : 1.8;
+      const amp = isMobile ? 3.2 : 1.8;
+      const driftAmp = isMobile ? 1.0 : 0.4;
+
       for (let i = 0; i < dots.length; i++) {
         const d = dots[i];
         const ox = d.x - d.hx;
@@ -254,20 +388,29 @@ export default function ScatterGrid({
         const disp = Math.sqrt(ox * ox + oy * oy);
         let level = Math.min(1, disp / 26);
         let lift = 0;
+        let drift = 0;
 
         if (wave) {
-          const s = Math.sin(d.hx * 0.012 - clock * 1.8);
-          lift = s * 1.5;
-          level = Math.max(level, Math.max(0, s - 0.84) * 3.4);
+          // Multi-frequency organic wave for continuous fluid motion on mobile
+          const sX = Math.sin(d.hx * freqX - clock * speed);
+          const sY = Math.cos(d.hy * freqY + clock * (speed * 0.7));
+          const s = (sX + sY * 0.4) / 1.4;
+          lift = s * amp;
+          drift = Math.sin(d.hy * freqY - clock * 1.2) * driftAmp;
+
+          // Luminous accent sheen traveling across the typographic matrix
+          const wavePulse = (sX + 1) * 0.5;
+          const highlight = Math.pow(wavePulse, 3.2);
+          level = Math.max(level, highlight * 0.75);
         }
 
         const idx = Math.min(STEPS - 1, Math.max(0, Math.round(level * (STEPS - 1))));
         ctx.fillStyle = ramp[idx];
         ctx.fillRect(
-          Math.round(d.x - dotSize / 2),
-          Math.round(d.y + lift - dotSize / 2),
-          dotSize,
-          dotSize
+          Math.round(d.x + drift - activeDotSize / 2),
+          Math.round(d.y + lift - activeDotSize / 2),
+          activeDotSize,
+          activeDotSize
         );
       }
     }
@@ -296,32 +439,58 @@ export default function ScatterGrid({
       raf = requestAnimationFrame(loop);
     }
 
-    function onPointerMove(event) {
+    function updatePointer(clientX, clientY) {
       const rect = canvas.getBoundingClientRect();
-      const x = event.clientX - rect.left;
-      const y = event.clientY - rect.top;
+      const x = clientX - rect.left;
+      const y = clientY - rect.top;
       if (x >= -60 && x <= width + 60 && y >= -60 && y <= height + 60) {
         pointerX = x;
         pointerY = y;
+        return { x, y, inBounds: true };
       } else {
         pointerX = -9999;
         pointerY = -9999;
+        return { x, y, inBounds: false };
       }
     }
 
-    function onPointerLeave() {
+    function clearPointer() {
       pointerX = -9999;
       pointerY = -9999;
     }
 
+    function onPointerMove(event) {
+      updatePointer(event.clientX, event.clientY);
+    }
+
     function onPointerDown(event) {
-      const rect = canvas.getBoundingClientRect();
-      const x = event.clientX - rect.left;
-      const y = event.clientY - rect.top;
-      if (x >= -40 && x <= width + 40 && y >= -40 && y <= height + 40) {
+      const res = updatePointer(event.clientX, event.clientY);
+      if (res.inBounds) {
         if (ripples.length > 3) ripples.shift();
-        ripples.push({ x, y, r: 0 });
+        ripples.push({ x: res.x, y: res.y, r: 0 });
       }
+    }
+
+    function onPointerUp() {
+      clearPointer();
+    }
+
+    function onTouchMove(e) {
+      if (!e.touches || e.touches.length === 0) return;
+      updatePointer(e.touches[0].clientX, e.touches[0].clientY);
+    }
+
+    function onTouchStart(e) {
+      if (!e.touches || e.touches.length === 0) return;
+      const res = updatePointer(e.touches[0].clientX, e.touches[0].clientY);
+      if (res.inBounds) {
+        if (ripples.length > 3) ripples.shift();
+        ripples.push({ x: res.x, y: res.y, r: 0 });
+      }
+    }
+
+    function onTouchEnd() {
+      clearPointer();
     }
 
     build();
@@ -367,7 +536,15 @@ export default function ScatterGrid({
     if (!reduced) {
       window.addEventListener("pointermove", onPointerMove, { passive: true });
       window.addEventListener("pointerdown", onPointerDown, { passive: true });
-      host.addEventListener("pointerleave", onPointerLeave);
+      window.addEventListener("pointerup", onPointerUp, { passive: true });
+      window.addEventListener("pointercancel", onPointerUp, { passive: true });
+      host.addEventListener("pointerleave", clearPointer);
+
+      host.addEventListener("touchstart", onTouchStart, { passive: true });
+      host.addEventListener("touchmove", onTouchMove, { passive: true });
+      host.addEventListener("touchend", onTouchEnd, { passive: true });
+      host.addEventListener("touchcancel", onTouchEnd, { passive: true });
+
       raf = requestAnimationFrame(loop);
     }
 
@@ -379,7 +556,13 @@ export default function ScatterGrid({
       if (raf) cancelAnimationFrame(raf);
       window.removeEventListener("pointermove", onPointerMove);
       window.removeEventListener("pointerdown", onPointerDown);
-      host.removeEventListener("pointerleave", onPointerLeave);
+      window.removeEventListener("pointerup", onPointerUp);
+      window.removeEventListener("pointercancel", onPointerUp);
+      host.removeEventListener("pointerleave", clearPointer);
+      host.removeEventListener("touchstart", onTouchStart);
+      host.removeEventListener("touchmove", onTouchMove);
+      host.removeEventListener("touchend", onTouchEnd);
+      host.removeEventListener("touchcancel", onTouchEnd);
     };
   }, [
     text,
@@ -388,9 +571,12 @@ export default function ScatterGrid({
     fontStyle,
     fontSize,
     letterSpacing,
+    wordGap,
+    lineHeightRatio,
     fit,
     dotSize,
     dotGap,
+    adaptive,
     radius,
     strength,
     stiffness,
