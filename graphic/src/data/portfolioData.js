@@ -962,9 +962,9 @@ export const PORTFOLIO_CATEGORIES = [
     "title": "Beauty, Wellness & Fitness",
     "category": "Cosmetics · Yoga · Lifestyle",
     "tag": "Wellness",
-    "description": "Aesthetic product posters for Shivaura serums, yoga retreat creatives, healthy lifestyle promotions, and cosmetics designs.",
+    "description": "Aesthetic yoga creatives for Sushanti Dhyanyoga, meditation campaigns, healthy lifestyle promotions, and wellness retreat designs.",
     "coverImage": "/Graphic portfolio/Yoga Nature.jpg",
-    "itemCount": 7,
+    "itemCount": 12,
     "images": [
       {
         "name": "YG day",
@@ -1000,6 +1000,31 @@ export const PORTFOLIO_CATEGORIES = [
         "name": "Y1",
         "src": "/Graphic portfolio/Y1.jpg",
         "aspectRatio": 1.25
+      },
+      {
+        "name": "Sushanti Dhyanyoga - Harmony for Mind, Body & Soul",
+        "src": "/Graphic portfolio/Sushanti Dhyanyoga - Mind Body Soul.jpg",
+        "aspectRatio": 1.33
+      },
+      {
+        "name": "Sushanti Dhyanyoga - Teachers Day Special",
+        "src": "/Graphic portfolio/Sushanti Dhyanyoga - Teachers Day.jpg",
+        "aspectRatio": 1.25
+      },
+      {
+        "name": "Sushanti Dhyanyoga - Shubh Navratri Celebration",
+        "src": "/Graphic portfolio/Sushanti Dhyanyoga - Shubh Navratri.jpg",
+        "aspectRatio": 1.33
+      },
+      {
+        "name": "Sushanti Dhyanyoga - Meditation & Asana",
+        "src": "/Graphic portfolio/Sushanti Dhyanyoga - Padmasana Meditation.jpg",
+        "aspectRatio": 1.78
+      },
+      {
+        "name": "Sushanti Dhyanyoga - Mindful Strength & Conscious Living",
+        "src": "/Graphic portfolio/Sushanti Dhyanyoga - Conscious Living.jpg",
+        "aspectRatio": 1.78
       }
     ]
   },
@@ -1010,7 +1035,7 @@ export const PORTFOLIO_CATEGORIES = [
     "tag": "Digital Agency",
     "description": "Corporate brand identity, agency roadmap, LinkedIn thought-leadership carousels, standees, sports creatives, and festive greeting posts.",
     "coverImage": "/Graphic portfolio/FOUNDER RIZE.jpg",
-    "itemCount": 6,
+    "itemCount": 10,
     "images": [
       {
         "name": "FOUNDER RIZE",
@@ -1040,6 +1065,26 @@ export const PORTFOLIO_CATEGORIES = [
       {
         "name": "RW ROADMAP",
         "src": "/Graphic portfolio/RW ROADMAP.png",
+        "aspectRatio": 1.33
+      },
+      {
+        "name": "RizeWorld - We Are Hiring (SEO & SMO Specialist)",
+        "src": "/Graphic portfolio/RW - We Are Hiring SEO SMO.jpg",
+        "aspectRatio": 1.33
+      },
+      {
+        "name": "RizeWorld - One Team Every Solution",
+        "src": "/Graphic portfolio/RW - One Team Every Solution.jpg",
+        "aspectRatio": 1.33
+      },
+      {
+        "name": "RizeWorld - Design Is Strategy (Brand Trust)",
+        "src": "/Graphic portfolio/RW - Design Is Strategy.jpg",
+        "aspectRatio": 1.33
+      },
+      {
+        "name": "RizeWorld - Digital Marketer Career Strategy",
+        "src": "/Graphic portfolio/RW - Digital Marketer Blueprint.jpg",
         "aspectRatio": 1.33
       }
     ]
