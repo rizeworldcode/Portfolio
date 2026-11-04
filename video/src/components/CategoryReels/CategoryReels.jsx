@@ -7,6 +7,8 @@ import {
   RiRestaurant2Line,
   RiBuilding4Line,
   RiLeafLine,
+  RiRobotLine,
+  RiVipDiamondLine,
 } from "react-icons/ri";
 import { IoPlay, IoClose } from "react-icons/io5";
 import { FiArrowRight } from "react-icons/fi";
@@ -15,16 +17,158 @@ import "./CategoryReels.css";
 // Reel categories
 const CATEGORIES = [
   { id: "all", name: "All Reels", icon: <HiSparkles /> },
+  { id: "ai", name: "AI Video", icon: <RiRobotLine /> },
   { id: "hospital", name: "Hospital & Healthcare", icon: <RiHospitalLine /> },
   { id: "school", name: "School & Education", icon: <RiGraduationCapLine /> },
   { id: "food", name: "Cafe & Restaurant", icon: <RiRestaurant2Line /> },
   { id: "realestate", name: "Real Estate & Infra", icon: <RiBuilding4Line /> },
-  { id: "creative", name: "Commercial & 3D", icon: <HiBolt /> },
+  { id: "creative", name: "Jewellery & Gemstones", icon: <RiVipDiamondLine /> },
   { id: "lifestyle", name: "Lifestyle & Wellness", icon: <RiLeafLine /> },
 ];
 
-// Authentic Video Portfolio dataset with authentic video frames (28 Unique Non-Duplicated Reels)
+// Authentic Video Portfolio dataset with authentic video frames (38 Unique Non-Duplicated Reels)
 const REELS_DATA = [
+  // --- AI Video & Generative Reels (10 Unique Reels) ---
+  {
+    id: "ai-1",
+    title: "Chappan Bhog AI Gourmet Feast Reel",
+    category: "ai",
+    categoryLabel: "AI Gourmet",
+    client: "Chappan Bhog",
+    duration: "0:18",
+    views: "210K",
+    likes: "18.4K",
+    video: "/videos-compressed/chappan-bhog.mp4",
+    description:
+      "Delectable AI-enhanced culinary showcase featuring mouthwatering Indian delicacies, cinematic slow-motion transitions, and rich festive ambiance.",
+    tags: ["AI Food", "Gourmet Visuals", "Culinary AI", "Chappan Bhog"],
+  },
+  {
+    id: "ai-2",
+    title: "Jain Events Dadhikar Fort Heritage Grandeur",
+    category: "ai",
+    categoryLabel: "AI Heritage",
+    client: "Jain Events",
+    duration: "0:51",
+    views: "195K",
+    likes: "16.2K",
+    video: "/videos-compressed/jain-dadhikar.mp4",
+    description:
+      "Spectacular royal wedding celebration and heritage event at Dadhikar Fort Alwar with breathtaking cinematic angles and cultural richness.",
+    tags: ["Jain Events", "Dadhikar Fort", "Royal Wedding", "Heritage AI"],
+  },
+  {
+    id: "ai-3",
+    title: "Kafesa Cafe Vibrant AI Aesthetic Edit",
+    category: "ai",
+    categoryLabel: "AI Cafe Trend",
+    client: "Kafesa Cafe",
+    duration: "0:11",
+    views: "182K",
+    likes: "14.9K",
+    video: "/videos-compressed/kafesa-trend.mp4",
+    description:
+      "Snappy trending audio sync, cozy cafe ambience, and hyper-stylized AI motion edits highlighting Kafesa's signature beverage lineup.",
+    tags: ["Kafesa Cafe", "Trending Reels", "Cafe Vibe", "AI Motion"],
+  },
+  {
+    id: "ai-4",
+    title: "Kafesa x Marvel Superhero AI Universe Crossover",
+    category: "ai",
+    categoryLabel: "Marvel AI Crossover",
+    client: "Kafesa Cafe",
+    duration: "0:16",
+    views: "340K",
+    likes: "29.5K",
+    video: "/videos-compressed/kafesa-marvel.mp4",
+    description:
+      "Epic superhero-inspired crossover combining Marvel aesthetics with artisanal cafe energy, packed with electrifying visual effects.",
+    tags: ["Marvel AI", "Kafesa Superhero", "Sci-Fi Visuals", "Viral Concept"],
+  },
+  {
+    id: "ai-5",
+    title: "MediCompares Next-Gen Healthcare Technology",
+    category: "ai",
+    categoryLabel: "AI Medical Tech",
+    client: "MediCompares",
+    duration: "0:57",
+    views: "165K",
+    likes: "12.8K",
+    video: "/videos-compressed/medicompares-14.mp4",
+    description:
+      "Advanced medical diagnostics, digital health infrastructure, and AI-assisted clinical efficiency reel crafted for high-authority healthcare branding.",
+    tags: ["Medical Tech", "Health AI", "MediCompares", "Diagnostics"],
+  },
+  {
+    id: "ai-6",
+    title: "MediCompares Meta Ads High-Conversion Creative",
+    category: "ai",
+    categoryLabel: "Meta Ads AI",
+    client: "MediCompares",
+    duration: "0:35",
+    views: "220K",
+    likes: "17.4K",
+    video: "/videos-compressed/medicompares-meta.mp4",
+    description:
+      "Performance marketing video optimized for Meta ad campaigns with compelling hooks, kinetic text overlays, and crisp call-to-actions.",
+    tags: ["Meta Ads", "Performance Marketing", "Healthcare Lead Gen", "AI Ads"],
+  },
+  {
+    id: "ai-7",
+    title: "Teeva Futuristic AI Product Motion Vol. 1",
+    category: "ai",
+    categoryLabel: "AI Product Motion",
+    client: "Teeva Lifestyle",
+    duration: "0:42",
+    views: "275K",
+    likes: "22.1K",
+    video: "/videos-compressed/teeva-1.mp4",
+    description:
+      "Next-level product reveal combining 3D product simulation, futuristic neon lighting, and ultra-smooth AI camera trajectories.",
+    tags: ["Teeva", "Product Motion", "3D AI", "Futuristic Commercial"],
+  },
+  {
+    id: "ai-8",
+    title: "Teeva Dynamic Kinetic Brand Narrative Vol. 2",
+    category: "ai",
+    categoryLabel: "Kinetic AI",
+    client: "Teeva Lifestyle",
+    duration: "1:09",
+    views: "310K",
+    likes: "26.3K",
+    video: "/videos-compressed/teeva-3.mp4",
+    description:
+      "Extended cinematic commercial exploring bold color palettes, liquid simulation dynamics, and modern high-fashion visual storytelling.",
+    tags: ["Kinetic Edit", "Teeva Brand", "Commercial Storytelling", "AI Motion"],
+  },
+  {
+    id: "ai-9",
+    title: "Zoniraz Royal Diamond Luminescence",
+    category: "ai",
+    categoryLabel: "AI Luxury Jewellery",
+    client: "Zoniraz Jewellery",
+    duration: "0:23",
+    views: "290K",
+    likes: "24.7K",
+    video: "/videos-compressed/zoniraz-diamond.mp4",
+    description:
+      "Dazzling macro sparkle, ethereal gold reflections, and royal Indian jewellery craftsmanship showcased through high-definition AI lighting.",
+    tags: ["Zoniraz", "Diamond Jewellery", "Luxury Gold", "AI Sparkle"],
+  },
+  {
+    id: "ai-10",
+    title: "Zoniraz Nationwide Franchise Expansion Vision",
+    category: "ai",
+    categoryLabel: "AI Brand Franchise",
+    client: "Zoniraz Jewellery",
+    duration: "1:04",
+    views: "260K",
+    likes: "21.5K",
+    video: "/videos-compressed/zoniraz-franchise-ai.mp4",
+    description:
+      "Corporate franchise expansion narrative highlighting Zoniraz's legacy, showroom luxury, client trust, and nationwide presence.",
+    tags: ["Zoniraz Franchise", "Brand Growth", "Jewellery Business", "Corporate Reel"],
+  },
   // --- Hospital & Healthcare Reels (6 Unique Reels) ---
   {
     id: "hosp-1",
@@ -490,7 +634,7 @@ function SmartReelCard({ reel, index, onSelect }) {
         {/* Real video with its own authentic first frame as poster */}
         <video
           ref={videoRef}
-          src={reel.video}
+          src={encodeURI(reel.video)}
           loop
           muted
           playsInline
@@ -568,8 +712,8 @@ export default function CategoryReels() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Explore industry-specific reels for healthcare, schools, restaurants, real estate,
-            brand commercials, and wellness. Hover to preview or click to watch with full audio.
+            Explore industry-specific reels for AI video, healthcare, schools, restaurants, real estate,
+            jewellery & gemstones, and wellness. Hover to preview or click to watch with full audio.
           </motion.p>
 
           {/* ========================================================
@@ -618,14 +762,36 @@ export default function CategoryReels() {
             ======================================================== */}
         <motion.div layout className="category-reels__grid">
           <AnimatePresence mode="popLayout">
-            {filteredReels.map((reel, index) => (
-              <SmartReelCard
-                key={reel.id}
-                reel={reel}
-                index={index}
-                onSelect={setSelectedReel}
-              />
-            ))}
+            {filteredReels.length > 0 ? (
+              filteredReels.map((reel, index) => (
+                <SmartReelCard
+                  key={reel.id}
+                  reel={reel}
+                  index={index}
+                  onSelect={setSelectedReel}
+                />
+              ))
+            ) : (
+              <motion.div
+                key="empty-ai-state"
+                initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: -20 }}
+                transition={{ duration: 0.4 }}
+                className="category-reels__empty-state"
+              >
+                <div className="category-reels__empty-icon">
+                  <RiRobotLine />
+                </div>
+                <h3 className="category-reels__empty-title">AI Video Reels Coming Soon</h3>
+                <p className="category-reels__empty-subtitle">
+                  Curated AI-generated video reels, viral avatars, and futuristic video edits are being prepared.
+                </p>
+                <div className="category-reels__empty-badge">
+                  <span>Ready For Uploads</span>
+                </div>
+              </motion.div>
+            )}
           </AnimatePresence>
         </motion.div>
       </div>
@@ -675,7 +841,7 @@ export default function CategoryReels() {
                       }
                     }}
                     key={selectedReel.video}
-                    src={selectedReel.video}
+                    src={encodeURI(selectedReel.video)}
                     controls
                     autoPlay
                     playsInline

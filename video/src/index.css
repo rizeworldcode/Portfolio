@@ -38,9 +38,14 @@ body {
   flex-direction: column;
 }
 
-/* Custom selection */
+/* Custom selection - High contrast, perfectly readable */
 ::selection {
-  background: rgba(255, 255, 255, 0.25);
+  background: #2563eb;
+  color: #ffffff;
+}
+
+::-moz-selection {
+  background: #2563eb;
   color: #ffffff;
 }
 

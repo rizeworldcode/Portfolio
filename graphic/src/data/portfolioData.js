@@ -298,7 +298,7 @@ export const PORTFOLIO_CATEGORIES = [
     "tag": "Institute",
     "description": "High-converting educational banners, course admissions, tech coaching promotions, and brand identity designs for institutes.",
     "coverImage": "/Graphic portfolio/RIZE INSTITUTE.jpg",
-    "itemCount": 15,
+    "itemCount": 16,
     "images": [
       {
         "name": "RIZE INSTITUTE",
@@ -373,6 +373,11 @@ export const PORTFOLIO_CATEGORIES = [
       {
         "name": "PORT",
         "src": "/Graphic portfolio/PORT.jpg",
+        "aspectRatio": 1.33
+      },
+      {
+        "name": "CREATIVE PRO - Graphic Designing & Video Editing",
+        "src": "/Graphic portfolio/CREATIVE.jpg",
         "aspectRatio": 1.33
       }
     ]
@@ -1009,24 +1014,9 @@ export const PORTFOLIO_CATEGORIES = [
     "category": "LinkedIn · Agency · Festival Ads",
     "tag": "Digital Agency",
     "description": "Corporate brand identity, agency roadmap, LinkedIn thought-leadership carousels, standees, sports creatives, and festive greeting posts.",
-    "coverImage": "/Graphic portfolio/CREATIVE.jpg",
-    "itemCount": 9,
+    "coverImage": "/Graphic portfolio/FOUNDER RIZE.jpg",
+    "itemCount": 6,
     "images": [
-      {
-        "name": "ADS",
-        "src": "/Graphic portfolio/ADS.jpg",
-        "aspectRatio": 1
-      },
-      {
-        "name": "adsstorm",
-        "src": "/Graphic portfolio/adsstorm.jpg",
-        "aspectRatio": 1
-      },
-      {
-        "name": "CREATIVE",
-        "src": "/Graphic portfolio/CREATIVE.jpg",
-        "aspectRatio": 1.33
-      },
       {
         "name": "FOUNDER RIZE",
         "src": "/Graphic portfolio/FOUNDER RIZE.jpg",

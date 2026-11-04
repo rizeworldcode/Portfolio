@@ -199,6 +199,64 @@
   width: 100%;
 }
 
+/* Empty Category State */
+.category-reels__empty-state {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 24px;
+  background: #f8fafc;
+  border: 2px dashed rgba(0, 0, 0, 0.12);
+  border-radius: 24px;
+  margin: 10px 0 30px;
+}
+
+.category-reels__empty-icon {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: rgba(37, 99, 235, 0.08);
+  color: #2563eb;
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.category-reels__empty-title {
+  font-family: "Plus Jakarta Sans", -apple-system, sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+
+.category-reels__empty-subtitle {
+  font-size: 14.5px;
+  color: #64748b;
+  max-width: 480px;
+  line-height: 1.6;
+  margin-bottom: 22px;
+}
+
+.category-reels__empty-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 18px;
+  background: #0c0d12;
+  color: #ffffff;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+
 .reel-card {
   position: relative;
   border-radius: 20px;
