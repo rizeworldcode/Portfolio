@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { HiSparkles, HiBolt } from "react-icons/hi2";
+import { HiBolt } from "react-icons/hi2";
 import {
   RiHospitalLine,
   RiGraduationCapLine,
@@ -16,14 +16,13 @@ import "./CategoryReels.css";
 
 // Reel categories
 const CATEGORIES = [
-  { id: "all", name: "All Reels", icon: <HiSparkles /> },
-  { id: "ai", name: "AI Video", icon: <RiRobotLine /> },
   { id: "hospital", name: "Hospital & Healthcare", icon: <RiHospitalLine /> },
   { id: "school", name: "School & Education", icon: <RiGraduationCapLine /> },
   { id: "food", name: "Cafe & Restaurant", icon: <RiRestaurant2Line /> },
   { id: "realestate", name: "Real Estate & Infra", icon: <RiBuilding4Line /> },
   { id: "creative", name: "Jewellery & Gemstones", icon: <RiVipDiamondLine /> },
   { id: "lifestyle", name: "Lifestyle & Wellness", icon: <RiLeafLine /> },
+  { id: "ai", name: "AI Video", icon: <RiRobotLine /> },
 ];
 
 // Authentic Video Portfolio dataset with authentic video frames (38 Unique Non-Duplicated Reels)
@@ -669,7 +668,7 @@ function SmartReelCard({ reel, index, onSelect }) {
 }
 
 export default function CategoryReels() {
-  const [activeCategory, setActiveCategory] = useState("all");
+  const [activeCategory, setActiveCategory] = useState(CATEGORIES[0].id);
   const [selectedReel, setSelectedReel] = useState(null);
 
   const filteredReels =
@@ -721,10 +720,7 @@ export default function CategoryReels() {
               ======================================================== */}
           <div className="category-reels__tabs" role="tablist">
             {CATEGORIES.map((cat) => {
-              const count =
-                cat.id === "all"
-                  ? REELS_DATA.length
-                  : REELS_DATA.filter((r) => r.category === cat.id).length;
+              const count = REELS_DATA.filter((r) => r.category === cat.id).length;
               const isActive = activeCategory === cat.id;
 
               return (

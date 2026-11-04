@@ -33,7 +33,7 @@ export default function CategoryDetail({ category, onClose }) {
 
   const images = category?.images || [];
 
-  // True dynamic masonry height balancing: ensures all columns end at the exact same level!
+  // Dynamic masonry height balancing with left-to-right preference to prevent empty left columns
   const effectiveCols = Math.min(columnCount, Math.max(1, images.length));
   const columns = Array.from({ length: effectiveCols }, () => []);
   const colHeights = Array(effectiveCols).fill(0);
@@ -41,7 +41,7 @@ export default function CategoryDetail({ category, onClose }) {
   images.forEach((img, idx) => {
     let shortest = 0;
     for (let c = 1; c < effectiveCols; c++) {
-      if (colHeights[c] < colHeights[shortest]) shortest = c;
+      if (colHeights[c] < colHeights[shortest] - 0.28) shortest = c;
     }
     columns[shortest].push({ img, idx });
     colHeights[shortest] += (img.aspectRatio || 1.33);
