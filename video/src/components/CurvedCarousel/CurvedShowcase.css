@@ -8,7 +8,7 @@
   min-height: 100vh;
   background-color: #ffffff;
   color: #111111;
-  padding: 100px 0 80px;
+  padding: 40px 0 80px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -23,6 +23,105 @@
   filter: blur(120px);
   z-index: 0;
   display: none;
+}
+
+/* ============================================================
+   0. TOP QUICK NAVIGATION (Home, Projects, Reels)
+   ============================================================ */
+.showcase-nav-wrapper {
+  position: sticky;
+  top: 20px;
+  z-index: 40;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 24px;
+  margin-bottom: 28px;
+}
+
+.showcase-nav-pill {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 9999px;
+  padding: 8px 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: all 0.25s ease;
+}
+
+.showcase-nav-pill:hover {
+  border-color: rgba(0, 0, 0, 0.14);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+}
+
+.showcase-nav-list {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.showcase-nav-link {
+  font-family: "Inter", sans-serif;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #475569;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s ease, font-weight 0.2s ease;
+  position: relative;
+  cursor: pointer;
+}
+
+.showcase-nav-link:hover {
+  color: #000000;
+}
+
+.showcase-nav-link.is-active {
+  color: #000000;
+  font-weight: 700;
+}
+
+.showcase-nav-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #000000;
+  display: inline-block;
+  margin-right: 2px;
+}
+
+.showcase-nav-sup {
+  font-size: 10.5px;
+  color: #64748b;
+  font-weight: 600;
+  margin-left: 2px;
+  top: -0.4em;
+}
+
+@media (max-width: 640px) {
+  .showcase-nav-wrapper {
+    top: 12px;
+    margin-bottom: 20px;
+    padding: 0 16px;
+  }
+  .showcase-nav-pill {
+    padding: 6px 18px;
+  }
+  .showcase-nav-list {
+    gap: 18px;
+  }
+  .showcase-nav-link {
+    font-size: 12.5px;
+  }
 }
 
 /* ============================================================

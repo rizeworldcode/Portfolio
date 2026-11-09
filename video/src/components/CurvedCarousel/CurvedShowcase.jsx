@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiPlay, FiPause, FiArrowRight } from "react-icons/fi";
 import { HiArrowsRightLeft } from "react-icons/hi2";
-import { RiDragMove2Line } from "react-icons/ri";
 import { IoClose } from "react-icons/io5";
 import CurvedMediaCarousel from "./CurvedMediaCarousel";
 import "./CurvedShowcase.css";
@@ -143,6 +142,42 @@ export default function CurvedShowcase() {
   const [speed, setSpeed] = useState(38);
   const [direction, setDirection] = useState("left");
   const [activeIdx, setActiveIdx] = useState(0);
+  const [activeSection, setActiveSection] = useState("projects");
+
+  const scrollToSection = (e, sectionId) => {
+    if (e) e.preventDefault();
+    if (sectionId === "home") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      const el = document.getElementById(sectionId);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+    setActiveSection(sectionId);
+    if (window.location.hash) {
+      window.history.replaceState(null, "", window.location.pathname + window.location.search);
+    }
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPos = window.scrollY + 250;
+      const reelsEl = document.getElementById("reels");
+      const projectsEl = document.getElementById("projects");
+
+      if (reelsEl && scrollPos >= reelsEl.offsetTop) {
+        setActiveSection("reels");
+      } else if (projectsEl && scrollPos >= projectsEl.offsetTop) {
+        setActiveSection("projects");
+      } else {
+        setActiveSection("home");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -168,6 +203,52 @@ export default function CurvedShowcase() {
       {/* Subtle Background Glows */}
       <div className="curved-showcase__ambient-glow curved-showcase__ambient-glow--top" />
       <div className="curved-showcase__ambient-glow curved-showcase__ambient-glow--center" />
+
+      {/* ========================================================
+          0. TOP QUICK NAVIGATION (Home, Projects, Reels)
+          ======================================================== */}
+      <div className="showcase-nav-wrapper">
+        <motion.nav
+          className="showcase-nav-pill"
+          initial={{ opacity: 0, y: -12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          aria-label="Section Quick Navigation"
+        >
+          <ul className="showcase-nav-list">
+            <li>
+              <a
+                href="/"
+                onClick={(e) => scrollToSection(e, "home")}
+                className={`showcase-nav-link ${activeSection === "home" ? "is-active" : ""}`}
+              >
+                {activeSection === "home" && <span className="showcase-nav-dot" aria-hidden="true" />}
+                Home
+              </a>
+            </li>
+            <li>
+              <a
+                href="#projects"
+                onClick={(e) => scrollToSection(e, "projects")}
+                className={`showcase-nav-link ${activeSection === "projects" ? "is-active" : ""}`}
+              >
+                {activeSection === "projects" && <span className="showcase-nav-dot" aria-hidden="true" />}
+                Projects <sup className="showcase-nav-sup">(08)</sup>
+              </a>
+            </li>
+            <li>
+              <a
+                href="#reels"
+                onClick={(e) => scrollToSection(e, "reels")}
+                className={`showcase-nav-link ${activeSection === "reels" ? "is-active" : ""}`}
+              >
+                {activeSection === "reels" && <span className="showcase-nav-dot" aria-hidden="true" />}
+                Reels <sup className="showcase-nav-sup">(27)</sup>
+              </a>
+            </li>
+          </ul>
+        </motion.nav>
+      </div>
 
       {/* ========================================================
           1. SECTION HEADER
@@ -250,12 +331,6 @@ export default function CurvedShowcase() {
               <HiArrowsRightLeft size={14} />
               <span>{direction === "left" ? "Dir: Left" : "Dir: Right"}</span>
             </button>
-
-            {/* Drag hint badge */}
-            <div className="curved-showcase__drag-hint">
-              <RiDragMove2Line size={15} />
-              <span>Drag to Glide</span>
-            </div>
           </div>
         </div>
       </div>
