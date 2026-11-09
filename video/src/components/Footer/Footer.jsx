@@ -13,11 +13,29 @@ import "./Footer.css";
 
 export default function Footer() {
   const scrollToTop = (e) => {
-    e.preventDefault();
+    if (e) e.preventDefault();
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
+    if (window.location.hash) {
+      window.history.replaceState(null, "", window.location.pathname + window.location.search);
+    }
+  };
+
+  const scrollToSection = (e, targetId) => {
+    if (e) e.preventDefault();
+    if (targetId === "home") {
+      scrollToTop(e);
+    } else {
+      const el = document.getElementById(targetId);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+      if (window.location.hash) {
+        window.history.replaceState(null, "", window.location.pathname + window.location.search);
+      }
+    }
   };
 
   return (
@@ -61,17 +79,29 @@ export default function Footer() {
             <span className="minimal-footer__label">MENU</span>
             <ul className="minimal-footer__list">
               <li>
-                <a href="#home" className="minimal-footer__link">
+                <a
+                  href="/"
+                  onClick={(e) => scrollToSection(e, "home")}
+                  className="minimal-footer__link"
+                >
                   Home
                 </a>
               </li>
               <li>
-                <a href="#projects" className="minimal-footer__link">
+                <a
+                  href="#projects"
+                  onClick={(e) => scrollToSection(e, "projects")}
+                  className="minimal-footer__link"
+                >
                   Projects
                 </a>
               </li>
               <li>
-                <a href="#reels" className="minimal-footer__link">
+                <a
+                  href="#reels"
+                  onClick={(e) => scrollToSection(e, "reels")}
+                  className="minimal-footer__link"
+                >
                   Reels
                 </a>
               </li>

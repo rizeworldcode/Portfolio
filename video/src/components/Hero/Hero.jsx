@@ -5,7 +5,43 @@ import "./Hero.css";
 
 export default function Hero() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
   const videoRef = useRef(null);
+
+  const scrollToSection = (e, sectionId) => {
+    if (e) e.preventDefault();
+    if (sectionId === "home") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      const el = document.getElementById(sectionId);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+    setActiveSection(sectionId);
+    if (window.location.hash) {
+      window.history.replaceState(null, "", window.location.pathname + window.location.search);
+    }
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPos = window.scrollY + 250;
+      const reelsEl = document.getElementById("reels");
+      const projectsEl = document.getElementById("projects");
+
+      if (reelsEl && scrollPos >= reelsEl.offsetTop) {
+        setActiveSection("reels");
+      } else if (projectsEl && scrollPos >= projectsEl.offsetTop) {
+        setActiveSection("projects");
+      } else {
+        setActiveSection("home");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     if (videoRef.current) {
@@ -63,7 +99,12 @@ export default function Hero() {
         aria-label="Main Navigation"
       >
         {/* Brand Logo */}
-        <a href="#home" className="ignitex-nav__logo" aria-label="Rizeworld Homepage">
+        <a
+          href="/"
+          onClick={(e) => scrollToSection(e, "home")}
+          className="ignitex-nav__logo"
+          aria-label="Rizeworld Homepage"
+        >
           <img src="/RW.png" alt="Rizeworld" className="ignitex-nav__logo-img" />
         </a>
 
@@ -77,18 +118,32 @@ export default function Hero() {
         <div className="ignitex-nav__menu">
           <ul className="ignitex-nav__links">
             <li>
-              <a href="#home" className="ignitex-nav__link ignitex-nav__link--active">
-                <span className="ignitex-nav__dot" aria-hidden="true" />
+              <a
+                href="/"
+                onClick={(e) => scrollToSection(e, "home")}
+                className={`ignitex-nav__link ${activeSection === "home" ? "ignitex-nav__link--active" : ""}`}
+              >
+                {activeSection === "home" && <span className="ignitex-nav__dot" aria-hidden="true" />}
                 Home
               </a>
             </li>
             <li>
-              <a href="#projects" className="ignitex-nav__link">
+              <a
+                href="#projects"
+                onClick={(e) => scrollToSection(e, "projects")}
+                className={`ignitex-nav__link ${activeSection === "projects" ? "ignitex-nav__link--active" : ""}`}
+              >
+                {activeSection === "projects" && <span className="ignitex-nav__dot" aria-hidden="true" />}
                 Projects <sup className="ignitex-nav__sup">(08)</sup>
               </a>
             </li>
             <li>
-              <a href="#reels" className="ignitex-nav__link">
+              <a
+                href="#reels"
+                onClick={(e) => scrollToSection(e, "reels")}
+                className={`ignitex-nav__link ${activeSection === "reels" ? "ignitex-nav__link--active" : ""}`}
+              >
+                {activeSection === "reels" && <span className="ignitex-nav__dot" aria-hidden="true" />}
                 Reels <sup className="ignitex-nav__sup">(27)</sup>
               </a>
             </li>
@@ -118,22 +173,31 @@ export default function Hero() {
           exit={{ opacity: 0, y: -10 }}
         >
           <a
-            href="#home"
-            onClick={() => setMobileMenuOpen(false)}
+            href="/"
+            onClick={(e) => {
+              setMobileMenuOpen(false);
+              scrollToSection(e, "home");
+            }}
             className="ignitex-mobile-drawer__link"
           >
             Home
           </a>
           <a
             href="#projects"
-            onClick={() => setMobileMenuOpen(false)}
+            onClick={(e) => {
+              setMobileMenuOpen(false);
+              scrollToSection(e, "projects");
+            }}
             className="ignitex-mobile-drawer__link"
           >
             Projects (08)
           </a>
           <a
             href="#reels"
-            onClick={() => setMobileMenuOpen(false)}
+            onClick={(e) => {
+              setMobileMenuOpen(false);
+              scrollToSection(e, "reels");
+            }}
             className="ignitex-mobile-drawer__link"
           >
             Reels (27)
