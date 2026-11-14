@@ -1,19 +1,17 @@
 import React, { useState } from 'react';
 import { 
-  HiPlus, 
-  HiEye, 
-  HiHeart, 
-  HiGlobeAlt, 
-  HiMagnifyingGlass, 
-  HiCheckCircle, 
-  HiPencilSquare 
-} from 'react-icons/hi2';
-import { 
-  RiBrush3Fill, 
-  RiMovie2Fill, 
-  RiRocket2Fill, 
-  RiDeleteBin6Line 
-} from 'react-icons/ri';
+  LuPlus, 
+  LuEye, 
+  LuHeart, 
+  LuGlobe, 
+  LuSearch, 
+  LuCircleCheck, 
+  LuPencil,
+  LuPalette, 
+  LuClapperboard, 
+  LuRocket, 
+  LuTrash2 
+} from 'react-icons/lu';
 import './PortfolioView.css';
 
 export default function PortfolioView({ 
@@ -40,7 +38,7 @@ export default function PortfolioView({
         <div className="manager-toolbar">
           <div className="toolbar-left">
             <div className="toolbar-badge-icon palette-bg">
-              <RiBrush3Fill size={18} />
+              <LuPalette size={20} />
             </div>
             <div>
               <h2 className="toolbar-title">Graphic Design & Creative Assets</h2>
@@ -50,7 +48,7 @@ export default function PortfolioView({
 
           <div className="toolbar-right">
             <div className="toolbar-search">
-              <HiMagnifyingGlass size={16} />
+              <LuSearch size={16} />
               <input 
                 type="text" 
                 placeholder="Search graphic works..." 
@@ -63,7 +61,7 @@ export default function PortfolioView({
               className="btn-create-action btn-palette"
               onClick={() => onOpenModalWithMode('graphic')}
             >
-              <HiPlus size={16} />
+              <LuPlus size={16} />
               <span>Upload Graphic Image</span>
             </button>
           </div>
@@ -84,14 +82,14 @@ export default function PortfolioView({
                     onClick={() => onEditItem('graphic', item)}
                     title="Edit & update graphic details"
                   >
-                    <HiPencilSquare size={14} />
+                    <LuPencil size={14} />
                   </button>
                   <button 
                     className="card-action-btn delete-btn" 
                     onClick={() => onDeleteItem('graphic', item.id)}
                     title="Remove asset"
                   >
-                    <RiDeleteBin6Line size={14} />
+                    <LuTrash2 size={14} />
                   </button>
                 </div>
               </div>
@@ -112,13 +110,24 @@ export default function PortfolioView({
                   ))}
                 </div>
 
-                <button 
-                  className="card-quick-edit-link"
-                  onClick={() => onEditItem('graphic', item)}
-                >
-                  <HiPencilSquare size={13} />
-                  <span>Update Graphic</span>
-                </button>
+                <div className="card-actions-clay-row">
+                  <button 
+                    className="crud-btn crud-btn--edit"
+                    onClick={() => onEditItem('graphic', item)}
+                    title="Edit graphic details"
+                  >
+                    <LuPencil size={14} />
+                    <span>Edit</span>
+                  </button>
+                  <button 
+                    className="crud-btn crud-btn--delete"
+                    onClick={() => onDeleteItem('graphic', item.id)}
+                    title="Delete graphic asset"
+                  >
+                    <LuTrash2 size={14} />
+                    <span>Delete</span>
+                  </button>
+                </div>
               </div>
             </div>
           ))}
@@ -140,7 +149,7 @@ export default function PortfolioView({
         <div className="manager-toolbar">
           <div className="toolbar-left">
             <div className="toolbar-badge-icon video-bg">
-              <RiMovie2Fill size={18} />
+              <LuClapperboard size={20} />
             </div>
             <div>
               <h2 className="toolbar-title">Video Cinema & Reels Production</h2>
@@ -150,7 +159,7 @@ export default function PortfolioView({
 
           <div className="toolbar-right">
             <div className="toolbar-search">
-              <HiMagnifyingGlass size={16} />
+              <LuSearch size={16} />
               <input 
                 type="text" 
                 placeholder="Search reels..." 
@@ -163,7 +172,7 @@ export default function PortfolioView({
               className="btn-create-action btn-video"
               onClick={() => onOpenModalWithMode('video')}
             >
-              <HiPlus size={16} />
+              <LuPlus size={16} />
               <span>Add Video Reel</span>
             </button>
           </div>
@@ -184,7 +193,7 @@ export default function PortfolioView({
                   />
                 ) : (
                   <div className="video-placeholder">
-                    <RiMovie2Fill size={36} />
+                    <LuClapperboard size={36} />
                   </div>
                 )}
                 <span className="video-card__duration-tag">{item.duration || '0:45'}</span>
@@ -196,14 +205,14 @@ export default function PortfolioView({
                     onClick={() => onEditItem('video', item)}
                     title="Edit & update reel details"
                   >
-                    <HiPencilSquare size={14} />
+                    <LuPencil size={14} />
                   </button>
                   <button 
                     className="card-action-btn delete-btn" 
                     onClick={() => onDeleteItem('video', item.id)}
                     title="Remove reel"
                   >
-                    <RiDeleteBin6Line size={14} />
+                    <LuTrash2 size={14} />
                   </button>
                 </div>
               </div>
@@ -214,22 +223,33 @@ export default function PortfolioView({
                 <span className="client-name">{item.client}</span>
                 <div className="video-metrics-bar">
                   <div className="metric-badge">
-                    <HiEye size={13} />
+                    <LuEye size={13} />
                     <span>{item.views || '160K'}</span>
                   </div>
                   <div className="metric-badge">
-                    <HiHeart size={13} />
+                    <LuHeart size={13} />
                     <span>{item.likes || '12.4K'}</span>
                   </div>
                 </div>
 
-                <button 
-                  className="card-quick-edit-link"
-                  onClick={() => onEditItem('video', item)}
-                >
-                  <HiPencilSquare size={13} />
-                  <span>Update Reel Content</span>
-                </button>
+                <div className="card-actions-clay-row">
+                  <button 
+                    className="crud-btn crud-btn--edit"
+                    onClick={() => onEditItem('video', item)}
+                    title="Edit reel details"
+                  >
+                    <LuPencil size={14} />
+                    <span>Edit</span>
+                  </button>
+                  <button 
+                    className="crud-btn crud-btn--delete"
+                    onClick={() => onDeleteItem('video', item.id)}
+                    title="Delete reel"
+                  >
+                    <LuTrash2 size={14} />
+                    <span>Delete</span>
+                  </button>
+                </div>
               </div>
             </div>
           ))}
@@ -251,7 +271,7 @@ export default function PortfolioView({
         <div className="manager-toolbar">
           <div className="toolbar-left">
             <div className="toolbar-badge-icon seo-bg">
-              <RiRocket2Fill size={18} />
+              <LuRocket size={20} />
             </div>
             <div>
               <h2 className="toolbar-title">SEO Rank Growth & Organic Client Dominance</h2>
@@ -261,7 +281,7 @@ export default function PortfolioView({
 
           <div className="toolbar-right">
             <div className="toolbar-search">
-              <HiMagnifyingGlass size={16} />
+              <LuSearch size={16} />
               <input 
                 type="text" 
                 placeholder="Search SEO accounts..." 
@@ -274,7 +294,7 @@ export default function PortfolioView({
               className="btn-create-action btn-seo"
               onClick={() => onOpenModalWithMode('seo')}
             >
-              <HiPlus size={16} />
+              <LuPlus size={16} />
               <span>Update SEO Content</span>
             </button>
           </div>
@@ -287,7 +307,7 @@ export default function PortfolioView({
               <div className="seo-card__top">
                 <div className="seo-client-block">
                   <div className="seo-icon-box">
-                    <HiGlobeAlt size={19} />
+                    <LuGlobe size={20} />
                   </div>
                   <div>
                     <h3 className="seo-client-name">{item.client}</h3>
@@ -297,7 +317,7 @@ export default function PortfolioView({
 
                 <div className="seo-card-top-right">
                   <div className="seo-status-pill">
-                    <HiCheckCircle size={14} />
+                    <LuCircleCheck size={14} />
                     <span>{item.status || 'Active #1'}</span>
                   </div>
                   <button 
@@ -305,14 +325,14 @@ export default function PortfolioView({
                     onClick={() => onEditItem('seo', item)}
                     title="Update SEO metrics & keywords"
                   >
-                    <HiPencilSquare size={14} />
+                    <LuPencil size={14} />
                   </button>
                   <button 
                     className="card-action-btn delete-btn" 
                     onClick={() => onDeleteItem('seo', item.id)}
                     title="Remove SEO partner"
                   >
-                    <RiDeleteBin6Line size={14} />
+                    <LuTrash2 size={14} />
                   </button>
                 </div>
               </div>
@@ -338,13 +358,24 @@ export default function PortfolioView({
                 </div>
               </div>
 
-              <button 
-                className="card-quick-edit-link"
-                onClick={() => onEditItem('seo', item)}
-              >
-                <HiPencilSquare size={13} />
-                <span>Update SEO Keywords & Metrics</span>
-              </button>
+              <div className="card-actions-clay-row">
+                <button 
+                  className="crud-btn crud-btn--edit"
+                  onClick={() => onEditItem('seo', item)}
+                  title="Edit SEO partner metrics"
+                >
+                  <LuPencil size={14} />
+                  <span>Edit</span>
+                </button>
+                <button 
+                  className="crud-btn crud-btn--delete"
+                  onClick={() => onDeleteItem('seo', item.id)}
+                  title="Delete SEO record"
+                >
+                  <LuTrash2 size={14} />
+                  <span>Delete</span>
+                </button>
+              </div>
             </div>
           ))}
         </div>

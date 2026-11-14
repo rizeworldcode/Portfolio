@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { 
-  RiCloseLine, 
-  RiCheckLine,
-  RiPaletteLine, 
-  RiMovie2Line, 
-  RiRocketLine 
-} from 'react-icons/ri';
+  LuX, 
+  LuCheck,
+  LuPalette, 
+  LuClapperboard, 
+  LuRocket 
+} from 'react-icons/lu';
 import './NewProjectModal.css';
 
 export default function NewProjectModal({ 
@@ -122,9 +122,9 @@ export default function NewProjectModal({
         <div className="modal-header">
           <div className="modal-header-left">
             <div className={`modal-header-icon-aura mode-${activeMode}`}>
-              {activeMode === 'graphic' && <RiPaletteLine size={22} />}
-              {activeMode === 'video' && <RiMovie2Line size={22} />}
-              {activeMode === 'seo' && <RiRocketLine size={22} />}
+              {activeMode === 'graphic' && <LuPalette size={22} />}
+              {activeMode === 'video' && <LuClapperboard size={22} />}
+              {activeMode === 'seo' && <LuRocket size={22} />}
             </div>
             <div className="modal-title-group">
               <div className="modal-badge-row">
@@ -143,7 +143,7 @@ export default function NewProjectModal({
             </div>
           </div>
           <button className="modal-close-btn" onClick={onClose} title="Close Modal">
-            <RiCloseLine size={20} />
+            <LuX size={20} />
           </button>
         </div>
 
@@ -156,7 +156,7 @@ export default function NewProjectModal({
               onClick={() => setActiveMode('graphic')}
             >
               <div className="mode-tab-icon">
-                <RiPaletteLine size={18} />
+                <LuPalette size={18} />
               </div>
               <div className="mode-tab-text">
                 <span className="mode-tab-title">Graphic Image</span>
@@ -170,7 +170,7 @@ export default function NewProjectModal({
               onClick={() => setActiveMode('video')}
             >
               <div className="mode-tab-icon">
-                <RiMovie2Line size={18} />
+                <LuClapperboard size={18} />
               </div>
               <div className="mode-tab-text">
                 <span className="mode-tab-title">Video Reel</span>
@@ -184,7 +184,7 @@ export default function NewProjectModal({
               onClick={() => setActiveMode('seo')}
             >
               <div className="mode-tab-icon">
-                <RiRocketLine size={18} />
+                <LuRocket size={18} />
               </div>
               <div className="mode-tab-text">
                 <span className="mode-tab-title">SEO Content</span>
@@ -457,7 +457,7 @@ export default function NewProjectModal({
               Cancel
             </button>
             <button type="submit" className="btn-submit">
-              <RiCheckLine size={18} />
+              <LuCheck size={18} />
               <span>
                 {editItem ? 'Save & Update Changes' : (
                   activeMode === 'graphic' ? 'Publish Graphic Image' :

@@ -1,25 +1,26 @@
 import React, { useState } from 'react';
 import {
-  RiDashboard3Line,
-  RiPaletteLine,
-  RiMovie2Line,
-  RiRocketLine,
-  RiFolderLine,
-  RiAddLine,
-  RiSearch2Line,
-  RiNotification3Line,
-  RiExternalLinkLine,
-  RiEditLine,
-  RiDeleteBin6Line,
-  RiPlayFill,
-  RiArrowRightLine,
-  RiArrowLeftLine,
-  RiAppsLine,
-  RiEyeLine,
-  RiKey2Line,
-  RiGlobalLine,
-  RiSparklingFill
-} from 'react-icons/ri';
+  LuHouse,
+  LuImage,
+  LuFilm,
+  LuTrendingUp,
+  LuActivity,
+  LuGem,
+  LuPlus,
+  LuSearch,
+  LuBell,
+  LuExternalLink,
+  LuPencil,
+  LuTrash2,
+  LuPlay,
+  LuArrowRight,
+  LuArrowLeft,
+  LuLayoutGrid,
+  LuEye,
+  LuKey,
+  LuGlobe,
+  LuStar
+} from 'react-icons/lu';
 import './GlassStudioDashboard.css';
 
 export default function GlassStudioDashboard({ 
@@ -119,17 +120,25 @@ export default function GlassStudioDashboard({
       <div className="management-master-canvas">
 
         {/* ------------------------------------------------------------
-            LEFT SIDEBAR DOCK
+            LEFT SIDEBAR DOCK (Claymorphic Navigation matching Reference)
             ------------------------------------------------------------ */}
-        <aside className="management-sidebar">
-          {/* Brand Logo Header: RizeWorld Studio */}
-          <div className="sidebar-brand-block" onClick={() => setActiveNav('projects')}>
-            <div className="sidebar-brand-icon">
-              <img src="/RW.png" alt="RizeWorld" className="sidebar-brand-img" />
+        <aside className="management-sidebar clay-sidebar">
+          {/* Top User Greeting Block (Matching Reference 'Hi, Aryan!') */}
+          <div className="sidebar-top-user-block">
+            <div className="sidebar-avatar-3d-wrap">
+              <img 
+                src="/rize.png" 
+                alt="Director" 
+                className="sidebar-avatar-3d-img"
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80";
+                }}
+              />
             </div>
-            <div className="sidebar-brand-text-col">
-              <span className="sidebar-brand-name">RizeWorld</span>
-              <span className="sidebar-brand-sub">Studio Admin</span>
+            <div className="sidebar-user-greeting">
+              <span className="sidebar-greet-name">Hi, Director!</span>
+              <span className="sidebar-greet-sub">RizeWorld Hub</span>
             </div>
           </div>
 
@@ -143,8 +152,8 @@ export default function GlassStudioDashboard({
               }}
               title="Overview Dashboard"
             >
-              <RiDashboard3Line size={18} />
-              <span>Overview</span>
+              <LuHouse size={18} />
+              <span>Dashboard</span>
             </button>
 
             <button 
@@ -152,7 +161,7 @@ export default function GlassStudioDashboard({
               onClick={() => setActiveNav('graphic')}
               title="Manage Graphic Artworks & Posters"
             >
-              <RiPaletteLine size={18} />
+              <LuImage size={18} />
               <span>Graphics ({graphicsData.length})</span>
             </button>
 
@@ -161,7 +170,7 @@ export default function GlassStudioDashboard({
               onClick={() => setActiveNav('video')}
               title="Manage Video Reels"
             >
-              <RiMovie2Line size={18} />
+              <LuFilm size={18} />
               <span>Videos ({videosData.length})</span>
             </button>
 
@@ -170,34 +179,24 @@ export default function GlassStudioDashboard({
               onClick={() => setActiveNav('seo')}
               title="Manage SEO Clients & SERP Rankings"
             >
-              <RiRocketLine size={18} />
+              <LuTrendingUp size={18} />
               <span>SEO ({seoData.length})</span>
-            </button>
-
-            <button 
-              className={`sidebar-nav-item ${selectedFileFilter !== 'all' ? 'sidebar-nav-item--active' : ''}`}
-              onClick={() => {
-                setActiveNav('projects');
-                setSelectedFileFilter('all');
-              }}
-              title="View All Portfolios Combined"
-            >
-              <RiFolderLine size={18} />
-              <span>All Files ({allDynamicFiles.length})</span>
             </button>
           </nav>
 
-          {/* Bottom Director Profile */}
-          <div className="sidebar-profile-bottom">
-            <div className="profile-avatar-aura">
-              <img 
-                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" 
-                alt="Director" 
-                className="profile-avatar-img"
-              />
+          {/* Bottom 'Go Pro' Clay Card (Matching Reference Bottom Card) */}
+          <div className="sidebar-pro-clay-card">
+            <div className="pro-card-crown">
+              <LuGem size={22} color="#38bdf8" />
             </div>
-            <span className="profile-user-name">RizeWorld Admin</span>
-            <span className="profile-user-role">Operations Hub</span>
+            <span className="pro-card-title">Studio Pro</span>
+            <span className="pro-card-sub">3 Portfolios Live</span>
+            <button 
+              className="pro-card-btn"
+              onClick={() => onOpenModalWithMode('graphic')}
+            >
+              + Quick Add
+            </button>
           </div>
         </aside>
 
@@ -214,9 +213,21 @@ export default function GlassStudioDashboard({
             {/* Title with Active Section Info */}
             <div className="topbar-title-cluster">
               <h1 className="topbar-main-title">
-                {activeNav === 'graphic' && '🎨 Graphic Design Assets'}
-                {activeNav === 'video' && '🎬 Video Reels Production'}
-                {activeNav === 'seo' && '🚀 SEO & SERP Dominance'}
+                {activeNav === 'graphic' && (
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                    <LuPalette size={20} color="#0284c7" /> Graphic Design Assets
+                  </span>
+                )}
+                {activeNav === 'video' && (
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                    <LuClapperboard size={20} color="#6366f1" /> Video Reels Production
+                  </span>
+                )}
+                {activeNav === 'seo' && (
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                    <LuRocket size={20} color="#0891b2" /> SEO & SERP Dominance
+                  </span>
+                )}
                 {(activeNav === 'home' || activeNav === 'projects') && 'Agency Operations Studio'}
               </h1>
               {activeNav !== 'projects' && activeNav !== 'home' && (
@@ -224,7 +235,7 @@ export default function GlassStudioDashboard({
                   className="topbar-back-pill"
                   onClick={() => setActiveNav('projects')}
                 >
-                  <RiArrowLeftLine size={13} />
+                  <LuArrowLeft size={13} />
                   <span>Back to Overview</span>
                 </button>
               )}
@@ -239,7 +250,7 @@ export default function GlassStudioDashboard({
                   onClick={() => onOpenModalWithMode('graphic')}
                   title="Upload New Graphic Artwork or Poster"
                 >
-                  <RiAddLine size={15} />
+                  <LuPlus size={15} />
                   <span>Graphic</span>
                 </button>
 
@@ -248,7 +259,7 @@ export default function GlassStudioDashboard({
                   onClick={() => onOpenModalWithMode('video')}
                   title="Add New Video Reel"
                 >
-                  <RiAddLine size={15} />
+                  <LuPlus size={15} />
                   <span>Reel</span>
                 </button>
 
@@ -257,7 +268,7 @@ export default function GlassStudioDashboard({
                   onClick={() => onOpenModalWithMode('seo')}
                   title="Add New SEO Case Study / Partner"
                 >
-                  <RiAddLine size={15} />
+                  <LuPlus size={15} />
                   <span>SEO</span>
                 </button>
               </div>
@@ -272,7 +283,7 @@ export default function GlassStudioDashboard({
                   title="Open Live Graphic Portfolio"
                 >
                   <span>:5174</span>
-                  <RiExternalLinkLine size={12} />
+                  <LuExternalLink size={12} />
                 </a>
 
                 <a 
@@ -283,7 +294,7 @@ export default function GlassStudioDashboard({
                   title="Open Live Video Reels Portfolio"
                 >
                   <span>:5175</span>
-                  <RiExternalLinkLine size={12} />
+                  <LuExternalLink size={12} />
                 </a>
 
                 <a 
@@ -294,14 +305,14 @@ export default function GlassStudioDashboard({
                   title="Open Live SEO Portfolio"
                 >
                   <span>:5173</span>
-                  <RiExternalLinkLine size={12} />
+                  <LuExternalLink size={12} />
                 </a>
               </div>
 
               {/* Search Capsule Input */}
               <div className="topbar-search-box">
                 <div className="search-circle-btn">
-                  <RiSearch2Line size={15} />
+                  <LuSearch size={15} />
                 </div>
                 <input 
                   type="text" 
@@ -318,7 +329,7 @@ export default function GlassStudioDashboard({
                 onClick={() => showToast && showToast(`⚡ Studio Synced: ${graphicsData.length} Graphics, ${videosData.length} Reels, ${seoData.length} SEO`)}
                 title="System Status"
               >
-                <RiNotification3Line size={17} />
+                <LuBell size={17} />
               </button>
             </div>
           </header>
@@ -332,9 +343,21 @@ export default function GlassStudioDashboard({
               <div className="crud-panel-header">
                 <div className="crud-header-meta">
                   <h2 className="crud-main-heading">
-                    {activeNav === 'graphic' && `🎨 Graphic Design Artworks & Posters (${graphicsData.length})`}
-                    {activeNav === 'video' && `🎬 Video Reels Production (${videosData.length})`}
-                    {activeNav === 'seo' && `🚀 SEO Client Partners & Rankings (${seoData.length})`}
+                    {activeNav === 'graphic' && (
+                      <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                        <LuPalette size={20} color="#0284c7" /> Graphic Design Artworks & Posters ({graphicsData.length})
+                      </span>
+                    )}
+                    {activeNav === 'video' && (
+                      <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                        <LuClapperboard size={20} color="#6366f1" /> Video Reels Production ({videosData.length})
+                      </span>
+                    )}
+                    {activeNav === 'seo' && (
+                      <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                        <LuRocket size={20} color="#0891b2" /> SEO Client Partners & Rankings ({seoData.length})
+                      </span>
+                    )}
                   </h2>
                   <p className="crud-sub-text">
                     Add new items, update existing details, or delete records. All changes save to real-time storage.
@@ -344,7 +367,7 @@ export default function GlassStudioDashboard({
                   className="crud-add-main-btn"
                   onClick={() => onOpenModalWithMode(activeNav)}
                 >
-                  <RiAddLine size={16} />
+                  <LuPlus size={16} />
                   <span>+ Add New {activeNav.toUpperCase()}</span>
                 </button>
               </div>
@@ -352,13 +375,21 @@ export default function GlassStudioDashboard({
               {/* Items Grid */}
               <div className="crud-cards-grid">
                 {activeNav === 'graphic' && graphicsData.map((item) => (
-                  <div key={item.id} className="crud-item-card">
+                  <div key={item.id} className="crud-item-card crud-item-card--graphic">
                     <div className="crud-card-thumb">
                       <img src={item.image} alt={item.title} className="crud-thumb-img" />
                       <span className="crud-card-tag">{item.category}</span>
                     </div>
                     <div className="crud-card-body">
-                      <h4 className="crud-card-title">{item.title}</h4>
+                      <div className="crud-body-header">
+                        <div className="crud-icon-tile">
+                          <LuPalette size={18} />
+                        </div>
+                        <div className="crud-header-text-block">
+                          <span className="crud-eyebrow-label">{item.category}</span>
+                          <h4 className="crud-card-title">{item.title}</h4>
+                        </div>
+                      </div>
                       <span className="crud-card-client">{item.client} • {item.format}</span>
                       <div className="crud-card-actions">
                         <button 
@@ -366,7 +397,7 @@ export default function GlassStudioDashboard({
                           onClick={() => onEditItem('graphic', item)}
                           title="Edit this graphic"
                         >
-                          <RiEditLine size={14} />
+                          <LuPencil size={14} />
                           <span>Edit</span>
                         </button>
                         <button 
@@ -374,7 +405,7 @@ export default function GlassStudioDashboard({
                           onClick={() => onDeleteItem('graphic', item.id)}
                           title="Delete this graphic"
                         >
-                          <RiDeleteBin6Line size={14} />
+                          <LuTrash2 size={14} />
                           <span>Delete</span>
                         </button>
                       </div>
@@ -383,16 +414,26 @@ export default function GlassStudioDashboard({
                 ))}
 
                 {activeNav === 'video' && videosData.map((item) => (
-                  <div key={item.id} className="crud-item-card">
+                  <div key={item.id} className="crud-item-card crud-item-card--video">
                     <div className="crud-card-thumb crud-card-thumb--video">
                       <div className="video-thumb-overlay">
-                        <RiPlayFill size={28} color="#ffffff" />
+                        <div className="clay-video-play-btn">
+                          <LuPlay size={26} color="#ffffff" />
+                        </div>
                       </div>
                       <span className="crud-card-tag">{item.category}</span>
                       <span className="crud-video-badge">{item.duration}</span>
                     </div>
                     <div className="crud-card-body">
-                      <h4 className="crud-card-title">{item.title}</h4>
+                      <div className="crud-body-header">
+                        <div className="crud-icon-tile">
+                          <LuClapperboard size={18} />
+                        </div>
+                        <div className="crud-header-text-block">
+                          <span className="crud-eyebrow-label">Commercial Reel</span>
+                          <h4 className="crud-card-title">{item.title}</h4>
+                        </div>
+                      </div>
                       <span className="crud-card-client">{item.client} • {item.views} Views</span>
                       <div className="crud-card-actions">
                         <button 
@@ -400,7 +441,7 @@ export default function GlassStudioDashboard({
                           onClick={() => onEditItem('video', item)}
                           title="Edit this reel"
                         >
-                          <RiEditLine size={14} />
+                          <LuPencil size={14} />
                           <span>Edit</span>
                         </button>
                         <button 
@@ -408,7 +449,7 @@ export default function GlassStudioDashboard({
                           onClick={() => onDeleteItem('video', item.id)}
                           title="Delete this reel"
                         >
-                          <RiDeleteBin6Line size={14} />
+                          <LuTrash2 size={14} />
                           <span>Delete</span>
                         </button>
                       </div>
@@ -419,17 +460,25 @@ export default function GlassStudioDashboard({
                 {activeNav === 'seo' && seoData.map((item) => (
                   <div key={item.id} className="crud-item-card crud-item-card--seo">
                     <div className="crud-card-header-seo">
-                      <span className="seo-rank-badge">{item.googleRank}</span>
+                      <div className="seo-header-title-wrap">
+                        <div className="crud-icon-tile">
+                          <LuRocket size={18} />
+                        </div>
+                        <div className="seo-rank-text-block">
+                          <span className="seo-eyebrow-label">Google Ranking</span>
+                          <span className="seo-rank-badge">{item.googleRank}</span>
+                        </div>
+                      </div>
                       <span className="seo-growth-tag">{item.organicGrowth}</span>
                     </div>
                     <div className="crud-card-body">
                       <h4 className="crud-card-title">{item.client}</h4>
                       <span className="crud-card-keyword">
-                        <RiKey2Line size={13} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
+                        <LuKey size={13} style={{ verticalAlign: 'middle', marginRight: '6px' }} />
                         {item.topKeyword}
                       </span>
                       <span className="crud-card-website">
-                        <RiGlobalLine size={13} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
+                        <LuGlobe size={13} style={{ verticalAlign: 'middle', marginRight: '6px' }} />
                         {item.website} • {item.trafficMonthly}
                       </span>
                       <div className="crud-card-actions">
@@ -438,7 +487,7 @@ export default function GlassStudioDashboard({
                           onClick={() => onEditItem('seo', item)}
                           title="Edit this SEO record"
                         >
-                          <RiEditLine size={14} />
+                          <LuPencil size={14} />
                           <span>Edit</span>
                         </button>
                         <button 
@@ -446,7 +495,7 @@ export default function GlassStudioDashboard({
                           onClick={() => onDeleteItem('seo', item.id)}
                           title="Delete this SEO record"
                         >
-                          <RiDeleteBin6Line size={14} />
+                          <LuTrash2 size={14} />
                           <span>Delete</span>
                         </button>
                       </div>
@@ -462,7 +511,136 @@ export default function GlassStudioDashboard({
                 ============================================================ */
             <>
               {/* ============================================================
-                  UPPER SECTION: 3 REAL CORE PORTFOLIO ACTION HUBS
+                  0. CLAY SHELF WELCOME BANNER (Matching Reference Top Banner)
+                  ============================================================ */}
+              <div className="clay-shelf-banner">
+                <div className="shelf-character-col">
+                  <div className="shelf-avatar-pill">
+                    <img 
+                      src="/rize.png" 
+                      alt="Studio Director" 
+                      className="shelf-character-img"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80";
+                      }}
+                    />
+                  </div>
+                </div>
+
+                <div className="shelf-content-col">
+                  <div className="shelf-greeting-row">
+                    <span className="shelf-music-note">
+                      <LuMusic size={18} color="#38bdf8" />
+                    </span>
+                    <h2 className="shelf-main-greeting">Good Evening, Director!</h2>
+                  </div>
+                  <p className="shelf-sub-greeting">
+                    Time for your next track! Manage Graphic Arts, Video Reels & SEO Domination.
+                  </p>
+                  <div className="shelf-actions-row">
+                    <button 
+                      className="shelf-clay-btn shelf-clay-btn--primary"
+                      onClick={() => onOpenModalWithMode('graphic')}
+                    >
+                      <LuPlay size={15} />
+                      <span>Create Something</span>
+                    </button>
+
+                    <div className="shelf-ports-quick">
+                      <a href="http://localhost:5174/" target="_blank" rel="noreferrer" className="shelf-port-chip" title="Graphic Portfolio :5174">
+                        <LuPalette size={12} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
+                        <span>:5174</span>
+                        <LuExternalLink size={10} />
+                      </a>
+                      <a href="http://localhost:5175/" target="_blank" rel="noreferrer" className="shelf-port-chip" title="Video Portfolio :5175">
+                        <LuClapperboard size={12} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
+                        <span>:5175</span>
+                        <LuExternalLink size={10} />
+                      </a>
+                      <a href="http://localhost:5173/" target="_blank" rel="noreferrer" className="shelf-port-chip" title="SEO Portfolio :5173">
+                        <LuRocket size={12} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
+                        <span>:5173</span>
+                        <LuExternalLink size={10} />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="shelf-decor-col">
+                  <div className="shelf-potted-plant" title="RizeWorld Studio">
+                    <img 
+                      src="/rw_logo.png" 
+                      alt="RizeWorld Logo" 
+                      className="shelf-rw-logo-img" 
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* ============================================================
+                  1. THE 4 CLAY STAT CARDS (Exact match to Reference 4 Cards)
+                  ============================================================ */}
+              <div className="clay-stat-cards-grid">
+                {/* Card 1: Graphic Artworks (Soft Cyan Clay Card) */}
+                <div 
+                  className="clay-stat-card clay-stat-card--cyan"
+                  onClick={() => setActiveNav('graphic')}
+                  title="Click to manage Graphic Artworks"
+                >
+                  <div className="clay-stat-icon-tile tile-cyan">
+                    <LuPalette size={20} />
+                  </div>
+                  <span className="clay-stat-label">Graphic Assets</span>
+                  <span className="clay-stat-number">{graphicsData.length}</span>
+                  <span className="clay-stat-trend trend-teal">+18% this month</span>
+                </div>
+
+                {/* Card 2: Video Reels (Soft Sky Blue Clay Card) */}
+                <div 
+                  className="clay-stat-card clay-stat-card--blue"
+                  onClick={() => setActiveNav('video')}
+                  title="Click to manage Video Reels"
+                >
+                  <div className="clay-stat-icon-tile tile-blue">
+                    <LuClapperboard size={20} />
+                  </div>
+                  <span className="clay-stat-label">Reels Active</span>
+                  <span className="clay-stat-number">{videosData.length}</span>
+                  <span className="clay-stat-trend trend-teal">+28% views</span>
+                </div>
+
+                {/* Card 3: SEO Top Rank (Frosted Ice Clay Card) */}
+                <div 
+                  className="clay-stat-card clay-stat-card--ice"
+                  onClick={() => setActiveNav('seo')}
+                  title="Click to manage SEO Rankings"
+                >
+                  <div className="clay-stat-icon-tile tile-ice">
+                    <LuRocket size={20} />
+                  </div>
+                  <span className="clay-stat-label">SERP Ranking</span>
+                  <span className="clay-stat-number">{seoData[0]?.googleRank || '#1'}</span>
+                  <span className="clay-stat-trend trend-teal">+420% traffic</span>
+                </div>
+
+                {/* Card 4: Studio Synced (Soft Lavender Clay Card) */}
+                <div 
+                  className="clay-stat-card clay-stat-card--lavender"
+                  onClick={() => showToast && showToast('⚡ Studio Synced: All 3 Portfolios Active & Live')}
+                  title="Studio Synced & Active"
+                >
+                  <div className="clay-stat-icon-tile tile-lavender">
+                    <LuFlame size={20} />
+                  </div>
+                  <span className="clay-stat-label">Studio Health</span>
+                  <span className="clay-stat-number">100%</span>
+                  <span className="clay-stat-subtext">3 ports active</span>
+                </div>
+              </div>
+
+              {/* ============================================================
+                  2. CORE PORTFOLIO ACTION HUBS (Upper Grid)
                   ============================================================ */}
               <div className="management-upper-grid">
 
@@ -471,7 +649,7 @@ export default function GlassStudioDashboard({
                   <div className="hub-header-row">
                     <div className="hub-title-block">
                       <span className="hub-tag-badge tag-graphic">
-                        <RiPaletteLine size={13} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
+                        <LuPalette size={13} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
                         Graphic Studio
                       </span>
                       <h3 className="hub-main-title">{graphicsData.length} Artworks Live</h3>
@@ -484,7 +662,7 @@ export default function GlassStudioDashboard({
                       title="Launch Graphic Portfolio"
                     >
                       <span>:5174</span>
-                      <RiExternalLinkLine size={12} />
+                      <LuExternalLink size={12} />
                     </a>
                   </div>
 
@@ -512,7 +690,7 @@ export default function GlassStudioDashboard({
                       className="hub-btn hub-btn--add"
                       onClick={() => onOpenModalWithMode('graphic')}
                     >
-                      <RiAddLine size={14} />
+                      <LuPlus size={14} />
                       <span>Upload Graphic</span>
                     </button>
                     <button 
@@ -520,7 +698,7 @@ export default function GlassStudioDashboard({
                       onClick={() => setActiveNav('graphic')}
                     >
                       <span>Manage All ({graphicsData.length})</span>
-                      <RiArrowRightLine size={13} />
+                      <LuArrowRight size={13} />
                     </button>
                   </div>
                 </section>
@@ -531,7 +709,7 @@ export default function GlassStudioDashboard({
                   <div className="hub-header-row">
                     <div className="hub-title-block">
                       <span className="hub-tag-badge tag-video">
-                        <RiMovie2Line size={13} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
+                        <LuClapperboard size={13} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
                         Video Production
                       </span>
                       <h3 className="hub-main-title">{videosData.length} Reels Active</h3>
@@ -544,7 +722,7 @@ export default function GlassStudioDashboard({
                       title="Launch Video Reels Portfolio"
                     >
                       <span>:5175</span>
-                      <RiExternalLinkLine size={12} />
+                      <LuExternalLink size={12} />
                     </a>
                   </div>
 
@@ -556,7 +734,7 @@ export default function GlassStudioDashboard({
                     }}
                   >
                     <div className="video-thumb-play-circle">
-                      <RiPlayFill size={26} color="#ffffff" />
+                      <LuPlay size={26} color="#ffffff" />
                     </div>
                     <div className="hub-banner-overlay">
                       <span className="hub-banner-title">{videosData[0]?.title || "4K Commercial Reel"}</span>
@@ -570,7 +748,7 @@ export default function GlassStudioDashboard({
                       className="hub-btn hub-btn--add"
                       onClick={() => onOpenModalWithMode('video')}
                     >
-                      <RiAddLine size={14} />
+                      <LuPlus size={14} />
                       <span>Add Video Reel</span>
                     </button>
                     <button 
@@ -578,7 +756,7 @@ export default function GlassStudioDashboard({
                       onClick={() => setActiveNav('video')}
                     >
                       <span>Manage All ({videosData.length})</span>
-                      <RiArrowRightLine size={13} />
+                      <LuArrowRight size={13} />
                     </button>
                   </div>
                 </section>
@@ -589,7 +767,7 @@ export default function GlassStudioDashboard({
                   <div className="hub-header-row">
                     <div className="hub-title-block">
                       <span className="hub-tag-badge tag-seo">
-                        <RiRocketLine size={13} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
+                        <LuRocket size={13} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
                         SEO Dominance
                       </span>
                       <h3 className="hub-main-title">{seoData.length} Ranked Partners</h3>
@@ -602,7 +780,7 @@ export default function GlassStudioDashboard({
                       title="Launch SEO Portfolio"
                     >
                       <span>:5173</span>
-                      <RiExternalLinkLine size={12} />
+                      <LuExternalLink size={12} />
                     </a>
                   </div>
 
@@ -619,7 +797,7 @@ export default function GlassStudioDashboard({
                     </div>
                     <span className="spotlight-client">{seoData[0]?.client || "Top Ranked Partner"}</span>
                     <span className="spotlight-kw">
-                      <RiKey2Line size={13} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
+                      <LuKey size={13} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
                       {seoData[0]?.topKeyword || "Industry Top Keyword"}
                     </span>
                   </div>
@@ -630,7 +808,7 @@ export default function GlassStudioDashboard({
                       className="hub-btn hub-btn--add"
                       onClick={() => onOpenModalWithMode('seo')}
                     >
-                      <RiAddLine size={14} />
+                      <LuPlus size={14} />
                       <span>Add SEO Partner</span>
                     </button>
                     <button 
@@ -638,7 +816,7 @@ export default function GlassStudioDashboard({
                       onClick={() => setActiveNav('seo')}
                     >
                       <span>Manage All ({seoData.length})</span>
-                      <RiArrowRightLine size={13} />
+                      <LuArrowRight size={13} />
                     </button>
                   </div>
                 </section>
@@ -660,28 +838,28 @@ export default function GlassStudioDashboard({
                         className={`files-filter-pill ${selectedFileFilter === 'all' ? 'files-filter-pill--active' : ''}`}
                         onClick={() => setSelectedFileFilter('all')}
                       >
-                        <RiAppsLine size={12} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
+                        <LuLayoutGrid size={12} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
                         All Portfolios ({allDynamicFiles.length})
                       </button>
                       <button 
                         className={`files-filter-pill ${selectedFileFilter === 'graphic' ? 'files-filter-pill--active' : ''}`}
                         onClick={() => setSelectedFileFilter('graphic')}
                       >
-                        <RiPaletteLine size={12} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
+                        <LuPalette size={12} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
                         Graphic ({graphicsData.length})
                       </button>
                       <button 
                         className={`files-filter-pill ${selectedFileFilter === 'video' ? 'files-filter-pill--active' : ''}`}
                         onClick={() => setSelectedFileFilter('video')}
                       >
-                        <RiMovie2Line size={12} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
+                        <LuClapperboard size={12} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
                         Reel ({videosData.length})
                       </button>
                       <button 
                         className={`files-filter-pill ${selectedFileFilter === 'seo' ? 'files-filter-pill--active' : ''}`}
                         onClick={() => setSelectedFileFilter('seo')}
                       >
-                        <RiRocketLine size={12} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
+                        <LuRocket size={12} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
                         SEO ({seoData.length})
                       </button>
                     </div>
@@ -692,7 +870,7 @@ export default function GlassStudioDashboard({
                       onClick={() => onOpenModalWithMode(selectedFileFilter === 'all' ? 'graphic' : selectedFileFilter)}
                       title="Add New Asset"
                     >
-                      <RiAddLine size={14} />
+                      <LuPlus size={14} />
                       <span>Add</span>
                     </button>
                   </div>
@@ -702,20 +880,32 @@ export default function GlassStudioDashboard({
                     {filteredFiles.map((f) => (
                       <div 
                         key={f.id}
-                        className={`file-item-capsule ${currentPreview.id === f.id ? 'file-item-capsule--selected' : ''}`}
+                        className={`file-item-capsule file-item-capsule--${f.type} ${currentPreview.id === f.id ? 'file-item-capsule--selected' : ''}`}
                         onClick={() => setSelectedPreview(f)}
                         title="Click to inspect in Preview Panel"
                       >
                         <span className="file-badge-sq" style={{ backgroundColor: f.tagColor }}>
-                          {f.type === 'graphic' && <RiPaletteLine size={10} color="#ffffff" />}
-                          {f.type === 'video' && <RiMovie2Line size={10} color="#ffffff" />}
-                          {f.type === 'seo' && <RiRocketLine size={10} color="#ffffff" />}
+                          {f.type === 'graphic' && <LuPalette size={10} color="#ffffff" />}
+                          {f.type === 'video' && <LuClapperboard size={10} color="#ffffff" />}
+                          {f.type === 'seo' && <LuRocket size={10} color="#ffffff" />}
                         </span>
 
                         <div className="file-info-text-col">
                           <span className="file-capsule-name">{f.title}</span>
                           <span className="file-capsule-meta">{f.subtitle}</span>
                         </div>
+
+                        {/* Circular 3D Cyan Play/Inspect Button (Matching Reference Play Circle) */}
+                        <button 
+                          className="clay-row-circle-btn"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setSelectedPreview(f);
+                          }}
+                          title="Preview in Asset Inspector"
+                        >
+                          <LuPlay size={13} />
+                        </button>
 
                         {/* Direct Edit & Delete Buttons on every row */}
                         <div className="file-actions-cluster" onClick={(e) => e.stopPropagation()}>
@@ -724,7 +914,7 @@ export default function GlassStudioDashboard({
                             onClick={() => onEditItem(f.type, f.rawItem)}
                             title={`Edit ${f.title}`}
                           >
-                            <RiEditLine size={14} />
+                            <LuPencil size={14} />
                           </button>
                           <button 
                             className="row-action-btn row-action-delete"
@@ -734,7 +924,7 @@ export default function GlassStudioDashboard({
                             }}
                             title={`Delete ${f.title}`}
                           >
-                            <RiDeleteBin6Line size={14} />
+                            <LuTrash2 size={14} />
                           </button>
                         </div>
                       </div>
@@ -755,7 +945,7 @@ export default function GlassStudioDashboard({
                   <div className="preview-dark-header">
                     <div className="preview-header-left">
                       <span className="preview-header-title">
-                        <RiEyeLine size={15} style={{ verticalAlign: 'middle', marginRight: '6px' }} />
+                        <LuEye size={15} style={{ verticalAlign: 'middle', marginRight: '6px' }} />
                         Asset Inspector
                       </span>
                     </div>
@@ -768,7 +958,7 @@ export default function GlassStudioDashboard({
                           onClick={() => onEditItem(currentPreview.type, currentPreview.rawItem)}
                           title="Edit this item"
                         >
-                          <RiEditLine size={14} />
+                          <LuPencil size={14} />
                         </button>
                         <button 
                           className="preview-action-btn delete-action"
@@ -778,7 +968,7 @@ export default function GlassStudioDashboard({
                           }}
                           title="Delete this item"
                         >
-                          <RiDeleteBin6Line size={14} />
+                          <LuTrash2 size={14} />
                         </button>
                       </div>
                     )}
@@ -802,7 +992,7 @@ export default function GlassStudioDashboard({
 
                     {currentPreview.type === 'video' && (
                       <div className="inspector-video-box">
-                        <RiPlayFill size={36} color="#ffffff" />
+                        <LuPlay size={36} color="#ffffff" />
                         <span className="inspector-video-tag">{currentPreview.filesize}</span>
                       </div>
                     )}
@@ -838,12 +1028,36 @@ export default function GlassStudioDashboard({
                         }
                       }}
                     >
-                      <RiEditLine size={13} />
+                      <LuPencil size={13} />
                       <span>Edit Asset</span>
                     </button>
                   </div>
                 </section>
 
+              </div>
+
+              {/* ============================================================
+                  3. BOTTOM CLAY BANNER (Matching Reference Bottom Bar)
+                  ============================================================ */}
+              <div className="clay-bottom-banner">
+                <div className="bottom-banner-left">
+                  <div className="bottom-banner-star">
+                    <LuStar size={24} color="#f59e0b" fill="#f59e0b" />
+                  </div>
+                  <div className="bottom-banner-text-block">
+                    <span className="bottom-banner-title">Craft new visual excellence</span>
+                    <span className="bottom-banner-sub">Portfolios sync live on ports 5174, 5175 & 5173</span>
+                  </div>
+                </div>
+
+                <div className="bottom-banner-right">
+                  <button 
+                    className="clay-explore-btn"
+                    onClick={() => onOpenModalWithMode('graphic')}
+                  >
+                    <span>Upload New</span>
+                  </button>
+                </div>
               </div>
             </>
           )}

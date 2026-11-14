@@ -83,19 +83,19 @@ function App() {
         ? prev.map(item => item.id === itemData.id ? itemData : item)
         : [itemData, ...prev]
       );
-      showToast(isEdit ? `🎨 Updated Graphic: "${itemData.title}"` : `🎨 Uploaded Graphic Image: "${itemData.title}"`);
+      showToast(isEdit ? `Updated Graphic: "${itemData.title}"` : `Uploaded Graphic Image: "${itemData.title}"`);
     } else if (mode === 'video') {
       setVideosData(prev => isEdit
         ? prev.map(item => item.id === itemData.id ? itemData : item)
         : [itemData, ...prev]
       );
-      showToast(isEdit ? `🎬 Updated Reel: "${itemData.title}"` : `🎬 Added Video Reel: "${itemData.title}"`);
+      showToast(isEdit ? `Updated Reel: "${itemData.title}"` : `Added Video Reel: "${itemData.title}"`);
     } else if (mode === 'seo') {
       setSeoData(prev => isEdit
         ? prev.map(item => item.id === itemData.id ? itemData : item)
         : [itemData, ...prev]
       );
-      showToast(isEdit ? `🚀 Updated SEO: "${itemData.client}"` : `🚀 Added SEO Partner: "${itemData.client}"`);
+      showToast(isEdit ? `Updated SEO: "${itemData.client}"` : `Added SEO Partner: "${itemData.client}"`);
     }
 
     setEditingItem(null);
@@ -149,9 +149,9 @@ function App() {
               ← Back to Living Studio
             </button>
             <span className="glass-view-title">
-              {activeTab === 'graphic' && '🎨 Graphic Portfolio Studio'}
-              {activeTab === 'video' && '🎬 Video Reels Studio'}
-              {activeTab === 'seo' && '🚀 SEO & Rankings Domination'}
+              {activeTab === 'graphic' && 'Graphic Portfolio Studio'}
+              {activeTab === 'video' && 'Video Reels Studio'}
+              {activeTab === 'seo' && 'SEO & Rankings Domination'}
             </span>
             <button 
               className="glass-add-direct-btn"
