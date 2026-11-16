@@ -183,13 +183,14 @@ export default function PortfolioView({
           {filtered.map((item) => (
             <div key={item.id} className="video-card">
               <div className="video-card__player-wrap">
-                {item.video?.endsWith('.mp4') ? (
+                {(item.video || item.videoUrl) ? (
                   <video 
-                    src={item.video} 
+                    src={item.video || item.videoUrl} 
                     className="video-card__video" 
                     controls 
                     muted 
                     preload="metadata"
+                    playsInline
                   />
                 ) : (
                   <div className="video-placeholder">

@@ -14,12 +14,15 @@ import {
   LuPencil,
   LuTrash2,
   LuPlay,
+  LuPause,
+  LuMaximize2,
   LuArrowRight,
   LuArrowLeft,
   LuLayoutGrid,
   LuEye,
   LuKey,
-  LuGlobe
+  LuGlobe,
+  LuX
 } from 'react-icons/lu';
 import './GlassStudioDashboard.css';
 
@@ -27,6 +30,7 @@ export default function GlassStudioDashboard({
   graphicsData = [], 
   videosData = [], 
   seoData = [], 
+  isBackendConnected = false,
   onOpenModalWithMode, 
   onEditItem, 
   onDeleteItem,
@@ -39,6 +43,52 @@ export default function GlassStudioDashboard({
   const [activeNav, setActiveNav] = useState('projects');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedFileFilter, setSelectedFileFilter] = useState('all');
+  const [activeGraphicCategory, setActiveGraphicCategory] = useState('All');
+  const [activeVideoCategory, setActiveVideoCategory] = useState('All');
+  const [activeVideoModal, setActiveVideoModal] = useState(null);
+  const [playingVideoId, setPlayingVideoId] = useState(null);
+
+  // Dynamic Graphic Categories extracted from live portfolio
+  const graphicCategories = useMemo(() => {
+    const set = new Set();
+    graphicsData.forEach(g => {
+      if (g.category) set.add(g.category);
+    });
+    return ['All', ...Array.from(set)];
+  }, [graphicsData]);
+
+  // Dynamic Video Categories extracted from live portfolio
+  const videoCategories = useMemo(() => {
+    const set = new Set();
+    videosData.forEach(v => {
+      if (v.category) set.add(v.category);
+    });
+    return ['All', ...Array.from(set)];
+  }, [videosData]);
+
+  // Filtered Graphics for fast category exploration & real-time search
+  const filteredGraphics = useMemo(() => {
+    return graphicsData.filter(g => {
+      const matchesCategory = activeGraphicCategory === 'All' || g.category === activeGraphicCategory;
+      const matchesSearch = !searchQuery.trim() ||
+        (g.title && g.title.toLowerCase().includes(searchQuery.toLowerCase())) ||
+        (g.client && g.client.toLowerCase().includes(searchQuery.toLowerCase())) ||
+        (g.category && g.category.toLowerCase().includes(searchQuery.toLowerCase()));
+      return matchesCategory && matchesSearch;
+    });
+  }, [graphicsData, activeGraphicCategory, searchQuery]);
+
+  // Filtered Videos for fast category exploration & real-time search
+  const filteredVideos = useMemo(() => {
+    return videosData.filter(v => {
+      const matchesCategory = activeVideoCategory === 'All' || v.category === activeVideoCategory;
+      const matchesSearch = !searchQuery.trim() ||
+        (v.title && v.title.toLowerCase().includes(searchQuery.toLowerCase())) ||
+        (v.client && v.client.toLowerCase().includes(searchQuery.toLowerCase())) ||
+        (v.category && v.category.toLowerCase().includes(searchQuery.toLowerCase()));
+      return matchesCategory && matchesSearch;
+    });
+  }, [videosData, activeVideoCategory, searchQuery]);
 
   // Real-time dynamic greeting based on client time
   const dynamicGreeting = useMemo(() => {
@@ -49,30 +99,7 @@ export default function GlassStudioDashboard({
     return 'Welcome Back, Director!';
   }, []);
 
-  // Resilient Thumbnail Helpers for Real Creative Work Showcase
-  const getVideoThumb = (v) => {
-    if (v?.thumbnail) return v.thumbnail;
-    if (v?.image) return v.image;
-    const title = (v?.title || '').toLowerCase();
-    const cat = (v?.category || '').toLowerCase();
-    if (cat.includes('cafe') || title.includes('avan') || cat.includes('restaurant')) {
-      return 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80';
-    }
-    if (cat.includes('festive') || title.includes('navratri')) {
-      return 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80';
-    }
-    if (cat.includes('infra') || title.includes('ambhuti') || cat.includes('estate')) {
-      return 'https://images.unsplash.com/photo-1541888946425-d0fbb18086f6?auto=format&fit=crop&w=600&q=80';
-    }
-    if (cat.includes('hospital') || title.includes('saniya') || cat.includes('health')) {
-      return 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=600&q=80';
-    }
-    if (cat.includes('school') || title.includes('dwps') || cat.includes('education')) {
-      return 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=600&q=80';
-    }
-    return 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=600&q=80';
-  };
-
+  // Authentic SEO Proof Helper
   const getSeoThumb = (s) => {
     if (s?.rankingImage) return s.rankingImage;
     if (s?.proofImage) return s.proofImage;
@@ -124,8 +151,8 @@ export default function GlassStudioDashboard({
       tagColor: '#8b5cf6',
       badgeIcon: '',
       badgeText: 'Reel',
-      image: getVideoThumb(v),
-      video: v.video || '/videos-compressed/avan-spring.mp4',
+      image: '',
+      video: v.video || v.videoUrl || '',
       author: v.client || 'Production Team',
       filesize: `${v.duration || '0:45'} • ${v.views || '180K'}`,
       rawItem: v
@@ -341,9 +368,14 @@ export default function GlassStudioDashboard({
 
               {/* 3 Direct Live Portfolio Launchers + Studio Live Status */}
               <div className="topbar-live-ports-cluster">
-                <div className="topbar-studio-live-pill" title="Central Studio Synced & Online">
-                  <span className="studio-live-dot"></span>
-                  <span>Studio Live</span>
+                <div 
+                  className={`topbar-studio-live-pill ${isBackendConnected ? 'db-live-green' : ''}`} 
+                  title={isBackendConnected ? "⚡ Connected to MongoDB Atlas Cloud" : "Backend Offline - Local Cache"}
+                  onClick={() => showToast && showToast(isBackendConnected ? "🟢 MongoDB Atlas Cloud is LIVE & Connected!" : "⚠️ Backend offline, using local cache")}
+                  style={{ cursor: 'pointer' }}
+                >
+                  <span className="studio-live-dot" style={{ backgroundColor: isBackendConnected ? '#10b981' : '#f59e0b' }}></span>
+                  <span>{isBackendConnected ? 'MongoDB Live' : 'Studio Local'}</span>
                 </div>
 
                 <a 
@@ -443,12 +475,59 @@ export default function GlassStudioDashboard({
                 </button>
               </div>
 
+              {/* Graphic Category Filter Pills */}
+              {activeNav === 'graphic' && graphicCategories.length > 1 && (
+                <div className="crud-category-filter-bar">
+                  {graphicCategories.map(cat => {
+                    const count = cat === 'All' ? graphicsData.length : graphicsData.filter(g => g.category === cat).length;
+                    return (
+                      <button
+                        key={cat}
+                        type="button"
+                        className={`crud-cat-pill ${activeGraphicCategory === cat ? 'crud-cat-pill--active' : ''}`}
+                        onClick={() => setActiveGraphicCategory(cat)}
+                      >
+                        {cat} ({count})
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
+
+              {/* Video Category Filter Pills */}
+              {activeNav === 'video' && videoCategories.length > 1 && (
+                <div className="crud-category-filter-bar">
+                  {videoCategories.map(cat => {
+                    const count = cat === 'All' ? videosData.length : videosData.filter(v => v.category === cat).length;
+                    return (
+                      <button
+                        key={cat}
+                        type="button"
+                        className={`crud-cat-pill ${activeVideoCategory === cat ? 'crud-cat-pill--active' : ''}`}
+                        onClick={() => setActiveVideoCategory(cat)}
+                      >
+                        {cat} ({count})
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
+
               {/* Items Grid */}
               <div className="crud-cards-grid">
-                {activeNav === 'graphic' && graphicsData.map((item) => (
+                {activeNav === 'graphic' && filteredGraphics.map((item) => (
                   <div key={item.id} className="crud-item-card crud-item-card--graphic">
                     <div className="crud-card-thumb">
-                      <img src={item.image} alt={item.title} className="crud-thumb-img" />
+                      <img 
+                        src={item.image} 
+                        alt={item.title} 
+                        className="crud-thumb-img" 
+                        loading="lazy"
+                        onError={(e) => {
+                          e.target.onerror = null;
+                          e.target.src = "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80";
+                        }}
+                      />
                       <span className="crud-card-tag">{item.category}</span>
                     </div>
                     <div className="crud-card-body">
@@ -484,25 +563,59 @@ export default function GlassStudioDashboard({
                   </div>
                 ))}
 
-                {activeNav === 'video' && videosData.map((item) => (
+                {activeNav === 'graphic' && filteredGraphics.length === 0 && (
+                  <div style={{ gridColumn: '1 / -1', padding: '40px', textAlign: 'center', color: '#64748b' }}>
+                    <p style={{ fontSize: '15px', fontWeight: 600 }}>No graphic artworks found in "{activeGraphicCategory}" category.</p>
+                    <button 
+                      className="crud-cat-pill crud-cat-pill--active"
+                      style={{ marginTop: '12px' }}
+                      onClick={() => { setActiveGraphicCategory('All'); setSearchQuery(''); }}
+                    >
+                      Reset Filter & View All ({graphicsData.length})
+                    </button>
+                  </div>
+                )}
+
+                {activeNav === 'video' && filteredVideos.map((item) => (
                   <div key={item.id} className="crud-item-card crud-item-card--video">
-                    <div className="crud-card-thumb crud-card-thumb--video">
-                      <img 
-                        src={getVideoThumb(item)} 
-                        alt={item.title} 
-                        className="crud-thumb-img video-poster-img"
-                        onError={(e) => {
-                          e.target.onerror = null;
-                          e.target.src = "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80";
-                        }}
-                      />
-                      <div className="video-thumb-overlay">
-                        <div className="clay-video-play-btn">
-                          <LuPlay size={26} color="#ffffff" />
+                    <div className={`crud-card-thumb crud-card-thumb--video ${playingVideoId === item.id ? 'playing-active' : ''}`}>
+                      {playingVideoId === item.id ? (
+                        <video 
+                          src={item.video || item.videoUrl}
+                          controls
+                          autoPlay
+                          playsInline
+                          className="crud-active-video-player"
+                        />
+                      ) : (
+                        <div 
+                          className="crud-video-preview-trigger"
+                          onClick={() => setPlayingVideoId(item.id)}
+                          style={{ width: '100%', height: '100%', position: 'relative', cursor: 'pointer' }}
+                          title="Click to play reel with sound"
+                        >
+                          <video 
+                            src={item.video || item.videoUrl}
+                            className="crud-thumb-img video-poster-img"
+                            preload="metadata"
+                            muted
+                            playsInline
+                            onMouseEnter={(e) => {
+                              try { e.target.play().catch(() => {}); } catch {}
+                            }}
+                            onMouseLeave={(e) => {
+                              try { e.target.pause(); e.target.currentTime = 0; } catch {}
+                            }}
+                          />
+                          <div className="video-thumb-overlay">
+                            <div className="clay-video-play-btn">
+                              <LuPlay size={26} color="#ffffff" />
+                            </div>
+                          </div>
+                          <span className="crud-card-tag">{item.category}</span>
+                          <span className="crud-video-badge">{item.duration}</span>
                         </div>
-                      </div>
-                      <span className="crud-card-tag">{item.category}</span>
-                      <span className="crud-video-badge">{item.duration}</span>
+                      )}
                     </div>
                     <div className="crud-card-body">
                       <div className="crud-body-header">
@@ -517,6 +630,33 @@ export default function GlassStudioDashboard({
                       <span className="crud-card-client">{item.client} • {item.views} Views</span>
                       <div className="crud-card-actions">
                         <button 
+                          className={`crud-btn ${playingVideoId === item.id ? 'crud-btn--playing' : 'crud-btn--play'}`}
+                          style={{ 
+                            background: playingVideoId === item.id ? '#10b981' : '#6366f1', 
+                            color: '#ffffff',
+                            fontWeight: 700 
+                          }}
+                          onClick={() => {
+                            if (playingVideoId === item.id) {
+                              setPlayingVideoId(null);
+                            } else {
+                              setPlayingVideoId(item.id);
+                            }
+                          }}
+                        >
+                          {playingVideoId === item.id ? <LuPause size={14} /> : <LuPlay size={14} />}
+                          <span>{playingVideoId === item.id ? 'Stop' : 'Play Reel'}</span>
+                        </button>
+                        <button 
+                          className="crud-btn crud-btn--fullscreen"
+                          onClick={() => setActiveVideoModal(item)}
+                          title="Open HD Cinema modal player"
+                          style={{ background: 'rgba(255, 255, 255, 0.85)', color: '#1e293b' }}
+                        >
+                          <LuMaximize2 size={13} />
+                          <span>Cinema</span>
+                        </button>
+                        <button 
                           className="crud-btn crud-btn--edit"
                           onClick={() => onEditItem('video', item)}
                           title="Edit this reel"
@@ -530,12 +670,24 @@ export default function GlassStudioDashboard({
                           title="Delete this reel"
                         >
                           <LuTrash2 size={14} />
-                          <span>Delete</span>
                         </button>
                       </div>
                     </div>
                   </div>
                 ))}
+
+                {activeNav === 'video' && filteredVideos.length === 0 && (
+                  <div style={{ gridColumn: '1 / -1', padding: '40px', textAlign: 'center', color: '#64748b' }}>
+                    <p style={{ fontSize: '15px', fontWeight: 600 }}>No video reels found in "{activeVideoCategory}" category.</p>
+                    <button 
+                      className="crud-cat-pill crud-cat-pill--active"
+                      style={{ marginTop: '12px' }}
+                      onClick={() => { setActiveVideoCategory('All'); setSearchQuery(''); }}
+                    >
+                      Reset Filter & View All ({videosData.length})
+                    </button>
+                  </div>
+                )}
 
                 {activeNav === 'seo' && seoData.map((item) => (
                   <div key={item.id} className="crud-item-card crud-item-card--seo">
@@ -917,14 +1069,12 @@ export default function GlassStudioDashboard({
                       if (videosData[0]) setSelectedPreview(allDynamicFiles.find(f => f.id === videosData[0].id));
                     }}
                   >
-                    <img 
-                      src={getVideoThumb(videosData[0])} 
-                      alt={videosData[0]?.title || "Latest Reel"} 
+                    <video 
+                      src={videosData[0]?.video || videosData[0]?.videoUrl} 
                       className="hub-banner-img video-banner-img"
-                      onError={(e) => {
-                        e.target.onerror = null;
-                        e.target.src = "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80";
-                      }}
+                      preload="metadata"
+                      muted
+                      playsInline
                     />
                     <div className="video-thumb-play-circle">
                       <LuPlay size={26} color="#ffffff" />
@@ -1089,15 +1239,25 @@ export default function GlassStudioDashboard({
                         title="Click to inspect in Preview Panel"
                       >
                         <div className="file-capsule-thumb-wrap">
-                          <img 
-                            src={f.image} 
-                            alt={f.title} 
-                            className="file-capsule-thumb-img" 
-                            onError={(e) => {
-                              e.target.onerror = null;
-                              e.target.src = "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=120&q=80";
-                            }}
-                          />
+                          {f.type === 'video' ? (
+                            <video 
+                              src={f.video} 
+                              className="file-capsule-thumb-img" 
+                              preload="metadata"
+                              muted
+                              playsInline
+                            />
+                          ) : (
+                            <img 
+                              src={f.image} 
+                              alt={f.title} 
+                              className="file-capsule-thumb-img" 
+                              onError={(e) => {
+                                e.target.onerror = null;
+                                e.target.src = "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=120&q=80";
+                              }}
+                            />
+                          )}
                           <span className="file-badge-sq-mini" style={{ backgroundColor: f.tagColor }}>
                             {f.type === 'graphic' && <LuImage size={9} color="#ffffff" />}
                             {f.type === 'video' && <LuFilm size={9} color="#ffffff" />}
@@ -1206,16 +1366,15 @@ export default function GlassStudioDashboard({
                     )}
 
                     {currentPreview.type === 'video' && (
-                      <div className="inspector-video-box">
-                        <img 
-                          src={currentPreview.image} 
-                          alt={currentPreview.title} 
+                      <div className="inspector-video-box" style={{ position: 'relative', width: '100%', height: '100%', borderRadius: '16px', overflow: 'hidden' }}>
+                        <video 
+                          src={currentPreview.video || currentPreview.rawItem?.video || currentPreview.rawItem?.videoUrl} 
+                          controls
+                          playsInline
+                          preload="metadata"
                           className="inspector-video-bg-img" 
+                          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                         />
-                        <div className="inspector-video-overlay">
-                          <LuPlay size={36} color="#ffffff" />
-                          <span className="inspector-video-tag">{currentPreview.filesize}</span>
-                        </div>
                       </div>
                     )}
 
@@ -1302,6 +1461,37 @@ export default function GlassStudioDashboard({
         </div>
 
       </div>
+
+      {/* Fullscreen Video Player Modal */}
+      {activeVideoModal && (
+        <div className="glass-video-modal-backdrop" onClick={() => setActiveVideoModal(null)}>
+          <div className="glass-video-modal-container" onClick={(e) => e.stopPropagation()}>
+            <div className="glass-video-modal-header">
+              <div className="modal-title-wrap">
+                <span className="modal-eyebrow">{activeVideoModal.category}</span>
+                <h3 className="modal-video-title">{activeVideoModal.title}</h3>
+                <span className="modal-client-meta">{activeVideoModal.client} • {activeVideoModal.views} Views • {activeVideoModal.duration}</span>
+              </div>
+              <button 
+                className="modal-close-round-btn"
+                onClick={() => setActiveVideoModal(null)}
+                title="Close player"
+              >
+                <LuX size={20} />
+              </button>
+            </div>
+            <div className="glass-video-modal-player-box">
+              <video 
+                src={activeVideoModal.video || activeVideoModal.videoUrl}
+                controls
+                autoPlay
+                playsInline
+                className="modal-active-video-element"
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -54,8 +54,8 @@ export const PORTFOLIO_CATEGORIES = [
                 "aspectRatio": 1.33
           },
           {
-                "name": "Medi 20%off",
-                "src": "/Graphic portfolio/Medi 20%off.png",
+                "name": "Medi 20% Off",
+                "src": "/Graphic portfolio/Medi 20-off.png",
                 "aspectRatio": 1.33
           },
           {
