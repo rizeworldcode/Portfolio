@@ -93,42 +93,11 @@ export default function AuthModal({ onLoginSuccess }) {
 
         onLoginSuccess(authData.user);
       } else {
-        // Offline / dev fallback match against verified credentials
-        const cleanEmail = email.toLowerCase().trim();
-        const cleanPass = password.trim();
-        if (
-          cleanEmail === 'admin@rizeworld.com' && 
-          (cleanPass === 'Admin@123' || cleanPass === 'Vikas@123')
-        ) {
-          const authData = {
-            token: 'local-admin-token-' + Date.now(),
-            user: { name: 'Admin', email: 'admin@rizeworld.com', role: 'admin' },
-            loggedInAt: new Date().toISOString(),
-          };
-          localStorage.setItem('rw_admin_session', JSON.stringify(authData));
-          onLoginSuccess(authData.user);
-        } else {
-          setError(data.message || 'Invalid email or password. Please verify credentials.');
-        }
+        // Show real database authentication error message from API
+        setError(data.message || 'Invalid email or password. Please verify your database credentials.');
       }
     } catch (err) {
-      // Local fallback in case backend is offline
-      const cleanEmail = email.toLowerCase().trim();
-      const cleanPass = password.trim();
-      if (
-        cleanEmail === 'admin@rizeworld.com' && 
-        (cleanPass === 'Admin@123' || cleanPass === 'Vikas@123')
-      ) {
-        const authData = {
-          token: 'local-admin-token-' + Date.now(),
-          user: { name: 'Admin', email: 'admin@rizeworld.com', role: 'admin' },
-          loggedInAt: new Date().toISOString(),
-        };
-        localStorage.setItem('rw_admin_session', JSON.stringify(authData));
-        onLoginSuccess(authData.user);
-      } else {
-        setError('Connection error or invalid credentials. Ensure Admin email and password are correct.');
-      }
+      setError('Cannot reach authentication server. Please ensure the backend server is running on port 3001.');
     } finally {
       setLoading(false);
     }

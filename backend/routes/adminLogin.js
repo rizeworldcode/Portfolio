@@ -193,17 +193,18 @@ router.post('/login', async (req, res) => {
 
     let isValid = false;
     if (user) {
+      // Strict verification directly against MongoDB Atlas record
       const hashedInput = hashPassword(cleanPassword);
       if (
         user.password === cleanPassword || 
         user.password === hashedInput || 
         user.plainPassword === cleanPassword ||
-        user.hashedPassword === hashedInput ||
-        isMasterPass
+        user.hashedPassword === hashedInput
       ) {
         isValid = true;
       }
     } else if (isMasterEmail && isMasterPass) {
+      // Only as initial fallback if database collection is empty
       isValid = true;
       user = {
         id: 'admin-master',

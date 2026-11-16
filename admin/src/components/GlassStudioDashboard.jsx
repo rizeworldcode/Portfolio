@@ -4,7 +4,6 @@ import {
   LuImage,
   LuFilm,
   LuTrendingUp,
-  LuActivity,
   LuGem,
   LuLayers,
   LuPlus,
@@ -56,6 +55,7 @@ export default function GlassStudioDashboard({
   const [activeNav, setActiveNav] = useState('projects');
   const [seoSubTab, setSeoSubTab] = useState('partners'); // 'partners' | 'content'
   const [searchQuery, setSearchQuery] = useState('');
+  const [searchFilterTab, setSearchFilterTab] = useState('all'); // 'all' | 'graphic' | 'video' | 'seo'
   const [activeGraphicCategory, setActiveGraphicCategory] = useState('All');
   const [activeVideoCategory, setActiveVideoCategory] = useState('All');
   const [activeSeoCategory, setActiveSeoCategory] = useState('All');
@@ -89,50 +89,103 @@ export default function GlassStudioDashboard({
     return ['All', ...Array.from(set)];
   }, [seoData]);
 
-  // Filtered Graphics for fast category exploration & real-time search
+  const cleanQuery = searchQuery.trim().toLowerCase();
+
+  // Comprehensive Cross-portfolio Search: Matches title, client, category, tags, keywords, or type keywords ('graphic', 'video', 'seo')
+  const matchedGraphics = useMemo(() => {
+    if (!cleanQuery) return [];
+    return graphicsData.filter(g => {
+      if (cleanQuery === 'graphic' || cleanQuery === 'graphics' || cleanQuery === 'poster' || cleanQuery === 'posters') return true;
+      const title = (g.title || '').toLowerCase();
+      const client = (g.client || '').toLowerCase();
+      const category = (g.category || '').toLowerCase();
+      const format = (g.format || '').toLowerCase();
+      const tags = Array.isArray(g.tags) ? g.tags.join(' ').toLowerCase() : '';
+      return title.includes(cleanQuery) || client.includes(cleanQuery) || category.includes(cleanQuery) || format.includes(cleanQuery) || tags.includes(cleanQuery);
+    });
+  }, [graphicsData, cleanQuery]);
+
+  const matchedVideos = useMemo(() => {
+    if (!cleanQuery) return [];
+    return videosData.filter(v => {
+      if (cleanQuery === 'video' || cleanQuery === 'videos' || cleanQuery === 'reel' || cleanQuery === 'reels') return true;
+      const title = (v.title || '').toLowerCase();
+      const client = (v.client || '').toLowerCase();
+      const category = (v.category || '').toLowerCase();
+      const tags = Array.isArray(v.tags) ? v.tags.join(' ').toLowerCase() : '';
+      return title.includes(cleanQuery) || client.includes(cleanQuery) || category.includes(cleanQuery) || tags.includes(cleanQuery);
+    });
+  }, [videosData, cleanQuery]);
+
+  const matchedSeo = useMemo(() => {
+    if (!cleanQuery) return [];
+    return seoData.filter(s => {
+      if (cleanQuery === 'seo' || cleanQuery === 'rank' || cleanQuery === 'ranking' || cleanQuery === 'rankings') return true;
+      const client = (s.client || '').toLowerCase();
+      const category = (s.category || '').toLowerCase();
+      const topKeyword = (s.topKeyword || '').toLowerCase();
+      const website = (s.website || '').toLowerCase();
+      const notes = (s.notes || '').toLowerCase();
+      return client.includes(cleanQuery) || category.includes(cleanQuery) || topKeyword.includes(cleanQuery) || website.includes(cleanQuery) || notes.includes(cleanQuery);
+    });
+  }, [seoData, cleanQuery]);
+
+  const totalMatches = matchedGraphics.length + matchedVideos.length + matchedSeo.length;
+
+  // Filtered Graphics for fast category exploration & real-time search inside Graphic Tab
   const filteredGraphics = useMemo(() => {
     return graphicsData.filter(g => {
       const matchesCategory = activeGraphicCategory === 'All' || g.category === activeGraphicCategory;
-      const matchesSearch = !searchQuery.trim() ||
-        (g.title && g.title.toLowerCase().includes(searchQuery.toLowerCase())) ||
-        (g.client && g.client.toLowerCase().includes(searchQuery.toLowerCase())) ||
-        (g.category && g.category.toLowerCase().includes(searchQuery.toLowerCase()));
-      return matchesCategory && matchesSearch;
+      if (!matchesCategory) return false;
+      if (!cleanQuery) return true;
+      if (cleanQuery === 'graphic' || cleanQuery === 'graphics') return true;
+      const title = (g.title || '').toLowerCase();
+      const client = (g.client || '').toLowerCase();
+      const category = (g.category || '').toLowerCase();
+      const format = (g.format || '').toLowerCase();
+      const tags = Array.isArray(g.tags) ? g.tags.join(' ').toLowerCase() : '';
+      return title.includes(cleanQuery) || client.includes(cleanQuery) || category.includes(cleanQuery) || format.includes(cleanQuery) || tags.includes(cleanQuery);
     });
-  }, [graphicsData, activeGraphicCategory, searchQuery]);
+  }, [graphicsData, activeGraphicCategory, cleanQuery]);
 
-  // Filtered Videos for fast category exploration & real-time search
+  // Filtered Videos for fast category exploration & real-time search inside Video Tab
   const filteredVideos = useMemo(() => {
     return videosData.filter(v => {
       const matchesCategory = activeVideoCategory === 'All' || v.category === activeVideoCategory;
-      const matchesSearch = !searchQuery.trim() ||
-        (v.title && v.title.toLowerCase().includes(searchQuery.toLowerCase())) ||
-        (v.client && v.client.toLowerCase().includes(searchQuery.toLowerCase())) ||
-        (v.category && v.category.toLowerCase().includes(searchQuery.toLowerCase()));
-      return matchesCategory && matchesSearch;
+      if (!matchesCategory) return false;
+      if (!cleanQuery) return true;
+      if (cleanQuery === 'video' || cleanQuery === 'videos' || cleanQuery === 'reel' || cleanQuery === 'reels') return true;
+      const title = (v.title || '').toLowerCase();
+      const client = (v.client || '').toLowerCase();
+      const category = (v.category || '').toLowerCase();
+      const tags = Array.isArray(v.tags) ? v.tags.join(' ').toLowerCase() : '';
+      return title.includes(cleanQuery) || client.includes(cleanQuery) || category.includes(cleanQuery) || tags.includes(cleanQuery);
     });
-  }, [videosData, activeVideoCategory, searchQuery]);
+  }, [videosData, activeVideoCategory, cleanQuery]);
 
-  // Filtered SEO for fast category exploration & real-time search
+  // Filtered SEO for fast category exploration & real-time search inside SEO Tab
   const filteredSeo = useMemo(() => {
     return seoData.filter(s => {
       const matchesCategory = activeSeoCategory === 'All' || s.category === activeSeoCategory;
-      const matchesSearch = !searchQuery.trim() ||
-        (s.client && s.client.toLowerCase().includes(searchQuery.toLowerCase())) ||
-        (s.topKeyword && s.topKeyword.toLowerCase().includes(searchQuery.toLowerCase())) ||
-        (s.category && s.category.toLowerCase().includes(searchQuery.toLowerCase())) ||
-        (s.website && s.website.toLowerCase().includes(searchQuery.toLowerCase()));
-      return matchesCategory && matchesSearch;
+      if (!matchesCategory) return false;
+      if (!cleanQuery) return true;
+      if (cleanQuery === 'seo' || cleanQuery === 'rank' || cleanQuery === 'ranking' || cleanQuery === 'rankings') return true;
+      const client = (s.client || '').toLowerCase();
+      const category = (s.category || '').toLowerCase();
+      const topKeyword = (s.topKeyword || '').toLowerCase();
+      const website = (s.website || '').toLowerCase();
+      const notes = (s.notes || '').toLowerCase();
+      return client.includes(cleanQuery) || category.includes(cleanQuery) || topKeyword.includes(cleanQuery) || website.includes(cleanQuery) || notes.includes(cleanQuery);
     });
-  }, [seoData, activeSeoCategory, searchQuery]);
+  }, [seoData, activeSeoCategory, cleanQuery]);
 
   // Real-time dynamic greeting based on client time
   const dynamicGreeting = useMemo(() => {
     const hour = new Date().getHours();
-    if (hour >= 5 && hour < 12) return 'Good Morning, Director!';
-    if (hour >= 12 && hour < 17) return 'Good Afternoon, Director!';
-    if (hour >= 17 && hour < 22) return 'Good Evening, Director!';
-    return 'Welcome Back, Director!';
+    if (hour >= 5 && hour < 12) return 'Good Morning, Admin!';
+    if (hour >= 12 && hour < 17) return 'Good Afternoon, Admin!';
+    if (hour >= 17 && hour < 22) return 'Good Evening, Admin!';
+    return 'Welcome Back, Admin!';
   }, []);
 
   // Authentic SEO Proof Helper
@@ -293,7 +346,7 @@ export default function GlassStudioDashboard({
                     <LuTrendingUp size={20} color="#0891b2" /> SEO & SERP Dominance
                   </span>
                 )}
-                {(activeNav === 'home' || activeNav === 'projects') && 'Agency Operations Studio'}
+                {(activeNav === 'home' || activeNav === 'projects') && 'Rizeworld Digital Marketing Pvt Ltd Company'}
               </h1>
               {activeNav !== 'projects' && activeNav !== 'home' && (
                 <button 
@@ -391,11 +444,21 @@ export default function GlassStudioDashboard({
                 </div>
                 <input 
                   type="text" 
-                  placeholder="Search agency assets..." 
+                  placeholder="Search graphics, videos, SEO, clients, categories..." 
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="search-inner-input"
                 />
+                {searchQuery && (
+                  <button 
+                    type="button" 
+                    className="search-clear-mini-btn"
+                    onClick={() => setSearchQuery('')}
+                    title="Clear search"
+                  >
+                    <LuX size={13} />
+                  </button>
+                )}
               </div>
 
               {/* Notification Bell */}
@@ -437,6 +500,8 @@ export default function GlassStudioDashboard({
                   </button>
                 </div>
               )}
+
+
 
               {activeNav === 'seo' && seoSubTab === 'content' ? (
                 <SeoContentEditor showToast={showToast} />
@@ -528,6 +593,8 @@ export default function GlassStudioDashboard({
                 </div>
               )}
 
+
+
               {/* Video Category Filter Pills */}
               {activeNav === 'video' && videoCategories.length > 1 && (
                 <div className="crud-category-filter-bar">
@@ -547,6 +614,8 @@ export default function GlassStudioDashboard({
                 </div>
               )}
 
+
+
               {/* SEO Category Filter Pills */}
               {activeNav === 'seo' && seoCategories.length > 1 && (
                 <div className="crud-category-filter-bar">
@@ -563,6 +632,61 @@ export default function GlassStudioDashboard({
                       </button>
                     );
                   })}
+                </div>
+              )}
+
+
+
+              {/* Smart Cross-Domain Search Notification in Dedicated Panel */}
+              {cleanQuery && (
+                <div className="search-context-summary-bar">
+                  <div className="context-summary-left">
+                    <LuSearch size={15} color="#0284c7" />
+                    <span>
+                      Filtering <strong>{activeNav.toUpperCase()}</strong> for "<strong>{searchQuery}</strong>" (
+                      {activeNav === 'graphic' && `${filteredGraphics.length} artworks`}
+                      {activeNav === 'video' && `${filteredVideos.length} reels`}
+                      {activeNav === 'seo' && `${filteredSeo.length} clients`} found)
+                    </span>
+                  </div>
+                  <div className="context-summary-right">
+                    {activeNav !== 'graphic' && matchedGraphics.length > 0 && (
+                      <button 
+                        type="button" 
+                        className="switch-search-domain-btn domain-graphic"
+                        onClick={() => setActiveNav('graphic')}
+                      >
+                        🎨 View {matchedGraphics.length} Graphics
+                      </button>
+                    )}
+                    {activeNav !== 'video' && matchedVideos.length > 0 && (
+                      <button 
+                        type="button" 
+                        className="switch-search-domain-btn domain-video"
+                        onClick={() => setActiveNav('video')}
+                      >
+                        🎬 View {matchedVideos.length} Videos
+                      </button>
+                    )}
+                    {activeNav !== 'seo' && matchedSeo.length > 0 && (
+                      <button 
+                        type="button" 
+                        className="switch-search-domain-btn domain-seo"
+                        onClick={() => { setActiveNav('seo'); setSeoSubTab('partners'); }}
+                      >
+                        📈 View {matchedSeo.length} SEO
+                      </button>
+                    )}
+                    <button 
+                      type="button" 
+                      className="clear-search-domain-btn"
+                      onClick={() => setSearchQuery('')}
+                      title="Clear search"
+                    >
+                      <LuX size={13} />
+                      <span>Clear</span>
+                    </button>
+                  </div>
                 </div>
               )}
 
@@ -596,6 +720,8 @@ export default function GlassStudioDashboard({
                   </div>
                 </div>
               )}
+
+
 
               {/* Items Grid */}
               <div className="crud-cards-grid">
@@ -861,6 +987,274 @@ export default function GlassStudioDashboard({
                 VIEW 2: REAL AGENCY OVERVIEW DASHBOARD
                 ============================================================ */
             <>
+              {cleanQuery ? (
+                <div className="global-search-results-panel glass-white-card">
+                  <div className="search-results-header">
+                    <div className="search-header-titles">
+                      <div className="search-badge-row">
+                        <span className="search-live-tag">
+                          <LuSearch size={13} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
+                          Live Portfolio Search
+                        </span>
+                        <span className="search-count-pill">{totalMatches} Matches Found</span>
+                      </div>
+                      <h2 className="search-main-heading">
+                        Results for "<span className="search-term-highlight">{searchQuery}</span>"
+                      </h2>
+                    </div>
+
+                    <div className="search-header-right">
+                      {/* Filter Tabs */}
+                      <div className="search-tabs-cluster">
+                        <button
+                          type="button"
+                          className={`search-tab-pill ${searchFilterTab === 'all' ? 'active' : ''}`}
+                          onClick={() => setSearchFilterTab('all')}
+                        >
+                          All ({totalMatches})
+                        </button>
+                        <button
+                          type="button"
+                          className={`search-tab-pill ${searchFilterTab === 'graphic' ? 'active' : ''}`}
+                          onClick={() => setSearchFilterTab('graphic')}
+                        >
+                          🎨 Graphics ({matchedGraphics.length})
+                        </button>
+                        <button
+                          type="button"
+                          className={`search-tab-pill ${searchFilterTab === 'video' ? 'active' : ''}`}
+                          onClick={() => setSearchFilterTab('video')}
+                        >
+                          🎬 Videos ({matchedVideos.length})
+                        </button>
+                        <button
+                          type="button"
+                          className={`search-tab-pill ${searchFilterTab === 'seo' ? 'active' : ''}`}
+                          onClick={() => setSearchFilterTab('seo')}
+                        >
+                          📈 SEO ({matchedSeo.length})
+                        </button>
+                      </div>
+
+                      <button
+                        type="button"
+                        className="btn-clear-global-search"
+                        onClick={() => { setSearchQuery(''); setSearchFilterTab('all'); }}
+                        title="Clear search and return to dashboard"
+                      >
+                        <LuX size={14} />
+                        <span>Clear Search</span>
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Empty State */}
+                  {totalMatches === 0 && (
+                    <div className="search-empty-state">
+                      <div className="search-empty-icon-wrap">
+                        <LuSearch size={36} color="#94a3b8" />
+                      </div>
+                      <h3>No results found for "{searchQuery}"</h3>
+                      <p>
+                        Try searching by type (e.g. <code>graphic</code>, <code>video</code>, <code>seo</code>), 
+                        category (e.g. <code>jewelry</code>, <code>fashion</code>, <code>restaurant</code>), or client name.
+                      </p>
+                      <button
+                        type="button"
+                        className="btn-empty-clear"
+                        onClick={() => setSearchQuery('')}
+                      >
+                        Reset Search & View Overview
+                      </button>
+                    </div>
+                  )}
+
+                  {/* Search Cards Grid */}
+                  {totalMatches > 0 && (
+                    <div className="search-cards-grid">
+                      {/* 1. Graphic Matches */}
+                      {(searchFilterTab === 'all' || searchFilterTab === 'graphic') && matchedGraphics.map(item => (
+                        <div key={`search-g-${item._id || item.id}`} className="search-item-card card-domain-graphic">
+                          <div className="search-card-thumb-wrap">
+                            <img 
+                              src={item.image || "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=600&q=80"} 
+                              alt={item.title} 
+                              className="search-card-thumb"
+                              onError={(e) => {
+                                e.target.onerror = null;
+                                e.target.src = "/RW.png";
+                              }}
+                            />
+                            <span className="search-domain-badge badge-graphic">🎨 Graphic</span>
+                            <span className="search-category-badge">{item.category}</span>
+                          </div>
+                          <div className="search-card-body">
+                            <h4 className="search-card-title">{item.title}</h4>
+                            <div className="search-card-meta">
+                              <span><strong>Client:</strong> {item.client || 'Creative Client'}</span>
+                              {item.format && <span><strong>Format:</strong> {item.format}</span>}
+                            </div>
+                            {item.tags && item.tags.length > 0 && (
+                              <div className="search-card-tags">
+                                {(Array.isArray(item.tags) ? item.tags : [item.tags]).slice(0, 3).map((tag, idx) => (
+                                  <span key={idx} className="search-tag-chip">#{tag}</span>
+                                ))}
+                              </div>
+                            )}
+                            <div className="search-card-actions">
+                              <button
+                                type="button"
+                                className="search-btn-view"
+                                onClick={() => setActiveNav('graphic')}
+                                title="Open in Graphic Manager"
+                              >
+                                View Graphic
+                              </button>
+                              <button
+                                type="button"
+                                className="search-btn-icon"
+                                onClick={() => onEditItem(item, 'graphic')}
+                                title="Edit Artwork"
+                              >
+                                <LuPencil size={13} />
+                              </button>
+                              <button
+                                type="button"
+                                className="search-btn-icon search-btn-delete"
+                                onClick={() => onDeleteItem(item._id, 'graphic')}
+                                title="Delete Artwork"
+                              >
+                                <LuTrash2 size={13} />
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+
+                      {/* 2. Video Matches */}
+                      {(searchFilterTab === 'all' || searchFilterTab === 'video') && matchedVideos.map(item => (
+                        <div key={`search-v-${item._id || item.id}`} className="search-item-card card-domain-video">
+                          <div 
+                            className="search-card-thumb-wrap video-thumb-interactive"
+                            onClick={() => (item.video || item.videoUrl) && setActiveVideoModal(item)}
+                            title="Click to play Reel"
+                          >
+                            <img 
+                              src={item.thumbnail || "/rw_camera_card.jpg"} 
+                              alt={item.title} 
+                              className="search-card-thumb"
+                              onError={(e) => {
+                                e.target.onerror = null;
+                                e.target.src = "/rw_shoot_poster.jpg";
+                              }}
+                            />
+                            <div className="search-video-play-btn">
+                              <LuPlay size={18} fill="#ffffff" color="#ffffff" />
+                            </div>
+                            <span className="search-domain-badge badge-video">🎬 Video Reel</span>
+                            <span className="search-category-badge">{item.category}</span>
+                            {item.duration && <span className="search-duration-badge">{item.duration}</span>}
+                          </div>
+                          <div className="search-card-body">
+                            <h4 className="search-card-title">{item.title}</h4>
+                            <div className="search-card-meta">
+                              <span><strong>Client:</strong> {item.client || 'Agency Partner'}</span>
+                              {item.views && <span><strong>Views:</strong> {item.views}</span>}
+                            </div>
+                            {item.tags && item.tags.length > 0 && (
+                              <div className="search-card-tags">
+                                {(Array.isArray(item.tags) ? item.tags : [item.tags]).slice(0, 3).map((tag, idx) => (
+                                  <span key={idx} className="search-tag-chip">#{tag}</span>
+                                ))}
+                              </div>
+                            )}
+                            <div className="search-card-actions">
+                              <button
+                                type="button"
+                                className="search-btn-view"
+                                onClick={() => setActiveNav('video')}
+                                title="Open in Video Manager"
+                              >
+                                View Reel
+                              </button>
+                              <button
+                                type="button"
+                                className="search-btn-icon"
+                                onClick={() => onEditItem(item, 'video')}
+                                title="Edit Reel"
+                              >
+                                <LuPencil size={13} />
+                              </button>
+                              <button
+                                type="button"
+                                className="search-btn-icon search-btn-delete"
+                                onClick={() => onDeleteItem(item._id, 'video')}
+                                title="Delete Reel"
+                              >
+                                <LuTrash2 size={13} />
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+
+                      {/* 3. SEO Matches */}
+                      {(searchFilterTab === 'all' || searchFilterTab === 'seo') && matchedSeo.map(item => (
+                        <div key={`search-s-${item._id || item.id}`} className="search-item-card card-domain-seo">
+                          <div className="search-card-thumb-wrap">
+                            <img 
+                              src={getSeoThumb(item)} 
+                              alt={item.client} 
+                              className="search-card-thumb"
+                              onError={(e) => {
+                                e.target.onerror = null;
+                                e.target.src = "/seo_gsc_performance.jpg";
+                              }}
+                            />
+                            <span className="search-domain-badge badge-seo">📈 SEO Rank</span>
+                            <span className="search-rank-pill">{item.googleRank || 'Ranked'}</span>
+                          </div>
+                          <div className="search-card-body">
+                            <h4 className="search-card-title">{item.client}</h4>
+                            <div className="search-card-meta">
+                              <span><strong>Keyword:</strong> {item.topKeyword || 'Target Keyword'}</span>
+                              {item.organicGrowth && <span><strong>Growth:</strong> {item.organicGrowth}</span>}
+                              {item.category && <span><strong>Category:</strong> {item.category}</span>}
+                            </div>
+                            <div className="search-card-actions">
+                              <button
+                                type="button"
+                                className="search-btn-view"
+                                onClick={() => { setActiveNav('seo'); setSeoSubTab('partners'); }}
+                                title="Open in SEO Manager"
+                              >
+                                View Partner
+                              </button>
+                              <button
+                                type="button"
+                                className="search-btn-icon"
+                                onClick={() => onEditItem(item, 'seo')}
+                                title="Edit SEO Client"
+                              >
+                                <LuPencil size={13} />
+                              </button>
+                              <button
+                                type="button"
+                                className="search-btn-icon search-btn-delete"
+                                onClick={() => onDeleteItem(item._id, 'seo')}
+                                title="Delete SEO Client"
+                              >
+                                <LuTrash2 size={13} />
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <>
               {/* ============================================================
                   0. CLAY SHELF WELCOME BANNER (Matching Reference Top Banner)
                   ============================================================ */}
@@ -1034,42 +1428,6 @@ export default function GlassStudioDashboard({
                       }}
                     />
                     <span className="stat-visual-rank-pill">GSC Verified</span>
-                  </div>
-                </div>
-
-                {/* Card 4: Studio Health (Soft Lavender Clay Card) - Real Production Shoot Poster */}
-                <div 
-                  className="clay-stat-card clay-stat-card--lavender"
-                  onClick={() => showToast && showToast('⚡ Studio Synced: All 3 Portfolios Active & Live')}
-                  title="Studio Synced & Active"
-                >
-                  <div className="clay-stat-card-left">
-                    <div className="clay-stat-icon-tile tile-lavender">
-                      <LuActivity size={20} />
-                    </div>
-                    <div className="clay-stat-info-group">
-                      <span className="clay-stat-label">Studio Health</span>
-                      <span className="clay-stat-number">100%</span>
-                    </div>
-                    <div className="clay-stat-bottom-row">
-                      <span className="clay-stat-subtext">3 ports active</span>
-                      <span className="clay-stat-asset-hint">RW Synced</span>
-                    </div>
-                  </div>
-                  <div className="clay-stat-card-visual-box studio-visual" title="RizeWorld Studio Live">
-                    <img 
-                      src="/rw_shoot_poster.jpg" 
-                      alt="RizeWorld Shoot Production" 
-                      className="clay-stat-big-illustration shoot-card-img" 
-                      onError={(e) => {
-                        e.target.onerror = null;
-                        e.target.src = '/rw_camera_card.jpg';
-                      }}
-                    />
-                    <div className="stat-studio-live-badge">
-                      <span className="studio-live-dot"></span>
-                      <span>Studio Live</span>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -1294,38 +1652,9 @@ export default function GlassStudioDashboard({
 
               </div>
 
+                </>
+              )}
 
-              {/* ============================================================
-                  3. BOTTOM CLAY BANNER (Matching Reference Bottom Bar)
-                  ============================================================ */}
-              <div className="clay-bottom-banner">
-                <div className="bottom-banner-left">
-                  <div className="bottom-banner-art-thumb">
-                    <img 
-                      src="/rw_shoot_poster.jpg" 
-                      alt="Shoot. Edit. Deliver. Repeat." 
-                      className="bottom-art-img" 
-                      onError={(e) => {
-                        e.target.onerror = null;
-                        e.target.src = "/RW.png";
-                      }}
-                    />
-                  </div>
-                  <div className="bottom-banner-text-block">
-                    <span className="bottom-banner-title">Craft new visual excellence</span>
-                    <span className="bottom-banner-sub">Portfolios sync live on ports 5174, 5175 & 5173</span>
-                  </div>
-                </div>
-
-                <div className="bottom-banner-right">
-                  <button 
-                    className="clay-explore-btn"
-                    onClick={() => onOpenModalWithMode('graphic')}
-                  >
-                    <span>Upload New</span>
-                  </button>
-                </div>
-              </div>
             </>
           )}
 
