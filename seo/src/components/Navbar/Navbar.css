@@ -44,8 +44,6 @@
 .rw-brand {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  min-width: 140px;
   text-decoration: none;
   cursor: pointer;
   user-select: none;
@@ -53,26 +51,28 @@
 
 .rw-brand__logo-wrap {
   position: relative;
-  width: 36px;
-  height: 36px;
+  width: 48px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  border-radius: 9px;
+  border-radius: 12px;
   background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  transition: transform 0.25s ease, border-color 0.25s ease;
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .rw-brand:hover .rw-brand__logo-wrap {
-  transform: scale(1.05);
-  border-color: rgba(255, 107, 53, 0.5);
+  transform: scale(1.06);
+  border-color: rgba(255, 107, 53, 0.6);
+  box-shadow: 0 6px 20px rgba(255, 107, 53, 0.2);
 }
 
 .rw-brand__logo-img {
-  width: 58px;
-  height: 58px;
+  width: 74px;
+  height: 74px;
   object-fit: contain;
   flex-shrink: 0;
 }
