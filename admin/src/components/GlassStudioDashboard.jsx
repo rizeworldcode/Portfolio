@@ -25,7 +25,8 @@ import {
   LuGlobe,
   LuX,
   LuFileText,
-  LuCloudUpload
+  LuCloudUpload,
+  LuLogOut
 } from 'react-icons/lu';
 import SeoContentEditor from './SeoContentEditor';
 import './GlassStudioDashboard.css';
@@ -47,7 +48,9 @@ export default function GlassStudioDashboard({
   activeTab,
   setActiveTab,
   showToast,
-  onSaveItem
+  onSaveItem,
+  currentUser = null,
+  onLogout = null
 }) {
   // Navigation & Filter state
   const [activeNav, setActiveNav] = useState('projects');
@@ -174,7 +177,9 @@ export default function GlassStudioDashboard({
               />
             </div>
             <div className="sidebar-user-greeting">
-              <span className="sidebar-greet-name">Hi, Director!</span>
+              <span className="sidebar-greet-name">
+                {currentUser?.name ? `Hi, ${currentUser.name.split(' ')[0]}!` : 'Hi, Admin!'}
+              </span>
               <span className="sidebar-greet-sub">RizeWorld Hub</span>
             </div>
           </div>
@@ -218,6 +223,17 @@ export default function GlassStudioDashboard({
               <LuTrendingUp size={18} />
               <span>SEO ({seoData.length})</span>
             </button>
+
+            {onLogout && (
+              <button 
+                className="sidebar-nav-item sidebar-nav-item--logout"
+                onClick={onLogout}
+                title="Sign out of RizeWorld Admin"
+              >
+                <LuLogOut size={18} />
+                <span>Logout</span>
+              </button>
+            )}
           </nav>
 
           {/* Bottom 'Go Pro' Clay Card (Matching Reference Bottom Card) */}
@@ -390,6 +406,7 @@ export default function GlassStudioDashboard({
               >
                 <LuBell size={17} />
               </button>
+
             </div>
           </header>
 

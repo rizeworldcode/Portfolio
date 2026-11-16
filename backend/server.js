@@ -10,6 +10,7 @@ import videosRoutes from './routes/videos.js';
 import seoRoutes from './routes/seo.js';
 import uploadRoutes from './routes/upload.js';
 import statsRoutes from './routes/stats.js';
+import adminLoginRoutes, { autoSeedMasterAdmin } from './routes/adminLogin.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -17,7 +18,7 @@ const __dirname = path.dirname(__filename);
 dotenv.config({ path: path.resolve(__dirname, '.env') });
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3001;
 
 // CORS setup
 const allowedOrigins = [
@@ -53,6 +54,8 @@ app.use(express.static(path.resolve(__dirname, '../video/public')));
 app.use(express.static(path.resolve(__dirname, '../seo/public')));
 
 // Mount API routes
+app.use('/api/auth', adminLoginRoutes);
+app.use('/api/admin', adminLoginRoutes);
 app.use('/api/graphics', graphicsRoutes);
 app.use('/api/videos', videosRoutes);
 app.use('/api/seo', seoRoutes);
@@ -75,11 +78,12 @@ app.get('/', (req, res) => {
 });
 
 // Connect to MongoDB & Start Server
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/rizeworld';
+const MONGO_URI = process.env.mongo_URI || process.env.MONGO_URI || 'mongodb://localhost:27017/rizeworld';
 
 mongoose.connect(MONGO_URI)
-  .then(() => {
+  .then(async () => {
     console.log('✅ Connected to MongoDB Atlas Cloud successfully!');
+    await autoSeedMasterAdmin();
     app.listen(PORT, () => {
       console.log(`🚀 RizeWorld Server running at http://localhost:${PORT}`);
     });

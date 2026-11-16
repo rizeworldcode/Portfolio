@@ -175,6 +175,24 @@
   color: #38bdf8;
 }
 
+.sidebar-nav-item--logout {
+  margin-top: 6px;
+  color: #f87171 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 10px;
+}
+
+.sidebar-nav-item--logout:hover {
+  background: rgba(239, 68, 68, 0.15) !important;
+  color: #fca5a5 !important;
+}
+
+.topbar-logout-btn:hover {
+  color: #ef4444 !important;
+  background: #fee2e2 !important;
+  border-color: #fca5a5 !important;
+}
+
 /* Bottom 'Studio Pro' Clay Card (Matching Reference Bottom Card) */
 .sidebar-pro-clay-card {
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
@@ -449,6 +467,60 @@
 .topbar-round-icon-btn:hover {
   transform: translateY(-1px);
   color: #147282;
+}
+
+/* Prominent 3D Clay Logout Pill Button (Topbar) */
+.topbar-logout-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  background: linear-gradient(145deg, #ffffff 0%, #fff1f2 100%);
+  border: 1.5px solid #fecdd3;
+  color: #e11d48;
+  font-size: 11.5px;
+  font-weight: 750;
+  cursor: pointer;
+  box-shadow: 
+    0 3px 8px rgba(225, 29, 72, 0.12),
+    inset 1px 1px 2px rgba(255, 255, 255, 1);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
+}
+
+.topbar-logout-pill-btn:hover {
+  background: #e11d48;
+  border-color: #e11d48;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(225, 29, 72, 0.35);
+}
+
+/* Sidebar Top Logout Button (Right under greeting) */
+.sidebar-top-logout-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 3.5px 10px;
+  border-radius: 999px;
+  background: rgba(244, 63, 94, 0.12);
+  border: 1px solid rgba(244, 63, 94, 0.3);
+  color: #fb7185;
+  font-size: 10px;
+  font-weight: 750;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 4px;
+  width: fit-content;
+}
+
+.sidebar-top-logout-btn:hover {
+  background: #f43f5e;
+  color: #ffffff;
+  border-color: #f43f5e;
+  transform: translateY(-1px);
 }
 
 /* ============================================================

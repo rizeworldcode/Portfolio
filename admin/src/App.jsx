@@ -4,7 +4,8 @@ import PortfolioView from './components/PortfolioView';
 import NewProjectModal from './components/NewProjectModal';
 import RevertTrashModal from './components/RevertTrashModal';
 import BulkUploadModal from './components/BulkUploadModal';
-import { LuRotateCcw } from 'react-icons/lu';
+import AuthModal from './components/AuthModal';
+import { LuRotateCcw, LuLogOut } from 'react-icons/lu';
 import { 
   INITIAL_GRAPHICS, 
   INITIAL_VIDEOS, 
@@ -21,6 +22,31 @@ import './App.css';
 function App() {
   const [activeTab, setActiveTab] = useState('all');
   const [isBackendConnected, setIsBackendConnected] = useState(false);
+
+  // Authentication State with Session Persistence
+  const [currentUser, setCurrentUser] = useState(() => {
+    try {
+      const saved = localStorage.getItem('rw_admin_session') || sessionStorage.getItem('rw_admin_session');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (parsed?.user) {
+          if (parsed.user.name && (parsed.user.name.includes('Aryan') || parsed.user.name.includes('Director'))) {
+            parsed.user.name = 'Admin';
+            localStorage.setItem('rw_admin_session', JSON.stringify(parsed));
+          }
+          return parsed.user;
+        }
+      }
+    } catch {}
+    return null;
+  });
+
+  const handleLogout = () => {
+    localStorage.removeItem('rw_admin_session');
+    sessionStorage.removeItem('rw_admin_session');
+    setCurrentUser(null);
+    showToast('👋 Signed out of RizeWorld Studio.');
+  };
   
   // Dedicated Portfolio Data States with LocalStorage Persistence
   const [graphicsData, setGraphicsData] = useState(() => {
@@ -398,6 +424,31 @@ function App() {
     showToast('Trash bin emptied');
   };
 
+  // Authentication Gate: Render Auth Portal if not logged in
+  if (!currentUser) {
+    return (
+      <div className="vision-glass-app">
+        {toastData && (
+          <div className="vision-toast">
+            <span className="vision-toast-msg">{toastData.message}</span>
+            <button
+              type="button"
+              className="vision-toast-close"
+              onClick={() => setToastData(null)}
+            >
+              ✕
+            </button>
+          </div>
+        )}
+        <AuthModal 
+          onLoginSuccess={(userData) => {
+            setCurrentUser(userData);
+          }} 
+        />
+      </div>
+    );
+  }
+
   return (
     <div className="vision-glass-app">
       {/* Toast Notification with Instant Undo Revert Action */}
@@ -447,6 +498,8 @@ function App() {
           setActiveTab={setActiveTab}
           showToast={showToast}
           onSaveItem={handleSaveItem}
+          currentUser={currentUser}
+          onLogout={handleLogout}
         />
       ) : (
         <div className="glass-dedicated-view-wrap">
@@ -463,12 +516,14 @@ function App() {
               {activeTab === 'video' && 'Video Reels Studio'}
               {activeTab === 'seo' && 'SEO & Rankings Domination'}
             </span>
-            <button 
-              className="glass-add-direct-btn"
-              onClick={() => handleOpenModalWithMode(activeTab)}
-            >
-              + Add New {activeTab.toUpperCase()}
-            </button>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <button 
+                className="glass-add-direct-btn"
+                onClick={() => handleOpenModalWithMode(activeTab)}
+              >
+                + Add New {activeTab.toUpperCase()}
+              </button>
+            </div>
           </div>
 
           <PortfolioView
