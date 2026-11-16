@@ -516,9 +516,9 @@ export default defineConfig({
     open: true,
     proxy: {
       '/api': {
-        target: 'http://localhost:3001',
+        target: 'https://portfolio-j73f.onrender.com',
         changeOrigin: true,
-        secure: false,
+        secure: true,
         configure: (proxy, _options) => {
           proxy.on('error', (err, _req, res) => {
             // Prevent 500 error in browser console when backend is offline
@@ -530,9 +530,9 @@ export default defineConfig({
         },
       },
       '/uploads': {
-        target: 'http://localhost:3001',
+        target: 'https://portfolio-j73f.onrender.com',
         changeOrigin: true,
-        secure: false,
+        secure: true,
         configure: (proxy, _options) => {
           proxy.on('error', (_err, _req, res) => {
             if (res && !res.headersSent) {

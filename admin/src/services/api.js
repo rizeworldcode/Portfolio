@@ -1,7 +1,7 @@
-// In dev server, use relative /api proxy to avoid CORS/port issues, fallback to localhost:5000
-const API_BASE_URL = typeof window !== 'undefined' && window.location.port === '5176'
-  ? '/api'
-  : 'http://localhost:5000/api';
+import { API_BASE_URL, BACKEND_URL } from '../config/urls';
+
+// Exported for components requiring direct backend root or API base access
+export { API_BASE_URL, BACKEND_URL };
 
 // ============================================================
 // 1. GRAPHICS (Brand Artworks, Posters, Packaging)
@@ -126,7 +126,8 @@ export async function uploadAsset(file) {
   });
   if (!res.ok) throw new Error('Upload failed');
   const data = await res.json();
-  return `http://localhost:5000${data.url}`;
+  if (data.url.startsWith('http')) return data.url;
+  return `${BACKEND_URL}${data.url}`;
 }
 
 // ============================================================

@@ -1,0 +1,37 @@
+{
+  "name": "RizeWorld Digital Marketing Pvt Ltd",
+  "backend": {
+    "provider": "Render",
+    "baseUrl": "https://portfolio-j73f.onrender.com",
+    "apiBaseUrl": "https://portfolio-j73f.onrender.com/api",
+    "uploadsUrl": "https://portfolio-j73f.onrender.com/uploads",
+    "healthUrl": "https://portfolio-j73f.onrender.com/api/health"
+  },
+  "endpoints": {
+    "auth": {
+      "login": "https://portfolio-j73f.onrender.com/api/auth/login",
+      "register": "https://portfolio-j73f.onrender.com/api/auth/register",
+      "forgotPassword": "https://portfolio-j73f.onrender.com/api/auth/forgot-password",
+      "verifyOtp": "https://portfolio-j73f.onrender.com/api/auth/verify-otp",
+      "resetPassword": "https://portfolio-j73f.onrender.com/api/auth/reset-password",
+      "me": "https://portfolio-j73f.onrender.com/api/auth/me"
+    },
+    "graphics": "https://portfolio-j73f.onrender.com/api/graphics",
+    "videos": "https://portfolio-j73f.onrender.com/api/videos",
+    "seo": "https://portfolio-j73f.onrender.com/api/seo",
+    "upload": "https://portfolio-j73f.onrender.com/api/upload",
+    "stats": "https://portfolio-j73f.onrender.com/api/stats"
+  },
+  "frontends": {
+    "admin": "http://localhost:5176",
+    "graphic": "http://localhost:5174",
+    "video": "http://localhost:5175",
+    "seo": "http://localhost:5173"
+  },
+  "database": {
+    "provider": "MongoDB Atlas Cloud",
+    "cluster": "portfolio.fwiulw5.mongodb.net",
+    "database": "rizeworld",
+    "collections": ["admins", "users", "graphics", "videos", "seos"]
+  }
+}

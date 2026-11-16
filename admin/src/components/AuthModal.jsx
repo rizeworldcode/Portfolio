@@ -14,6 +14,7 @@ import {
   LuRotateCcw,
   LuSend
 } from 'react-icons/lu';
+import { AUTH_ENDPOINTS } from '../config/urls';
 import './AuthModal.css';
 
 export default function AuthModal({ onLoginSuccess }) {
@@ -69,7 +70,7 @@ export default function AuthModal({ onLoginSuccess }) {
     setLoading(true);
 
     try {
-      const response = await fetch('/api/auth/login', {
+      const response = await fetch(AUTH_ENDPOINTS.LOGIN, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
@@ -97,7 +98,7 @@ export default function AuthModal({ onLoginSuccess }) {
         setError(data.message || 'Invalid email or password. Please verify your database credentials.');
       }
     } catch (err) {
-      setError('Cannot reach authentication server. Please ensure the backend server is running on port 3001.');
+      setError('Cannot reach authentication server (Render: portfolio-j73f.onrender.com). Please check your internet connection.');
     } finally {
       setLoading(false);
     }
@@ -122,7 +123,7 @@ export default function AuthModal({ onLoginSuccess }) {
     setLoading(true);
 
     try {
-      const response = await fetch('/api/auth/register', {
+      const response = await fetch(AUTH_ENDPOINTS.REGISTER, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, password }),
@@ -173,7 +174,7 @@ export default function AuthModal({ onLoginSuccess }) {
     setLoading(true);
 
     try {
-      const response = await fetch('/api/auth/forgot-password', {
+      const response = await fetch(AUTH_ENDPOINTS.FORGOT_PASSWORD, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: resetEmail.trim() }),
@@ -189,7 +190,7 @@ export default function AuthModal({ onLoginSuccess }) {
         setError(data.message || 'Could not send OTP to this email. Please check your email address.');
       }
     } catch (err) {
-      setError('Server connection error. Please make sure the backend server is running on port 3001.');
+      setError('Server connection error. Please make sure the backend server (Render: portfolio-j73f.onrender.com) is reachable.');
     } finally {
       setLoading(false);
     }
@@ -241,7 +242,7 @@ export default function AuthModal({ onLoginSuccess }) {
     setLoading(true);
 
     try {
-      const response = await fetch('/api/auth/verify-otp', {
+      const response = await fetch(AUTH_ENDPOINTS.VERIFY_OTP, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: resetEmail.trim(), otp: fullOtp }),
@@ -283,7 +284,7 @@ export default function AuthModal({ onLoginSuccess }) {
 
     try {
       const fullOtp = otp.join('');
-      const response = await fetch('/api/auth/reset-password', {
+      const response = await fetch(AUTH_ENDPOINTS.RESET_PASSWORD, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
