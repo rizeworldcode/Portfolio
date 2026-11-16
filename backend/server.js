@@ -20,9 +20,8 @@ dotenv.config({ path: path.resolve(__dirname, '.env') });
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// CORS setup
+// CORS setup (Frontend Client Origins Allowed to Connect)
 const allowedOrigins = [
-  'https://portfolio-j73f.onrender.com',
   'http://localhost:5173', // SEO Portfolio
   'http://localhost:5174', // Graphic Portfolio
   'http://localhost:5175', // Video Portfolio
