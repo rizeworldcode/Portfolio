@@ -412,3 +412,99 @@
   from { opacity: 0; transform: scale(0.96); }
   to { opacity: 1; transform: scale(1); }
 }
+
+/* ============================================================
+   REVERT & DELETED ASSETS TRASH RECOVERY RESPONSIVE ADAPTATIONS
+   ============================================================ */
+@media (max-width: 680px) {
+  .revert-modal-overlay {
+    padding: 10px;
+  }
+  .revert-modal-content {
+    padding: 18px 16px;
+    border-radius: 22px;
+    max-height: 92vh;
+    gap: 12px;
+  }
+  .revert-modal-header {
+    gap: 10px;
+    padding-bottom: 10px;
+  }
+  .revert-title {
+    font-size: 16px;
+  }
+  .revert-icon-badge {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+  }
+  .revert-toolbar-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .revert-filter-tabs {
+    width: 100%;
+    justify-content: space-between;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .revert-filter-tabs::-webkit-scrollbar {
+    display: none;
+  }
+  .revert-tab-btn {
+    flex: 1;
+    justify-content: center;
+    padding: 6px 8px;
+    font-size: 11px;
+    white-space: nowrap;
+  }
+  .revert-bulk-actions {
+    width: 100%;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .revert-restore-all-btn,
+  .revert-clear-trash-btn {
+    flex: 1;
+    justify-content: center;
+    padding: 7px 10px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 520px) {
+  .revert-card {
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 14px;
+  }
+  .revert-card-thumb {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+  }
+  .revert-card-title {
+    font-size: 13px;
+  }
+  .revert-card-actions {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 8px;
+    margin-top: 2px;
+  }
+  .btn-restore-single {
+    flex: 1;
+    justify-content: center;
+    padding: 7px 12px;
+    font-size: 11px;
+  }
+  .btn-perm-delete {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+  }
+}

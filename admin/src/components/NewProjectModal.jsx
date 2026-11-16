@@ -57,6 +57,7 @@ export default function NewProjectModal({
   isOpen, 
   onClose, 
   onSave,
+  onOpenBulkUpload,
   initialMode = 'graphic',
   editItem = null,
   graphicsData = [],
@@ -424,6 +425,33 @@ export default function NewProjectModal({
                 <span className="mode-tab-sub">Keywords, Rank</span>
               </div>
             </button>
+          </div>
+        )}
+
+        {/* Bulk Upload Shortcut Banner for Graphics */}
+        {!editItem && activeMode === 'graphic' && onOpenBulkUpload && (
+          <div 
+            className="modal-bulk-shortcut-banner"
+            onClick={() => {
+              onClose();
+              onOpenBulkUpload();
+            }}
+            title="Click to open bulk upload modal for multiple images"
+          >
+            <div className="bulk-shortcut-content">
+              <span className="bulk-shortcut-icon">⚡</span>
+              <div>
+                <strong className="bulk-shortcut-title">
+                  Need to upload 10, 15 or 20+ posters at once?
+                </strong>
+                <span className="bulk-shortcut-sub">
+                  Use Drag & Drop Bulk Upload with 1-click batch categorization
+                </span>
+              </div>
+            </div>
+            <span className="bulk-shortcut-pill-btn">
+              Open Bulk Upload →
+            </span>
           </div>
         )}
 

@@ -407,6 +407,100 @@ function portfolioLiveDiskSync() {
             return res.end(JSON.stringify({ success: true }))
           }
 
+          // 4. BULK UPLOAD ACTION (Multiple graphics uploaded in one batch)
+          if (req.url === '/api/live-sync/bulk-upload' && req.method === 'POST') {
+            const { items = [] } = body
+            const bulkUploadsDir = path.resolve(__dirname, '../graphic/public/bulk-uploads')
+            if (!fs.existsSync(bulkUploadsDir)) {
+              fs.mkdirSync(bulkUploadsDir, { recursive: true })
+            }
+
+            const processedItems = items.map((item, idx) => {
+              let finalImageUrl = item.image || ''
+
+              // If image is a base64 DataURL, decode and save as a physical static file
+              if (item.dataUrl && typeof item.dataUrl === 'string' && item.dataUrl.startsWith('data:image/')) {
+                try {
+                  const match = item.dataUrl.match(/^data:image\/([a-zA-Z0-9+]+);base64,(.+)$/)
+                  if (match) {
+                    const extRaw = match[1] === 'jpeg' ? 'jpg' : match[1].split('+')[0]
+                    const ext = '.' + extRaw
+                    const base64Data = match[2]
+                    const safeName = (item.fileName || `artwork-${Date.now()}-${idx}`)
+                      .replace(/[^a-zA-Z0-9._-]/g, '_')
+                      .replace(/\.[^/.]+$/, '')
+                    const diskFileName = `${Date.now()}-${idx}-${safeName}${ext}`
+                    const diskPath = path.join(bulkUploadsDir, diskFileName)
+                    fs.writeFileSync(diskPath, Buffer.from(base64Data, 'base64'))
+                    finalImageUrl = `/bulk-uploads/${diskFileName}`
+                  }
+                } catch (err) {
+                  console.error('Error writing bulk upload image file:', err)
+                }
+              }
+
+              return {
+                ...item,
+                image: finalImageUrl || item.image
+              }
+            })
+
+            // Update portfolioData.json (for Graphic portfolio on :5174)
+            if (fs.existsSync(graphicJsonPath)) {
+              try {
+                const categories = JSON.parse(fs.readFileSync(graphicJsonPath, 'utf8'))
+                processedItems.forEach(item => {
+                  const catTag = item.category || 'Healthcare'
+                  let targetCat = categories.find(c => 
+                    c.tag?.toLowerCase() === catTag.toLowerCase() || 
+                    c.id?.toLowerCase() === catTag.toLowerCase() ||
+                    c.title?.toLowerCase().includes(catTag.toLowerCase())
+                  )
+                  if (!targetCat) {
+                    targetCat = {
+                      id: catTag.toLowerCase().replace(/[^a-z0-9]/g, '-'),
+                      title: catTag,
+                      tag: catTag,
+                      itemCount: 0,
+                      images: []
+                    }
+                    categories.push(targetCat)
+                  }
+                  if (!targetCat.images) targetCat.images = []
+                  targetCat.images.unshift({
+                    name: item.title,
+                    src: item.image,
+                    aspectRatio: item.format?.includes('1:1') ? 1 : 1.33
+                  })
+                  targetCat.itemCount = targetCat.images.length
+                })
+                fs.writeFileSync(graphicJsonPath, JSON.stringify(categories, null, 2), 'utf8')
+              } catch (err) {
+                console.error('Error syncing bulk graphics to portfolioData.json:', err)
+              }
+            }
+
+            // Update allGraphics.json (for Admin Panel)
+            if (fs.existsSync(adminGraphicsJsonPath)) {
+              try {
+                const allG = JSON.parse(fs.readFileSync(adminGraphicsJsonPath, 'utf8'))
+                // Clean items removing large dataUrl property before saving to allGraphics.json
+                const sanitizedItems = processedItems.map(({ dataUrl, ...rest }) => rest)
+                const updated = [...sanitizedItems, ...allG]
+                fs.writeFileSync(adminGraphicsJsonPath, JSON.stringify(updated, null, 2), 'utf8')
+              } catch (err) {
+                console.error('Error syncing bulk graphics to allGraphics.json:', err)
+              }
+            }
+
+            const cleanProcessed = processedItems.map(({ dataUrl, ...rest }) => rest)
+            return res.end(JSON.stringify({ 
+              success: true, 
+              count: cleanProcessed.length, 
+              items: cleanProcessed 
+            }))
+          }
+
           next()
         })
       })

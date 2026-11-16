@@ -24,7 +24,8 @@ import {
   LuKey,
   LuGlobe,
   LuX,
-  LuFileText
+  LuFileText,
+  LuCloudUpload
 } from 'react-icons/lu';
 import SeoContentEditor from './SeoContentEditor';
 import './GlassStudioDashboard.css';
@@ -42,6 +43,7 @@ export default function GlassStudioDashboard({
   onRestoreItem,
   onRevertLast,
   onOpenRevertModal,
+  onOpenBulkUploadModal,
   activeTab,
   setActiveTab,
   showToast,
@@ -447,6 +449,17 @@ export default function GlassStudioDashboard({
                       </p>
                     </div>
                     <div className="crud-header-actions-group">
+                      {activeNav === 'graphic' && (
+                        <button 
+                          type="button"
+                          className="crud-bulk-upload-header-btn"
+                          onClick={onOpenBulkUploadModal}
+                          title="Upload multiple posters (10, 15, 20+) at once with drag & drop"
+                        >
+                          <LuCloudUpload size={16} />
+                          <span>⚡ Bulk Upload Images</span>
+                        </button>
+                      )}
                       {activeNav === 'seo' && (
                         <button 
                           type="button"
@@ -1093,16 +1106,25 @@ export default function GlassStudioDashboard({
                   <div className="hub-action-row">
                     <button 
                       className="hub-btn hub-btn--add"
+                      onClick={() => onOpenBulkUploadModal && onOpenBulkUploadModal()}
+                      title="Bulk drag & drop upload multiple posters at once"
+                      style={{ background: '#f0f9ff', border: '1px solid #bae6fd', color: '#0284c7', fontWeight: 600 }}
+                    >
+                      <LuCloudUpload size={14} />
+                      <span>⚡ Bulk Upload</span>
+                    </button>
+                    <button 
+                      className="hub-btn hub-btn--add"
                       onClick={() => onOpenModalWithMode('graphic')}
                     >
                       <LuPlus size={14} />
-                      <span>Upload Graphic</span>
+                      <span>Upload</span>
                     </button>
                     <button 
                       className="hub-btn hub-btn--manage"
                       onClick={() => setActiveNav('graphic')}
                     >
-                      <span>Manage All ({graphicsData.length})</span>
+                      <span>Manage ({graphicsData.length})</span>
                       <LuArrowRight size={13} />
                     </button>
                   </div>

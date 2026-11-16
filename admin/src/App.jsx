@@ -3,6 +3,7 @@ import GlassStudioDashboard from './components/GlassStudioDashboard';
 import PortfolioView from './components/PortfolioView';
 import NewProjectModal from './components/NewProjectModal';
 import RevertTrashModal from './components/RevertTrashModal';
+import BulkUploadModal from './components/BulkUploadModal';
 import { LuRotateCcw } from 'react-icons/lu';
 import { 
   INITIAL_GRAPHICS, 
@@ -126,8 +127,19 @@ function App() {
 
   // Modal & Edit Control
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isBulkUploadOpen, setIsBulkUploadOpen] = useState(false);
   const [modalMode, setModalMode] = useState('graphic');
   const [editingItem, setEditingItem] = useState(null);
+
+  // Bulk Upload Handler
+  const handleBulkSaveItems = (newItems) => {
+    if (!Array.isArray(newItems) || newItems.length === 0) return;
+    setGraphicsData(prev => [...newItems, ...prev]);
+    try {
+      const current = JSON.parse(localStorage.getItem('rw_graphics') || '[]');
+      localStorage.setItem('rw_graphics', JSON.stringify([...newItems, ...current]));
+    } catch {}
+  };
 
   // Deleted Items History & Recovery Trash Bin
   const [deletedHistory, setDeletedHistory] = useState(() => {
@@ -430,6 +442,7 @@ function App() {
           onRestoreItem={handleRestoreItem}
           onRevertLast={handleRevertLast}
           onOpenRevertModal={() => setIsRevertModalOpen(true)}
+          onOpenBulkUploadModal={() => setIsBulkUploadOpen(true)}
           activeTab={activeTab}
           setActiveTab={setActiveTab}
           showToast={showToast}
@@ -483,6 +496,16 @@ function App() {
           setEditingItem(null);
         }}
         onSave={handleSaveItem}
+        onOpenBulkUpload={() => setIsBulkUploadOpen(true)}
+      />
+
+      {/* ⚡ Bulk Image Upload Modal */}
+      <BulkUploadModal
+        isOpen={isBulkUploadOpen}
+        onClose={() => setIsBulkUploadOpen(false)}
+        onBulkSave={handleBulkSaveItems}
+        graphicsData={graphicsData}
+        showToast={showToast}
       />
 
       {/* Deleted Assets Recovery & Revert Center Modal */}
