@@ -585,3 +585,123 @@ select.form-input option {
     gap: 4px;
   }
 }
+
+/* ============================================================
+   Category Selector & Dynamic Custom Category Adder
+   ============================================================ */
+
+.category-form-group {
+  position: relative;
+}
+
+.category-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+
+.cat-toggle-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(2, 132, 199, 0.09);
+  border: 1px solid rgba(2, 132, 199, 0.28);
+  color: #0284c7;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.cat-toggle-action-btn:hover {
+  background: rgba(2, 132, 199, 0.18);
+  border-color: #0284c7;
+  transform: translateY(-1px);
+}
+
+.cat-toggle-action-btn--active {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+  color: #475569;
+}
+
+.cat-toggle-action-btn--active:hover {
+  background: #e2e8f0;
+  border-color: #64748b;
+  color: #0f172a;
+}
+
+.custom-category-box {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: #ffffff;
+  padding: 8px 12px;
+  border-radius: 14px;
+  border: 1.5px solid #0284c7;
+  box-shadow: 
+    0 4px 16px -4px rgba(2, 132, 199, 0.2),
+    inset 0 1px 2px rgba(0, 0, 0, 0.02);
+  animation: modalFadeIn 0.2s ease-out;
+}
+
+.custom-category-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.custom-category-text-input {
+  border: none !important;
+  box-shadow: none !important;
+  padding: 4px 2px !important;
+  font-size: 13.5px !important;
+  font-weight: 600 !important;
+  color: #0f172a !important;
+  background: transparent !important;
+  flex: 1;
+}
+
+.custom-category-text-input:focus {
+  outline: none !important;
+}
+
+.custom-cat-cancel-pill {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.18s ease;
+  flex-shrink: 0;
+}
+
+.custom-cat-cancel-pill:hover {
+  background: #fee2e2;
+  border-color: #fca5a5;
+  color: #ef4444;
+}
+
+.custom-cat-helper-hint {
+  margin: 0;
+  font-size: 10.5px;
+  font-weight: 600;
+  color: #0284c7;
+  line-height: 1.35;
+  padding: 0 2px;
+}
+
+.custom-select-opt {
+  font-weight: 700;
+  color: #0284c7;
+  background: #f0f9ff;
+}

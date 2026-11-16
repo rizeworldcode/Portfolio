@@ -153,6 +153,7 @@ export const INITIAL_SEO = [
   {
     id: "s-0",
     client: "Zoniraz Apparel",
+    category: "E-Commerce & Fashion",
     website: "zoniraz.com",
     thumbnail: "/seo_gsc_performance.jpg",
     rankingImage: "/seo_gsc_performance.jpg",
@@ -169,6 +170,7 @@ export const INITIAL_SEO = [
   {
     id: "s-1",
     client: "Saniya Hospital",
+    category: "Healthcare & Hospitals",
     website: "saniyahospitalalwar.com",
     thumbnail: "/local-seo-alwar-rank.jpeg",
     rankingImage: "/local-seo-alwar-rank.jpeg",
@@ -185,6 +187,7 @@ export const INITIAL_SEO = [
   {
     id: "s-2",
     client: "DWPS Alwar",
+    category: "Education & Schools",
     website: "dwpsalwar.com",
     thumbnail: "/target-keywords-report.jpeg",
     rankingImage: "/target-keywords-report.jpeg",
@@ -201,6 +204,7 @@ export const INITIAL_SEO = [
   {
     id: "s-3",
     client: "Medicompares Portal",
+    category: "Finance & Fintech",
     website: "medicompares.com",
     thumbnail: "/deepdive-gsc-performance.jpeg",
     rankingImage: "/deepdive-gsc-performance.jpeg",
@@ -217,6 +221,7 @@ export const INITIAL_SEO = [
   {
     id: "s-4",
     client: "Local SEO in Alwar",
+    category: "Local Business & Maps (GMB)",
     website: "alwarbrands.in",
     thumbnail: "/local-seo-alwar-rank.jpeg",
     rankingImage: "/local-seo-alwar-rank.jpeg",
@@ -233,6 +238,7 @@ export const INITIAL_SEO = [
   {
     id: "s-5",
     client: "Technical SEO & Core Vitals",
+    category: "Technical & Core Web Vitals",
     website: "healthcheck.org",
     thumbnail: "/technical-seo-code.jpeg",
     rankingImage: "/technical-seo-code.jpeg",
@@ -249,6 +255,7 @@ export const INITIAL_SEO = [
   {
     id: "s-6",
     client: "On-Page SEO Mapping",
+    category: "Content & On-Page SEO",
     website: "contentrelevance.com",
     thumbnail: "/onpage-seo-mapping.jpeg",
     rankingImage: "/onpage-seo-mapping.jpeg",

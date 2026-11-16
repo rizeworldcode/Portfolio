@@ -132,9 +132,258 @@ function serveSiblingPublicAssets() {
   }
 }
 
+// 2. Real-time Live Disk Synchronization Middleware for Portfolios (:5174, :5175, :5176)
+function portfolioLiveDiskSync() {
+  const graphicJsonPath = path.resolve(__dirname, '../graphic/src/data/portfolioData.json')
+  const adminGraphicsJsonPath = path.resolve(__dirname, './src/data/allGraphics.json')
+  const videoJsonPath = path.resolve(__dirname, '../video/src/data/allVideos.json')
+  const adminVideosJsonPath = path.resolve(__dirname, './src/data/allVideos.json')
+
+  return {
+    name: 'portfolio-live-disk-sync',
+    configureServer(server) {
+      server.middlewares.use((req, res, next) => {
+        if (!req.url.startsWith('/api/live-sync')) {
+          return next()
+        }
+
+        let bodyStr = ''
+        req.on('data', chunk => { bodyStr += chunk })
+        req.on('end', () => {
+          let body = {}
+          try { body = bodyStr ? JSON.parse(bodyStr) : {} } catch {}
+
+          res.setHeader('Content-Type', 'application/json')
+          res.setHeader('Access-Control-Allow-Origin', '*')
+
+          // 1. DELETE ACTION (Removes item from disk so :5174 & :5175 hot-reload immediately)
+          if (req.url === '/api/live-sync/delete' && req.method === 'POST') {
+            const { type, id, item, originalIndex } = body
+            let deletedMeta = {}
+
+            if (type === 'graphic') {
+              if (fs.existsSync(graphicJsonPath)) {
+                try {
+                  const categories = JSON.parse(fs.readFileSync(graphicJsonPath, 'utf8'))
+                  const targetSrc = item?.image || ''
+                  const targetTitle = item?.title || ''
+
+                  let changed = false
+                  categories.forEach(cat => {
+                    if (cat.images) {
+                      const idx = cat.images.findIndex(img => {
+                        if (targetSrc && img.src === targetSrc) return true
+                        if (targetTitle && img.name === targetTitle) return true
+                        return false
+                      })
+                      if (idx !== -1) {
+                        deletedMeta = { catId: cat.id, imgIndex: idx }
+                        cat.images.splice(idx, 1)
+                        cat.itemCount = cat.images.length
+                        changed = true
+                      }
+                    }
+                  })
+
+                  if (changed) {
+                    fs.writeFileSync(graphicJsonPath, JSON.stringify(categories, null, 2), 'utf8')
+                  }
+                } catch (err) {
+                  console.error('Error syncing graphic deletion to disk:', err)
+                }
+              }
+
+              if (fs.existsSync(adminGraphicsJsonPath)) {
+                try {
+                  const allG = JSON.parse(fs.readFileSync(adminGraphicsJsonPath, 'utf8'))
+                  const filtered = allG.filter(g => g.id !== id && g._id !== id)
+                  fs.writeFileSync(adminGraphicsJsonPath, JSON.stringify(filtered, null, 2), 'utf8')
+                } catch {}
+              }
+
+              return res.end(JSON.stringify({ success: true, type: 'graphic', deletedId: id, deletedMeta }))
+            }
+
+            if (type === 'video') {
+              ;[videoJsonPath, adminVideosJsonPath].forEach(vPath => {
+                if (fs.existsSync(vPath)) {
+                  try {
+                    const allV = JSON.parse(fs.readFileSync(vPath, 'utf8'))
+                    const idx = allV.findIndex(v => v.id === id || v._id === id)
+                    if (idx !== -1) {
+                      deletedMeta = { videoIndex: idx }
+                      allV.splice(idx, 1)
+                      fs.writeFileSync(vPath, JSON.stringify(allV, null, 2), 'utf8')
+                    }
+                  } catch {}
+                }
+              })
+              return res.end(JSON.stringify({ success: true, type: 'video', deletedId: id, deletedMeta }))
+            }
+
+            return res.end(JSON.stringify({ success: true }))
+          }
+
+          // 2. RESTORE / REVERT ACTION (Restores item back to exact original index on disk)
+          if (req.url === '/api/live-sync/restore' && req.method === 'POST') {
+            const { type, item, originalIndex, catId, imgIndex } = body
+
+            if (type === 'graphic' && item) {
+              if (fs.existsSync(graphicJsonPath)) {
+                try {
+                  const categories = JSON.parse(fs.readFileSync(graphicJsonPath, 'utf8'))
+                  const catTag = item.category || 'Healthcare'
+                  let targetCat = null
+                  if (catId) {
+                    targetCat = categories.find(c => c.id === catId)
+                  }
+                  if (!targetCat) {
+                    targetCat = categories.find(c => 
+                      c.tag?.toLowerCase() === catTag.toLowerCase() || 
+                      c.id?.toLowerCase() === catTag.toLowerCase() ||
+                      c.title?.toLowerCase().includes(catTag.toLowerCase())
+                    ) || categories[0]
+                  }
+
+                  if (targetCat) {
+                    if (!targetCat.images) targetCat.images = []
+                    const exists = targetCat.images.some(img => img.src === item.image)
+                    if (!exists) {
+                      const restoredImg = {
+                        name: item.title,
+                        src: item.image,
+                        aspectRatio: item.format?.includes('1:1') ? 1 : 1.33
+                      }
+                      // Insert at exact original imgIndex inside category
+                      const insertPos = (typeof imgIndex === 'number' && imgIndex >= 0)
+                        ? Math.min(targetCat.images.length, imgIndex)
+                        : (typeof originalIndex === 'number' && originalIndex >= 0 ? Math.min(targetCat.images.length, originalIndex) : 0)
+                      targetCat.images.splice(insertPos, 0, restoredImg)
+                      targetCat.itemCount = targetCat.images.length
+                      fs.writeFileSync(graphicJsonPath, JSON.stringify(categories, null, 2), 'utf8')
+                    }
+                  }
+                } catch (err) {
+                  console.error('Error syncing graphic restore to disk:', err)
+                }
+              }
+
+              if (fs.existsSync(adminGraphicsJsonPath)) {
+                try {
+                  const allG = JSON.parse(fs.readFileSync(adminGraphicsJsonPath, 'utf8'))
+                  const exists = allG.some(g => g.id === item.id || g._id === item._id)
+                  if (!exists) {
+                    const insertPos = (typeof originalIndex === 'number' && originalIndex >= 0)
+                      ? Math.min(allG.length, originalIndex)
+                      : 0
+                    allG.splice(insertPos, 0, item)
+                    fs.writeFileSync(adminGraphicsJsonPath, JSON.stringify(allG, null, 2), 'utf8')
+                  }
+                } catch {}
+              }
+
+              return res.end(JSON.stringify({ success: true, type: 'graphic', restored: true }))
+            }
+
+            if (type === 'video' && item) {
+              ;[videoJsonPath, adminVideosJsonPath].forEach(vPath => {
+                if (fs.existsSync(vPath)) {
+                  try {
+                    const allV = JSON.parse(fs.readFileSync(vPath, 'utf8'))
+                    const exists = allV.some(v => v.id === item.id || v._id === item._id)
+                    if (!exists) {
+                      const insertPos = (typeof originalIndex === 'number' && originalIndex >= 0)
+                        ? Math.min(allV.length, originalIndex)
+                        : 0
+                      allV.splice(insertPos, 0, item)
+                      fs.writeFileSync(vPath, JSON.stringify(allV, null, 2), 'utf8')
+                    }
+                  } catch {}
+                }
+              })
+              return res.end(JSON.stringify({ success: true, type: 'video', restored: true }))
+            }
+
+            return res.end(JSON.stringify({ success: true }))
+          }
+
+          // 3. SAVE / ADD NEW ACTION
+          if (req.url === '/api/live-sync/save' && req.method === 'POST') {
+            const { type, item, isEdit } = body
+
+            if (type === 'graphic' && item) {
+              if (fs.existsSync(graphicJsonPath)) {
+                try {
+                  const categories = JSON.parse(fs.readFileSync(graphicJsonPath, 'utf8'))
+                  const catTag = item.category || 'Healthcare'
+                  let targetCat = categories.find(c => 
+                    c.tag?.toLowerCase() === catTag.toLowerCase() || 
+                    c.id?.toLowerCase() === catTag.toLowerCase() ||
+                    c.title?.toLowerCase().includes(catTag.toLowerCase())
+                  ) || categories[0]
+
+                  if (targetCat) {
+                    if (!targetCat.images) targetCat.images = []
+                    if (isEdit) {
+                      targetCat.images = targetCat.images.map(img => 
+                        (img.name === item.title || img.src === item.image)
+                          ? { name: item.title, src: item.image, aspectRatio: 1.33 }
+                          : img
+                      )
+                    } else {
+                      targetCat.images.unshift({
+                        name: item.title,
+                        src: item.image,
+                        aspectRatio: item.format?.includes('1:1') ? 1 : 1.33
+                      })
+                    }
+                    targetCat.itemCount = targetCat.images.length
+                    fs.writeFileSync(graphicJsonPath, JSON.stringify(categories, null, 2), 'utf8')
+                  }
+                } catch {}
+              }
+
+              if (fs.existsSync(adminGraphicsJsonPath)) {
+                try {
+                  const allG = JSON.parse(fs.readFileSync(adminGraphicsJsonPath, 'utf8'))
+                  const updated = isEdit
+                    ? allG.map(g => (g.id === item.id || g._id === item._id) ? item : g)
+                    : [item, ...allG]
+                  fs.writeFileSync(adminGraphicsJsonPath, JSON.stringify(updated, null, 2), 'utf8')
+                } catch {}
+              }
+
+              return res.end(JSON.stringify({ success: true, type: 'graphic' }))
+            }
+
+            if (type === 'video' && item) {
+              ;[videoJsonPath, adminVideosJsonPath].forEach(vPath => {
+                if (fs.existsSync(vPath)) {
+                  try {
+                    const allV = JSON.parse(fs.readFileSync(vPath, 'utf8'))
+                    const updated = isEdit
+                      ? allV.map(v => (v.id === item.id || v._id === item._id) ? item : v)
+                      : [item, ...allV]
+                    fs.writeFileSync(vPath, JSON.stringify(updated, null, 2), 'utf8')
+                  } catch {}
+                }
+              })
+              return res.end(JSON.stringify({ success: true, type: 'video' }))
+            }
+
+            return res.end(JSON.stringify({ success: true }))
+          }
+
+          next()
+        })
+      })
+    },
+  }
+}
+
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), serveSiblingPublicAssets()],
+  plugins: [react(), serveSiblingPublicAssets(), portfolioLiveDiskSync()],
   server: {
     port: 5176,
     open: true,

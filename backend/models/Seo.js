@@ -27,6 +27,11 @@ const seoSchema = new mongoose.Schema({
     type: String,
     default: 'Google Search Rank #1',
   },
+  category: {
+    type: String,
+    default: 'Local Business & Maps (GMB)',
+    trim: true,
+  },
   googleRank: {
     type: String,
     default: '#1 Position',

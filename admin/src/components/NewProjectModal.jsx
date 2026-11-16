@@ -1,20 +1,67 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { 
   LuX, 
   LuCheck,
   LuImage, 
   LuFilm, 
   LuTrendingUp,
-  LuUpload
+  LuUpload,
+  LuSparkles,
+  LuPlus
 } from 'react-icons/lu';
 import './NewProjectModal.css';
+
+// Authentic Graphic Portfolio Categories (13 Core Sectors from Live Portfolio)
+export const AUTHENTIC_GRAPHIC_CATEGORIES = [
+  'Healthcare',
+  'Education',
+  'Institute',
+  'Food & Dining',
+  'Products',
+  'Political & Election',
+  'Gemstones & Astro',
+  'Infrastructure',
+  'Wellness',
+  'Digital Agency',
+  'Automotive & Retail',
+  'Fashion & Clothing',
+  'Gym & Fitness',
+];
+
+// Authentic Video Portfolio Categories (The 7 Core Categories from Video Portfolio)
+export const AUTHENTIC_VIDEO_CATEGORIES = [
+  'Hospital & Healthcare',
+  'School & Education',
+  'Cafe & Restaurant',
+  'Real Estate & Infra',
+  'Jewellery & Gemstones',
+  'Lifestyle & Wellness',
+  'AI Video',
+];
+
+// Authentic SEO Dominance Categories (Industries & Search Specializations)
+export const AUTHENTIC_SEO_CATEGORIES = [
+  'Local Business & Maps (GMB)',
+  'Healthcare & Hospitals',
+  'Education & Schools',
+  'Restaurant & Hospitality',
+  'E-Commerce & Fashion',
+  'Real Estate & Properties',
+  'Finance & Fintech',
+  'B2B & Industrial Services',
+  'Technical & Core Web Vitals',
+  'Content & On-Page SEO',
+];
 
 export default function NewProjectModal({ 
   isOpen, 
   onClose, 
   onSave,
   initialMode = 'graphic',
-  editItem = null
+  editItem = null,
+  graphicsData = [],
+  videosData = [],
+  seoData = []
 }) {
   const [activeMode, setActiveMode] = useState(initialMode);
 
@@ -22,6 +69,10 @@ export default function NewProjectModal({
   const [title, setTitle] = useState('');
   const [client, setClient] = useState('');
   const [category, setCategory] = useState('');
+  
+  // Custom Category State (allows Admin to type and create any new category on the fly)
+  const [isCustomCategory, setIsCustomCategory] = useState(false);
+  const [customCategoryInput, setCustomCategoryInput] = useState('');
 
   // Graphic Specific
   const [imageUrl, setImageUrl] = useState('');
@@ -41,6 +92,35 @@ export default function NewProjectModal({
   const [organicGrowth, setOrganicGrowth] = useState('+350%');
   const [healthScore, setHealthScore] = useState('98/100');
   const [leadsPerMonth, setLeadsPerMonth] = useState('450+ Inquiries');
+
+  // Dynamically merge authentic categories with any custom ones already added to the datasets
+  const availableGraphicCats = useMemo(() => {
+    const set = new Set(AUTHENTIC_GRAPHIC_CATEGORIES);
+    graphicsData?.forEach(g => { if (g.category) set.add(g.category); });
+    return Array.from(set);
+  }, [graphicsData]);
+
+  const availableVideoCats = useMemo(() => {
+    const set = new Set(AUTHENTIC_VIDEO_CATEGORIES);
+    videosData?.forEach(v => { if (v.category) set.add(v.category); });
+    return Array.from(set);
+  }, [videosData]);
+
+  const availableSeoCats = useMemo(() => {
+    const set = new Set(AUTHENTIC_SEO_CATEGORIES);
+    seoData?.forEach(s => { if (s.category) set.add(s.category); });
+    return Array.from(set);
+  }, [seoData]);
+
+  // Handle switching tabs at the top of the modal
+  const handleModeSelect = (mode) => {
+    setActiveMode(mode);
+    setIsCustomCategory(false);
+    setCustomCategoryInput('');
+    if (mode === 'graphic') setCategory(availableGraphicCats[0] || 'Healthcare');
+    else if (mode === 'video') setCategory(availableVideoCats[0] || 'Cafe & Restaurant');
+    else if (mode === 'seo') setCategory(availableSeoCats[0] || 'Local Business & Maps (GMB)');
+  };
 
   // Local File Upload Handlers (Converts selected screenshot/image to DataURL)
   const handleGraphicImageUpload = (e) => {
@@ -65,17 +145,31 @@ export default function NewProjectModal({
     }
   };
 
-  // Load edit item data or reset
+  // Load edit item data or reset form
   useEffect(() => {
     if (editItem) {
-      if (editItem.itemType) setActiveMode(editItem.itemType);
+      const mode = editItem.itemType || (editItem.video ? 'video' : editItem.googleRank ? 'seo' : 'graphic');
+      setActiveMode(mode);
       setTitle(editItem.title || '');
       setClient(editItem.client || '');
-      setCategory(editItem.category || '');
+      
+      const itemCat = editItem.category || '';
+      const list = mode === 'video' ? availableVideoCats : mode === 'seo' ? availableSeoCats : availableGraphicCats;
+
+      if (itemCat && !list.includes(itemCat)) {
+        setIsCustomCategory(true);
+        setCustomCategoryInput(itemCat);
+        setCategory(itemCat);
+      } else {
+        setIsCustomCategory(false);
+        setCustomCategoryInput('');
+        setCategory(itemCat || list[0] || '');
+      }
+
       setImageUrl(editItem.image || '');
       setFormat(editItem.format || 'Poster (4:5)');
       setTags(editItem.tags ? editItem.tags.join(', ') : '');
-      setVideoUrl(editItem.video || '');
+      setVideoUrl(editItem.video || editItem.videoUrl || '');
       setDuration(editItem.duration || '0:45');
       setViews(editItem.views || '180K');
       setWebsite(editItem.website || '');
@@ -86,10 +180,14 @@ export default function NewProjectModal({
       setHealthScore(editItem.healthScore || '98/100');
       setLeadsPerMonth(editItem.leadsPerMonth || '450+ Inquiries');
     } else {
-      if (initialMode) setActiveMode(initialMode);
+      const mode = initialMode || 'graphic';
+      setActiveMode(mode);
       setTitle('');
       setClient('');
-      setCategory('');
+      setIsCustomCategory(false);
+      setCustomCategoryInput('');
+      const defaultList = mode === 'video' ? availableVideoCats : mode === 'seo' ? availableSeoCats : availableGraphicCats;
+      setCategory(defaultList[0] || '');
       setImageUrl('');
       setVideoUrl('');
       setWebsite('');
@@ -100,41 +198,48 @@ export default function NewProjectModal({
       setHealthScore('98/100');
       setLeadsPerMonth('450+ Inquiries');
     }
-  }, [editItem, initialMode, isOpen]);
+  }, [editItem, initialMode, isOpen, availableGraphicCats, availableVideoCats, availableSeoCats]);
 
   if (!isOpen) return null;
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const resolvedCategory = (isCustomCategory ? customCategoryInput.trim() : category.trim());
+
     if (activeMode === 'graphic') {
+      const finalCategory = resolvedCategory || availableGraphicCats[0] || 'Healthcare';
       onSave('graphic', {
         id: editItem ? editItem.id : `g-${Date.now()}`,
         title: title || 'New Creative Artwork',
         client: client || 'Rize Client',
-        category: category || 'Brand Identity',
+        category: finalCategory,
         format,
         image: imageUrl || 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80',
         tags: tags ? tags.split(',').map(t => t.trim()) : ['Design', 'Creative'],
         date: editItem?.date || 'Oct 2026',
       }, !!editItem);
     } else if (activeMode === 'video') {
+      const finalCategory = resolvedCategory || availableVideoCats[0] || 'Cafe & Restaurant';
       onSave('video', {
         id: editItem ? editItem.id : `v-${Date.now()}`,
         title: title || 'New 4K Video Reel',
         client: client || 'Rize Client',
-        category: category || 'Cafe & Restaurant',
+        category: finalCategory,
         video: videoUrl || '/videos-compressed/avan-spring.mp4',
+        videoUrl: videoUrl || '/videos-compressed/avan-spring.mp4',
         views: views || '150K',
         likes: editItem?.likes || '12K',
         duration: duration || '0:45',
         tags: editItem?.tags || ['Video Reel', 'Cinema', '4K'],
       }, !!editItem);
     } else if (activeMode === 'seo') {
+      const finalCategory = resolvedCategory || availableSeoCats[0] || 'Local Business & Maps (GMB)';
       const finalImage = rankingImage || editItem?.rankingImage || editItem?.thumbnail || editItem?.image || 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80';
       onSave('seo', {
         id: editItem ? editItem.id : `s-${Date.now()}`,
         client: client || 'SEO Partner',
+        category: finalCategory,
         website: website || 'clientdomain.com',
         topKeyword: topKeyword || 'Target #1 Industry Keyword',
         googleRank: googleRank || '#1 Position',
@@ -150,6 +255,93 @@ export default function NewProjectModal({
     }
 
     onClose();
+  };
+
+  // Reusable Category Selector with Quick Custom Category Adder
+  const renderCategoryField = (label, currentList, defaultFallback) => {
+    return (
+      <div className="form-group category-form-group">
+        <div className="form-label-row category-label-row">
+          <label className="form-label">{label} *</label>
+          <button
+            type="button"
+            className={`cat-toggle-action-btn ${isCustomCategory ? 'cat-toggle-action-btn--active' : ''}`}
+            onClick={() => {
+              if (isCustomCategory) {
+                setIsCustomCategory(false);
+                setCategory(currentList[0] || defaultFallback);
+              } else {
+                setIsCustomCategory(true);
+                setCustomCategoryInput('');
+              }
+            }}
+            title="Toggle between existing categories or type a brand new custom category"
+          >
+            {isCustomCategory ? (
+              <span>← Pick Existing</span>
+            ) : (
+              <>
+                <LuPlus size={12} />
+                <span>+ Add New Category</span>
+              </>
+            )}
+          </button>
+        </div>
+
+        {isCustomCategory ? (
+          <div className="custom-category-box">
+            <div className="custom-category-input-wrap">
+              <input
+                type="text"
+                className="form-input custom-category-text-input"
+                placeholder={`Type new ${activeMode.toUpperCase()} category name (e.g. Luxury Hospitality, Event Management...)`}
+                value={customCategoryInput}
+                onChange={(e) => setCustomCategoryInput(e.target.value)}
+                autoFocus
+                required
+              />
+              <button
+                type="button"
+                className="custom-cat-cancel-pill"
+                onClick={() => {
+                  setIsCustomCategory(false);
+                  setCustomCategoryInput('');
+                  setCategory(currentList[0] || defaultFallback);
+                }}
+                title="Cancel custom input and choose from standard list"
+              >
+                ✕ Cancel
+              </button>
+            </div>
+            <p className="custom-cat-helper-hint">
+              💡 This category will be created and will automatically appear as an active filter pill across your dashboard.
+            </p>
+          </div>
+        ) : (
+          <select
+            className="form-input form-select"
+            value={category}
+            onChange={(e) => {
+              if (e.target.value === '__custom__') {
+                setIsCustomCategory(true);
+                setCustomCategoryInput('');
+              } else {
+                setCategory(e.target.value);
+              }
+            }}
+          >
+            {currentList.map((cat) => (
+              <option key={cat} value={cat}>
+                {cat}
+              </option>
+            ))}
+            <option value="__custom__" className="custom-select-opt">
+              ✨ + Add New Category (Custom)...
+            </option>
+          </select>
+        )}
+      </div>
+    );
   };
 
   return (
@@ -194,7 +386,7 @@ export default function NewProjectModal({
             <button
               type="button"
               className={`mode-tab-btn ${activeMode === 'graphic' ? 'mode-tab-btn--active mode-tab-btn--graphic' : ''}`}
-              onClick={() => setActiveMode('graphic')}
+              onClick={() => handleModeSelect('graphic')}
             >
               <div className="mode-tab-icon">
                 <LuImage size={17} />
@@ -208,7 +400,7 @@ export default function NewProjectModal({
             <button
               type="button"
               className={`mode-tab-btn ${activeMode === 'video' ? 'mode-tab-btn--active mode-tab-btn--video' : ''}`}
-              onClick={() => setActiveMode('video')}
+              onClick={() => handleModeSelect('video')}
             >
               <div className="mode-tab-icon">
                 <LuFilm size={17} />
@@ -222,7 +414,7 @@ export default function NewProjectModal({
             <button
               type="button"
               className={`mode-tab-btn ${activeMode === 'seo' ? 'mode-tab-btn--active mode-tab-btn--seo' : ''}`}
-              onClick={() => setActiveMode('seo')}
+              onClick={() => handleModeSelect('seo')}
             >
               <div className="mode-tab-icon">
                 <LuTrendingUp size={17} />
@@ -264,20 +456,7 @@ export default function NewProjectModal({
                   />
                 </div>
 
-                <div className="form-group">
-                  <label className="form-label">Category</label>
-                  <select 
-                    className="form-input form-select"
-                    value={category}
-                    onChange={(e) => setCategory(e.target.value)}
-                  >
-                    <option value="Brand Identity">Brand Identity</option>
-                    <option value="Social Media Campaign">Social Media Campaign</option>
-                    <option value="Print & Packaging">Print & Packaging</option>
-                    <option value="3D Product Render">3D Product Render</option>
-                    <option value="Creative Poster">Creative Poster</option>
-                  </select>
-                </div>
+                {renderCategoryField("Graphic Category", availableGraphicCats, "Healthcare")}
               </div>
 
               <div className="form-row-2">
@@ -373,21 +552,7 @@ export default function NewProjectModal({
                   />
                 </div>
 
-                <div className="form-group">
-                  <label className="form-label">Reel Category</label>
-                  <select 
-                    className="form-input form-select"
-                    value={category}
-                    onChange={(e) => setCategory(e.target.value)}
-                  >
-                    <option value="Cafe & Restaurant">Cafe & Restaurant</option>
-                    <option value="Real Estate & Infra">Real Estate & Infra</option>
-                    <option value="Hospital & Healthcare">Hospital & Healthcare</option>
-                    <option value="School & Education">School & Education</option>
-                    <option value="Commercial & 3D">Commercial & 3D</option>
-                    <option value="Lifestyle & Wellness">Lifestyle & Wellness</option>
-                  </select>
-                </div>
+                {renderCategoryField("Reel Category", availableVideoCats, "Cafe & Restaurant")}
               </div>
 
               <div className="form-row-2">
@@ -443,16 +608,18 @@ export default function NewProjectModal({
                   />
                 </div>
 
-                <div className="form-group">
-                  <label className="form-label">Website Domain</label>
-                  <input 
-                    type="text" 
-                    className="form-input" 
-                    placeholder="e.g. saniyahospital.com"
-                    value={website}
-                    onChange={(e) => setWebsite(e.target.value)}
-                  />
-                </div>
+                {renderCategoryField("SEO Industry Category", availableSeoCats, "Local Business & Maps (GMB)")}
+              </div>
+
+              <div className="form-group">
+                <label className="form-label">Website Domain</label>
+                <input 
+                  type="text" 
+                  className="form-input" 
+                  placeholder="e.g. saniyahospital.com"
+                  value={website}
+                  onChange={(e) => setWebsite(e.target.value)}
+                />
               </div>
 
               <div className="form-row-2">

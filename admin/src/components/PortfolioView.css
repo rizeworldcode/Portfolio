@@ -269,13 +269,13 @@
    ============================================================ */
 .graphics-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 30px;
 }
 
 .graphic-card__img-wrap {
   width: 100%;
-  height: 190px;
+  height: 290px;
   position: relative;
   overflow: hidden;
   background: #141f2c;
@@ -436,14 +436,14 @@
    ============================================================ */
 .videos-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 30px;
 }
 
 .video-card__player-wrap {
   position: relative;
   width: 100%;
-  height: 200px;
+  height: 420px;
   background: #141f2c;
   overflow: hidden;
   border-bottom: 1.5px solid rgba(255, 255, 255, 0.85);
@@ -521,13 +521,13 @@
    ============================================================ */
 .seo-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 30px;
 }
 
 .seo-card {
-  padding: 20px 22px;
-  gap: 12px;
+  padding: 24px 26px;
+  gap: 14px;
 }
 
 .seo-card__top {

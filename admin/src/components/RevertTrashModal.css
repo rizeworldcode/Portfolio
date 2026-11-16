@@ -1,0 +1,414 @@
+/* ============================================================
+   REVERT & DELETED ASSETS RECOVERY CENTER MODAL
+   Soft Claymorphic Glass Styling
+   ============================================================ */
+
+.revert-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.58);
+  backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 24px 16px;
+  animation: revertModalFadeIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+
+.revert-modal-content {
+  background: linear-gradient(155deg, #f8fafc 0%, #edf2f7 100%);
+  backdrop-filter: blur(40px) saturate(160%);
+  -webkit-backdrop-filter: blur(40px) saturate(160%);
+  border-radius: 28px;
+  width: 100%;
+  max-width: 780px;
+  padding: 26px 28px;
+  box-shadow: 
+    0 25px 65px -15px rgba(15, 23, 42, 0.35),
+    0 10px 30px -8px rgba(15, 23, 42, 0.15),
+    inset 1.5px 1.5px 2px rgba(255, 255, 255, 0.95),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.04);
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: revertModalScaleUp 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  max-height: 88vh;
+  overflow: hidden;
+  color: #0f172a;
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* Header */
+.revert-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+  padding-bottom: 14px;
+}
+
+.revert-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.revert-icon-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 14px -3px rgba(16, 185, 129, 0.25);
+  flex-shrink: 0;
+}
+
+.revert-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 3px;
+}
+
+.revert-chip-badge {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: #10b981;
+  color: #ffffff;
+  padding: 2px 7px;
+  border-radius: 999px;
+}
+
+.revert-count-pill {
+  font-size: 11px;
+  font-weight: 700;
+  color: #64748b;
+}
+
+.revert-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+}
+
+.revert-close-btn {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  color: #64748b;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.revert-close-btn:hover {
+  background: #fee2e2;
+  border-color: #fca5a5;
+  color: #ef4444;
+}
+
+/* Toolbar */
+.revert-toolbar-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.revert-filter-tabs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #e2e8f0;
+  padding: 3px;
+  border-radius: 999px;
+}
+
+.revert-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: transparent;
+  border: none;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #475569;
+  padding: 5px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.revert-tab-btn:hover {
+  color: #0f172a;
+}
+
+.revert-tab-btn--active {
+  background: #ffffff;
+  color: #0f172a;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
+}
+
+.revert-bulk-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.revert-restore-all-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #10b981;
+  color: #ffffff;
+  border: none;
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);
+  transition: all 0.2s ease;
+}
+
+.revert-restore-all-btn:hover {
+  background: #059669;
+  transform: translateY(-1px);
+}
+
+.revert-clear-trash-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  color: #64748b;
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.revert-clear-trash-btn:hover {
+  background: #fee2e2;
+  border-color: #fca5a5;
+  color: #ef4444;
+}
+
+/* Items List */
+.revert-items-container {
+  flex: 1;
+  overflow-y: auto;
+  max-height: calc(88vh - 160px);
+  padding-right: 4px;
+}
+
+.revert-items-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.revert-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 16px;
+  padding: 10px 14px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+  transition: all 0.2s ease;
+}
+
+.revert-card:hover {
+  border-color: #10b981;
+  box-shadow: 0 6px 18px rgba(16, 185, 129, 0.12);
+}
+
+.revert-card-thumb {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  background: #0f172a;
+  flex-shrink: 0;
+}
+
+.revert-thumb-media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.revert-type-tag {
+  position: absolute;
+  bottom: 3px;
+  left: 3px;
+  font-size: 8px;
+  font-weight: 800;
+  padding: 1.5px 5px;
+  border-radius: 4px;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.tag--graphic {
+  background: #0284c7;
+}
+
+.tag--video {
+  background: #6366f1;
+}
+
+.tag--seo {
+  background: #0d9488;
+}
+
+.revert-card-details {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.revert-card-category {
+  font-size: 10px;
+  font-weight: 800;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.revert-card-title {
+  margin: 0;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #0f172a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.revert-card-client {
+  font-size: 11px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.revert-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.btn-restore-single {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #10b981;
+  color: #ffffff;
+  border: none;
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 7px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 10px rgba(16, 185, 129, 0.25);
+}
+
+.btn-restore-single:hover {
+  background: #059669;
+  transform: translateY(-1px);
+}
+
+.btn-perm-delete {
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  color: #94a3b8;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-perm-delete:hover {
+  background: #fee2e2;
+  border-color: #fca5a5;
+  color: #ef4444;
+}
+
+/* Empty State */
+.revert-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.revert-empty-icon-wrap {
+  width: 64px;
+  height: 64px;
+  border-radius: 20px;
+  background: #ecfdf5;
+  border: 1.5px solid #a7f3d0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+.revert-empty-title {
+  margin: 0 0 6px 0;
+  font-size: 16px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.revert-empty-desc {
+  margin: 0;
+  font-size: 12.5px;
+  color: #64748b;
+  max-width: 420px;
+  line-height: 1.5;
+}
+
+@keyframes revertModalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes revertModalScaleUp {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}

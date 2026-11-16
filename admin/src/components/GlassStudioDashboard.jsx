@@ -13,6 +13,7 @@ import {
   LuExternalLink,
   LuPencil,
   LuTrash2,
+  LuRotateCcw,
   LuPlay,
   LuPause,
   LuMaximize2,
@@ -34,6 +35,11 @@ export default function GlassStudioDashboard({
   onOpenModalWithMode, 
   onEditItem, 
   onDeleteItem,
+  deletedHistory = [],
+  lastDeleted = null,
+  onRestoreItem,
+  onRevertLast,
+  onOpenRevertModal,
   activeTab,
   setActiveTab,
   showToast,
@@ -42,9 +48,9 @@ export default function GlassStudioDashboard({
   // Navigation & Filter state
   const [activeNav, setActiveNav] = useState('projects');
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedFileFilter, setSelectedFileFilter] = useState('all');
   const [activeGraphicCategory, setActiveGraphicCategory] = useState('All');
   const [activeVideoCategory, setActiveVideoCategory] = useState('All');
+  const [activeSeoCategory, setActiveSeoCategory] = useState('All');
   const [activeVideoModal, setActiveVideoModal] = useState(null);
   const [playingVideoId, setPlayingVideoId] = useState(null);
 
@@ -65,6 +71,15 @@ export default function GlassStudioDashboard({
     });
     return ['All', ...Array.from(set)];
   }, [videosData]);
+
+  // Dynamic SEO Categories extracted from live portfolio
+  const seoCategories = useMemo(() => {
+    const set = new Set();
+    seoData.forEach(s => {
+      if (s.category) set.add(s.category);
+    });
+    return ['All', ...Array.from(set)];
+  }, [seoData]);
 
   // Filtered Graphics for fast category exploration & real-time search
   const filteredGraphics = useMemo(() => {
@@ -89,6 +104,19 @@ export default function GlassStudioDashboard({
       return matchesCategory && matchesSearch;
     });
   }, [videosData, activeVideoCategory, searchQuery]);
+
+  // Filtered SEO for fast category exploration & real-time search
+  const filteredSeo = useMemo(() => {
+    return seoData.filter(s => {
+      const matchesCategory = activeSeoCategory === 'All' || s.category === activeSeoCategory;
+      const matchesSearch = !searchQuery.trim() ||
+        (s.client && s.client.toLowerCase().includes(searchQuery.toLowerCase())) ||
+        (s.topKeyword && s.topKeyword.toLowerCase().includes(searchQuery.toLowerCase())) ||
+        (s.category && s.category.toLowerCase().includes(searchQuery.toLowerCase())) ||
+        (s.website && s.website.toLowerCase().includes(searchQuery.toLowerCase()));
+      return matchesCategory && matchesSearch;
+    });
+  }, [seoData, activeSeoCategory, searchQuery]);
 
   // Real-time dynamic greeting based on client time
   const dynamicGreeting = useMemo(() => {
@@ -122,82 +150,6 @@ export default function GlassStudioDashboard({
     return '/seo_gsc_performance.jpg';
   };
 
-  // Map ALL items dynamically into a unified catalog
-  const allDynamicFiles = [
-    ...graphicsData.map((g) => ({
-      id: g.id,
-      title: g.title,
-      client: g.client || 'Graphic Client',
-      category: g.category || 'Brand Identity',
-      subtitle: `${g.client || 'Graphic'} • ${g.category || 'Artwork'}`,
-      type: 'graphic',
-      format: g.format || 'Poster (4:5)',
-      tagColor: '#3b82f6',
-      badgeIcon: '',
-      badgeText: 'Graphic',
-      image: g.image || 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=600&q=80',
-      author: g.client || 'Creative Team',
-      filesize: g.format || 'Artwork',
-      rawItem: g
-    })),
-    ...videosData.map((v) => ({
-      id: v.id,
-      title: v.title,
-      client: v.client || 'Video Client',
-      category: v.category || 'Commercial Reel',
-      subtitle: `${v.client || 'Video'} • ${v.duration || '0:45'} (${v.views || '180K'})`,
-      type: 'video',
-      format: 'Reel (MP4)',
-      tagColor: '#8b5cf6',
-      badgeIcon: '',
-      badgeText: 'Reel',
-      image: '',
-      video: v.video || v.videoUrl || '',
-      author: v.client || 'Production Team',
-      filesize: `${v.duration || '0:45'} • ${v.views || '180K'}`,
-      rawItem: v
-    })),
-    ...seoData.map((s) => ({
-      id: s.id,
-      title: s.client || 'SEO Client Partner',
-      client: s.client || 'SEO Partner',
-      category: s.topKeyword || 'SERP Rank #1',
-      subtitle: `${s.googleRank || '#1 Position'} • ${s.organicGrowth || '+350%'} Growth`,
-      type: 'seo',
-      format: 'Google Rank',
-      tagColor: '#ea580c',
-      badgeIcon: '',
-      badgeText: 'SEO',
-      image: getSeoThumb(s),
-      website: s.website || 'client.com',
-      author: s.client || 'SEO Dominance',
-      filesize: `${s.googleRank || '#1'} • ${s.trafficMonthly || '50K visits'}`,
-      rawItem: s
-    }))
-  ];
-
-  // Active selected item for preview (defaults to first available item)
-  const [selectedPreview, setSelectedPreview] = useState(null);
-  const currentPreview = selectedPreview || allDynamicFiles[0] || {
-    id: 'default',
-    title: 'Select an Asset to Inspect',
-    type: 'graphic',
-    filesize: 'Ready for Review',
-    author: 'RizeWorld Studio',
-    image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=600&q=80',
-    rawItem: {}
-  };
-
-  // Filter dynamic files by tab and search
-  const filteredFiles = allDynamicFiles.filter(f => {
-    const matchesTab = selectedFileFilter === 'all' || f.type === selectedFileFilter;
-    const matchesSearch = !searchQuery.trim() || 
-      f.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      (f.client && f.client.toLowerCase().includes(searchQuery.toLowerCase())) ||
-      (f.category && f.category.toLowerCase().includes(searchQuery.toLowerCase()));
-    return matchesTab && matchesSearch;
-  });
-
   return (
     <div className="management-glass-page">
       {/* Master Center Floating Glass Frame */}
@@ -228,7 +180,6 @@ export default function GlassStudioDashboard({
               className={`sidebar-nav-item ${activeNav === 'projects' || activeNav === 'home' ? 'sidebar-nav-item--active' : ''}`}
               onClick={() => {
                 setActiveNav('projects');
-                setSelectedFileFilter('all');
               }}
               title="Overview Dashboard"
             >
@@ -336,7 +287,7 @@ export default function GlassStudioDashboard({
 
             {/* Right Interactive Controls */}
             <div className="topbar-right-cluster">
-              {/* 3 Quick Direct Add Buttons */}
+              {/* 3 Quick Direct Add Buttons + Revert Recovery Center */}
               <div className="quick-crud-pill-group">
                 <button 
                   className="quick-add-pill-btn"
@@ -363,6 +314,16 @@ export default function GlassStudioDashboard({
                 >
                   <LuPlus size={15} />
                   <span>SEO</span>
+                </button>
+
+                {/* Revert / Recovery Pill */}
+                <button 
+                  className={`quick-add-pill-btn quick-revert-pill-btn ${deletedHistory.length > 0 ? 'quick-revert-pill-btn--active' : ''}`}
+                  onClick={onOpenRevertModal}
+                  title={deletedHistory.length > 0 ? `Revert / Restore ${deletedHistory.length} deleted assets` : "Trash is empty"}
+                >
+                  <LuRotateCcw size={14} />
+                  <span>Revert ({deletedHistory.length})</span>
                 </button>
               </div>
 
@@ -466,13 +427,26 @@ export default function GlassStudioDashboard({
                     Add new items, update existing details, or delete records. All changes save to real-time storage.
                   </p>
                 </div>
-                <button 
-                  className="crud-add-main-btn"
-                  onClick={() => onOpenModalWithMode(activeNav)}
-                >
-                  <LuPlus size={16} />
-                  <span>+ Add New {activeNav.toUpperCase()}</span>
-                </button>
+                <div className="crud-header-actions-group">
+                  {deletedHistory.some(i => i.deletedType === activeNav) && (
+                    <button 
+                      type="button"
+                      className="crud-revert-header-btn"
+                      onClick={() => onRevertLast(activeNav)}
+                      title={`Revert and restore last deleted ${activeNav} item`}
+                    >
+                      <LuRotateCcw size={15} />
+                      <span>↩ Revert Last Deleted</span>
+                    </button>
+                  )}
+                  <button 
+                    className="crud-add-main-btn"
+                    onClick={() => onOpenModalWithMode(activeNav)}
+                  >
+                    <LuPlus size={16} />
+                    <span>+ Add New {activeNav.toUpperCase()}</span>
+                  </button>
+                </div>
               </div>
 
               {/* Graphic Category Filter Pills */}
@@ -510,6 +484,56 @@ export default function GlassStudioDashboard({
                       </button>
                     );
                   })}
+                </div>
+              )}
+
+              {/* SEO Category Filter Pills */}
+              {activeNav === 'seo' && seoCategories.length > 1 && (
+                <div className="crud-category-filter-bar">
+                  {seoCategories.map(cat => {
+                    const count = cat === 'All' ? seoData.length : seoData.filter(s => s.category === cat).length;
+                    return (
+                      <button
+                        key={cat}
+                        type="button"
+                        className={`crud-cat-pill ${activeSeoCategory === cat ? 'crud-cat-pill--active' : ''}`}
+                        onClick={() => setActiveSeoCategory(cat)}
+                      >
+                        {cat} ({count})
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
+
+              {/* Recently Deleted In-Place Banner for Immediate Revert */}
+              {lastDeleted && lastDeleted.deletedType === activeNav && (
+                <div className="recent-deleted-banner">
+                  <div className="deleted-banner-info">
+                    <span className="deleted-banner-icon">🗑️</span>
+                    <span>
+                      Recently deleted: <strong>"{lastDeleted.title || lastDeleted.client}"</strong>
+                    </span>
+                  </div>
+                  <div className="deleted-banner-actions">
+                    <button 
+                      type="button" 
+                      className="btn-banner-revert"
+                      onClick={() => onRestoreItem(lastDeleted)}
+                      title="Undo delete and put this card back immediately"
+                    >
+                      <LuRotateCcw size={14} />
+                      <span>↩ Revert & Restore Card</span>
+                    </button>
+                    <button
+                      type="button"
+                      className="btn-banner-open-trash"
+                      onClick={onOpenRevertModal}
+                      title="Open full trash recovery center"
+                    >
+                      View Trash ({deletedHistory.length})
+                    </button>
+                  </div>
                 </div>
               )}
 
@@ -689,7 +713,7 @@ export default function GlassStudioDashboard({
                   </div>
                 )}
 
-                {activeNav === 'seo' && seoData.map((item) => (
+                {activeNav === 'seo' && filteredSeo.map((item) => (
                   <div key={item.id} className="crud-item-card crud-item-card--seo">
                     <div 
                       className="crud-card-thumb crud-card-thumb--seo"
@@ -707,7 +731,7 @@ export default function GlassStudioDashboard({
                         }}
                       />
                       <div className="crud-thumb-seo-overlay">
-                        <span className="crud-card-tag">{item.googleRank || '#1 Position'}</span>
+                        <span className="crud-card-tag">{item.category || item.googleRank || '#1 Position'}</span>
                         <span className="seo-growth-tag">{item.organicGrowth}</span>
                       </div>
                       <div className="seo-thumb-rank-pill-bottom">
@@ -754,6 +778,19 @@ export default function GlassStudioDashboard({
                     </div>
                   </div>
                 ))}
+
+                {activeNav === 'seo' && filteredSeo.length === 0 && (
+                  <div style={{ gridColumn: '1 / -1', padding: '40px', textAlign: 'center', color: '#64748b' }}>
+                    <p style={{ fontSize: '15px', fontWeight: 600 }}>No SEO records found in "{activeSeoCategory}" category.</p>
+                    <button 
+                      className="crud-cat-pill crud-cat-pill--active"
+                      style={{ marginTop: '12px' }}
+                      onClick={() => { setActiveSeoCategory('All'); setSearchQuery(''); }}
+                    >
+                      Reset Filter & View All ({seoData.length})
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           ) : (
@@ -1005,9 +1042,9 @@ export default function GlassStudioDashboard({
                   {/* Latest Graphic Artwork Preview */}
                   <div 
                     className="hub-preview-banner"
-                    onClick={() => {
-                      if (graphicsData[0]) setSelectedPreview(allDynamicFiles.find(f => f.id === graphicsData[0].id));
-                    }}
+                    onClick={() => setActiveNav('graphic')}
+                    style={{ cursor: 'pointer' }}
+                    title="Click to view all Graphic Artworks"
                   >
                     <img 
                       src={graphicsData[0]?.image || "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=600&q=80"} 
@@ -1065,9 +1102,9 @@ export default function GlassStudioDashboard({
                   {/* Latest Video Reel Banner */}
                   <div 
                     className="hub-preview-banner video-banner"
-                    onClick={() => {
-                      if (videosData[0]) setSelectedPreview(allDynamicFiles.find(f => f.id === videosData[0].id));
-                    }}
+                    onClick={() => setActiveNav('video')}
+                    style={{ cursor: 'pointer' }}
+                    title="Click to view all Video Reels"
                   >
                     <video 
                       src={videosData[0]?.video || videosData[0]?.videoUrl} 
@@ -1130,9 +1167,9 @@ export default function GlassStudioDashboard({
                   {/* Latest SEO Performance Metric Card */}
                   <div 
                     className="hub-preview-banner hub-seo-banner"
-                    onClick={() => {
-                      if (seoData[0]) setSelectedPreview(allDynamicFiles.find(f => f.id === seoData[0].id));
-                    }}
+                    onClick={() => setActiveNav('seo')}
+                    style={{ cursor: 'pointer' }}
+                    title="Click to view all SEO records"
                   >
                     <img 
                       src={getSeoThumb(seoData[0]) || "/seo_gsc_performance.jpg"} 
@@ -1177,252 +1214,6 @@ export default function GlassStudioDashboard({
 
               </div>
 
-
-              {/* ============================================================
-                  LOWER SECTION: ALL AGENCY ASSETS & ASSET INSPECTOR
-                  ============================================================ */}
-              <div className="management-lower-grid">
-
-                {/* CARD 4: ALL ASSETS & CONTENT CATALOG (Full CRUD With Edit & Delete) */}
-                <section className="glass-white-card card-all-files">
-                  <div className="files-card-header">
-                    {/* Category Filter Switcher */}
-                    <div className="files-filter-pills-row">
-                      <button 
-                        className={`files-filter-pill ${selectedFileFilter === 'all' ? 'files-filter-pill--active' : ''}`}
-                        onClick={() => setSelectedFileFilter('all')}
-                      >
-                        <LuLayoutGrid size={12} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
-                        All Portfolios ({allDynamicFiles.length})
-                      </button>
-                      <button 
-                        className={`files-filter-pill ${selectedFileFilter === 'graphic' ? 'files-filter-pill--active' : ''}`}
-                        onClick={() => setSelectedFileFilter('graphic')}
-                      >
-                        <LuImage size={12} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
-                        Graphic ({graphicsData.length})
-                      </button>
-                      <button 
-                        className={`files-filter-pill ${selectedFileFilter === 'video' ? 'files-filter-pill--active' : ''}`}
-                        onClick={() => setSelectedFileFilter('video')}
-                      >
-                        <LuFilm size={12} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
-                        Reel ({videosData.length})
-                      </button>
-                      <button 
-                        className={`files-filter-pill ${selectedFileFilter === 'seo' ? 'files-filter-pill--active' : ''}`}
-                        onClick={() => setSelectedFileFilter('seo')}
-                      >
-                        <LuTrendingUp size={12} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
-                        SEO ({seoData.length})
-                      </button>
-                    </div>
-
-                    {/* Quick Add Button */}
-                    <button 
-                      className="files-quick-add-btn"
-                      onClick={() => onOpenModalWithMode(selectedFileFilter === 'all' ? 'graphic' : selectedFileFilter)}
-                      title="Add New Asset"
-                    >
-                      <LuPlus size={14} />
-                      <span>Add</span>
-                    </button>
-                  </div>
-
-                  {/* Dynamic Asset Rows with Real Edit & Delete Action Buttons */}
-                  <div className="files-capsules-column custom-files-scroll">
-                    {filteredFiles.map((f) => (
-                      <div 
-                        key={f.id}
-                        className={`file-item-capsule file-item-capsule--${f.type} ${currentPreview.id === f.id ? 'file-item-capsule--selected' : ''}`}
-                        onClick={() => setSelectedPreview(f)}
-                        title="Click to inspect in Preview Panel"
-                      >
-                        <div className="file-capsule-thumb-wrap">
-                          {f.type === 'video' ? (
-                            <video 
-                              src={f.video} 
-                              className="file-capsule-thumb-img" 
-                              preload="metadata"
-                              muted
-                              playsInline
-                            />
-                          ) : (
-                            <img 
-                              src={f.image} 
-                              alt={f.title} 
-                              className="file-capsule-thumb-img" 
-                              onError={(e) => {
-                                e.target.onerror = null;
-                                e.target.src = "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=120&q=80";
-                              }}
-                            />
-                          )}
-                          <span className="file-badge-sq-mini" style={{ backgroundColor: f.tagColor }}>
-                            {f.type === 'graphic' && <LuImage size={9} color="#ffffff" />}
-                            {f.type === 'video' && <LuFilm size={9} color="#ffffff" />}
-                            {f.type === 'seo' && <LuTrendingUp size={9} color="#ffffff" />}
-                          </span>
-                        </div>
-
-                        <div className="file-info-text-col">
-                          <span className="file-capsule-name">{f.title}</span>
-                          <span className="file-capsule-meta">{f.subtitle}</span>
-                        </div>
-
-                        {/* Circular 3D Cyan Play/Inspect Button (Matching Reference Play Circle) */}
-                        <button 
-                          className="clay-row-circle-btn"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setSelectedPreview(f);
-                          }}
-                          title="Preview in Asset Inspector"
-                        >
-                          <LuPlay size={13} />
-                        </button>
-
-                        {/* Direct Edit & Delete Buttons on every row */}
-                        <div className="file-actions-cluster" onClick={(e) => e.stopPropagation()}>
-                          <button 
-                            className="row-action-btn row-action-edit"
-                            onClick={() => onEditItem(f.type, f.rawItem)}
-                            title={`Edit ${f.title}`}
-                          >
-                            <LuPencil size={14} />
-                          </button>
-                          <button 
-                            className="row-action-btn row-action-delete"
-                            onClick={() => {
-                              onDeleteItem(f.type, f.id);
-                              if (currentPreview.id === f.id) setSelectedPreview(null);
-                            }}
-                            title={`Delete ${f.title}`}
-                          >
-                            <LuTrash2 size={14} />
-                          </button>
-                        </div>
-                      </div>
-                    ))}
-
-                    {filteredFiles.length === 0 && (
-                      <div className="empty-files-hint">
-                        <span>No assets in this category. Click "+ Add" to create one!</span>
-                      </div>
-                    )}
-                  </div>
-                </section>
-
-
-                {/* CARD 5: ACTIVE ASSET INSPECTOR & PREVIEW (Electric Sapphire Blue Card) */}
-                <section className="card-file-preview-dark inspector-panel">
-                  {/* Header with Quick Actions */}
-                  <div className="preview-dark-header">
-                    <div className="preview-header-left">
-                      <span className="preview-header-title">
-                        <LuEye size={15} style={{ verticalAlign: 'middle', marginRight: '6px' }} />
-                        Asset Inspector
-                      </span>
-                    </div>
-
-                    {/* Quick Edit & Delete Buttons on Preview Card */}
-                    {currentPreview.rawItem?.id && (
-                      <div className="preview-header-actions">
-                        <button 
-                          className="preview-action-btn"
-                          onClick={() => onEditItem(currentPreview.type, currentPreview.rawItem)}
-                          title="Edit this item"
-                        >
-                          <LuPencil size={14} />
-                        </button>
-                        <button 
-                          className="preview-action-btn delete-action"
-                          onClick={() => {
-                            onDeleteItem(currentPreview.type, currentPreview.id);
-                            setSelectedPreview(null);
-                          }}
-                          title="Delete this item"
-                        >
-                          <LuTrash2 size={14} />
-                        </button>
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Artwork / Video / SEO Stage */}
-                  <div 
-                    className="preview-media-stage"
-                    onClick={() => {
-                      if (currentPreview.rawItem?.id) onEditItem(currentPreview.type, currentPreview.rawItem);
-                    }}
-                    title="Click to edit or inspect item"
-                  >
-                    {currentPreview.type === 'graphic' && (
-                      <img 
-                        src={currentPreview.image} 
-                        alt={currentPreview.title} 
-                        className="preview-fluid-img" 
-                      />
-                    )}
-
-                    {currentPreview.type === 'video' && (
-                      <div className="inspector-video-box" style={{ position: 'relative', width: '100%', height: '100%', borderRadius: '16px', overflow: 'hidden' }}>
-                        <video 
-                          src={currentPreview.video || currentPreview.rawItem?.video || currentPreview.rawItem?.videoUrl} 
-                          controls
-                          playsInline
-                          preload="metadata"
-                          className="inspector-video-bg-img" 
-                          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                        />
-                      </div>
-                    )}
-
-                    {currentPreview.type === 'seo' && (
-                      <div className="inspector-seo-box">
-                        <img 
-                          src={currentPreview.image} 
-                          alt={currentPreview.title} 
-                          className="inspector-seo-bg-img" 
-                        />
-                        <div className="inspector-seo-overlay">
-                          <span className="inspector-rank-badge">{currentPreview.rawItem?.googleRank || '#1 Position'}</span>
-                          <span className="inspector-growth-badge">{currentPreview.rawItem?.organicGrowth || '+350%'}</span>
-                          <span className="inspector-leads">{currentPreview.rawItem?.leadsPerMonth || '500+ Leads'}</span>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-
-                  {/* File Meta Details */}
-                  <div className="preview-meta-block">
-                    <span className="preview-filename">{currentPreview.title}</span>
-                    <span className="preview-filesize">{currentPreview.subtitle || currentPreview.filesize}</span>
-                  </div>
-
-                  {/* Footer Action Pill */}
-                  <div className="inspector-footer-row">
-                    <div className="preview-author-pill">
-                      <span className="author-name-text">Client: {currentPreview.author || 'RizeWorld Studio'}</span>
-                    </div>
-
-                    <button 
-                      className="inspector-edit-direct-btn"
-                      onClick={() => {
-                        if (currentPreview.rawItem?.id) {
-                          onEditItem(currentPreview.type, currentPreview.rawItem);
-                        } else {
-                          onOpenModalWithMode('graphic');
-                        }
-                      }}
-                    >
-                      <LuPencil size={13} />
-                      <span>Edit Asset</span>
-                    </button>
-                  </div>
-                </section>
-
-              </div>
 
               {/* ============================================================
                   3. BOTTOM CLAY BANNER (Matching Reference Bottom Bar)

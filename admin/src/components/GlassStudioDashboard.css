@@ -635,7 +635,7 @@
 .clay-stat-cards-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+  gap: 20px;
 }
 
 @media (max-width: 1300px) {
@@ -645,23 +645,23 @@
 }
 
 .clay-stat-card {
-  border-radius: 26px;
-  padding: 16px 18px;
+  border-radius: 28px;
+  padding: 20px 22px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  gap: 14px;
+  gap: 16px;
   position: relative;
   cursor: pointer;
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
   box-sizing: border-box;
-  min-height: 155px;
+  min-height: 168px;
   overflow: hidden;
 }
 
 .clay-stat-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
 }
 
 .clay-stat-card-left {
@@ -681,7 +681,7 @@
 }
 
 .clay-stat-label {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
   color: #475569;
   letter-spacing: -0.01em;
@@ -689,7 +689,7 @@
 }
 
 .clay-stat-number {
-  font-size: 32px;
+  font-size: 36px;
   font-weight: 800;
   color: #0f172a;
   letter-spacing: -0.03em;
@@ -728,9 +728,9 @@
 
 /* BIG 3D Visual Illustration Box (Matching Image 2 Reference) */
 .clay-stat-card-visual-box {
-  width: 135px;
-  height: 120px;
-  border-radius: 18px;
+  width: 145px;
+  height: 130px;
+  border-radius: 20px;
   overflow: hidden;
   position: relative;
   flex-shrink: 0;
@@ -975,22 +975,22 @@
 .management-upper-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  gap: 24px;
 }
 
 .card-portfolio-hub {
-  border-radius: 26px;
-  padding: 18px 20px;
+  border-radius: 30px;
+  padding: 24px 26px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 14px;
+  gap: 18px;
   transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease;
   box-sizing: border-box;
 }
 
 .card-portfolio-hub:hover {
-  transform: translateY(-2px);
+  transform: translateY(-4px);
 }
 
 /* Hub 1: Graphic Studio (Soft Mint-Cyan Clay) */
@@ -998,7 +998,7 @@
   background: linear-gradient(145deg, #d8f1f5 0%, #c4e9ef 100%);
   border: 1.8px solid rgba(255, 255, 255, 0.95);
   box-shadow: 
-    0 14px 30px -6px rgba(45, 122, 136, 0.18),
+    0 16px 36px -6px rgba(45, 122, 136, 0.2),
     inset 2px 2px 4px rgba(255, 255, 255, 0.95),
     inset -2px -2px 4px rgba(140, 185, 195, 0.25);
 }
@@ -1008,7 +1008,7 @@
   background: linear-gradient(145deg, #e4e4f5 0%, #d5d5ec 100%);
   border: 1.8px solid rgba(255, 255, 255, 0.95);
   box-shadow: 
-    0 14px 30px -6px rgba(90, 85, 135, 0.18),
+    0 16px 36px -6px rgba(90, 85, 135, 0.2),
     inset 2px 2px 4px rgba(255, 255, 255, 0.95),
     inset -2px -2px 4px rgba(175, 170, 205, 0.25);
 }
@@ -1018,7 +1018,7 @@
   background: linear-gradient(145deg, #e8f2fa 0%, #d8e8f5 100%);
   border: 1.8px solid rgba(255, 255, 255, 0.95);
   box-shadow: 
-    0 14px 30px -6px rgba(50, 95, 140, 0.16),
+    0 16px 36px -6px rgba(50, 95, 140, 0.18),
     inset 2px 2px 4px rgba(255, 255, 255, 0.95),
     inset -2px -2px 4px rgba(150, 180, 205, 0.25);
 }
@@ -1027,30 +1027,30 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 10px;
+  gap: 12px;
 }
 
 .hub-title-block {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 5px;
 }
 
 .hub-tag-badge {
   display: inline-flex;
   align-items: center;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
-  padding: 3px 10px;
+  padding: 4px 12px;
   border-radius: 9999px;
   width: fit-content;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.88);
   color: #1a2636;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
 .hub-main-title {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 800;
   color: #1a2636;
   margin: 0;
@@ -1060,10 +1060,10 @@
 .hub-port-link {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  padding: 4px 10px;
+  gap: 5px;
+  padding: 5px 12px;
   border-radius: 9999px;
-  font-size: 10.5px;
+  font-size: 11.5px;
   font-weight: 700;
   text-decoration: none;
   background: rgba(255, 255, 255, 0.9);
@@ -1081,13 +1081,13 @@
 /* Preview Banners with 3D Pillows */
 .hub-preview-banner {
   width: 100%;
-  height: 124px;
-  border-radius: 18px;
+  height: 250px;
+  border-radius: 22px;
   overflow: hidden;
   position: relative;
   cursor: pointer;
   box-shadow: 
-    0 6px 16px rgba(35, 60, 90, 0.1),
+    0 8px 22px rgba(35, 60, 90, 0.14),
     inset 0 0 0 1.5px rgba(255, 255, 255, 0.6);
 }
 
@@ -1105,22 +1105,22 @@
 .hub-banner-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 35%, rgba(16, 26, 38, 0.85) 100%);
+  background: linear-gradient(180deg, transparent 35%, rgba(16, 26, 38, 0.88) 100%);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 10px 14px;
+  padding: 16px 20px;
 }
 
 .hub-banner-title {
-  font-size: 12.5px;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 800;
   color: #ffffff;
 }
 
 .hub-banner-sub {
-  font-size: 10.5px;
-  font-weight: 500;
+  font-size: 13px;
+  font-weight: 600;
   color: #cbd5e1;
 }
 
@@ -1129,7 +1129,8 @@
   position: relative;
   background: #0f172a;
   overflow: hidden;
-  min-height: 120px;
+  height: 250px;
+  min-height: 250px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1152,8 +1153,8 @@
 
 .video-thumb-play-circle,
 .clay-video-play-btn {
-  width: 44px;
-  height: 44px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   background: linear-gradient(145deg, #4aa6b4, #2a7a87);
   display: flex;
@@ -1161,7 +1162,7 @@
   justify-content: center;
   color: #ffffff;
   box-shadow: 
-    0 6px 16px rgba(42, 122, 135, 0.45),
+    0 8px 22px rgba(42, 122, 135, 0.5),
     inset 1px 1px 2px rgba(255, 255, 255, 0.75);
   transition: transform 0.2s ease;
   z-index: 2;
@@ -1174,8 +1175,9 @@
 /* SEO Banner with Real Client Visual */
 .hub-seo-banner {
   position: relative;
-  min-height: 120px;
-  border-radius: 18px;
+  height: 250px;
+  min-height: 250px;
+  border-radius: 22px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -1202,11 +1204,11 @@
 .seo-banner-overlay {
   position: relative;
   z-index: 2;
-  padding: 10px 14px;
-  background: linear-gradient(180deg, transparent 0%, rgba(15, 23, 42, 0.9) 100%);
+  padding: 16px 20px;
+  background: linear-gradient(180deg, transparent 0%, rgba(15, 23, 42, 0.92) 100%);
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 4px;
 }
 
 .seo-banner-overlay .seo-spotlight-top {
@@ -1217,32 +1219,33 @@
 }
 
 .seo-banner-overlay .spotlight-rank {
-  font-size: 18px;
+  font-size: 24px;
   font-weight: 800;
   color: #ffffff;
 }
 
 .seo-banner-overlay .spotlight-growth {
-  font-size: 10.5px;
+  font-size: 12px;
   font-weight: 800;
   color: #0284c7;
   background: rgba(255, 255, 255, 0.95);
-  padding: 2px 7px;
+  padding: 3px 10px;
   border-radius: 999px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 .spotlight-kw {
-  font-size: 11px;
+  font-size: 12.5px;
   font-weight: 600;
-  color: #4b6075;
+  color: #e2e8f0;
 }
 
 /* Action Rows */
 .hub-action-row {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
+  margin-top: 4px;
 }
 
 .hub-btn {
@@ -1250,11 +1253,11 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  padding: 8px 12px;
+  gap: 8px;
+  padding: 12px 18px;
   border-radius: 9999px;
   border: none;
-  font-size: 11.5px;
+  font-size: 13.5px;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1946,23 +1949,24 @@
 /* Items Grid */
 .crud-cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 30px;
+  padding: 6px 2px 32px;
 }
 
 /* Base 3D Claymorphic Card (Soft, Pillowy, Tactile matching Reference) */
 .crud-item-card {
-  border-radius: 26px;
+  border-radius: 28px;
   overflow: hidden;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
-  border: 1.8px solid rgba(255, 255, 255, 0.95);
+  border: 2px solid rgba(255, 255, 255, 0.95);
   position: relative;
 }
 
 .crud-item-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-5px);
 }
 
 /* CARD 1 (1st, 5th, 9th...): Soft Pale Mint-Cyan Clay (Matching Reference Card 1) */
@@ -2093,11 +2097,26 @@
 /* Graphic & Video Thumbnails */
 .crud-card-thumb {
   width: 100%;
-  height: 180px;
+  height: 290px;
   position: relative;
   overflow: hidden;
   background: #141f2c;
   border-bottom: 1.5px solid rgba(255, 255, 255, 0.85);
+}
+
+/* For Video Reels, make the thumbnail taller (vertical reel format) */
+.crud-card-thumb--video {
+  height: 420px;
+}
+
+.crud-card-thumb--video.playing-active {
+  background: #000000;
+  height: 420px;
+}
+
+/* For SEO Cards */
+.crud-card-thumb--seo {
+  height: 270px;
 }
 
 .crud-thumb-img {
@@ -2113,36 +2132,36 @@
 
 .crud-card-tag {
   position: absolute;
-  top: 12px;
-  left: 12px;
-  background: rgba(255, 255, 255, 0.92);
+  top: 14px;
+  left: 14px;
+  background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(10px);
   color: #1a2636;
-  font-size: 10.5px;
+  font-size: 11.5px;
   font-weight: 800;
-  padding: 4px 10px;
+  padding: 5px 13px;
   border-radius: 9999px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.14);
 }
 
 .crud-video-badge {
   position: absolute;
-  bottom: 12px;
-  right: 12px;
-  background: rgba(16, 26, 38, 0.85);
+  bottom: 14px;
+  right: 14px;
+  background: rgba(16, 26, 38, 0.88);
   color: #ffffff;
-  font-size: 10.5px;
+  font-size: 11.5px;
   font-weight: 800;
-  padding: 3px 8px;
-  border-radius: 6px;
+  padding: 4px 10px;
+  border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
 .crud-thumb-seo-overlay {
   position: absolute;
-  top: 12px;
-  right: 12px;
-  left: 12px;
+  top: 14px;
+  right: 14px;
+  left: 14px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -2155,15 +2174,15 @@
 
 .seo-thumb-rank-pill-bottom {
   position: absolute;
-  bottom: 8px;
-  left: 10px;
-  background: rgba(15, 23, 42, 0.82);
-  backdrop-filter: blur(4px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  bottom: 12px;
+  left: 14px;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   color: #38bdf8;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
-  padding: 2.5px 8px;
+  padding: 3.5px 10px;
   border-radius: 999px;
   display: inline-flex;
   align-items: center;
@@ -2190,11 +2209,6 @@
   pointer-events: none;
 }
 
-.crud-card-thumb--video.playing-active {
-  background: #000000;
-  height: 220px;
-}
-
 .crud-active-video-player {
   width: 100%;
   height: 100%;
@@ -2215,39 +2229,40 @@
 .crud-body-header {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   margin-bottom: 2px;
 }
 
 /* Card Body (Frosted Translucent Chips) */
 .crud-card-body {
-  padding: 16px 18px 18px;
+  padding: 22px 24px 24px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
   flex: 1;
 }
 
 .crud-card-title {
-  font-size: 15px;
+  font-size: 17.5px;
   font-weight: 800;
   color: #1a2636;
   margin: 0;
   letter-spacing: -0.015em;
+  line-height: 1.35;
 }
 
 .crud-card-client,
 .crud-card-keyword,
 .crud-card-website {
-  font-size: 11.5px;
-  color: #34485e;
+  font-size: 13px;
+  color: #2c4257;
   font-weight: 600;
-  background: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.78);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  padding: 6px 12px;
-  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  padding: 9px 14px;
+  border-radius: 14px;
   box-shadow: 0 2px 6px rgba(35, 60, 90, 0.04);
   display: flex;
   align-items: center;
@@ -2258,9 +2273,9 @@
 .crud-card-actions {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   margin-top: auto;
-  padding-top: 12px;
+  padding-top: 14px;
 }
 
 .crud-btn {
@@ -2268,10 +2283,10 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  padding: 8px 16px;
+  gap: 8px;
+  padding: 10px 18px;
   border-radius: 9999px;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
@@ -2458,4 +2473,132 @@
   width: 100%;
   max-height: 70vh;
   object-fit: contain;
+}
+
+/* ============================================================
+   REVERT & DELETED ASSETS RECOVERY CONTROLS
+   ============================================================ */
+
+.quick-revert-pill-btn {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #64748b;
+  opacity: 0.75;
+}
+
+.quick-revert-pill-btn--active {
+  background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%) !important;
+  border-color: #34d399 !important;
+  color: #065f46 !important;
+  opacity: 1 !important;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.22);
+}
+
+.quick-revert-pill-btn--active:hover {
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%) !important;
+  transform: translateY(-1px);
+}
+
+.crud-header-actions-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.crud-revert-header-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #ecfdf5;
+  border: 1.5px solid #6ee7b7;
+  color: #065f46;
+  font-size: 12.5px;
+  font-weight: 700;
+  padding: 10px 18px;
+  border-radius: 9999px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.18);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.crud-revert-header-btn:hover {
+  background: #d1fae5;
+  border-color: #10b981;
+  color: #047857;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(16, 185, 129, 0.28);
+}
+
+/* In-Place Recently Deleted Banner */
+.recent-deleted-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  background: linear-gradient(135deg, #fef2f2 0%, #fff1f2 100%);
+  border: 1.5px solid #fecdd3;
+  border-radius: 18px;
+  padding: 12px 18px;
+  box-shadow: 0 6px 20px -4px rgba(244, 63, 94, 0.12);
+  margin-bottom: 20px;
+  animation: visionSlide 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-wrap: wrap;
+}
+
+.deleted-banner-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13.5px;
+  color: #9f1239;
+  font-weight: 500;
+}
+
+.deleted-banner-icon {
+  font-size: 18px;
+}
+
+.deleted-banner-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-banner-revert {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #10b981;
+  color: #ffffff;
+  border: none;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.32);
+  transition: all 0.2s ease;
+}
+
+.btn-banner-revert:hover {
+  background: #059669;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.42);
+}
+
+.btn-banner-open-trash {
+  background: #ffffff;
+  border: 1px solid #fda4af;
+  color: #be123c;
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 7px 14px;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.btn-banner-open-trash:hover {
+  background: #ffe4e6;
+  border-color: #f43f5e;
 }

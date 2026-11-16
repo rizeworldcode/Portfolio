@@ -7,23 +7,70 @@
   background: transparent;
 }
 
-/* Floating Toast Notification matching Black Pill Aesthetic */
+/* Floating Toast Notification matching Black Pill Aesthetic with Undo Action */
 .vision-toast {
   position: fixed;
   top: 24px;
   left: 50%;
   transform: translateX(-50%);
-  background: #000000;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+  background: #0f172a;
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
   color: #ffffff;
-  padding: 8px 20px;
+  padding: 8px 16px;
   border-radius: 9999px;
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 600;
   z-index: 9999;
   animation: visionSlide 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.vision-toast-msg {
+  white-space: nowrap;
+}
+
+.vision-toast-undo-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #10b981;
+  color: #ffffff;
+  border: none;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.4);
+  transition: all 0.2s ease;
+  margin-left: 4px;
+}
+
+.vision-toast-undo-btn:hover {
+  background: #059669;
+  transform: scale(1.04);
+}
+
+.vision-toast-close {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+  cursor: pointer;
+  margin-left: 4px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.vision-toast-close:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.15);
 }
 
 @keyframes visionSlide {

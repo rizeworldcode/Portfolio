@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import GlassStudioDashboard from './components/GlassStudioDashboard';
 import PortfolioView from './components/PortfolioView';
 import NewProjectModal from './components/NewProjectModal';
+import RevertTrashModal from './components/RevertTrashModal';
+import { LuRotateCcw } from 'react-icons/lu';
 import { 
   INITIAL_GRAPHICS, 
   INITIAL_VIDEOS, 
@@ -38,8 +40,11 @@ function App() {
     try {
       const saved = localStorage.getItem('rw_videos');
       const parsed = saved ? JSON.parse(saved) : null;
-      // Upgrade to all 55 authentic reels from the user's video portfolio
-      if (Array.isArray(parsed) && parsed.length >= 50 && parsed[0]?.title?.includes('Chappan Bhog')) {
+      // Upgrade to all 55 authentic reels with the 7 clean video portfolio categories
+      const hasOldFragmentedCats = Array.isArray(parsed) && parsed.some(v => 
+        v.category === 'Ambient Stream' || v.category === 'AI Gourmet' || v.category === 'Specialized OPD' || v.category === 'Interiors'
+      );
+      if (Array.isArray(parsed) && parsed.length >= 50 && !hasOldFragmentedCats) {
         return parsed;
       }
       localStorage.setItem('rw_videos', JSON.stringify(INITIAL_VIDEOS));
@@ -86,7 +91,12 @@ function App() {
             setGraphicsData(graphics);
           }
           if (Array.isArray(videos) && (videos.length >= 50 || videos[0]?.title?.includes('Chappan Bhog'))) {
-            setVideosData(videos);
+            const hasOldCats = videos.some(v => 
+              v.category === 'Ambient Stream' || v.category === 'AI Gourmet' || v.category === 'Specialized OPD' || v.category === 'Interiors'
+            );
+            if (!hasOldCats) {
+              setVideosData(videos);
+            }
           }
           if (Array.isArray(seo) && seo.length > 0) {
             setSeoData(seo);
@@ -118,11 +128,36 @@ function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalMode, setModalMode] = useState('graphic');
   const [editingItem, setEditingItem] = useState(null);
-  const [toastMessage, setToastMessage] = useState('');
 
-  const showToast = (msg) => {
-    setToastMessage(msg);
-    setTimeout(() => setToastMessage(''), 3500);
+  // Deleted Items History & Recovery Trash Bin
+  const [deletedHistory, setDeletedHistory] = useState(() => {
+    try {
+      const saved = localStorage.getItem('rw_deleted_history');
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
+  const [lastDeleted, setLastDeleted] = useState(null);
+  const [isRevertModalOpen, setIsRevertModalOpen] = useState(false);
+
+  // Sync deletedHistory to localStorage
+  useEffect(() => {
+    localStorage.setItem('rw_deleted_history', JSON.stringify(deletedHistory));
+  }, [deletedHistory]);
+
+  // Interactive Toast Notification with Undo Action
+  const [toastData, setToastData] = useState(null);
+
+  const showToast = (msg, undoCallback = null, undoLabel = '↩ Revert / Undo') => {
+    if (typeof msg === 'string') {
+      setToastData({ message: msg, onUndo: undoCallback, undoLabel });
+    } else {
+      setToastData(msg);
+    }
+    setTimeout(() => {
+      setToastData(current => (current?.message === (typeof msg === 'string' ? msg : msg?.message) ? null : current));
+    }, 6500);
   };
 
   const handleOpenModalWithMode = (mode) => {
@@ -180,6 +215,13 @@ function App() {
         );
         showToast(isEdit ? `Updated SEO: "${itemData.client}"` : `Added SEO Partner: "${itemData.client}"`);
       }
+
+      // 🔄 Real-time Live Disk Synchronization to :5174 & :5175 Portfolio Sites
+      fetch('/api/live-sync/save', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type: mode, item: itemData, isEdit })
+      }).catch(() => {});
     } catch (err) {
       console.error('Error saving item:', err);
       showToast('⚠️ Saved locally');
@@ -188,33 +230,147 @@ function App() {
     setEditingItem(null);
   };
 
-  // Delete item handler with MongoDB Atlas Sync
+  // Delete item handler with Revert Tracking & MongoDB Atlas Sync
   const handleDeleteItem = async (type, id) => {
     try {
+      let deletedItem = null;
       if (type === 'graphic') {
+        deletedItem = graphicsData.find(item => item.id === id || item._id === id);
         await deleteGraphic(id).catch(() => {});
         setGraphicsData(prev => prev.filter(item => item.id !== id && item._id !== id));
-        showToast('Graphic item removed');
       } else if (type === 'video') {
+        deletedItem = videosData.find(item => item.id === id || item._id === id);
         await deleteVideo(id).catch(() => {});
         setVideosData(prev => prev.filter(item => item.id !== id && item._id !== id));
-        showToast('Video reel removed');
       } else if (type === 'seo') {
+        deletedItem = seoData.find(item => item.id === id || item._id === id);
         await deleteSeo(id).catch(() => {});
         setSeoData(prev => prev.filter(item => item.id !== id && item._id !== id));
-        showToast('SEO record removed');
+      }
+
+      if (deletedItem) {
+        const historyEntry = { ...deletedItem, deletedType: type, deletedAt: Date.now() };
+        setDeletedHistory(prev => [historyEntry, ...prev.filter(x => (x.id !== historyEntry.id || !historyEntry.id) && (x._id !== historyEntry._id || !historyEntry._id))]);
+        setLastDeleted(historyEntry);
+
+        const itemLabel = deletedItem.title || deletedItem.client || 'Item';
+        showToast(
+          `🗑️ Deleted: "${itemLabel}"`,
+          () => handleRestoreItem(historyEntry),
+          '↩ Revert / Undo'
+        );
+
+        // 🔄 Real-time Live Disk Synchronization to :5174 & :5175 Portfolio Sites
+        fetch('/api/live-sync/delete', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ type, id, item: deletedItem })
+        }).catch(() => {});
       }
     } catch {
       showToast('Item removed');
     }
   };
 
+  // Revert / Restore single deleted item back to its portfolio
+  const handleRestoreItem = async (itemToRestore) => {
+    if (!itemToRestore) return;
+    const type = itemToRestore.deletedType || 'graphic';
+    const { deletedType, deletedAt, ...cleanItem } = itemToRestore;
+
+    try {
+      if (type === 'graphic') {
+        await createGraphic(cleanItem).catch(() => {});
+        setGraphicsData(prev => [cleanItem, ...prev.filter(x => (x.id !== cleanItem.id || !cleanItem.id) && (x._id !== cleanItem._id || !cleanItem._id))]);
+      } else if (type === 'video') {
+        await createVideo(cleanItem).catch(() => {});
+        setVideosData(prev => [cleanItem, ...prev.filter(x => (x.id !== cleanItem.id || !cleanItem.id) && (x._id !== cleanItem._id || !cleanItem._id))]);
+      } else if (type === 'seo') {
+        await createSeo(cleanItem).catch(() => {});
+        setSeoData(prev => [cleanItem, ...prev.filter(x => (x.id !== cleanItem.id || !cleanItem.id) && (x._id !== cleanItem._id || !cleanItem._id))]);
+      }
+
+      setDeletedHistory(prev => prev.filter(item => (item.id !== itemToRestore.id || !itemToRestore.id) && (item._id !== itemToRestore._id || !itemToRestore._id)));
+      if (lastDeleted && (lastDeleted.id === itemToRestore.id || lastDeleted._id === itemToRestore._id)) {
+        setLastDeleted(null);
+      }
+      showToast(`✅ Successfully Reverted: "${cleanItem.title || cleanItem.client}" restored!`);
+
+      // 🔄 Real-time Live Disk Synchronization to :5174 & :5175 Portfolio Sites
+      fetch('/api/live-sync/restore', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type, item: cleanItem })
+      }).catch(() => {});
+    } catch (err) {
+      console.error('Error restoring item:', err);
+      showToast('Failed to revert item');
+    }
+  };
+
+  // Revert last deleted item of a specific category/type
+  const handleRevertLast = (type) => {
+    const item = deletedHistory.find(i => !type || i.deletedType === type);
+    if (item) {
+      handleRestoreItem(item);
+    } else {
+      showToast('No deleted items found to revert');
+    }
+  };
+
+  // Restore all items
+  const handleRestoreAll = async () => {
+    if (deletedHistory.length === 0) return;
+    const items = [...deletedHistory];
+    for (const item of items) {
+      await handleRestoreItem(item);
+    }
+    setDeletedHistory([]);
+    setLastDeleted(null);
+    showToast(`🎉 Restored all ${items.length} items back to portfolios!`);
+  };
+
+  // Permanent Delete & Clear
+  const handlePermanentDelete = (itemToDelete) => {
+    setDeletedHistory(prev => prev.filter(item => (item.id !== itemToDelete.id || !itemToDelete.id) && (item._id !== itemToDelete._id || !itemToDelete._id)));
+    if (lastDeleted && (lastDeleted.id === itemToDelete.id || lastDeleted._id === itemToDelete._id)) {
+      setLastDeleted(null);
+    }
+    showToast('Item permanently deleted from trash');
+  };
+
+  const handleClearAllTrash = () => {
+    setDeletedHistory([]);
+    setLastDeleted(null);
+    showToast('Trash bin emptied');
+  };
+
   return (
     <div className="vision-glass-app">
-      {/* Toast Notification */}
-      {toastMessage && (
+      {/* Toast Notification with Instant Undo Revert Action */}
+      {toastData && (
         <div className="vision-toast">
-          <span>{toastMessage}</span>
+          <span className="vision-toast-msg">{toastData.message}</span>
+          {toastData.onUndo && (
+            <button
+              type="button"
+              className="vision-toast-undo-btn"
+              onClick={() => {
+                toastData.onUndo();
+                setToastData(null);
+              }}
+            >
+              <LuRotateCcw size={12} />
+              <span>{toastData.undoLabel || '↩ Revert'}</span>
+            </button>
+          )}
+          <button
+            type="button"
+            className="vision-toast-close"
+            onClick={() => setToastData(null)}
+          >
+            ✕
+          </button>
         </div>
       )}
 
@@ -228,6 +384,11 @@ function App() {
           onOpenModalWithMode={handleOpenModalWithMode}
           onEditItem={handleEditItem}
           onDeleteItem={handleDeleteItem}
+          deletedHistory={deletedHistory}
+          lastDeleted={lastDeleted}
+          onRestoreItem={handleRestoreItem}
+          onRevertLast={handleRevertLast}
+          onOpenRevertModal={() => setIsRevertModalOpen(true)}
           activeTab={activeTab}
           setActiveTab={setActiveTab}
           showToast={showToast}
@@ -273,11 +434,25 @@ function App() {
         isOpen={isModalOpen}
         initialMode={modalMode}
         editItem={editingItem}
+        graphicsData={graphicsData}
+        videosData={videosData}
+        seoData={seoData}
         onClose={() => {
           setIsModalOpen(false);
           setEditingItem(null);
         }}
         onSave={handleSaveItem}
+      />
+
+      {/* Deleted Assets Recovery & Revert Center Modal */}
+      <RevertTrashModal
+        isOpen={isRevertModalOpen}
+        onClose={() => setIsRevertModalOpen(false)}
+        deletedHistory={deletedHistory}
+        onRestoreItem={handleRestoreItem}
+        onRestoreAll={handleRestoreAll}
+        onPermanentDelete={handlePermanentDelete}
+        onClearAllTrash={handleClearAllTrash}
       />
     </div>
   );

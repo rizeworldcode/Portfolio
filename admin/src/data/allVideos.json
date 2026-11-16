@@ -1,28 +1,8 @@
 [
   {
-    "id": "ai-1",
-    "title": "Chappan Bhog AI Gourmet Feast Reel",
-    "category": "AI Gourmet",
-    "categoryKey": "ai",
-    "client": "Chappan Bhog",
-    "duration": "0:18",
-    "views": "210K",
-    "likes": "18.4K",
-    "video": "/videos-compressed/chappan-bhog.mp4",
-    "videoUrl": "/videos-compressed/chappan-bhog.mp4",
-    "description": "Delectable AI-enhanced culinary showcase featuring mouthwatering Indian delicacies, cinematic slow-motion transitions, and rich festive ambiance.",
-    "tags": [
-      "AI Food",
-      "Gourmet Visuals",
-      "Culinary AI",
-      "Chappan Bhog"
-    ],
-    "featured": true
-  },
-  {
     "id": "ai-2",
     "title": "Jain Events Dadhikar Fort Heritage Grandeur",
-    "category": "AI Heritage",
+    "category": "AI Video",
     "categoryKey": "ai",
     "client": "Jain Events",
     "duration": "0:51",
@@ -37,12 +17,13 @@
       "Royal Wedding",
       "Heritage AI"
     ],
-    "featured": true
+    "featured": true,
+    "subCategory": "AI Heritage"
   },
   {
     "id": "ai-3",
     "title": "Kafesa Cafe Vibrant AI Aesthetic Edit",
-    "category": "AI Cafe Trend",
+    "category": "AI Video",
     "categoryKey": "ai",
     "client": "Kafesa Cafe",
     "duration": "0:11",
@@ -57,12 +38,13 @@
       "Cafe Vibe",
       "AI Motion"
     ],
-    "featured": true
+    "featured": true,
+    "subCategory": "AI Cafe Trend"
   },
   {
     "id": "ai-4",
     "title": "Kafesa x Marvel Superhero AI Universe Crossover",
-    "category": "Marvel AI Crossover",
+    "category": "AI Video",
     "categoryKey": "ai",
     "client": "Kafesa Cafe",
     "duration": "0:16",
@@ -77,12 +59,13 @@
       "Sci-Fi Visuals",
       "Viral Concept"
     ],
-    "featured": true
+    "featured": true,
+    "subCategory": "Marvel AI Crossover"
   },
   {
     "id": "ai-5",
     "title": "MediCompares Next-Gen Healthcare Technology",
-    "category": "AI Medical Tech",
+    "category": "AI Video",
     "categoryKey": "ai",
     "client": "MediCompares",
     "duration": "0:57",
@@ -97,12 +80,13 @@
       "MediCompares",
       "Diagnostics"
     ],
-    "featured": true
+    "featured": true,
+    "subCategory": "AI Medical Tech"
   },
   {
     "id": "ai-6",
     "title": "MediCompares Meta Ads High-Conversion Creative",
-    "category": "Meta Ads AI",
+    "category": "AI Video",
     "categoryKey": "ai",
     "client": "MediCompares",
     "duration": "0:35",
@@ -117,12 +101,13 @@
       "Healthcare Lead Gen",
       "AI Ads"
     ],
-    "featured": false
+    "featured": false,
+    "subCategory": "Meta Ads AI"
   },
   {
     "id": "ai-7",
     "title": "Teeva Futuristic AI Product Motion Vol. 1",
-    "category": "AI Product Motion",
+    "category": "AI Video",
     "categoryKey": "ai",
     "client": "Teeva Lifestyle",
     "duration": "0:42",
@@ -137,12 +122,13 @@
       "3D AI",
       "Futuristic Commercial"
     ],
-    "featured": false
+    "featured": false,
+    "subCategory": "AI Product Motion"
   },
   {
     "id": "ai-8",
     "title": "Teeva Dynamic Kinetic Brand Narrative Vol. 2",
-    "category": "Kinetic AI",
+    "category": "AI Video",
     "categoryKey": "ai",
     "client": "Teeva Lifestyle",
     "duration": "1:09",
@@ -157,12 +143,13 @@
       "Commercial Storytelling",
       "AI Motion"
     ],
-    "featured": false
+    "featured": false,
+    "subCategory": "Kinetic AI"
   },
   {
     "id": "ai-9",
     "title": "Zoniraz Royal Diamond Luminescence",
-    "category": "AI Luxury Jewellery",
+    "category": "AI Video",
     "categoryKey": "ai",
     "client": "Zoniraz Jewellery",
     "duration": "0:23",
@@ -177,12 +164,13 @@
       "Luxury Gold",
       "AI Sparkle"
     ],
-    "featured": false
+    "featured": false,
+    "subCategory": "AI Luxury Jewellery"
   },
   {
     "id": "ai-10",
     "title": "Zoniraz Nationwide Franchise Expansion Vision",
-    "category": "AI Brand Franchise",
+    "category": "AI Video",
     "categoryKey": "ai",
     "client": "Zoniraz Jewellery",
     "duration": "1:04",
@@ -197,12 +185,13 @@
       "Jewellery Business",
       "Corporate Reel"
     ],
-    "featured": false
+    "featured": false,
+    "subCategory": "AI Brand Franchise"
   },
   {
     "id": "hosp-1",
     "title": "Saniya Hospital Specialized Doctors & OPD",
-    "category": "Specialized OPD",
+    "category": "Hospital & Healthcare",
     "categoryKey": "hospital",
     "client": "Saniya Hospital",
     "duration": "0:40",
@@ -217,12 +206,13 @@
       "Surgery Wing",
       "Healthcare"
     ],
-    "featured": false
+    "featured": false,
+    "subCategory": "Specialized OPD"
   },
   {
     "id": "hosp-3",
     "title": "Dr. Himanshu Bansod Specialist Guidance",
-    "category": "Specialist",
+    "category": "Hospital & Healthcare",
     "categoryKey": "hospital",
     "client": "Dr. Himanshu Bansod",
     "duration": "0:35",
@@ -236,12 +226,13 @@
       "Medical Advice",
       "Specialist Reel"
     ],
-    "featured": false
+    "featured": false,
+    "subCategory": "Specialist"
   },
   {
     "id": "hosp-4",
     "title": "Dr. Swati Yadav Patient Wellness & Consult",
-    "category": "Consultation",
+    "category": "Hospital & Healthcare",
     "categoryKey": "hospital",
     "client": "Dr. Swati Yadav Clinic",
     "duration": "0:42",
@@ -255,12 +246,13 @@
       "Consultation",
       "Doctor Branding"
     ],
-    "featured": false
+    "featured": false,
+    "subCategory": "Consultation"
   },
   {
     "id": "hosp-5",
     "title": "MediCompares Clinical Diagnostic Scans",
-    "category": "Clinical",
+    "category": "Hospital & Healthcare",
     "categoryKey": "hospital",
     "client": "Medicompares Healthcare",
     "duration": "0:50",
@@ -274,12 +266,13 @@
       "Clinical Analysis",
       "Medical Video"
     ],
-    "featured": false
+    "featured": false,
+    "subCategory": "Clinical"
   },
   {
     "id": "hosp-6",
     "title": "MediCompares Digital Telemedicine Connect",
-    "category": "Telemedicine",
+    "category": "Hospital & Healthcare",
     "categoryKey": "hospital",
     "client": "MediCompares Health",
     "duration": "0:38",
@@ -293,12 +286,13 @@
       "Digital Doctor",
       "App Promo"
     ],
-    "featured": false
+    "featured": false,
+    "subCategory": "Telemedicine"
   },
   {
     "id": "hosp-7",
     "title": "MediCompares Emergency First-Aid Guide",
-    "category": "Health Tips",
+    "category": "Hospital & Healthcare",
     "categoryKey": "hospital",
     "client": "MediCompares Education",
     "duration": "0:44",
@@ -312,12 +306,13 @@
       "Health Tips",
       "Public Awareness"
     ],
-    "featured": false
+    "featured": false,
+    "subCategory": "Health Tips"
   },
   {
     "id": "school-1",
     "title": "DWPS Admissions Promo Campaign",
-    "category": "Admissions",
+    "category": "School & Education",
     "categoryKey": "school",
     "client": "Delhi World Public School",
     "duration": "0:45",
@@ -332,12 +327,13 @@
       "Smart Class",
       "Admissions"
     ],
-    "featured": false
+    "featured": false,
+    "subCategory": "Admissions"
   },
   {
     "id": "school-2",
     "title": "DWPS Campus Building & Growth Architecture",
-    "category": "Campus Tour",
+    "category": "School & Education",
     "categoryKey": "school",
     "client": "DWPS Academy",
     "duration": "0:48",
@@ -351,12 +347,13 @@
       "Education",
       "Campus Architecture"
     ],
-    "featured": false
+    "featured": false,
+    "subCategory": "Campus Tour"
   },
   {
     "id": "school-3",
     "title": "DWPS Athletics & Speed Skating Championship",
-    "category": "Athletics",
+    "category": "School & Education",
     "categoryKey": "school",
     "client": "DWPS Alwar Sports",
     "duration": "0:40",
@@ -370,12 +367,13 @@
       "Athletics",
       "Campus Life"
     ],
-    "featured": false
+    "featured": false,
+    "subCategory": "Athletics"
   },
   {
     "id": "school-4",
     "title": "DWPS Foundation Day 26 Celebrations",
-    "category": "Annual Gala",
+    "category": "School & Education",
     "categoryKey": "school",
     "client": "DWPS Alwar",
     "duration": "0:52",
@@ -389,12 +387,13 @@
       "Cultural Dance",
       "Stage Performance"
     ],
-    "featured": false
+    "featured": false,
+    "subCategory": "Annual Gala"
   },
   {
     "id": "school-5",
     "title": "DWPS Academic Assembly & Leadership Reel",
-    "category": "Assembly",
+    "category": "School & Education",
     "categoryKey": "school",
     "client": "DWPS Student Council",
     "duration": "0:36",
@@ -408,12 +407,13 @@
       "Leadership",
       "School Values"
     ],
-    "featured": false
+    "featured": false,
+    "subCategory": "Assembly"
   },
   {
     "id": "food-1",
     "title": "Kafesa Signature Extension Reveal",
-    "category": "Ambience",
+    "category": "Cafe & Restaurant",
     "categoryKey": "food",
     "client": "Kafesa Lounge",
     "duration": "0:42",
@@ -428,12 +428,13 @@
       "Night Life",
       "Cozy Coffee"
     ],
-    "featured": false
+    "featured": false,
+    "subCategory": "Ambience"
   },
   {
     "id": "food-2",
     "title": "Kafesa Artisan Kitchen Chapter 1",
-    "category": "Gourmet Kitchen",
+    "category": "Cafe & Restaurant",
     "categoryKey": "food",
     "client": "Kafesa Cafe",
     "duration": "0:46",
@@ -448,12 +449,13 @@
       "Artisan Pasta",
       "Food Cinema"
     ],
-    "featured": false
+    "featured": false,
+    "subCategory": "Gourmet Kitchen"
   },
   {
     "id": "food-3",
     "title": "Sigdi Food Lounge Grand Experience",
-    "category": "Royal Dining",
+    "category": "Cafe & Restaurant",
     "categoryKey": "food",
     "client": "Sigdi Food Lounge",
     "duration": "0:48",
@@ -467,12 +469,13 @@
       "Indian Cuisine",
       "Family Feast"
     ],
-    "featured": false
+    "featured": false,
+    "subCategory": "Royal Dining"
   },
   {
     "id": "food-4",
     "title": "Sigdi Influencer BBQ Charcoal Fest",
-    "category": "Influencer Collab",
+    "category": "Cafe & Restaurant",
     "categoryKey": "food",
     "client": "Sigdi Restaurant",
     "duration": "0:39",
@@ -486,12 +489,13 @@
       "Viral Food",
       "BBQ Feast"
     ],
-    "featured": false
+    "featured": false,
+    "subCategory": "Influencer Collab"
   },
   {
     "id": "food-5",
     "title": "Avantika Crunch Logs Gourmet Bites",
-    "category": "Cafe Special",
+    "category": "Cafe & Restaurant",
     "categoryKey": "food",
     "client": "Avantika Cafe & Restaurant",
     "duration": "0:45",
@@ -506,12 +510,13 @@
       "Food Reels",
       "Crispy Bites"
     ],
-    "featured": false
+    "featured": false,
+    "subCategory": "Cafe Special"
   },
   {
     "id": "food-6",
     "title": "Avantika Navratri Festive Grand Feast",
-    "category": "Festive Dining",
+    "category": "Cafe & Restaurant",
     "categoryKey": "food",
     "client": "Avantika Restaurant & Banquet",
     "duration": "0:50",
@@ -526,12 +531,13 @@
       "Dining Ambience",
       "Navratri Special"
     ],
-    "featured": false
+    "featured": false,
+    "subCategory": "Festive Dining"
   },
   {
     "id": "real-2",
     "title": "Modern Skyline High-Rise Infrastructure",
-    "category": "CGI & Infra",
+    "category": "Real Estate & Infra",
     "categoryKey": "realestate",
     "client": "Skyline Infra Developers",
     "duration": "0:48",
@@ -545,12 +551,13 @@
       "High Rise",
       "CGI Architecture"
     ],
-    "featured": false
+    "featured": false,
+    "subCategory": "CGI & Infra"
   },
   {
     "id": "real-3",
     "title": "Luxury 3BHK Residence Interior Tour",
-    "category": "Interiors",
+    "category": "Real Estate & Infra",
     "categoryKey": "realestate",
     "client": "Skyline Living Infra",
     "duration": "0:52",
@@ -564,12 +571,13 @@
       "Interior Design",
       "Modern Living"
     ],
-    "featured": false
+    "featured": false,
+    "subCategory": "Interiors"
   },
   {
     "id": "real-4",
     "title": "Commercial Infrastructure Hub Development",
-    "category": "Commercial Hub",
+    "category": "Real Estate & Infra",
     "categoryKey": "realestate",
     "client": "Skyline Infrastructure",
     "duration": "0:44",
@@ -583,12 +591,13 @@
       "Construction",
       "Engineering"
     ],
-    "featured": false
+    "featured": false,
+    "subCategory": "Commercial Hub"
   },
   {
     "id": "real-5",
     "title": "Ambhuti High-Performance Adhesives Reel 2.1",
-    "category": "Construction Infra",
+    "category": "Real Estate & Infra",
     "categoryKey": "realestate",
     "client": "Ambhuti Chemicals",
     "duration": "0:40",
@@ -603,12 +612,13 @@
       "Industrial Infra",
       "Build Tech"
     ],
-    "featured": false
+    "featured": false,
+    "subCategory": "Construction Infra"
   },
   {
     "id": "real-6",
     "title": "Ambhuti Tile Adhesive Extreme Weather Grip",
-    "category": "Build Tech",
+    "category": "Real Estate & Infra",
     "categoryKey": "realestate",
     "client": "Ambhuti Build",
     "duration": "0:36",
@@ -623,12 +633,13 @@
       "Tile Adhesive",
       "Infra Materials"
     ],
-    "featured": false
+    "featured": false,
+    "subCategory": "Build Tech"
   },
   {
     "id": "creative-1",
     "title": "Shivaura Citirin Luxury Gemstone Film",
-    "category": "Product Promo",
+    "category": "Jewellery & Gemstones",
     "categoryKey": "creative",
     "client": "Shivaura Gemstone",
     "duration": "0:38",
@@ -642,12 +653,13 @@
       "Jewelry",
       "Macro Shine"
     ],
-    "featured": false
+    "featured": false,
+    "subCategory": "Product Promo"
   },
   {
     "id": "creative-2",
     "title": "Shivaura Royal Heritage Jewelry Commercial",
-    "category": "Brand Film",
+    "category": "Jewellery & Gemstones",
     "categoryKey": "creative",
     "client": "Shivaura Jewels",
     "duration": "0:54",
@@ -661,12 +673,13 @@
       "Royal Heritage",
       "Commercial Film"
     ],
-    "featured": false
+    "featured": false,
+    "subCategory": "Brand Film"
   },
   {
     "id": "creative-3",
     "title": "Zoniraz Urban Fashion Lookbook Commercial",
-    "category": "Fashion Film",
+    "category": "Jewellery & Gemstones",
     "categoryKey": "creative",
     "client": "Zoniraz Apparel",
     "duration": "0:50",
@@ -680,12 +693,13 @@
       "Retail Brand",
       "Sound Sync"
     ],
-    "featured": false
+    "featured": false,
+    "subCategory": "Fashion Film"
   },
   {
     "id": "creative-4",
     "title": "Zoniraz KD Streetwear Drop Campaign",
-    "category": "Streetwear",
+    "category": "Jewellery & Gemstones",
     "categoryKey": "creative",
     "client": "Zoniraz Streetwear",
     "duration": "0:42",
@@ -699,12 +713,13 @@
       "Gen-Z Fashion",
       "Kinetic Edits"
     ],
-    "featured": false
+    "featured": false,
+    "subCategory": "Streetwear"
   },
   {
     "id": "creative-5",
     "title": "Shivaura Handcrafted Gemstone Tree Reel",
-    "category": "Artisan Gemstones",
+    "category": "Jewellery & Gemstones",
     "categoryKey": "creative",
     "client": "Shivaura Gemstones",
     "duration": "0:45",
@@ -719,12 +734,13 @@
       "Artisan Gemstones",
       "Product Reel"
     ],
-    "featured": false
+    "featured": false,
+    "subCategory": "Artisan Gemstones"
   },
   {
     "id": "life-1",
     "title": "Mindful Community Group Yoga Gathering",
-    "category": "Community Yoga",
+    "category": "Lifestyle & Wellness",
     "categoryKey": "lifestyle",
     "client": "Yoga Lifestyle Life",
     "duration": "0:44",
@@ -738,12 +754,13 @@
       "Community Wellness",
       "Sunrise Flow"
     ],
-    "featured": false
+    "featured": false,
+    "subCategory": "Community Yoga"
   },
   {
     "id": "life-2",
     "title": "Breath & Balance Cinematic Yoga Short Film",
-    "category": "Cinematic Film",
+    "category": "Lifestyle & Wellness",
     "categoryKey": "lifestyle",
     "client": "Yoga Living Foundation",
     "duration": "0:56",
@@ -757,13 +774,14 @@
       "Meditation",
       "Cinematic Wellness"
     ],
-    "featured": false
+    "featured": false,
+    "subCategory": "Cinematic Film"
   },
   {
     "id": "reel-1",
     "title": "Rizeworld Master Showreel",
-    "category": "Cinematic Showcase",
-    "categoryKey": "showcase",
+    "category": "AI Video",
+    "categoryKey": "ai",
     "client": "Rizeworld Studios",
     "duration": "0:45",
     "views": "240K",
@@ -777,13 +795,14 @@
       "4K Video",
       "Sound Design"
     ],
-    "featured": true
+    "featured": true,
+    "subCategory": "Cinematic Showcase"
   },
   {
     "id": "item-2",
     "title": "Creative Pro Motion & Skills",
-    "category": "Cinematic Showcase",
-    "categoryKey": "showcase",
+    "category": "AI Video",
+    "categoryKey": "ai",
     "client": "Creative Corp",
     "duration": "0:45",
     "views": "240K",
@@ -796,13 +815,14 @@
       "3D Motion",
       "Brand Film"
     ],
-    "featured": true
+    "featured": true,
+    "subCategory": "Cinematic Showcase"
   },
   {
     "id": "item-3",
     "title": "Kafesa Gourmet Spotlight",
-    "category": "Cinematic Showcase",
-    "categoryKey": "showcase",
+    "category": "Cafe & Restaurant",
+    "categoryKey": "food",
     "client": "Kafesa Cafe & Bistro",
     "duration": "0:45",
     "views": "240K",
@@ -815,13 +835,14 @@
       "Food & Beverage",
       "Commercial"
     ],
-    "featured": true
+    "featured": true,
+    "subCategory": "Cinematic Showcase"
   },
   {
     "id": "item-5",
     "title": "Sigdi Sizzling Food Feast",
-    "category": "Cinematic Showcase",
-    "categoryKey": "showcase",
+    "category": "Cafe & Restaurant",
+    "categoryKey": "food",
     "client": "Sigdi Food Lounge",
     "duration": "0:45",
     "views": "240K",
@@ -834,13 +855,14 @@
       "Live Kitchen",
       "Dynamic Cut"
     ],
-    "featured": true
+    "featured": true,
+    "subCategory": "Cinematic Showcase"
   },
   {
     "id": "item-6",
     "title": "Avantika Royal Living",
-    "category": "Cinematic Showcase",
-    "categoryKey": "showcase",
+    "category": "Cafe & Restaurant",
+    "categoryKey": "food",
     "client": "Avantika Group",
     "duration": "0:45",
     "views": "240K",
@@ -853,13 +875,14 @@
       "Architecture",
       "Luxury Tour"
     ],
-    "featured": true
+    "featured": true,
+    "subCategory": "Cinematic Showcase"
   },
   {
     "id": "item-7",
     "title": "DWPS Horizons Campaign",
-    "category": "Cinematic Showcase",
-    "categoryKey": "showcase",
+    "category": "School & Education",
+    "categoryKey": "school",
     "client": "DWPS Alwar",
     "duration": "0:45",
     "views": "240K",
@@ -872,13 +895,14 @@
       "Education",
       "Storytelling"
     ],
-    "featured": true
+    "featured": true,
+    "subCategory": "Cinematic Showcase"
   },
   {
     "id": "item-8",
     "title": "Serenity Yoga & Nature Film",
-    "category": "Cinematic Showcase",
-    "categoryKey": "showcase",
+    "category": "Lifestyle & Wellness",
+    "categoryKey": "lifestyle",
     "client": "Yoga Lifestyle Life",
     "duration": "0:45",
     "views": "240K",
@@ -891,13 +915,14 @@
       "Slow Motion",
       "Wellness"
     ],
-    "featured": true
+    "featured": true,
+    "subCategory": "Cinematic Showcase"
   },
   {
     "id": "stream-47",
     "title": "17th June Milestone Visuals",
-    "category": "Ambient Stream",
-    "categoryKey": "stream",
+    "category": "AI Video",
+    "categoryKey": "ai",
     "client": "Rizeworld Events",
     "duration": "0:40",
     "views": "165K",
@@ -909,13 +934,14 @@
       "Event Film",
       "Cinematic"
     ],
-    "featured": false
+    "featured": false,
+    "subCategory": "Ambient Stream"
   },
   {
     "id": "stream-48",
     "title": "Elemental Water Macro Cinema",
-    "category": "Ambient Stream",
-    "categoryKey": "stream",
+    "category": "Lifestyle & Wellness",
+    "categoryKey": "lifestyle",
     "client": "Cinematic Nature Studies",
     "duration": "0:40",
     "views": "165K",
@@ -927,13 +953,14 @@
       "Macro Visual",
       "Cinematic"
     ],
-    "featured": false
+    "featured": false,
+    "subCategory": "Ambient Stream"
   },
   {
     "id": "stream-49",
     "title": "Ambhuti High Bond Material Film",
-    "category": "Ambient Stream",
-    "categoryKey": "stream",
+    "category": "Real Estate & Infra",
+    "categoryKey": "realestate",
     "client": "Ambhuti Group",
     "duration": "0:40",
     "views": "165K",
@@ -945,13 +972,14 @@
       "Industrial Reel",
       "Cinematic"
     ],
-    "featured": false
+    "featured": false,
+    "subCategory": "Ambient Stream"
   },
   {
     "id": "stream-50",
     "title": "Saniya Hospital Ambience & Stories",
-    "category": "Ambient Stream",
-    "categoryKey": "stream",
+    "category": "Hospital & Healthcare",
+    "categoryKey": "hospital",
     "client": "Saniya Hospital",
     "duration": "0:40",
     "views": "165K",
@@ -963,13 +991,14 @@
       "Healthcare Docu",
       "Cinematic"
     ],
-    "featured": false
+    "featured": false,
+    "subCategory": "Ambient Stream"
   },
   {
     "id": "stream-51",
     "title": "High-Octane Cinematic Action Showcase",
-    "category": "Ambient Stream",
-    "categoryKey": "stream",
+    "category": "AI Video",
+    "categoryKey": "ai",
     "client": "Apex Motion Pictures",
     "duration": "0:40",
     "views": "165K",
@@ -981,13 +1010,14 @@
       "Action Cinema",
       "Cinematic"
     ],
-    "featured": false
+    "featured": false,
+    "subCategory": "Ambient Stream"
   },
   {
     "id": "stream-52",
     "title": "Rize Creative Academy Hub",
-    "category": "Ambient Stream",
-    "categoryKey": "stream",
+    "category": "School & Education",
+    "categoryKey": "school",
     "client": "Rize Institute",
     "duration": "0:40",
     "views": "165K",
@@ -999,13 +1029,14 @@
       "Academy Reel",
       "Cinematic"
     ],
-    "featured": false
+    "featured": false,
+    "subCategory": "Ambient Stream"
   },
   {
     "id": "stream-53",
     "title": "Creator Influencer Viral Campaign",
-    "category": "Ambient Stream",
-    "categoryKey": "stream",
+    "category": "AI Video",
+    "categoryKey": "ai",
     "client": "Creator Network",
     "duration": "0:40",
     "views": "165K",
@@ -1017,13 +1048,14 @@
       "Influencer Reel",
       "Cinematic"
     ],
-    "featured": false
+    "featured": false,
+    "subCategory": "Ambient Stream"
   },
   {
     "id": "stream-54",
     "title": "Zoniraz Franchise Launch Gala",
-    "category": "Ambient Stream",
-    "categoryKey": "stream",
+    "category": "Jewellery & Gemstones",
+    "categoryKey": "creative",
     "client": "Zoniraz Retail",
     "duration": "0:40",
     "views": "165K",
@@ -1035,13 +1067,14 @@
       "Franchise Film",
       "Cinematic"
     ],
-    "featured": false
+    "featured": false,
+    "subCategory": "Ambient Stream"
   },
   {
     "id": "stream-55",
     "title": "Himalayan Outdoor Yoga Adventure",
-    "category": "Ambient Stream",
-    "categoryKey": "stream",
+    "category": "Lifestyle & Wellness",
+    "categoryKey": "lifestyle",
     "client": "Yoga Lifestyle Life",
     "duration": "0:40",
     "views": "165K",
@@ -1053,6 +1086,7 @@
       "Adventure Reel",
       "Cinematic"
     ],
-    "featured": false
+    "featured": false,
+    "subCategory": "Ambient Stream"
   }
 ]

@@ -1,5 +1,22 @@
 [
   {
+    "_id": "6afaa96836b11407e7956cab",
+    "title": "Sushanti Dhyanyoga - Teachers Day Special",
+    "client": "Beauty, Wellness & Fitness",
+    "category": "Wellness",
+    "image": "/Graphic portfolio/Sushanti Dhyanyoga - Teachers Day.jpg",
+    "format": "Poster (4:5)",
+    "tags": [
+      "Wellness",
+      "Client Portfolio",
+      "Design"
+    ],
+    "featured": false,
+    "createdAt": "2026-11-16T06:57:44.766Z",
+    "__v": 0,
+    "id": "6afaa96836b11407e7956cab"
+  },
+  {
     "id": "g-1",
     "title": "doctor c1",
     "client": "Hospital & Healthcare",
