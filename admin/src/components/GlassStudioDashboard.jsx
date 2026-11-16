@@ -23,8 +23,10 @@ import {
   LuEye,
   LuKey,
   LuGlobe,
-  LuX
+  LuX,
+  LuFileText
 } from 'react-icons/lu';
+import SeoContentEditor from './SeoContentEditor';
 import './GlassStudioDashboard.css';
 
 export default function GlassStudioDashboard({ 
@@ -47,6 +49,7 @@ export default function GlassStudioDashboard({
 }) {
   // Navigation & Filter state
   const [activeNav, setActiveNav] = useState('projects');
+  const [seoSubTab, setSeoSubTab] = useState('partners'); // 'partners' | 'content'
   const [searchQuery, setSearchQuery] = useState('');
   const [activeGraphicCategory, setActiveGraphicCategory] = useState('All');
   const [activeVideoCategory, setActiveVideoCategory] = useState('All');
@@ -327,18 +330,8 @@ export default function GlassStudioDashboard({
                 </button>
               </div>
 
-              {/* 3 Direct Live Portfolio Launchers + Studio Live Status */}
+              {/* 3 Direct Live Portfolio Launchers */}
               <div className="topbar-live-ports-cluster">
-                <div 
-                  className={`topbar-studio-live-pill ${isBackendConnected ? 'db-live-green' : ''}`} 
-                  title={isBackendConnected ? "⚡ Connected to MongoDB Atlas Cloud" : "Backend Offline - Local Cache"}
-                  onClick={() => showToast && showToast(isBackendConnected ? "🟢 MongoDB Atlas Cloud is LIVE & Connected!" : "⚠️ Backend offline, using local cache")}
-                  style={{ cursor: 'pointer' }}
-                >
-                  <span className="studio-live-dot" style={{ backgroundColor: isBackendConnected ? '#10b981' : '#f59e0b' }}></span>
-                  <span>{isBackendConnected ? 'MongoDB Live' : 'Studio Local'}</span>
-                </div>
-
                 <a 
                   href="http://localhost:5174/" 
                   target="_blank" 
@@ -404,50 +397,87 @@ export default function GlassStudioDashboard({
               ============================================================ */}
           {activeNav === 'graphic' || activeNav === 'video' || activeNav === 'seo' ? (
             <div className="dedicated-crud-panel glass-white-card">
-              <div className="crud-panel-header">
-                <div className="crud-header-meta">
-                  <h2 className="crud-main-heading">
-                    {activeNav === 'graphic' && (
-                      <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-                        <LuImage size={20} color="#0284c7" /> Graphic Design Artworks & Posters ({graphicsData.length})
-                      </span>
-                    )}
-                    {activeNav === 'video' && (
-                      <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-                        <LuFilm size={20} color="#6366f1" /> Video Reels Production ({videosData.length})
-                      </span>
-                    )}
-                    {activeNav === 'seo' && (
-                      <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-                        <LuTrendingUp size={20} color="#0891b2" /> SEO Client Partners & Rankings ({seoData.length})
-                      </span>
-                    )}
-                  </h2>
-                  <p className="crud-sub-text">
-                    Add new items, update existing details, or delete records. All changes save to real-time storage.
-                  </p>
-                </div>
-                <div className="crud-header-actions-group">
-                  {deletedHistory.some(i => i.deletedType === activeNav) && (
-                    <button 
-                      type="button"
-                      className="crud-revert-header-btn"
-                      onClick={() => onRevertLast(activeNav)}
-                      title={`Revert and restore last deleted ${activeNav} item`}
-                    >
-                      <LuRotateCcw size={15} />
-                      <span>↩ Revert Last Deleted</span>
-                    </button>
-                  )}
-                  <button 
-                    className="crud-add-main-btn"
-                    onClick={() => onOpenModalWithMode(activeNav)}
+              {/* Dedicated Sub-View Switcher for SEO: Ranked Partner Cards vs Page Content Editor */}
+              {activeNav === 'seo' && (
+                <div className="seo-mode-switch-bar">
+                  <button
+                    type="button"
+                    className={`seo-mode-btn ${seoSubTab === 'partners' ? 'seo-mode-btn--active' : ''}`}
+                    onClick={() => setSeoSubTab('partners')}
                   >
-                    <LuPlus size={16} />
-                    <span>+ Add New {activeNav.toUpperCase()}</span>
+                    <LuTrendingUp size={16} />
+                    <span>👥 SEO Ranked Partners ({seoData.length})</span>
+                  </button>
+                  <button
+                    type="button"
+                    className={`seo-mode-btn ${seoSubTab === 'content' ? 'seo-mode-btn--active' : ''}`}
+                    onClick={() => setSeoSubTab('content')}
+                  >
+                    <LuFileText size={16} />
+                    <span>📝 Edit SEO Portfolio Content (All 8 Sections)</span>
                   </button>
                 </div>
-              </div>
+              )}
+
+              {activeNav === 'seo' && seoSubTab === 'content' ? (
+                <SeoContentEditor showToast={showToast} />
+              ) : (
+                <>
+                  <div className="crud-panel-header">
+                    <div className="crud-header-meta">
+                      <h2 className="crud-main-heading">
+                        {activeNav === 'graphic' && (
+                          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                            <LuImage size={20} color="#0284c7" /> Graphic Design Artworks & Posters ({graphicsData.length})
+                          </span>
+                        )}
+                        {activeNav === 'video' && (
+                          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                            <LuFilm size={20} color="#6366f1" /> Video Reels Production ({videosData.length})
+                          </span>
+                        )}
+                        {activeNav === 'seo' && (
+                          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                            <LuTrendingUp size={20} color="#0891b2" /> SEO Client Partners & Rankings ({seoData.length})
+                          </span>
+                        )}
+                      </h2>
+                      <p className="crud-sub-text">
+                        Add new items, update existing details, or delete records. All changes save to real-time storage.
+                      </p>
+                    </div>
+                    <div className="crud-header-actions-group">
+                      {activeNav === 'seo' && (
+                        <button 
+                          type="button"
+                          className="crud-edit-content-header-btn"
+                          onClick={() => setSeoSubTab('content')}
+                          title="Edit text, headlines, descriptions and sections of the SEO Portfolio"
+                        >
+                          <LuFileText size={15} />
+                          <span>📝 Edit Site Content</span>
+                        </button>
+                      )}
+                      {deletedHistory.some(i => i.deletedType === activeNav) && (
+                        <button 
+                          type="button"
+                          className="crud-revert-header-btn"
+                          onClick={() => onRevertLast(activeNav)}
+                          title={`Revert and restore last deleted ${activeNav} item`}
+                        >
+                          <LuRotateCcw size={15} />
+                          <span>↩ Revert Last Deleted</span>
+                        </button>
+                      )}
+                      <button 
+                        className="crud-add-main-btn"
+                        onClick={() => onOpenModalWithMode(activeNav)}
+                      >
+                        <LuPlus size={16} />
+                        <span>+ Add New {activeNav.toUpperCase()}</span>
+                      </button>
+                    </div>
+                  </div>
 
               {/* Graphic Category Filter Pills */}
               {activeNav === 'graphic' && graphicCategories.length > 1 && (
@@ -792,7 +822,9 @@ export default function GlassStudioDashboard({
                   </div>
                 )}
               </div>
-            </div>
+            </>
+          )}
+        </div>
           ) : (
 
             /* ============================================================
@@ -1197,16 +1229,25 @@ export default function GlassStudioDashboard({
                   <div className="hub-action-row">
                     <button 
                       className="hub-btn hub-btn--add"
+                      onClick={() => { setActiveNav('seo'); setSeoSubTab('content'); }}
+                      title="Edit SEO site text, headlines, pillars & footer"
+                      style={{ background: '#f0fdfa', border: '1px solid #ccfbf1', color: '#0f766e', fontWeight: 600 }}
+                    >
+                      <LuFileText size={14} />
+                      <span>Edit Content</span>
+                    </button>
+                    <button 
+                      className="hub-btn hub-btn--add"
                       onClick={() => onOpenModalWithMode('seo')}
                     >
                       <LuPlus size={14} />
-                      <span>Add SEO Partner</span>
+                      <span>Add Partner</span>
                     </button>
                     <button 
                       className="hub-btn hub-btn--manage"
-                      onClick={() => setActiveNav('seo')}
+                      onClick={() => { setActiveNav('seo'); setSeoSubTab('partners'); }}
                     >
-                      <span>Manage All ({seoData.length})</span>
+                      <span>Manage ({seoData.length})</span>
                       <LuArrowRight size={13} />
                     </button>
                   </div>

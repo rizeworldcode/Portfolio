@@ -230,26 +230,46 @@ function App() {
     setEditingItem(null);
   };
 
+  // Helper: Inserts an item back at its exact original index to prevent grid displacement
+  const insertAtIndex = (arr, item, targetIndex) => {
+    const filtered = arr.filter(x => (x.id !== item.id || !item.id) && (x._id !== item._id || !item._id));
+    const validIndex = (typeof targetIndex === 'number' && targetIndex >= 0)
+      ? Math.min(filtered.length, targetIndex)
+      : 0;
+    filtered.splice(validIndex, 0, item);
+    return filtered;
+  };
+
   // Delete item handler with Revert Tracking & MongoDB Atlas Sync
   const handleDeleteItem = async (type, id) => {
     try {
       let deletedItem = null;
+      let originalIndex = -1;
+
       if (type === 'graphic') {
-        deletedItem = graphicsData.find(item => item.id === id || item._id === id);
+        originalIndex = graphicsData.findIndex(item => item.id === id || item._id === id);
+        deletedItem = graphicsData[originalIndex];
         await deleteGraphic(id).catch(() => {});
         setGraphicsData(prev => prev.filter(item => item.id !== id && item._id !== id));
       } else if (type === 'video') {
-        deletedItem = videosData.find(item => item.id === id || item._id === id);
+        originalIndex = videosData.findIndex(item => item.id === id || item._id === id);
+        deletedItem = videosData[originalIndex];
         await deleteVideo(id).catch(() => {});
         setVideosData(prev => prev.filter(item => item.id !== id && item._id !== id));
       } else if (type === 'seo') {
-        deletedItem = seoData.find(item => item.id === id || item._id === id);
+        originalIndex = seoData.findIndex(item => item.id === id || item._id === id);
+        deletedItem = seoData[originalIndex];
         await deleteSeo(id).catch(() => {});
         setSeoData(prev => prev.filter(item => item.id !== id && item._id !== id));
       }
 
       if (deletedItem) {
-        const historyEntry = { ...deletedItem, deletedType: type, deletedAt: Date.now() };
+        const historyEntry = { 
+          ...deletedItem, 
+          deletedType: type, 
+          deletedAt: Date.now(),
+          originalIndex: originalIndex >= 0 ? originalIndex : 0
+        };
         setDeletedHistory(prev => [historyEntry, ...prev.filter(x => (x.id !== historyEntry.id || !historyEntry.id) && (x._id !== historyEntry._id || !historyEntry._id))]);
         setLastDeleted(historyEntry);
 
@@ -264,43 +284,64 @@ function App() {
         fetch('/api/live-sync/delete', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ type, id, item: deletedItem })
-        }).catch(() => {});
+          body: JSON.stringify({ type, id, item: historyEntry, originalIndex })
+        })
+        .then(res => res.json())
+        .then(data => {
+          if (data && data.deletedMeta) {
+            setDeletedHistory(prev => prev.map(entry => 
+              (entry.id === historyEntry.id || entry._id === historyEntry._id)
+                ? { ...entry, ...data.deletedMeta }
+                : entry
+            ));
+            if (lastDeleted && (lastDeleted.id === historyEntry.id || lastDeleted._id === historyEntry._id)) {
+              setLastDeleted(current => ({ ...current, ...data.deletedMeta }));
+            }
+          }
+        })
+        .catch(() => {});
       }
     } catch {
       showToast('Item removed');
     }
   };
 
-  // Revert / Restore single deleted item back to its portfolio
+  // Revert / Restore single deleted item back to its EXACT original position
   const handleRestoreItem = async (itemToRestore) => {
     if (!itemToRestore) return;
     const type = itemToRestore.deletedType || 'graphic';
-    const { deletedType, deletedAt, ...cleanItem } = itemToRestore;
+    const targetIndex = typeof itemToRestore.originalIndex === 'number' ? itemToRestore.originalIndex : 0;
+    const { deletedType, deletedAt, originalIndex, catId, imgIndex, ...cleanItem } = itemToRestore;
 
     try {
       if (type === 'graphic') {
         await createGraphic(cleanItem).catch(() => {});
-        setGraphicsData(prev => [cleanItem, ...prev.filter(x => (x.id !== cleanItem.id || !cleanItem.id) && (x._id !== cleanItem._id || !cleanItem._id))]);
+        setGraphicsData(prev => insertAtIndex(prev, cleanItem, targetIndex));
       } else if (type === 'video') {
         await createVideo(cleanItem).catch(() => {});
-        setVideosData(prev => [cleanItem, ...prev.filter(x => (x.id !== cleanItem.id || !cleanItem.id) && (x._id !== cleanItem._id || !cleanItem._id))]);
+        setVideosData(prev => insertAtIndex(prev, cleanItem, targetIndex));
       } else if (type === 'seo') {
         await createSeo(cleanItem).catch(() => {});
-        setSeoData(prev => [cleanItem, ...prev.filter(x => (x.id !== cleanItem.id || !cleanItem.id) && (x._id !== cleanItem._id || !cleanItem._id))]);
+        setSeoData(prev => insertAtIndex(prev, cleanItem, targetIndex));
       }
 
       setDeletedHistory(prev => prev.filter(item => (item.id !== itemToRestore.id || !itemToRestore.id) && (item._id !== itemToRestore._id || !itemToRestore._id)));
       if (lastDeleted && (lastDeleted.id === itemToRestore.id || lastDeleted._id === itemToRestore._id)) {
         setLastDeleted(null);
       }
-      showToast(`✅ Successfully Reverted: "${cleanItem.title || cleanItem.client}" restored!`);
+      showToast(`✅ Successfully Reverted: "${cleanItem.title || cleanItem.client}" restored to exact original position!`);
 
-      // 🔄 Real-time Live Disk Synchronization to :5174 & :5175 Portfolio Sites
+      // 🔄 Real-time Live Disk Synchronization to :5174 & :5175 Portfolio Sites (Exact index restore)
       fetch('/api/live-sync/restore', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ type, item: cleanItem })
+        body: JSON.stringify({ 
+          type, 
+          item: cleanItem, 
+          originalIndex: targetIndex,
+          catId: itemToRestore.catId,
+          imgIndex: itemToRestore.imgIndex
+        })
       }).catch(() => {});
     } catch (err) {
       console.error('Error restoring item:', err);

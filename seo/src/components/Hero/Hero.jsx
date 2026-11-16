@@ -1,8 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import defaultSeoContent from "../../data/seoContent.json";
 import "./Hero.css";
 
 export default function Hero() {
+  const content = defaultSeoContent?.hero || {};
   const [activeTab, setActiveTab] = useState("01");
   const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
   const heroRef = useRef(null);
@@ -16,7 +18,7 @@ export default function Hero() {
     setMousePos({ x, y });
   };
 
-  const services = [
+  const services = content.services || [
     { id: "01", label: "SEO" },
     { id: "02", label: "Social media" },
     { id: "03", label: "Paid ads" },
@@ -68,7 +70,7 @@ export default function Hero() {
         <div className="hero-radar-tracker__header">
           <span className="hero-radar-tracker__pulse-ring" />
           <span className="hero-radar-tracker__text">
-            MOVE TO REACH · CLICK TO LAUNCH A CAMPAIGN
+            {content.radarPillText || "MOVE TO REACH · CLICK TO LAUNCH A CAMPAIGN"}
           </span>
         </div>
         <div className="hero-radar-circle">
@@ -91,7 +93,7 @@ export default function Hero() {
         >
           <span className="hero-status-pill__dot" />
           <span className="hero-status-pill__text">
-            RizeWorld · Ranked #1 in Alwar & Local Pack
+            {content.statusPill || "RizeWorld · Ranked #1 in Alwar & Local Pack"}
           </span>
         </motion.div>
 
@@ -102,14 +104,14 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <span className="hero-title__row">Get seen by</span>
+          <span className="hero-title__row">{content.titleRow1 || "Get seen by"}</span>
           <span className="hero-title__row">
             the{" "}
             <span className="hero-badge-pill hero-badge-pill--orange">
-              right
+              {content.titleBadge1 || "right"}
             </span>{" "}
             <span className="hero-badge-pill hero-badge-pill--green">
-              crowd.
+              {content.titleBadge2 || "crowd."}
             </span>
           </span>
         </motion.h1>
@@ -121,7 +123,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.35 }}
         >
-          RizeWorld’s SEO strategy combines keyword research, on-page SEO, technical optimization, local search, and content strategy to build a stronger foundation for long-term organic growth.
+          {content.subtitle || "RizeWorld’s SEO strategy combines keyword research, on-page SEO, technical optimization, local search, and content strategy to build a stronger foundation for long-term organic growth."}
         </motion.p>
 
         {/* CTA Buttons */}
@@ -133,7 +135,7 @@ export default function Hero() {
         >
           {/* Primary Strategy Button */}
           <a href="#clients" className="hero-btn-primary">
-            <span>Explore SEO Strategy</span>
+            <span>{content.primaryBtnText || "Explore SEO Strategy"}</span>
             <span className="hero-btn-primary__icon">
               <svg
                 width="16"
@@ -153,7 +155,7 @@ export default function Hero() {
 
           {/* Secondary Work Button */}
           <a href="#results" className="hero-btn-secondary">
-            <span>See Results</span>
+            <span>{content.secondaryBtnText || "See Results"}</span>
             <svg
               className="hero-btn-secondary__arrow"
               width="15"

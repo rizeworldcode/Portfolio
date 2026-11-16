@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import defaultSeoContent from "../../data/seoContent.json";
 import "./FunnelProcess.css";
 
 export default function FunnelProcess() {
+  const content = defaultSeoContent?.funnel || {};
   const [activeStep, setActiveStep] = useState(-1);
   const [counts, setCounts] = useState({
     reach: 0,
@@ -14,7 +16,7 @@ export default function FunnelProcess() {
   const prevStepRef = useRef(-1);
   const animFrameRefs = useRef({});
 
-  const steps = [
+  const steps = content.steps || [
     {
       num: "01",
       title: "Keyword Research & Intent",
@@ -41,7 +43,7 @@ export default function FunnelProcess() {
     },
   ];
 
-  const targets = {
+  const targets = content.targets || {
     reach: 1284300,
     clicks: 48120,
     leads: 2940,
@@ -189,20 +191,22 @@ export default function FunnelProcess() {
           {/* Pill Badge */}
           <div className="funnel-pill">
             <span className="funnel-pill__dot" />
-            <span className="funnel-pill__text">(04) SEO Implementation</span>
+            <span className="funnel-pill__text">
+              {content.sectionPill || "(04) SEO Implementation"}
+            </span>
           </div>
 
           {/* Headline */}
           <h2 className="funnel-title">
-            <span className="funnel-title__line">From Search Intent</span>
+            <span className="funnel-title__line">{content.titleLine1 || "Search Intent →"}</span>
             <span className="funnel-title__line">
-              to <span className="funnel-badge">Organic Growth.</span>
+              <span className="funnel-badge">{content.titleBadge || "Organic Growth."}</span>
             </span>
           </h2>
 
           {/* Subtitle */}
           <p className="funnel-desc">
-            SEO starts with understanding what people are searching for. RizeWorld’s approach maps relevant keywords to search intent before optimizing the website, helping each page serve a clear purpose.
+            {content.desc || "SEO starts with understanding what people are searching for. RizeWorld’s approach maps relevant keywords to search intent before optimizing the website, helping each page serve a clear purpose."}
           </p>
 
           {/* 4 Steps Timeline */}

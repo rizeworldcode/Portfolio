@@ -2602,3 +2602,68 @@
   background: #ffe4e6;
   border-color: #f43f5e;
 }
+
+/* ============================================================
+   SEO MODE SWITCHER (CLIENT CARDS vs SITE CONTENT EDITOR)
+   ============================================================ */
+
+.seo-mode-switch-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  background: rgba(241, 245, 249, 0.7);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  border-radius: 18px;
+  margin-bottom: 22px;
+  width: fit-content;
+}
+
+.seo-mode-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.seo-mode-btn:hover {
+  color: #0f172a;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.seo-mode-btn--active {
+  background: #ffffff;
+  color: #0891b2;
+  box-shadow: 0 4px 12px rgba(8, 145, 178, 0.12), 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.crud-edit-content-header-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 16px;
+  border-radius: 14px;
+  background: rgba(8, 145, 178, 0.1);
+  border: 1.5px solid rgba(8, 145, 178, 0.25);
+  font-size: 13px;
+  font-weight: 700;
+  color: #0891b2;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.crud-edit-content-header-btn:hover {
+  background: #0891b2;
+  border-color: #0891b2;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(8, 145, 178, 0.35);
+}

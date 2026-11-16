@@ -1,0 +1,313 @@
+{
+  "hero": {
+    "statusPill": "RizeWorld · Ranked #1 in Alwar & Local Pack",
+    "titleRow1": "Get seen by",
+    "titleBadge1": "right",
+    "titleBadge2": "crowd.",
+    "subtitle": "RizeWorld’s SEO strategy combines keyword research, on-page SEO, technical optimization, local search, and content strategy to build a stronger foundation for long-term organic growth.",
+    "primaryBtnText": "Explore SEO Strategy",
+    "secondaryBtnText": "See Results",
+    "radarPillText": "MOVE TO REACH · CLICK TO LAUNCH A CAMPAIGN",
+    "services": [
+      { "id": "01", "label": "SEO" },
+      { "id": "02", "label": "Social media" },
+      { "id": "03", "label": "Paid ads" },
+      { "id": "04", "label": "Content" }
+    ]
+  },
+  "projectOverview": {
+    "sectionPill": "(01) Project Overview & SEO Objective",
+    "titleMain": "SEO Objective &",
+    "titleBadge1": "Online",
+    "titleBadge2": "Visibility.",
+    "descParagraph1": "RizeWorld’s SEO strategy was focused on strengthening organic visibility, improving search relevance, and creating a structured website experience for businesses targeting Alwar and surrounding areas.",
+    "descParagraph2": "The approach combined keyword research, on-page SEO, technical optimization, local search, and content strategy to build a stronger foundation for long-term organic growth.",
+    "reviewsRating": "4.9 · 126 REVIEWS",
+    "lastPingText": "RIZEWORLD SEO ALWAR · #1 RANK"
+  },
+  "localSeo": {
+    "sectionPill": "(02) Local SEO Strategy (Alwar)",
+    "titleLine1": "Local SEO Dominance.",
+    "titleBadge": "Alwar & Local Pack.",
+    "description": "A local SEO strategy was developed to improve RizeWorld’s visibility for relevant searches in Alwar. The focus was on strengthening Google Business Profile signals, local relevance, citations, and location-based website optimization.",
+    "statsBullets": [
+      "GOOGLE BUSINESS PROFILE",
+      "NAP CONSISTENCY",
+      "ALWAR LOCAL SEARCH"
+    ],
+    "cards": [
+      {
+        "id": "card-1",
+        "badge": "01",
+        "title": "Google Business Profile (GBP)",
+        "desc": "Optimized business information, primary categories, services, and local signals to improve visibility for relevant searches."
+      },
+      {
+        "id": "card-2",
+        "badge": "02",
+        "title": "Local Citations & NAP Consistency",
+        "desc": "Maintained consistent business information across relevant directories, listings, and citation sources."
+      },
+      {
+        "id": "card-3",
+        "badge": "03",
+        "title": "Location-Based On-Page Signals",
+        "desc": "Strengthened location relevance through locally focused content, headings, structured data, and service information."
+      }
+    ]
+  },
+  "pillars": {
+    "sectionPill": "(03) Six Core Pillars",
+    "title": "SEO Strategy Pillars.",
+    "subtitle": "Six distinct pillars were combined to build a complete organic search framework.",
+    "items": [
+      {
+        "id": "01",
+        "name": "On-Page SEO",
+        "badge": "Structure & Metadata",
+        "desc": "Optimizing page structure, metadata, headings, content, images, and internal links.",
+        "features": [
+          "Page structure & heading hierarchy",
+          "Meta titles & meta descriptions",
+          "Search-intent focused content",
+          "Image optimization & alt tags",
+          "Contextual internal linking"
+        ]
+      },
+      {
+        "id": "02",
+        "name": "Local SEO",
+        "badge": "Ranked #1 in Alwar",
+        "desc": "Improving local relevance through Google Business Profile, citations, and location-focused optimization.",
+        "features": [
+          "Google Business Profile (GBP) audit",
+          "Primary & secondary category targeting",
+          "Local citation building & NAP audit",
+          "Location-focused landing pages",
+          "Alwar local search pack dominance"
+        ]
+      },
+      {
+        "id": "03",
+        "name": "Technical SEO",
+        "badge": "Crawl-Friendly",
+        "desc": "Strengthening crawlability, indexability, website structure, page performance, and technical foundations.",
+        "features": [
+          "Crawlability & indexation health",
+          "Clean URL hierarchy & taxonomy",
+          "Page load performance & Core Web Vitals",
+          "Structured data & schema markup",
+          "Mobile usability & responsive UX"
+        ]
+      },
+      {
+        "id": "04",
+        "name": "Content Optimization",
+        "badge": "Search Intent",
+        "desc": "Creating relevant, readable content that addresses what users are actually searching for.",
+        "features": [
+          "Search-intent mapping & queries",
+          "Reader-first content depth",
+          "Clear answering of search intent",
+          "User experience & dwell time signals",
+          "Content freshening & updates"
+        ]
+      },
+      {
+        "id": "05",
+        "name": "Target Keywords",
+        "badge": "Commercial & Local",
+        "desc": "Mapping relevant commercial and local search terms to the pages where they make the most sense.",
+        "features": [
+          "Commercial & transactional keyword mapping",
+          "Local Alwar search query discovery",
+          "Competitor keyword opportunity analysis",
+          "Logical page-to-keyword assignment",
+          "Search volume & conversion intent"
+        ]
+      },
+      {
+        "id": "06",
+        "name": "Organic Results",
+        "badge": "Data-Guided",
+        "desc": "Monitoring search visibility and using performance data to guide ongoing SEO improvements.",
+        "features": [
+          "Search Console visibility monitoring",
+          "Local map pack rank tracking",
+          "Click-through rate (CTR) optimization",
+          "Actionable performance data reviews",
+          "Continuous iterative refinement"
+        ]
+      }
+    ]
+  },
+  "funnel": {
+    "sectionPill": "(04) SEO Implementation",
+    "titleLine1": "Search Intent →",
+    "titleBadge": "Organic Growth.",
+    "targets": {
+      "reach": 1284300,
+      "clicks": 48120,
+      "leads": 2940,
+      "clients": 312
+    },
+    "steps": [
+      {
+        "num": "01",
+        "phase": "PHASE 01",
+        "title": "Keyword Research & Intent",
+        "desc": "Targeted keyword research, competitor analysis, and search-intent mapping to identify relevant commercial and local opportunities."
+      },
+      {
+        "num": "02",
+        "phase": "PHASE 02",
+        "title": "On-Page & Structure",
+        "desc": "SEO-friendly page structure, metadata optimization, heading hierarchy, relevant content, and contextual internal linking."
+      },
+      {
+        "num": "03",
+        "phase": "PHASE 03",
+        "title": "Technical & Local SEO",
+        "desc": "Crawl-friendly URLs, mobile usability, image optimization, technical improvements, and local search targeting for Alwar."
+      },
+      {
+        "num": "04",
+        "phase": "PHASE 04",
+        "title": "Content & Long-Term Growth",
+        "desc": "Reviewing content relevance, improving search accessibility, and continuously refining pages based on search behaviour and performance data."
+      }
+    ]
+  },
+  "caseStudies": {
+    "sectionPill": "(05) SEO Results & Visibility",
+    "titleMain": "Measurable Search Impact.",
+    "subtitle": "A look at key focus areas and the improvements achieved through structured SEO implementation.",
+    "studies": [
+      {
+        "id": "local-seo",
+        "name": "Local SEO in Alwar",
+        "metricLabel": "LOCAL SEARCH VISIBILITY",
+        "beforeVal": "Unranked",
+        "afterVal": "#1 Local Pack",
+        "summary": "Ranked #1 in Alwar",
+        "desc": "Improved local search visibility and strengthened location relevance across Alwar & surrounding areas.",
+        "tag1": "Local SEO",
+        "tag2": "Alwar Pack"
+      },
+      {
+        "id": "target-keywords",
+        "name": "Target Keywords",
+        "metricLabel": "SEARCH INTENT MAPPING",
+        "beforeVal": "Scattered",
+        "afterVal": "Structured",
+        "summary": "Commercial & Local",
+        "desc": "Structured relevant commercial and local keywords around appropriate website pages.",
+        "tag1": "Keywords",
+        "tag2": "Search Intent"
+      },
+      {
+        "id": "technical-seo",
+        "name": "Technical SEO",
+        "metricLabel": "CRAWLABILITY & HEALTH",
+        "beforeVal": "48%",
+        "afterVal": "99%",
+        "summary": "Crawl-Friendly Setup",
+        "desc": "Improved the website’s technical foundation, crawlability, and search-friendly structure.",
+        "tag1": "Technical",
+        "tag2": "Core Web Vitals"
+      },
+      {
+        "id": "on-page-seo",
+        "name": "On-Page SEO",
+        "metricLabel": "METADATA & HEADINGS",
+        "beforeVal": "Basic",
+        "afterVal": "Optimized",
+        "summary": "Page Relevance",
+        "desc": "Refined content, metadata, headings, images, and internal linking for clearer page relevance.",
+        "tag1": "On-Page",
+        "tag2": "Internal Links"
+      }
+    ]
+  },
+  "deepDive": {
+    "sectionPill": "(06) SEO Deep-Dive",
+    "title": "SEO Strategy In-Depth Analysis.",
+    "featured": {
+      "category": "ON-PAGE SEO — CASE STUDY 2026",
+      "date": "OCTOBER 2026",
+      "readTime": "CASE STUDY",
+      "readsBadge": "Search Intent Focus",
+      "title": "On-Page SEO: Structuring Content Around User Search Intent",
+      "excerpt": "The website content and page structure were optimized around relevant services and search intent, making important information easier for users and search engines to understand."
+    },
+    "stacked": [
+      {
+        "id": "article-2",
+        "category": "LOCAL SEO — CASE STUDY 2026",
+        "date": "OCTOBER 2026",
+        "readTime": "ALWAR PACK",
+        "readsBadge": "Google Search Console",
+        "title": "Local SEO Strategy: Improving Search Visibility in Alwar",
+        "excerpt": "A local SEO strategy focused on improving visibility for relevant digital marketing and web development searches in Alwar and surrounding areas."
+      },
+      {
+        "id": "article-3",
+        "category": "TECHNICAL SEO — CASE STUDY 2026",
+        "date": "OCTOBER 2026",
+        "readTime": "CORE VITALS",
+        "readsBadge": "Growth Metrics",
+        "title": "Technical SEO: Crawl-Friendly Foundation & URL Structure",
+        "excerpt": "Technical improvements focused on creating a cleaner website structure, improving crawlability, strengthening URL organization, and supporting better search-engine accessibility."
+      }
+    ]
+  },
+  "process": {
+    "sectionPill": "(07) Step-by-Step Process",
+    "title": "Structured SEO Methodology.",
+    "steps": [
+      {
+        "num": "01",
+        "phase": "STEP 01",
+        "title": "Research",
+        "tagline": "Market & Intent Discovery",
+        "desc": "Identify relevant keywords, competitors, search intent, and local opportunities."
+      },
+      {
+        "num": "02",
+        "phase": "STEP 02",
+        "title": "Optimize",
+        "tagline": "On-Page & Structural Alignment",
+        "desc": "Improve page titles, descriptions, headings, content, images, URLs, and internal links."
+      },
+      {
+        "num": "03",
+        "phase": "STEP 03",
+        "title": "Strengthen",
+        "tagline": "Technical Health & Local Pack",
+        "desc": "Work on technical SEO, crawlability, indexability, mobile usability, and local search signals."
+      },
+      {
+        "num": "04",
+        "phase": "STEP 04",
+        "title": "Measure",
+        "tagline": "Performance & Console Tracking",
+        "desc": "Use Search Console and other performance data to identify opportunities and refine the strategy."
+      },
+      {
+        "num": "05",
+        "phase": "STEP 05",
+        "title": "Improve",
+        "tagline": "Iterative Refinement & Expansion",
+        "desc": "Update content, fix technical issues, strengthen internal linking, and expand relevant search coverage."
+      }
+    ]
+  },
+  "footer": {
+    "tagline": "RizeWorld’s SEO strategy combines on-page SEO, technical optimization, content strategy, and local SEO to create a stronger digital presence and reach potential customers through organic search.",
+    "statusPill": "Ranked #1 in Alwar & Local Pack",
+    "email": "hr.rizeworld@gmail.com",
+    "phone": "+91 90246 15510",
+    "address": "C-198, near Telco Circle, UIT Colony, Shalimar Nagar, Alwar, Rajasthan 301001, India",
+    "copyright": "© 2026 RizeWorld. All rights reserved. Built for Search Dominance."
+  }
+}

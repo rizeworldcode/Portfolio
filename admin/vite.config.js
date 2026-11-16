@@ -138,6 +138,8 @@ function portfolioLiveDiskSync() {
   const adminGraphicsJsonPath = path.resolve(__dirname, './src/data/allGraphics.json')
   const videoJsonPath = path.resolve(__dirname, '../video/src/data/allVideos.json')
   const adminVideosJsonPath = path.resolve(__dirname, './src/data/allVideos.json')
+  const seoJsonPath = path.resolve(__dirname, '../seo/src/data/seoContent.json')
+  const adminSeoJsonPath = path.resolve(__dirname, './src/data/seoContent.json')
 
   return {
     name: 'portfolio-live-disk-sync',
@@ -155,6 +157,37 @@ function portfolioLiveDiskSync() {
 
           res.setHeader('Content-Type', 'application/json')
           res.setHeader('Access-Control-Allow-Origin', '*')
+
+          // 0. GET SEO CONTENT
+          if (req.url === '/api/live-sync/seo-content' && req.method === 'GET') {
+            try {
+              const target = fs.existsSync(seoJsonPath) ? seoJsonPath : adminSeoJsonPath
+              if (fs.existsSync(target)) {
+                const data = fs.readFileSync(target, 'utf8')
+                return res.end(data)
+              }
+            } catch (err) {
+              console.error('Error reading SEO content:', err)
+            }
+            return res.end(JSON.stringify({}))
+          }
+
+          // 0. UPDATE / SAVE SEO CONTENT
+          if (req.url === '/api/live-sync/seo-content' && req.method === 'POST') {
+            try {
+              const content = body.content || body
+              const jsonStr = JSON.stringify(content, null, 2)
+              ;[seoJsonPath, adminSeoJsonPath].forEach(fPath => {
+                const dir = path.dirname(fPath)
+                if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true })
+                fs.writeFileSync(fPath, jsonStr, 'utf8')
+              })
+              return res.end(JSON.stringify({ success: true, message: 'SEO content saved and synced to disk' }))
+            } catch (err) {
+              console.error('Error saving SEO content:', err)
+              return res.end(JSON.stringify({ success: false, error: err.message }))
+            }
+          }
 
           // 1. DELETE ACTION (Removes item from disk so :5174 & :5175 hot-reload immediately)
           if (req.url === '/api/live-sync/delete' && req.method === 'POST') {

@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import defaultSeoContent from "../../data/seoContent.json";
 import "./RadarClients.css";
 
 export default function RadarClients() {
+  const content = defaultSeoContent?.projectOverview || {};
   const [activeBrand, setActiveBrand] = useState(null);
   const [lastPing, setLastPing] = useState({ name: "RIZEWORLD SEO ALWAR", growth: "#1 RANK" });
 
@@ -42,23 +44,25 @@ export default function RadarClients() {
           {/* Section Pill */}
           <div className="radar-pill">
             <span className="radar-pill__dot" />
-            <span className="radar-pill__text">(01) Project Overview & SEO Objective</span>
+            <span className="radar-pill__text">
+              {content.sectionPill || "(01) Project Overview & SEO Objective"}
+            </span>
           </div>
 
           {/* Headline */}
           <h2 className="radar-title">
-            <span className="radar-title__main">SEO Objective &</span>
+            <span className="radar-title__main">{content.titleMain || "SEO Objective &"}</span>
             <span className="radar-title__badges">
-              <span className="radar-badge radar-badge--orange">Online</span>{" "}
-              <span className="radar-badge radar-badge--green">Visibility.</span>
+              <span className="radar-badge radar-badge--orange">{content.titleBadge1 || "Online"}</span>{" "}
+              <span className="radar-badge radar-badge--green">{content.titleBadge2 || "Visibility."}</span>
             </span>
           </h2>
 
           {/* Subtitle */}
           <p className="radar-desc">
-            RizeWorld’s SEO strategy was focused on strengthening organic visibility, improving search relevance, and creating a structured website experience for businesses targeting Alwar and surrounding areas.
+            {content.descParagraph1 || "RizeWorld’s SEO strategy was focused on strengthening organic visibility, improving search relevance, and creating a structured website experience for businesses targeting Alwar and surrounding areas."}
             <br /><br />
-            The approach combined keyword research, on-page SEO, technical optimization, local search, and content strategy to build a stronger foundation for long-term organic growth.
+            {content.descParagraph2 || "The approach combined keyword research, on-page SEO, technical optimization, local search, and content strategy to build a stronger foundation for long-term organic growth."}
           </p>
 
           <div className="radar-divider" />
@@ -67,7 +71,7 @@ export default function RadarClients() {
           <div className="radar-meta">
             <div className="radar-reviews">
               <span className="radar-reviews__stars">★★★★★</span>
-              <span className="radar-reviews__text">4.9 · 126 REVIEWS</span>
+              <span className="radar-reviews__text">{content.reviewsRating || "4.9 · 126 REVIEWS"}</span>
             </div>
 
             <div className="radar-last-ping">

@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import defaultSeoContent from "../../data/seoContent.json";
 import "./Channels.css";
 
 export default function Channels() {
   const [activeChannel, setActiveChannel] = useState("01");
+  const content = defaultSeoContent?.pillars || {};
 
-  const channelsData = [
+  const baseChannels = [
     {
       id: "01",
       name: "On-Page SEO",
@@ -122,6 +124,21 @@ export default function Channels() {
     },
   ];
 
+  const channelsData = useMemo(() => {
+    const items = content.items || [];
+    return baseChannels.map((base, idx) => {
+      const override = items[idx] || {};
+      return {
+        ...base,
+        name: override.name || base.name,
+        verticalName: override.name || base.verticalName,
+        badge: override.badge || base.badge,
+        desc: override.desc || base.desc,
+        features: override.features || base.features,
+      };
+    });
+  }, [content]);
+
   const currentChannel = channelsData.find((c) => c.id === activeChannel) || channelsData[0];
 
   return (
@@ -134,11 +151,13 @@ export default function Channels() {
           <div className="channels-header__left">
             <div className="channels-pill">
               <span className="channels-pill__dot" />
-              <span className="channels-pill__text">(03) SEO Strategy</span>
+              <span className="channels-pill__text">
+                {content.sectionPill || "(03) SEO Strategy"}
+              </span>
             </div>
 
             <h2 className="channels-title">
-              <span className="channels-title__row">SEO Strategy.</span>
+              <span className="channels-title__row">{content.title || "SEO Strategy."}</span>
               <span className="channels-title__row">
                 <span className="channels-badge">Six</span> Core Pillars.
               </span>
@@ -147,7 +166,7 @@ export default function Channels() {
 
           <div className="channels-header__right">
             <p className="channels-desc">
-              RizeWorld’s SEO process brings together technical foundations, content relevance, local search optimization, and ongoing performance analysis. Each activity supports a specific stage of the organic search journey.
+              {content.subtitle || "RizeWorld’s SEO process brings together technical foundations, content relevance, local search optimization, and ongoing performance analysis. Each activity supports a specific stage of the organic search journey."}
             </p>
           </div>
         </div>

@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
+import defaultSeoContent from "../../data/seoContent.json";
 import "./SeoProcess.css";
 
 export default function SeoProcess() {
+  const content = defaultSeoContent?.process || {};
   const [activeStep, setActiveStep] = useState(0);
 
-  const steps = [
+  const baseSteps = [
     {
       num: "01",
       phase: "STEP 01",
@@ -72,6 +74,20 @@ export default function SeoProcess() {
     },
   ];
 
+  const steps = useMemo(() => {
+    const s = content.steps || [];
+    return baseSteps.map((base, idx) => {
+      const override = s[idx] || {};
+      return {
+        ...base,
+        title: override.title || base.title,
+        tagline: override.tagline || base.tagline,
+        desc: override.desc || base.desc,
+        deliverables: override.deliverables || base.deliverables,
+      };
+    });
+  }, [content]);
+
   return (
     <section className="process-section" id="process">
       <div className="process-container">
@@ -80,20 +96,19 @@ export default function SeoProcess() {
           <div className="process-header__left">
             <div className="process-pill">
               <span className="process-pill__dot" />
-              <span className="process-pill__text">(07) Implementation Process</span>
+              <span className="process-pill__text">
+                {content.sectionPill || "(07) Step-by-Step Process"}
+              </span>
             </div>
 
             <h2 className="process-title">
-              <span className="process-title__row">Building SEO</span>
-              <span className="process-title__row">
-                <span className="process-badge">Step</span> by Step.
-              </span>
+              <span className="process-title__row">{content.title || "Structured SEO Methodology."}</span>
             </h2>
           </div>
 
           <div className="process-header__right">
             <p className="process-desc">
-              A clear, repeatable 5-step methodology engineered to ensure each stage of RizeWorld’s SEO strategy builds momentum and drives sustainable organic rank dominance.
+              {content.desc || "A clear, repeatable 5-step methodology engineered to ensure each stage of RizeWorld’s SEO strategy builds momentum and drives sustainable organic rank dominance."}
             </p>
           </div>
         </div>

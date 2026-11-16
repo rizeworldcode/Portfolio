@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
+import defaultSeoContent from "../../data/seoContent.json";
 import "./Footer.css";
 
 export default function Footer() {
+  const content = defaultSeoContent?.footer || {};
   const [alwarTime, setAlwarTime] = useState("");
 
   // Live Alwar, India Time (Asia/Kolkata)
@@ -48,14 +50,14 @@ export default function Footer() {
             </a>
 
             <p className="rw-footer__tagline">
-              RizeWorld’s SEO strategy combines on-page SEO, technical optimization, content strategy, and local SEO to create a stronger digital presence and reach potential customers through organic search.
+              {content.tagline || "RizeWorld’s SEO strategy combines on-page SEO, technical optimization, content strategy, and local SEO to create a stronger digital presence and reach potential customers through organic search."}
             </p>
 
             {/* Availability Pill */}
             <div className="rw-footer__status-pill">
               <span className="rw-footer__status-dot" />
               <span className="rw-footer__status-text">
-                Ranked #1 in Alwar & Local Pack
+                {content.statusPill || "Ranked #1 in Alwar & Local Pack"}
               </span>
             </div>
 
@@ -81,22 +83,22 @@ export default function Footer() {
             <div className="rw-footer__contact-details">
               <div className="rw-footer__contact-item">
                 <span className="rw-footer__contact-label">Email</span>
-                <a href="mailto:hr.rizeworld@gmail.com" className="rw-footer__contact-link">
-                  hr.rizeworld@gmail.com
+                <a href={`mailto:${content.email || "hr.rizeworld@gmail.com"}`} className="rw-footer__contact-link">
+                  {content.email || "hr.rizeworld@gmail.com"}
                 </a>
               </div>
 
               <div className="rw-footer__contact-item">
                 <span className="rw-footer__contact-label">Phone Number</span>
-                <a href="tel:+919024615510" className="rw-footer__contact-link">
-                  +91 90246 15510
+                <a href={`tel:${(content.phone || "+919024615510").replace(/\s+/g, '')}`} className="rw-footer__contact-link">
+                  {content.phone || "+91 90246 15510"}
                 </a>
               </div>
 
               <div className="rw-footer__contact-item">
                 <span className="rw-footer__contact-label">Address</span>
                 <span className="rw-footer__contact-text" style={{ lineHeight: "1.5", fontSize: "12px", color: "#94a3b8" }}>
-                  C-198, near Telco Circle, UIT Colony, Shalimar Nagar, Alwar, Rajasthan 301001, India
+                  {content.address || "C-198, near Telco Circle, UIT Colony, Shalimar Nagar, Alwar, Rajasthan 301001, India"}
                 </span>
               </div>
             </div>
@@ -137,7 +139,7 @@ export default function Footer() {
             ============================================================ */}
         <div className="rw-footer__bottom">
           <div className="rw-footer__copyright">
-            <span>© 2026 RIZEWORLD — SEO PORTFOLIO</span>
+            <span>{content.copyright || "© 2026 RIZEWORLD — SEO PORTFOLIO"}</span>
           </div>
 
           <div className="rw-footer__clock">

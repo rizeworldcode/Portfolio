@@ -1,15 +1,17 @@
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import { motion } from "framer-motion";
+import defaultSeoContent from "../../data/seoContent.json";
 import "./CaseStudies.css";
 
 export default function CaseStudies() {
+  const content = defaultSeoContent?.caseStudies || {};
   const [activeClientIndex, setActiveClientIndex] = useState(0);
   const [sliderPos, setSliderPos] = useState(38); // percentage split
   const [isDragging, setIsDragging] = useState(false);
   const [cardWidth, setCardWidth] = useState(1380);
   const containerRef = useRef(null);
 
-  const clients = [
+  const baseClients = [
     {
       id: "local-seo",
       name: "Local SEO in Alwar",
@@ -67,6 +69,24 @@ export default function CaseStudies() {
       tag2: "Internal Links",
     },
   ];
+
+  const clients = useMemo(() => {
+    const studies = content.studies || [];
+    return baseClients.map((base, idx) => {
+      const override = studies[idx] || {};
+      return {
+        ...base,
+        name: override.name || base.name,
+        metricLabel: override.metricLabel || base.metricLabel,
+        beforeVal: override.beforeVal || base.beforeVal,
+        afterVal: override.afterVal || base.afterVal,
+        summary: override.summary || base.summary,
+        desc: override.desc || base.desc,
+        tag1: override.tag1 || base.tag1,
+        tag2: override.tag2 || base.tag2,
+      };
+    });
+  }, [content]);
 
   const current = clients[activeClientIndex];
 
@@ -131,18 +151,19 @@ export default function CaseStudies() {
           <div className="cases-header__left">
             <div className="cases-pill">
               <span className="cases-pill__dot" />
-              <span className="cases-pill__text">(05) SEO Results & Visibility</span>
+              <span className="cases-pill__text">
+                {content.sectionPill || "(05) SEO Results & Visibility"}
+              </span>
             </div>
 
             <h2 className="cases-title">
-              <span className="cases-title__row">Results You Can</span>
-              <span className="cases-title__highlight">Count.</span>
+              <span className="cases-title__row">{content.titleMain || "Measurable Search Impact."}</span>
             </h2>
           </div>
 
           <div className="cases-header__right">
             <p className="cases-desc">
-              The SEO work focused on building a stronger organic-search foundation for RizeWorld by improving local relevance, keyword targeting, technical structure, and on-page optimization.
+              {content.subtitle || "A look at key focus areas and the improvements achieved through structured SEO implementation."}
             </p>
           </div>
         </div>

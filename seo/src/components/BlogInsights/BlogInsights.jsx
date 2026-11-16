@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import defaultSeoContent from "../../data/seoContent.json";
 import "./BlogInsights.css";
 
-const initialArticles = {
+const baseArticles = {
   featured: {
     id: "featured",
     category: "ON-PAGE SEO — CASE STUDY 2026",
@@ -41,6 +42,33 @@ const initialArticles = {
 };
 
 export default function BlogInsights() {
+  const content = defaultSeoContent?.deepDive || {};
+
+  const initialArticles = useMemo(() => {
+    const feat = content.featured || {};
+    const stacked = content.stacked || [];
+    return {
+      featured: {
+        ...baseArticles.featured,
+        category: feat.category || baseArticles.featured.category,
+        title: feat.title || baseArticles.featured.title,
+        excerpt: feat.excerpt || baseArticles.featured.excerpt,
+        readsBadge: feat.readsBadge || baseArticles.featured.readsBadge,
+      },
+      stacked: baseArticles.stacked.map((base, i) => {
+        const item = stacked[i] || {};
+        return {
+          ...base,
+          category: item.category || base.category,
+          title: item.title || base.title,
+          excerpt: item.excerpt || base.excerpt,
+          readsBadge: item.readsBadge || base.readsBadge,
+          readTime: item.readTime || base.readTime,
+        };
+      }),
+    };
+  }, [content]);
+
   const [articles, setArticles] = useState(initialArticles);
 
   const handleSwapCard = (index) => {
@@ -65,20 +93,19 @@ export default function BlogInsights() {
           <div className="blog-header__left">
             <div className="blog-pill">
               <span className="blog-pill__dot" />
-              <span className="blog-pill__text">(06) SEO Deep-Dive</span>
+              <span className="blog-pill__text">
+                {content.sectionPill || "(06) SEO Deep-Dive"}
+              </span>
             </div>
 
             <h2 className="blog-title">
-              <span className="blog-title__line">SEO Strategy</span>
-              <span className="blog-title__line">
-                <span className="blog-badge">In-Depth</span> Analysis.
-              </span>
+              <span className="blog-title__line">{content.title || "SEO Strategy In-Depth Analysis."}</span>
             </h2>
           </div>
 
           <div className="blog-header__right">
             <p className="blog-desc">
-              A closer look at the SEO framework used across on-page SEO, local search, technical optimization, and content strategy. Click any card to preview it in detail.
+              {content.desc || "A closer look at the SEO framework used across on-page SEO, local search, technical optimization, and content strategy. Click any card to preview it in detail."}
             </p>
           </div>
         </div>
