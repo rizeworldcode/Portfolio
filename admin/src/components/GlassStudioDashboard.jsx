@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import {
   LuHouse,
   LuImage,
@@ -6,6 +6,7 @@ import {
   LuTrendingUp,
   LuActivity,
   LuGem,
+  LuLayers,
   LuPlus,
   LuSearch,
   LuBell,
@@ -18,8 +19,7 @@ import {
   LuLayoutGrid,
   LuEye,
   LuKey,
-  LuGlobe,
-  LuStar
+  LuGlobe
 } from 'react-icons/lu';
 import './GlassStudioDashboard.css';
 
@@ -40,6 +40,61 @@ export default function GlassStudioDashboard({
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedFileFilter, setSelectedFileFilter] = useState('all');
 
+  // Real-time dynamic greeting based on client time
+  const dynamicGreeting = useMemo(() => {
+    const hour = new Date().getHours();
+    if (hour >= 5 && hour < 12) return 'Good Morning, Director!';
+    if (hour >= 12 && hour < 17) return 'Good Afternoon, Director!';
+    if (hour >= 17 && hour < 22) return 'Good Evening, Director!';
+    return 'Welcome Back, Director!';
+  }, []);
+
+  // Resilient Thumbnail Helpers for Real Creative Work Showcase
+  const getVideoThumb = (v) => {
+    if (v?.thumbnail) return v.thumbnail;
+    if (v?.image) return v.image;
+    const title = (v?.title || '').toLowerCase();
+    const cat = (v?.category || '').toLowerCase();
+    if (cat.includes('cafe') || title.includes('avan') || cat.includes('restaurant')) {
+      return 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80';
+    }
+    if (cat.includes('festive') || title.includes('navratri')) {
+      return 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80';
+    }
+    if (cat.includes('infra') || title.includes('ambhuti') || cat.includes('estate')) {
+      return 'https://images.unsplash.com/photo-1541888946425-d0fbb18086f6?auto=format&fit=crop&w=600&q=80';
+    }
+    if (cat.includes('hospital') || title.includes('saniya') || cat.includes('health')) {
+      return 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=600&q=80';
+    }
+    if (cat.includes('school') || title.includes('dwps') || cat.includes('education')) {
+      return 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=600&q=80';
+    }
+    return 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=600&q=80';
+  };
+
+  const getSeoThumb = (s) => {
+    if (s?.rankingImage) return s.rankingImage;
+    if (s?.proofImage) return s.proofImage;
+    if (s?.image) return s.image;
+    if (s?.thumbnail) return s.thumbnail;
+    const client = (s?.client || '').toLowerCase();
+    const website = (s?.website || '').toLowerCase();
+    if (client.includes('zoniraz') || website.includes('zoniraz')) {
+      return '/seo_gsc_performance.jpg';
+    }
+    if (client.includes('hospital') || client.includes('saniya')) {
+      return 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=600&q=80';
+    }
+    if (client.includes('dwps') || client.includes('school')) {
+      return 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=600&q=80';
+    }
+    if (client.includes('medicompares')) {
+      return 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80';
+    }
+    return '/seo_gsc_performance.jpg';
+  };
+
   // Map ALL items dynamically into a unified catalog
   const allDynamicFiles = [
     ...graphicsData.map((g) => ({
@@ -51,7 +106,7 @@ export default function GlassStudioDashboard({
       type: 'graphic',
       format: g.format || 'Poster (4:5)',
       tagColor: '#3b82f6',
-      badgeIcon: '🎨',
+      badgeIcon: '',
       badgeText: 'Graphic',
       image: g.image || 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=600&q=80',
       author: g.client || 'Creative Team',
@@ -67,8 +122,9 @@ export default function GlassStudioDashboard({
       type: 'video',
       format: 'Reel (MP4)',
       tagColor: '#8b5cf6',
-      badgeIcon: '🎬',
+      badgeIcon: '',
       badgeText: 'Reel',
+      image: getVideoThumb(v),
       video: v.video || '/videos-compressed/avan-spring.mp4',
       author: v.client || 'Production Team',
       filesize: `${v.duration || '0:45'} • ${v.views || '180K'}`,
@@ -83,8 +139,9 @@ export default function GlassStudioDashboard({
       type: 'seo',
       format: 'Google Rank',
       tagColor: '#ea580c',
-      badgeIcon: '🚀',
+      badgeIcon: '',
       badgeText: 'SEO',
+      image: getSeoThumb(s),
       website: s.website || 'client.com',
       author: s.client || 'SEO Dominance',
       filesize: `${s.googleRank || '#1'} • ${s.trafficMonthly || '50K visits'}`,
@@ -125,15 +182,11 @@ export default function GlassStudioDashboard({
         <aside className="management-sidebar clay-sidebar">
           {/* Top User Greeting Block (Matching Reference 'Hi, Aryan!') */}
           <div className="sidebar-top-user-block">
-            <div className="sidebar-avatar-3d-wrap">
+            <div className="sidebar-avatar-3d-wrap" title="RizeWorld Studio">
               <img 
-                src="/rize.png" 
-                alt="Director" 
+                src="/RW.png" 
+                alt="RizeWorld Logo" 
                 className="sidebar-avatar-3d-img"
-                onError={(e) => {
-                  e.target.onerror = null;
-                  e.target.src = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80";
-                }}
               />
             </div>
             <div className="sidebar-user-greeting">
@@ -186,11 +239,24 @@ export default function GlassStudioDashboard({
 
           {/* Bottom 'Go Pro' Clay Card (Matching Reference Bottom Card) */}
           <div className="sidebar-pro-clay-card">
-            <div className="pro-card-crown">
-              <LuGem size={22} color="#38bdf8" />
+            <div className="pro-card-visual-header">
+              <img 
+                src="/user_character_card.png" 
+                alt="Studio Character" 
+                className="pro-card-thumb-img" 
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = "/RW.png";
+                }}
+              />
             </div>
-            <span className="pro-card-title">Studio Pro</span>
-            <span className="pro-card-sub">3 Portfolios Live</span>
+            <div className="pro-card-content">
+              <div className="pro-card-crown">
+                <LuGem size={18} color="#38bdf8" />
+              </div>
+              <span className="pro-card-title">Studio Pro</span>
+              <span className="pro-card-sub">3 Portfolios Live</span>
+            </div>
             <button 
               className="pro-card-btn"
               onClick={() => onOpenModalWithMode('graphic')}
@@ -215,17 +281,17 @@ export default function GlassStudioDashboard({
               <h1 className="topbar-main-title">
                 {activeNav === 'graphic' && (
                   <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-                    <LuPalette size={20} color="#0284c7" /> Graphic Design Assets
+                    <LuImage size={20} color="#0284c7" /> Graphic Design Assets
                   </span>
                 )}
                 {activeNav === 'video' && (
                   <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-                    <LuClapperboard size={20} color="#6366f1" /> Video Reels Production
+                    <LuFilm size={20} color="#6366f1" /> Video Reels Production
                   </span>
                 )}
                 {activeNav === 'seo' && (
                   <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-                    <LuRocket size={20} color="#0891b2" /> SEO & SERP Dominance
+                    <LuTrendingUp size={20} color="#0891b2" /> SEO & SERP Dominance
                   </span>
                 )}
                 {(activeNav === 'home' || activeNav === 'projects') && 'Agency Operations Studio'}
@@ -273,8 +339,13 @@ export default function GlassStudioDashboard({
                 </button>
               </div>
 
-              {/* 3 Direct Live Portfolio Launchers */}
+              {/* 3 Direct Live Portfolio Launchers + Studio Live Status */}
               <div className="topbar-live-ports-cluster">
+                <div className="topbar-studio-live-pill" title="Central Studio Synced & Online">
+                  <span className="studio-live-dot"></span>
+                  <span>Studio Live</span>
+                </div>
+
                 <a 
                   href="http://localhost:5174/" 
                   target="_blank" 
@@ -345,17 +416,17 @@ export default function GlassStudioDashboard({
                   <h2 className="crud-main-heading">
                     {activeNav === 'graphic' && (
                       <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-                        <LuPalette size={20} color="#0284c7" /> Graphic Design Artworks & Posters ({graphicsData.length})
+                        <LuImage size={20} color="#0284c7" /> Graphic Design Artworks & Posters ({graphicsData.length})
                       </span>
                     )}
                     {activeNav === 'video' && (
                       <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-                        <LuClapperboard size={20} color="#6366f1" /> Video Reels Production ({videosData.length})
+                        <LuFilm size={20} color="#6366f1" /> Video Reels Production ({videosData.length})
                       </span>
                     )}
                     {activeNav === 'seo' && (
                       <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-                        <LuRocket size={20} color="#0891b2" /> SEO Client Partners & Rankings ({seoData.length})
+                        <LuTrendingUp size={20} color="#0891b2" /> SEO Client Partners & Rankings ({seoData.length})
                       </span>
                     )}
                   </h2>
@@ -383,7 +454,7 @@ export default function GlassStudioDashboard({
                     <div className="crud-card-body">
                       <div className="crud-body-header">
                         <div className="crud-icon-tile">
-                          <LuPalette size={18} />
+                          <LuImage size={18} />
                         </div>
                         <div className="crud-header-text-block">
                           <span className="crud-eyebrow-label">{item.category}</span>
@@ -416,6 +487,15 @@ export default function GlassStudioDashboard({
                 {activeNav === 'video' && videosData.map((item) => (
                   <div key={item.id} className="crud-item-card crud-item-card--video">
                     <div className="crud-card-thumb crud-card-thumb--video">
+                      <img 
+                        src={getVideoThumb(item)} 
+                        alt={item.title} 
+                        className="crud-thumb-img video-poster-img"
+                        onError={(e) => {
+                          e.target.onerror = null;
+                          e.target.src = "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80";
+                        }}
+                      />
                       <div className="video-thumb-overlay">
                         <div className="clay-video-play-btn">
                           <LuPlay size={26} color="#ffffff" />
@@ -426,8 +506,8 @@ export default function GlassStudioDashboard({
                     </div>
                     <div className="crud-card-body">
                       <div className="crud-body-header">
-                        <div className="crud-icon-tile">
-                          <LuClapperboard size={18} />
+                        <div className="crud-icon-tile tile-blue">
+                          <LuFilm size={18} />
                         </div>
                         <div className="crud-header-text-block">
                           <span className="crud-eyebrow-label">Commercial Reel</span>
@@ -459,20 +539,40 @@ export default function GlassStudioDashboard({
 
                 {activeNav === 'seo' && seoData.map((item) => (
                   <div key={item.id} className="crud-item-card crud-item-card--seo">
-                    <div className="crud-card-header-seo">
-                      <div className="seo-header-title-wrap">
-                        <div className="crud-icon-tile">
-                          <LuRocket size={18} />
-                        </div>
-                        <div className="seo-rank-text-block">
-                          <span className="seo-eyebrow-label">Google Ranking</span>
-                          <span className="seo-rank-badge">{item.googleRank}</span>
-                        </div>
+                    <div 
+                      className="crud-card-thumb crud-card-thumb--seo"
+                      onClick={() => onEditItem('seo', item)}
+                      title="Click to update ranking image or details"
+                      style={{ cursor: 'pointer' }}
+                    >
+                      <img 
+                        src={getSeoThumb(item)} 
+                        alt={item.client} 
+                        className="crud-thumb-img seo-poster-img"
+                        onError={(e) => {
+                          e.target.onerror = null;
+                          e.target.src = "/seo_gsc_performance.jpg";
+                        }}
+                      />
+                      <div className="crud-thumb-seo-overlay">
+                        <span className="crud-card-tag">{item.googleRank || '#1 Position'}</span>
+                        <span className="seo-growth-tag">{item.organicGrowth}</span>
                       </div>
-                      <span className="seo-growth-tag">{item.organicGrowth}</span>
+                      <div className="seo-thumb-rank-pill-bottom">
+                        <LuImage size={11} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
+                        <span>SERP Ranking Proof</span>
+                      </div>
                     </div>
                     <div className="crud-card-body">
-                      <h4 className="crud-card-title">{item.client}</h4>
+                      <div className="crud-body-header">
+                        <div className="crud-icon-tile tile-ice">
+                          <LuTrendingUp size={18} />
+                        </div>
+                        <div className="crud-header-text-block">
+                          <span className="crud-eyebrow-label">SEO Partner</span>
+                          <h4 className="crud-card-title">{item.client}</h4>
+                        </div>
+                      </div>
                       <span className="crud-card-keyword">
                         <LuKey size={13} style={{ verticalAlign: 'middle', marginRight: '6px' }} />
                         {item.topKeyword}
@@ -515,15 +615,11 @@ export default function GlassStudioDashboard({
                   ============================================================ */}
               <div className="clay-shelf-banner">
                 <div className="shelf-character-col">
-                  <div className="shelf-avatar-pill">
+                  <div className="shelf-avatar-pill" title="RizeWorld Studio">
                     <img 
-                      src="/rize.png" 
-                      alt="Studio Director" 
+                      src="/RW.png" 
+                      alt="RizeWorld Studio" 
                       className="shelf-character-img"
-                      onError={(e) => {
-                        e.target.onerror = null;
-                        e.target.src = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80";
-                      }}
                     />
                   </div>
                 </div>
@@ -531,35 +627,35 @@ export default function GlassStudioDashboard({
                 <div className="shelf-content-col">
                   <div className="shelf-greeting-row">
                     <span className="shelf-music-note">
-                      <LuMusic size={18} color="#38bdf8" />
+                      <LuLayers size={18} color="#38bdf8" />
                     </span>
-                    <h2 className="shelf-main-greeting">Good Evening, Director!</h2>
+                    <h2 className="shelf-main-greeting">{dynamicGreeting}</h2>
                   </div>
                   <p className="shelf-sub-greeting">
-                    Time for your next track! Manage Graphic Arts, Video Reels & SEO Domination.
+                    Central Creative Command • Manage Graphic Artworks, 4K Cinema Reels & Google #1 SEO Domination in real-time.
                   </p>
                   <div className="shelf-actions-row">
                     <button 
                       className="shelf-clay-btn shelf-clay-btn--primary"
                       onClick={() => onOpenModalWithMode('graphic')}
                     >
-                      <LuPlay size={15} />
-                      <span>Create Something</span>
+                      <LuPlus size={15} />
+                      <span>+ Create New Asset</span>
                     </button>
 
                     <div className="shelf-ports-quick">
                       <a href="http://localhost:5174/" target="_blank" rel="noreferrer" className="shelf-port-chip" title="Graphic Portfolio :5174">
-                        <LuPalette size={12} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
+                        <LuImage size={12} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
                         <span>:5174</span>
                         <LuExternalLink size={10} />
                       </a>
                       <a href="http://localhost:5175/" target="_blank" rel="noreferrer" className="shelf-port-chip" title="Video Portfolio :5175">
-                        <LuClapperboard size={12} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
+                        <LuFilm size={12} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
                         <span>:5175</span>
                         <LuExternalLink size={10} />
                       </a>
                       <a href="http://localhost:5173/" target="_blank" rel="noreferrer" className="shelf-port-chip" title="SEO Portfolio :5173">
-                        <LuRocket size={12} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
+                        <LuTrendingUp size={12} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
                         <span>:5173</span>
                         <LuExternalLink size={10} />
                       </a>
@@ -568,74 +664,162 @@ export default function GlassStudioDashboard({
                 </div>
 
                 <div className="shelf-decor-col">
-                  <div className="shelf-potted-plant" title="RizeWorld Studio">
+                  <div 
+                    className="shelf-graphic-badge" 
+                    title="RizeWorld Studio Central Command"
+                    onClick={() => setActiveNav('graphic')}
+                  >
                     <img 
-                      src="/rw_logo.png" 
-                      alt="RizeWorld Logo" 
-                      className="shelf-rw-logo-img" 
+                      src="/RW.png" 
+                      alt="RizeWorld Official Studio" 
+                      className="shelf-graphic-img" 
                     />
                   </div>
                 </div>
               </div>
 
               {/* ============================================================
-                  1. THE 4 CLAY STAT CARDS (Exact match to Reference 4 Cards)
+                  1. THE 4 CLAY STAT CARDS (With Large 3D Visual Illustrations)
                   ============================================================ */}
               <div className="clay-stat-cards-grid">
-                {/* Card 1: Graphic Artworks (Soft Cyan Clay Card) */}
+                {/* Card 1: Graphic Artworks (Soft Cyan Clay Card) - Features 3D Designer Character (User Reference Image 2!) */}
                 <div 
                   className="clay-stat-card clay-stat-card--cyan"
                   onClick={() => setActiveNav('graphic')}
                   title="Click to manage Graphic Artworks"
                 >
-                  <div className="clay-stat-icon-tile tile-cyan">
-                    <LuPalette size={20} />
+                  <div className="clay-stat-card-left">
+                    <div className="clay-stat-icon-tile tile-cyan">
+                      <LuImage size={20} />
+                    </div>
+                    <div className="clay-stat-info-group">
+                      <span className="clay-stat-label">Graphic Assets</span>
+                      <span className="clay-stat-number">{graphicsData.length || 42}</span>
+                    </div>
+                    <div className="clay-stat-bottom-row">
+                      <span className="clay-stat-trend trend-teal">+18% this month</span>
+                      <span className="clay-stat-asset-hint">Brand Artwork</span>
+                    </div>
                   </div>
-                  <span className="clay-stat-label">Graphic Assets</span>
-                  <span className="clay-stat-number">{graphicsData.length}</span>
-                  <span className="clay-stat-trend trend-teal">+18% this month</span>
+                  <div className="clay-stat-card-visual-box" title="3D Creative Creator">
+                    <img 
+                      src="/user_character_card.png" 
+                      alt="3D Creative Character" 
+                      className="clay-stat-big-illustration" 
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = '/RW.png';
+                      }}
+                    />
+                    <div className="stat-studio-live-badge">
+                      <span className="studio-live-dot"></span>
+                      <span>Studio Live</span>
+                    </div>
+                  </div>
                 </div>
 
-                {/* Card 2: Video Reels (Soft Sky Blue Clay Card) */}
+                {/* Card 2: Video Reels (Soft Sky Blue Clay Card) - Real Agency Cinema Shoot Poster */}
                 <div 
                   className="clay-stat-card clay-stat-card--blue"
                   onClick={() => setActiveNav('video')}
                   title="Click to manage Video Reels"
                 >
-                  <div className="clay-stat-icon-tile tile-blue">
-                    <LuClapperboard size={20} />
+                  <div className="clay-stat-card-left">
+                    <div className="clay-stat-icon-tile tile-blue">
+                      <LuFilm size={20} />
+                    </div>
+                    <div className="clay-stat-info-group">
+                      <span className="clay-stat-label">Reels Active</span>
+                      <span className="clay-stat-number">{videosData.length || 28}</span>
+                    </div>
+                    <div className="clay-stat-bottom-row">
+                      <span className="clay-stat-trend trend-teal">+28% views</span>
+                      <span className="clay-stat-asset-hint">4K Cinema Cut</span>
+                    </div>
                   </div>
-                  <span className="clay-stat-label">Reels Active</span>
-                  <span className="clay-stat-number">{videosData.length}</span>
-                  <span className="clay-stat-trend trend-teal">+28% views</span>
+                  <div className="clay-stat-card-visual-box" title="4K Cinema Reels Shoot">
+                    <img 
+                      src="/rw_camera_card.jpg" 
+                      alt="Video Reel Shoot Visual" 
+                      className="clay-stat-big-illustration" 
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = '/rw_shoot_poster.jpg';
+                      }}
+                    />
+                    <div className="stat-visual-play-chip">
+                      <LuPlay size={18} color="#ffffff" />
+                    </div>
+                  </div>
                 </div>
 
-                {/* Card 3: SEO Top Rank (Frosted Ice Clay Card) */}
+                {/* Card 3: SEO Top Rank (Frosted Ice Clay Card) - Real Google Search Console Performance Proof */}
                 <div 
                   className="clay-stat-card clay-stat-card--ice"
                   onClick={() => setActiveNav('seo')}
                   title="Click to manage SEO Rankings"
                 >
-                  <div className="clay-stat-icon-tile tile-ice">
-                    <LuRocket size={20} />
+                  <div className="clay-stat-card-left">
+                    <div className="clay-stat-icon-tile tile-ice">
+                      <LuTrendingUp size={20} />
+                    </div>
+                    <div className="clay-stat-info-group">
+                      <span className="clay-stat-label">SERP Ranking</span>
+                      <span className="clay-stat-number">{seoData[0]?.googleRank || 'Avg Pos 8.5'}</span>
+                    </div>
+                    <div className="clay-stat-bottom-row">
+                      <span className="clay-stat-trend trend-teal">+480% impr.</span>
+                      <span className="clay-stat-asset-hint">GSC Verified</span>
+                    </div>
                   </div>
-                  <span className="clay-stat-label">SERP Ranking</span>
-                  <span className="clay-stat-number">{seoData[0]?.googleRank || '#1'}</span>
-                  <span className="clay-stat-trend trend-teal">+420% traffic</span>
+                  <div className="clay-stat-card-visual-box" title="Google Search Console Ranking Proof">
+                    <img 
+                      src="/seo_gsc_card.jpg" 
+                      alt="Google Search Console Performance" 
+                      className="clay-stat-big-illustration" 
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = '/seo_gsc_performance.jpg';
+                      }}
+                    />
+                    <span className="stat-visual-rank-pill">GSC Verified</span>
+                  </div>
                 </div>
 
-                {/* Card 4: Studio Synced (Soft Lavender Clay Card) */}
+                {/* Card 4: Studio Health (Soft Lavender Clay Card) - Real Production Shoot Poster */}
                 <div 
                   className="clay-stat-card clay-stat-card--lavender"
                   onClick={() => showToast && showToast('⚡ Studio Synced: All 3 Portfolios Active & Live')}
                   title="Studio Synced & Active"
                 >
-                  <div className="clay-stat-icon-tile tile-lavender">
-                    <LuFlame size={20} />
+                  <div className="clay-stat-card-left">
+                    <div className="clay-stat-icon-tile tile-lavender">
+                      <LuActivity size={20} />
+                    </div>
+                    <div className="clay-stat-info-group">
+                      <span className="clay-stat-label">Studio Health</span>
+                      <span className="clay-stat-number">100%</span>
+                    </div>
+                    <div className="clay-stat-bottom-row">
+                      <span className="clay-stat-subtext">3 ports active</span>
+                      <span className="clay-stat-asset-hint">RW Synced</span>
+                    </div>
                   </div>
-                  <span className="clay-stat-label">Studio Health</span>
-                  <span className="clay-stat-number">100%</span>
-                  <span className="clay-stat-subtext">3 ports active</span>
+                  <div className="clay-stat-card-visual-box studio-visual" title="RizeWorld Studio Live">
+                    <img 
+                      src="/rw_shoot_poster.jpg" 
+                      alt="RizeWorld Shoot Production" 
+                      className="clay-stat-big-illustration shoot-card-img" 
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = '/rw_camera_card.jpg';
+                      }}
+                    />
+                    <div className="stat-studio-live-badge">
+                      <span className="studio-live-dot"></span>
+                      <span>Studio Live</span>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -649,7 +833,7 @@ export default function GlassStudioDashboard({
                   <div className="hub-header-row">
                     <div className="hub-title-block">
                       <span className="hub-tag-badge tag-graphic">
-                        <LuPalette size={13} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
+                        <LuImage size={13} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
                         Graphic Studio
                       </span>
                       <h3 className="hub-main-title">{graphicsData.length} Artworks Live</h3>
@@ -709,7 +893,7 @@ export default function GlassStudioDashboard({
                   <div className="hub-header-row">
                     <div className="hub-title-block">
                       <span className="hub-tag-badge tag-video">
-                        <LuClapperboard size={13} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
+                        <LuFilm size={13} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
                         Video Production
                       </span>
                       <h3 className="hub-main-title">{videosData.length} Reels Active</h3>
@@ -733,6 +917,15 @@ export default function GlassStudioDashboard({
                       if (videosData[0]) setSelectedPreview(allDynamicFiles.find(f => f.id === videosData[0].id));
                     }}
                   >
+                    <img 
+                      src={getVideoThumb(videosData[0])} 
+                      alt={videosData[0]?.title || "Latest Reel"} 
+                      className="hub-banner-img video-banner-img"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80";
+                      }}
+                    />
                     <div className="video-thumb-play-circle">
                       <LuPlay size={26} color="#ffffff" />
                     </div>
@@ -767,7 +960,7 @@ export default function GlassStudioDashboard({
                   <div className="hub-header-row">
                     <div className="hub-title-block">
                       <span className="hub-tag-badge tag-seo">
-                        <LuRocket size={13} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
+                        <LuTrendingUp size={13} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
                         SEO Dominance
                       </span>
                       <h3 className="hub-main-title">{seoData.length} Ranked Partners</h3>
@@ -786,20 +979,31 @@ export default function GlassStudioDashboard({
 
                   {/* Latest SEO Performance Metric Card */}
                   <div 
-                    className="hub-seo-spotlight"
+                    className="hub-preview-banner hub-seo-banner"
                     onClick={() => {
                       if (seoData[0]) setSelectedPreview(allDynamicFiles.find(f => f.id === seoData[0].id));
                     }}
                   >
-                    <div className="seo-spotlight-top">
-                      <span className="spotlight-rank">{seoData[0]?.googleRank || '#1 Position'}</span>
-                      <span className="spotlight-growth">{seoData[0]?.organicGrowth || '+420%'}</span>
+                    <img 
+                      src={getSeoThumb(seoData[0]) || "/seo_gsc_performance.jpg"} 
+                      alt={seoData[0]?.client || "Zoniraz Apparel - Google Search Console"} 
+                      className="hub-banner-img seo-banner-img"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = "/seo_gsc_performance.jpg";
+                      }}
+                    />
+                    <div className="hub-banner-overlay seo-banner-overlay">
+                      <div className="seo-spotlight-top">
+                        <span className="spotlight-rank">{seoData[0]?.googleRank || 'Avg Pos 8.5'}</span>
+                        <span className="spotlight-growth">{seoData[0]?.organicGrowth || '+480%'}</span>
+                      </div>
+                      <span className="hub-banner-title">{seoData[0]?.client || "Zoniraz Apparel"}</span>
+                      <span className="hub-banner-sub">
+                        <LuKey size={12} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
+                        {seoData[0]?.topKeyword || "Urban Streetwear & Fashion India"}
+                      </span>
                     </div>
-                    <span className="spotlight-client">{seoData[0]?.client || "Top Ranked Partner"}</span>
-                    <span className="spotlight-kw">
-                      <LuKey size={13} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
-                      {seoData[0]?.topKeyword || "Industry Top Keyword"}
-                    </span>
                   </div>
 
                   {/* Actions */}
@@ -845,21 +1049,21 @@ export default function GlassStudioDashboard({
                         className={`files-filter-pill ${selectedFileFilter === 'graphic' ? 'files-filter-pill--active' : ''}`}
                         onClick={() => setSelectedFileFilter('graphic')}
                       >
-                        <LuPalette size={12} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
+                        <LuImage size={12} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
                         Graphic ({graphicsData.length})
                       </button>
                       <button 
                         className={`files-filter-pill ${selectedFileFilter === 'video' ? 'files-filter-pill--active' : ''}`}
                         onClick={() => setSelectedFileFilter('video')}
                       >
-                        <LuClapperboard size={12} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
+                        <LuFilm size={12} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
                         Reel ({videosData.length})
                       </button>
                       <button 
                         className={`files-filter-pill ${selectedFileFilter === 'seo' ? 'files-filter-pill--active' : ''}`}
                         onClick={() => setSelectedFileFilter('seo')}
                       >
-                        <LuRocket size={12} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
+                        <LuTrendingUp size={12} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
                         SEO ({seoData.length})
                       </button>
                     </div>
@@ -884,11 +1088,22 @@ export default function GlassStudioDashboard({
                         onClick={() => setSelectedPreview(f)}
                         title="Click to inspect in Preview Panel"
                       >
-                        <span className="file-badge-sq" style={{ backgroundColor: f.tagColor }}>
-                          {f.type === 'graphic' && <LuPalette size={10} color="#ffffff" />}
-                          {f.type === 'video' && <LuClapperboard size={10} color="#ffffff" />}
-                          {f.type === 'seo' && <LuRocket size={10} color="#ffffff" />}
-                        </span>
+                        <div className="file-capsule-thumb-wrap">
+                          <img 
+                            src={f.image} 
+                            alt={f.title} 
+                            className="file-capsule-thumb-img" 
+                            onError={(e) => {
+                              e.target.onerror = null;
+                              e.target.src = "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=120&q=80";
+                            }}
+                          />
+                          <span className="file-badge-sq-mini" style={{ backgroundColor: f.tagColor }}>
+                            {f.type === 'graphic' && <LuImage size={9} color="#ffffff" />}
+                            {f.type === 'video' && <LuFilm size={9} color="#ffffff" />}
+                            {f.type === 'seo' && <LuTrendingUp size={9} color="#ffffff" />}
+                          </span>
+                        </div>
 
                         <div className="file-info-text-col">
                           <span className="file-capsule-name">{f.title}</span>
@@ -992,16 +1207,30 @@ export default function GlassStudioDashboard({
 
                     {currentPreview.type === 'video' && (
                       <div className="inspector-video-box">
-                        <LuPlay size={36} color="#ffffff" />
-                        <span className="inspector-video-tag">{currentPreview.filesize}</span>
+                        <img 
+                          src={currentPreview.image} 
+                          alt={currentPreview.title} 
+                          className="inspector-video-bg-img" 
+                        />
+                        <div className="inspector-video-overlay">
+                          <LuPlay size={36} color="#ffffff" />
+                          <span className="inspector-video-tag">{currentPreview.filesize}</span>
+                        </div>
                       </div>
                     )}
 
                     {currentPreview.type === 'seo' && (
                       <div className="inspector-seo-box">
-                        <span className="inspector-rank-badge">{currentPreview.rawItem?.googleRank || '#1 Position'}</span>
-                        <span className="inspector-growth-badge">{currentPreview.rawItem?.organicGrowth || '+350%'}</span>
-                        <span className="inspector-leads">{currentPreview.rawItem?.leadsPerMonth || '500+ Leads'}</span>
+                        <img 
+                          src={currentPreview.image} 
+                          alt={currentPreview.title} 
+                          className="inspector-seo-bg-img" 
+                        />
+                        <div className="inspector-seo-overlay">
+                          <span className="inspector-rank-badge">{currentPreview.rawItem?.googleRank || '#1 Position'}</span>
+                          <span className="inspector-growth-badge">{currentPreview.rawItem?.organicGrowth || '+350%'}</span>
+                          <span className="inspector-leads">{currentPreview.rawItem?.leadsPerMonth || '500+ Leads'}</span>
+                        </div>
                       </div>
                     )}
                   </div>
@@ -1041,8 +1270,16 @@ export default function GlassStudioDashboard({
                   ============================================================ */}
               <div className="clay-bottom-banner">
                 <div className="bottom-banner-left">
-                  <div className="bottom-banner-star">
-                    <LuStar size={24} color="#f59e0b" fill="#f59e0b" />
+                  <div className="bottom-banner-art-thumb">
+                    <img 
+                      src="/rw_shoot_poster.jpg" 
+                      alt="Shoot. Edit. Deliver. Repeat." 
+                      className="bottom-art-img" 
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = "/RW.png";
+                      }}
+                    />
                   </div>
                   <div className="bottom-banner-text-block">
                     <span className="bottom-banner-title">Craft new visual excellence</span>

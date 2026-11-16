@@ -7,9 +7,9 @@ import {
   LuSearch, 
   LuCircleCheck, 
   LuPencil,
-  LuPalette, 
-  LuClapperboard, 
-  LuRocket, 
+  LuImage, 
+  LuFilm, 
+  LuTrendingUp, 
   LuTrash2 
 } from 'react-icons/lu';
 import './PortfolioView.css';
@@ -38,7 +38,7 @@ export default function PortfolioView({
         <div className="manager-toolbar">
           <div className="toolbar-left">
             <div className="toolbar-badge-icon palette-bg">
-              <LuPalette size={20} />
+              <LuImage size={20} />
             </div>
             <div>
               <h2 className="toolbar-title">Graphic Design & Creative Assets</h2>
@@ -149,7 +149,7 @@ export default function PortfolioView({
         <div className="manager-toolbar">
           <div className="toolbar-left">
             <div className="toolbar-badge-icon video-bg">
-              <LuClapperboard size={20} />
+              <LuFilm size={20} />
             </div>
             <div>
               <h2 className="toolbar-title">Video Cinema & Reels Production</h2>
@@ -193,7 +193,7 @@ export default function PortfolioView({
                   />
                 ) : (
                   <div className="video-placeholder">
-                    <LuClapperboard size={36} />
+                    <LuFilm size={36} />
                   </div>
                 )}
                 <span className="video-card__duration-tag">{item.duration || '0:45'}</span>
@@ -271,7 +271,7 @@ export default function PortfolioView({
         <div className="manager-toolbar">
           <div className="toolbar-left">
             <div className="toolbar-badge-icon seo-bg">
-              <LuRocket size={20} />
+              <LuTrendingUp size={20} />
             </div>
             <div>
               <h2 className="toolbar-title">SEO Rank Growth & Organic Client Dominance</h2>

@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { 
   LuX, 
   LuCheck,
-  LuPalette, 
-  LuClapperboard, 
-  LuRocket 
+  LuImage, 
+  LuFilm, 
+  LuTrendingUp,
+  LuUpload
 } from 'react-icons/lu';
 import './NewProjectModal.css';
 
@@ -35,9 +36,34 @@ export default function NewProjectModal({
   // SEO Specific
   const [website, setWebsite] = useState('');
   const [topKeyword, setTopKeyword] = useState('');
+  const [googleRank, setGoogleRank] = useState('#1 Position');
+  const [rankingImage, setRankingImage] = useState('');
   const [organicGrowth, setOrganicGrowth] = useState('+350%');
   const [healthScore, setHealthScore] = useState('98/100');
   const [leadsPerMonth, setLeadsPerMonth] = useState('450+ Inquiries');
+
+  // Local File Upload Handlers (Converts selected screenshot/image to DataURL)
+  const handleGraphicImageUpload = (e) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        setImageUrl(event.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleRankingImageUpload = (e) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        setRankingImage(event.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   // Load edit item data or reset
   useEffect(() => {
@@ -54,6 +80,8 @@ export default function NewProjectModal({
       setViews(editItem.views || '180K');
       setWebsite(editItem.website || '');
       setTopKeyword(editItem.topKeyword || '');
+      setGoogleRank(editItem.googleRank || '#1 Position');
+      setRankingImage(editItem.rankingImage || editItem.thumbnail || editItem.image || '');
       setOrganicGrowth(editItem.organicGrowth || '+350%');
       setHealthScore(editItem.healthScore || '98/100');
       setLeadsPerMonth(editItem.leadsPerMonth || '450+ Inquiries');
@@ -66,6 +94,11 @@ export default function NewProjectModal({
       setVideoUrl('');
       setWebsite('');
       setTopKeyword('');
+      setGoogleRank('#1 Position');
+      setRankingImage('');
+      setOrganicGrowth('+350%');
+      setHealthScore('98/100');
+      setLeadsPerMonth('450+ Inquiries');
     }
   }, [editItem, initialMode, isOpen]);
 
@@ -98,12 +131,16 @@ export default function NewProjectModal({
         tags: editItem?.tags || ['Video Reel', 'Cinema', '4K'],
       }, !!editItem);
     } else if (activeMode === 'seo') {
+      const finalImage = rankingImage || editItem?.rankingImage || editItem?.thumbnail || editItem?.image || 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80';
       onSave('seo', {
         id: editItem ? editItem.id : `s-${Date.now()}`,
         client: client || 'SEO Partner',
         website: website || 'clientdomain.com',
         topKeyword: topKeyword || 'Target #1 Industry Keyword',
-        googleRank: editItem?.googleRank || '#1 Position',
+        googleRank: googleRank || '#1 Position',
+        rankingImage: finalImage,
+        thumbnail: finalImage,
+        image: finalImage,
         organicGrowth: organicGrowth || '+320%',
         trafficMonthly: editItem?.trafficMonthly || '42,000 visits',
         healthScore: healthScore || '97/100',
@@ -122,28 +159,32 @@ export default function NewProjectModal({
         <div className="modal-header">
           <div className="modal-header-left">
             <div className={`modal-header-icon-aura mode-${activeMode}`}>
-              {activeMode === 'graphic' && <LuPalette size={22} />}
-              {activeMode === 'video' && <LuClapperboard size={22} />}
-              {activeMode === 'seo' && <LuRocket size={22} />}
+              {activeMode === 'graphic' && <LuImage size={22} />}
+              {activeMode === 'video' && <LuFilm size={22} />}
+              {activeMode === 'seo' && <LuTrendingUp size={22} />}
             </div>
             <div className="modal-title-group">
               <div className="modal-badge-row">
                 <span className={`modal-badge badge--${activeMode}`}>
-                  {editItem ? 'Edit & Update Asset' : 'Add New Portfolio Asset'}
+                  {editItem ? 'Edit Asset' : 'New Asset'}
                 </span>
                 <span className="modal-mode-indicator">
-                  {activeMode === 'graphic' && '• Graphic Studio Asset'}
-                  {activeMode === 'video' && '• Video Reel Production'}
-                  {activeMode === 'seo' && '• SEO Dominance Partner'}
+                  {activeMode === 'graphic' && 'Graphic Design Studio'}
+                  {activeMode === 'video' && 'Video Production'}
+                  {activeMode === 'seo' && 'SEO Dominance'}
                 </span>
               </div>
               <h3 className="modal-heading">
-                {editItem ? (title || client) : 'Portfolio Asset & Content Manager'}
+                {editItem 
+                  ? `Edit: ${title || client || 'Asset'}`
+                  : (activeMode === 'graphic' ? 'Upload Graphic Artwork' :
+                     activeMode === 'video' ? 'Add Video Reel' : 'Add SEO Case Study')
+                }
               </h3>
             </div>
           </div>
           <button className="modal-close-btn" onClick={onClose} title="Close Modal">
-            <LuX size={20} />
+            <LuX size={18} />
           </button>
         </div>
 
@@ -152,43 +193,43 @@ export default function NewProjectModal({
           <div className="modal-mode-tabs">
             <button
               type="button"
-              className={`mode-tab-btn ${activeMode === 'graphic' ? 'mode-tab-btn--graphic' : ''}`}
+              className={`mode-tab-btn ${activeMode === 'graphic' ? 'mode-tab-btn--active mode-tab-btn--graphic' : ''}`}
               onClick={() => setActiveMode('graphic')}
             >
               <div className="mode-tab-icon">
-                <LuPalette size={18} />
+                <LuImage size={17} />
               </div>
               <div className="mode-tab-text">
                 <span className="mode-tab-title">Graphic Image</span>
-                <span className="mode-tab-sub">Poster, Social, Branding</span>
+                <span className="mode-tab-sub">Poster, Branding</span>
               </div>
             </button>
 
             <button
               type="button"
-              className={`mode-tab-btn ${activeMode === 'video' ? 'mode-tab-btn--video' : ''}`}
+              className={`mode-tab-btn ${activeMode === 'video' ? 'mode-tab-btn--active mode-tab-btn--video' : ''}`}
               onClick={() => setActiveMode('video')}
             >
               <div className="mode-tab-icon">
-                <LuClapperboard size={18} />
+                <LuFilm size={17} />
               </div>
               <div className="mode-tab-text">
                 <span className="mode-tab-title">Video Reel</span>
-                <span className="mode-tab-sub">Cafe, Hospital, Infra</span>
+                <span className="mode-tab-sub">Reel, Commercial</span>
               </div>
             </button>
 
             <button
               type="button"
-              className={`mode-tab-btn ${activeMode === 'seo' ? 'mode-tab-btn--seo' : ''}`}
+              className={`mode-tab-btn ${activeMode === 'seo' ? 'mode-tab-btn--active mode-tab-btn--seo' : ''}`}
               onClick={() => setActiveMode('seo')}
             >
               <div className="mode-tab-icon">
-                <LuRocket size={18} />
+                <LuTrendingUp size={17} />
               </div>
               <div className="mode-tab-text">
                 <span className="mode-tab-title">SEO Content</span>
-                <span className="mode-tab-sub">Keywords, Rank, Lift %</span>
+                <span className="mode-tab-sub">Keywords, Rank</span>
               </div>
             </button>
           </div>
@@ -267,7 +308,19 @@ export default function NewProjectModal({
               </div>
 
               <div className="form-group">
-                <label className="form-label">Image URL / Path</label>
+                <div className="form-label-row">
+                  <label className="form-label">Image URL / Path</label>
+                  <label className="file-upload-btn-chip" title="Choose image from PC">
+                    <LuUpload size={12} />
+                    <span>Upload from PC</span>
+                    <input 
+                      type="file" 
+                      accept="image/*" 
+                      style={{ display: 'none' }} 
+                      onChange={handleGraphicImageUpload} 
+                    />
+                  </label>
+                </div>
                 <input 
                   type="text" 
                   className="form-input" 
@@ -374,7 +427,7 @@ export default function NewProjectModal({
             </div>
           )}
 
-          {/* OPTION 3: SEO CONTENT UPDATE */}
+          {/* OPTION 3: SEO CONTENT UPDATE WITH RANKING IMAGE */}
           {activeMode === 'seo' && (
             <div className="form-section-body">
               <div className="form-row-2">
@@ -402,16 +455,120 @@ export default function NewProjectModal({
                 </div>
               </div>
 
+              <div className="form-row-2">
+                <div className="form-group">
+                  <label className="form-label">Target Google #1 Ranking Keyword *</label>
+                  <input 
+                    type="text" 
+                    className="form-input" 
+                    placeholder="e.g. Best Orthopedic Surgeon in Alwar"
+                    value={topKeyword}
+                    onChange={(e) => setTopKeyword(e.target.value)}
+                    required
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label className="form-label">Google Ranking Position *</label>
+                  <select 
+                    className="form-input form-select"
+                    value={googleRank}
+                    onChange={(e) => setGoogleRank(e.target.value)}
+                  >
+                    <option value="#1 Position">#1 Position (Top Ranked)</option>
+                    <option value="#2 Position">#2 Position (Top 3)</option>
+                    <option value="#3 Position">#3 Position (Top 3)</option>
+                    <option value="Page 1 Featured">Page 1 Featured Snippet</option>
+                    <option value="Top 5 Dominant">Top 5 Dominant</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* SERP Ranking Proof Screenshot / Image Upload Option */}
               <div className="form-group">
-                <label className="form-label">Target Google #1 Ranking Keyword *</label>
+                <div className="form-label-row">
+                  <label className="form-label">SERP Ranking Screenshot / Proof Image</label>
+                  <label className="file-upload-btn-chip" title="Choose screenshot from PC">
+                    <LuUpload size={12} />
+                    <span>Upload Screenshot</span>
+                    <input 
+                      type="file" 
+                      accept="image/*" 
+                      style={{ display: 'none' }} 
+                      onChange={handleRankingImageUpload} 
+                    />
+                  </label>
+                </div>
+
                 <input 
                   type="text" 
                   className="form-input" 
-                  placeholder="e.g. Best Orthopedic Surgeon in Alwar"
-                  value={topKeyword}
-                  onChange={(e) => setTopKeyword(e.target.value)}
-                  required
+                  placeholder="Paste URL (https://...) or choose screenshot from computer above"
+                  value={rankingImage}
+                  onChange={(e) => setRankingImage(e.target.value)}
                 />
+
+                {/* Quick Presets */}
+                <div className="seo-presets-row">
+                  <span className="seo-presets-label">Quick Presets:</span>
+                  <button 
+                    type="button" 
+                    className="preset-chip"
+                    onClick={() => setRankingImage('/seo_gsc_performance.jpg')}
+                  >
+                    🔍 Google Search Console (zoniraz.com)
+                  </button>
+                  <button 
+                    type="button" 
+                    className="preset-chip"
+                    onClick={() => setRankingImage('/seo_gsc_card.jpg')}
+                  >
+                    📈 GSC Stat Metric Card
+                  </button>
+                  <button 
+                    type="button" 
+                    className="preset-chip"
+                    onClick={() => setRankingImage('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80')}
+                  >
+                    📊 Google Analytics #1
+                  </button>
+                  <button 
+                    type="button" 
+                    className="preset-chip"
+                    onClick={() => setRankingImage('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=600&q=80')}
+                  >
+                    🏥 Hospital Case Proof
+                  </button>
+                  <button 
+                    type="button" 
+                    className="preset-chip"
+                    onClick={() => setRankingImage('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=600&q=80')}
+                  >
+                    🎓 School Case Proof
+                  </button>
+                </div>
+
+                {rankingImage && (
+                  <div className="modal-asset-showcase">
+                    <div className="showcase-header-bar">
+                      <div className="showcase-left-meta">
+                        <span className="showcase-status-indicator"></span>
+                        <span className="showcase-label">Live Google Ranking Proof Stage</span>
+                      </div>
+                      <span className="showcase-format-pill" style={{ background: '#0284c7', color: '#ffffff', border: 'none' }}>
+                        {googleRank || '#1 Position'}
+                      </span>
+                    </div>
+                    <div className="showcase-media-stage">
+                      <img 
+                        src={rankingImage} 
+                        alt="Ranking Proof Preview" 
+                        className="showcase-img" 
+                        onError={(e) => e.target.style.display='none'} 
+                      />
+                    </div>
+                  </div>
+                )}
               </div>
 
               <div className="form-row-2">
@@ -456,12 +613,12 @@ export default function NewProjectModal({
             <button type="button" className="btn-cancel" onClick={onClose}>
               Cancel
             </button>
-            <button type="submit" className="btn-submit">
-              <LuCheck size={18} />
+            <button type="submit" className={`btn-submit btn-submit--${activeMode}`}>
+              <LuCheck size={16} />
               <span>
                 {editItem ? 'Save & Update Changes' : (
-                  activeMode === 'graphic' ? 'Publish Graphic Image' :
-                  activeMode === 'video' ? 'Publish Video Reel' : 'Update SEO Rankings'
+                  activeMode === 'graphic' ? 'Publish Graphic Artwork' :
+                  activeMode === 'video' ? 'Publish Video Reel' : 'Save SEO Partner'
                 )}
               </span>
             </button>

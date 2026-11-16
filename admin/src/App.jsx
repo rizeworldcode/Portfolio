@@ -16,7 +16,8 @@ function App() {
   const [graphicsData, setGraphicsData] = useState(() => {
     try {
       const saved = localStorage.getItem('rw_graphics');
-      return saved ? JSON.parse(saved) : INITIAL_GRAPHICS;
+      const parsed = saved ? JSON.parse(saved) : null;
+      return (Array.isArray(parsed) && parsed.length > 0) ? parsed : INITIAL_GRAPHICS;
     } catch {
       return INITIAL_GRAPHICS;
     }
@@ -25,7 +26,8 @@ function App() {
   const [videosData, setVideosData] = useState(() => {
     try {
       const saved = localStorage.getItem('rw_videos');
-      return saved ? JSON.parse(saved) : INITIAL_VIDEOS;
+      const parsed = saved ? JSON.parse(saved) : null;
+      return (Array.isArray(parsed) && parsed.length > 0) ? parsed : INITIAL_VIDEOS;
     } catch {
       return INITIAL_VIDEOS;
     }
@@ -34,7 +36,14 @@ function App() {
   const [seoData, setSeoData] = useState(() => {
     try {
       const saved = localStorage.getItem('rw_seo');
-      return saved ? JSON.parse(saved) : INITIAL_SEO;
+      const parsed = saved ? JSON.parse(saved) : null;
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        if (!parsed.some(item => (item.website || '').toLowerCase().includes('zoniraz'))) {
+          return [INITIAL_SEO[0], ...parsed];
+        }
+        return parsed;
+      }
+      return INITIAL_SEO;
     } catch {
       return INITIAL_SEO;
     }
