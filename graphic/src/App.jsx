@@ -1,9 +1,17 @@
+import { useEffect } from 'react'
 import './App.css'
 import Hero from './components/Hero/Hero'
 import PinterestGallery from './components/PinterestGallery/PinterestGallery'
 import Footer from './components/Footer/Footer'
 
 function App() {
+  // Automatically strip '#hero' or any hash from address bar on load
+  useEffect(() => {
+    if (window.location.hash) {
+      window.history.replaceState(null, '', window.location.pathname + window.location.search);
+    }
+  }, []);
+
   return (
     <div className="app-wrapper">
       {/* Noise texture overlay */}

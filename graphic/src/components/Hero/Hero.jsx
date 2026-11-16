@@ -28,8 +28,19 @@ export default function Hero() {
         <div className="hero-grid-pattern" />
       </div>
 
-      {/* ---- Corner Brand Logo ---- */}
-      <a href="#hero" className="hero-corner hero-corner--tl hero-corner-brand" aria-label="RizeWorld Logo">
+      {/* ---- Corner Brand Logo (Smooth scroll to top without adding #hero to URL) ---- */}
+      <a 
+        href="/" 
+        onClick={(e) => {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          if (window.history.replaceState) {
+            window.history.replaceState(null, '', window.location.pathname);
+          }
+        }} 
+        className="hero-corner hero-corner--tl hero-corner-brand" 
+        aria-label="RizeWorld Logo"
+      >
         <img src="/RW.png" alt="RizeWorld Logo" className="hero-corner-logo" />
       </a>
 

@@ -23,6 +23,13 @@ function App() {
   const [activeTab, setActiveTab] = useState('all');
   const [isBackendConnected, setIsBackendConnected] = useState(false);
 
+  // Automatically strip '#hero' or any hash from address bar on load
+  useEffect(() => {
+    if (window.location.hash) {
+      window.history.replaceState(null, '', window.location.pathname + window.location.search);
+    }
+  }, []);
+
   // Authentication State with Session Persistence
   const [currentUser, setCurrentUser] = useState(() => {
     try {

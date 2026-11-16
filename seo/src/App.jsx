@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
 import RadarClients from "./components/RadarClients/RadarClients";
@@ -11,6 +12,13 @@ import Footer from "./components/Footer/Footer";
 import "./App.css";
 
 function App() {
+  // Automatically strip '#hero' or any hash from address bar on load
+  useEffect(() => {
+    if (window.location.hash) {
+      window.history.replaceState(null, '', window.location.pathname + window.location.search);
+    }
+  }, []);
+
   return (
     <div className="seo-portfolio-wrapper">
       {/* Top Floating Glassmorphic Navbar */}

@@ -28,7 +28,18 @@ export default function Navbar() {
     <header className={`rw-header ${isScrolled ? "rw-header--scrolled" : ""}`}>
       <div className="rw-header__container">
         {/* Brand Logo */}
-        <a href="#" className="rw-brand" aria-label="RizeWorld Home">
+        <a 
+          href="/" 
+          onClick={(e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (window.history.replaceState) {
+              window.history.replaceState(null, '', window.location.pathname);
+            }
+          }}
+          className="rw-brand" 
+          aria-label="RizeWorld Home"
+        >
           <div className="rw-brand__logo-wrap">
             <img src="/RW.png" alt="RizeWorld" className="rw-brand__logo-img" />
           </div>
@@ -42,7 +53,17 @@ export default function Navbar() {
                 <a
                   href={item.href}
                   className={`rw-nav__link ${activeLink === item.label ? "rw-nav__link--active" : ""}`}
-                  onClick={() => setActiveLink(item.label)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setActiveLink(item.label);
+                    const target = document.querySelector(item.href);
+                    if (target) {
+                      target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                    if (window.history.replaceState) {
+                      window.history.replaceState(null, '', window.location.pathname);
+                    }
+                  }}
                 >
                   {item.label}
                 </a>
