@@ -1,5 +1,27 @@
 [
   {
+    "id": "ai-1",
+    "title": "Chappan Bhog Culinary Elegance & Royal Sweets",
+    "category": "AI Video",
+    "categoryKey": "ai",
+    "client": "Chappan Bhog",
+    "duration": "0:28",
+    "views": "240K",
+    "likes": "19.8K",
+    "video": "/videos-compressed/chappan-bhog.mp4",
+    "videoUrl": "/videos-compressed/chappan-bhog.mp4",
+    "rawVideo": "/Video portfolio/ai video/CHAPPAN BOH 1.1.mov",
+    "description": "Exquisite traditional sweets presentation, artisanal confectionery textures, and dynamic AI visual storytelling capturing Chappan Bhog's royal legacy.",
+    "tags": [
+      "Chappan Bhog",
+      "Royal Sweets",
+      "Culinary AI",
+      "Food Art"
+    ],
+    "featured": true,
+    "subCategory": "AI Food & Sweets"
+  },
+  {
     "id": "ai-2",
     "title": "Jain Events Dadhikar Fort Heritage Grandeur",
     "category": "AI Video",
@@ -18,7 +40,8 @@
       "Heritage AI"
     ],
     "featured": true,
-    "subCategory": "AI Heritage"
+    "subCategory": "AI Heritage",
+    "rawVideo": "/Video portfolio/ai video/JAIN EVENTS REEL DADHIKAR.mp4"
   },
   {
     "id": "ai-3",
@@ -39,7 +62,8 @@
       "AI Motion"
     ],
     "featured": true,
-    "subCategory": "AI Cafe Trend"
+    "subCategory": "AI Cafe Trend",
+    "rawVideo": "/Video portfolio/ai video/kafesa trnbd.mov"
   },
   {
     "id": "ai-4",
@@ -60,7 +84,8 @@
       "Viral Concept"
     ],
     "featured": true,
-    "subCategory": "Marvel AI Crossover"
+    "subCategory": "Marvel AI Crossover",
+    "rawVideo": "/Video portfolio/ai video/KAFESA X MARVVEL .mp4"
   },
   {
     "id": "ai-5",
@@ -81,7 +106,8 @@
       "Diagnostics"
     ],
     "featured": true,
-    "subCategory": "AI Medical Tech"
+    "subCategory": "AI Medical Tech",
+    "rawVideo": "/Video portfolio/ai video/MEDICOMAPRES REEL 14.mp4"
   },
   {
     "id": "ai-6",
@@ -102,7 +128,8 @@
       "AI Ads"
     ],
     "featured": false,
-    "subCategory": "Meta Ads AI"
+    "subCategory": "Meta Ads AI",
+    "rawVideo": "/Video portfolio/ai video/MEDICOMPARES REEL 2.2 META ADS (2.12).mp4"
   },
   {
     "id": "ai-7",
@@ -123,7 +150,8 @@
       "Futuristic Commercial"
     ],
     "featured": false,
-    "subCategory": "AI Product Motion"
+    "subCategory": "AI Product Motion",
+    "rawVideo": "/Video portfolio/ai video/TEEVA 1.1.mov"
   },
   {
     "id": "ai-8",
@@ -144,7 +172,8 @@
       "AI Motion"
     ],
     "featured": false,
-    "subCategory": "Kinetic AI"
+    "subCategory": "Kinetic AI",
+    "rawVideo": "/Video portfolio/ai video/TEEVA 1.3.mov"
   },
   {
     "id": "ai-9",
@@ -165,7 +194,8 @@
       "AI Sparkle"
     ],
     "featured": false,
-    "subCategory": "AI Luxury Jewellery"
+    "subCategory": "AI Luxury Jewellery",
+    "rawVideo": "/Video portfolio/ai video/ZONIrajsd.mov"
   },
   {
     "id": "ai-10",
@@ -186,7 +216,8 @@
       "Corporate Reel"
     ],
     "featured": false,
-    "subCategory": "AI Brand Franchise"
+    "subCategory": "AI Brand Franchise",
+    "rawVideo": "/Video portfolio/ai video/ZONIRAZ REEL FRNAHISZE 1.mp4"
   },
   {
     "id": "hosp-1",
@@ -780,8 +811,8 @@
   {
     "id": "reel-1",
     "title": "Rizeworld Master Showreel",
-    "category": "AI Video",
-    "categoryKey": "ai",
+    "category": "Jewellery & Gemstones",
+    "categoryKey": "creative",
     "client": "Rizeworld Studios",
     "duration": "0:45",
     "views": "240K",
@@ -801,8 +832,8 @@
   {
     "id": "item-2",
     "title": "Creative Pro Motion & Skills",
-    "category": "AI Video",
-    "categoryKey": "ai",
+    "category": "Jewellery & Gemstones",
+    "categoryKey": "creative",
     "client": "Creative Corp",
     "duration": "0:45",
     "views": "240K",
@@ -921,8 +952,8 @@
   {
     "id": "stream-47",
     "title": "17th June Milestone Visuals",
-    "category": "AI Video",
-    "categoryKey": "ai",
+    "category": "Lifestyle & Wellness",
+    "categoryKey": "lifestyle",
     "client": "Rizeworld Events",
     "duration": "0:40",
     "views": "165K",
@@ -997,8 +1028,8 @@
   {
     "id": "stream-51",
     "title": "High-Octane Cinematic Action Showcase",
-    "category": "AI Video",
-    "categoryKey": "ai",
+    "category": "Lifestyle & Wellness",
+    "categoryKey": "lifestyle",
     "client": "Apex Motion Pictures",
     "duration": "0:40",
     "views": "165K",
@@ -1035,8 +1066,8 @@
   {
     "id": "stream-53",
     "title": "Creator Influencer Viral Campaign",
-    "category": "AI Video",
-    "categoryKey": "ai",
+    "category": "Lifestyle & Wellness",
+    "categoryKey": "lifestyle",
     "client": "Creator Network",
     "duration": "0:40",
     "views": "165K",

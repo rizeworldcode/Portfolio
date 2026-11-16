@@ -73,12 +73,17 @@ function SmartReelCard({ reel, index, onSelect }) {
         {/* Real video with its own authentic first frame as poster */}
         <video
           ref={videoRef}
-          src={encodeURI(reel.video)}
+          src={encodeURI(reel.video || reel.videoUrl || reel.rawVideo)}
           loop
           muted
           playsInline
           preload="metadata"
           className="reel-card__video"
+          onError={(e) => {
+            if (reel.rawVideo && e.currentTarget && !e.currentTarget.src.includes(encodeURI(reel.rawVideo))) {
+              e.currentTarget.src = encodeURI(reel.rawVideo);
+            }
+          }}
         />
 
         {/* Gradient Overlays */}
@@ -114,7 +119,7 @@ export default function CategoryReels() {
   const filteredReels =
     activeCategory === "all"
       ? REELS_DATA
-      : REELS_DATA.filter((r) => r.categoryKey === activeCategory || r.category === activeCategory || (r.category && r.category.toLowerCase().includes(activeCategory)));
+      : REELS_DATA.filter((r) => r.categoryKey === activeCategory);
 
   return (
     <section className="category-reels" id="reels">
@@ -160,7 +165,7 @@ export default function CategoryReels() {
               ======================================================== */}
           <div className="category-reels__tabs" role="tablist">
             {CATEGORIES.map((cat) => {
-              const count = REELS_DATA.filter((r) => r.category === cat.id).length;
+              const count = REELS_DATA.filter((r) => r.categoryKey === cat.id).length;
               const isActive = activeCategory === cat.id;
 
               return (
@@ -276,12 +281,17 @@ export default function CategoryReels() {
                         }
                       }
                     }}
-                    key={selectedReel.video}
-                    src={encodeURI(selectedReel.video)}
+                    key={selectedReel.video || selectedReel.videoUrl}
+                    src={encodeURI(selectedReel.video || selectedReel.videoUrl || selectedReel.rawVideo)}
                     controls
                     autoPlay
                     playsInline
                     className="reel-modal-video"
+                    onError={(e) => {
+                      if (selectedReel.rawVideo && e.currentTarget && !e.currentTarget.src.includes(encodeURI(selectedReel.rawVideo))) {
+                        e.currentTarget.src = encodeURI(selectedReel.rawVideo);
+                      }
+                    }}
                   />
                 </div>
               </div>
