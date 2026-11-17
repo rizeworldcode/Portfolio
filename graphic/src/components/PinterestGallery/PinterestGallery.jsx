@@ -28,7 +28,7 @@ export default function PinterestGallery() {
   const columnCount = useColumnCount();
   const [searchQuery, setSearchQuery] = useState("");
   const [activeLightboxIndex, setActiveLightboxIndex] = useState(null);
-  const [viewMode, setViewMode] = useState("masonry"); // "masonry" (default) or "categories"
+  const [viewMode, setViewMode] = useState("categories"); // "categories" (default) or "masonry"
   const [selectedCategoryForModal, setSelectedCategoryForModal] = useState(null);
   const searchInputRef = useRef(null);
 
@@ -207,22 +207,6 @@ export default function PinterestGallery() {
                   <button
                     type="button"
                     role="tab"
-                    aria-selected={viewMode === "masonry"}
-                    className={`pinterest-view-btn ${viewMode === "masonry" ? "is-active" : ""}`}
-                    onClick={() => setViewMode("masonry")}
-                    title="Masonry Feed (Pinterest View)"
-                  >
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
-                      <rect x="3" y="3" width="7" height="11" rx="2" stroke="currentColor" strokeWidth="2" />
-                      <rect x="14" y="3" width="7" height="6" rx="2" stroke="currentColor" strokeWidth="2" />
-                      <rect x="14" y="12" width="7" height="9" rx="2" stroke="currentColor" strokeWidth="2" />
-                      <rect x="3" y="17" width="7" height="4" rx="2" stroke="currentColor" strokeWidth="2" />
-                    </svg>
-                    <span>Feed View</span>
-                  </button>
-                  <button
-                    type="button"
-                    role="tab"
                     aria-selected={viewMode === "categories"}
                     className={`pinterest-view-btn ${viewMode === "categories" ? "is-active" : ""}`}
                     onClick={() => setViewMode("categories")}
@@ -235,6 +219,22 @@ export default function PinterestGallery() {
                       <rect x="13" y="13" width="8" height="8" rx="2" stroke="currentColor" strokeWidth="2" />
                     </svg>
                     <span>Categories</span>
+                  </button>
+                  <button
+                    type="button"
+                    role="tab"
+                    aria-selected={viewMode === "masonry"}
+                    className={`pinterest-view-btn ${viewMode === "masonry" ? "is-active" : ""}`}
+                    onClick={() => setViewMode("masonry")}
+                    title="Masonry Feed (Pinterest View)"
+                  >
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+                      <rect x="3" y="3" width="7" height="11" rx="2" stroke="currentColor" strokeWidth="2" />
+                      <rect x="14" y="3" width="7" height="6" rx="2" stroke="currentColor" strokeWidth="2" />
+                      <rect x="14" y="12" width="7" height="9" rx="2" stroke="currentColor" strokeWidth="2" />
+                      <rect x="3" y="17" width="7" height="4" rx="2" stroke="currentColor" strokeWidth="2" />
+                    </svg>
+                    <span>Feed View</span>
                   </button>
                 </div>
               </div>
