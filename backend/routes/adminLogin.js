@@ -124,34 +124,34 @@ export async function autoSeedMasterAdmin() {
     const adminPassword = (process.env.ADMIN_PASSWORD || 'Admin@123').trim();
     const hashed = hashPassword(adminPassword);
 
-    // 1. Sync into 'admins' collection
-    await Admin.findOneAndUpdate(
-      { email: adminEmail },
-      {
-        email: adminEmail,
-        password: adminPassword,
-        plainPassword: adminPassword,
-        hashedPassword: hashed,
-        name: 'Admin',
-        role: 'admin',
-        updated_at: new Date(),
-      },
-      { upsert: true, new: true }
-    );
-
-    // 2. Sync into 'users' collection
-    await User.findOneAndUpdate(
-      { email: adminEmail },
-      {
-        email: adminEmail,
-        password: adminPassword,
-        plainPassword: adminPassword,
-        hashedPassword: hashed,
-        name: 'Admin',
-        role: 'admin',
-      },
-      { upsert: true, new: true }
-    );
+    // Parallel synchronization into 'admins' and 'users' collections
+    await Promise.all([
+      Admin.findOneAndUpdate(
+        { email: adminEmail },
+        {
+          email: adminEmail,
+          password: adminPassword,
+          plainPassword: adminPassword,
+          hashedPassword: hashed,
+          name: 'Admin',
+          role: 'admin',
+          updated_at: new Date(),
+        },
+        { upsert: true, new: true }
+      ),
+      User.findOneAndUpdate(
+        { email: adminEmail },
+        {
+          email: adminEmail,
+          password: adminPassword,
+          plainPassword: adminPassword,
+          hashedPassword: hashed,
+          name: 'Admin',
+          role: 'admin',
+        },
+        { upsert: true, new: true }
+      ),
+    ]);
 
     console.log(`👑 [Admin Auth] Admin synchronized in MongoDB Atlas ('admins' & 'users'): ${adminEmail}`);
   } catch (err) {
@@ -183,10 +183,12 @@ router.post('/login', async (req, res) => {
 
     let user = null;
     try {
-      user = await Admin.findOne({ email: cleanEmail }).lean().exec();
-      if (!user) {
-        user = await User.findOne({ email: cleanEmail }).lean().exec();
-      }
+      // Parallel concurrent lookup across Admin and User collections
+      const [adminDoc, userDoc] = await Promise.all([
+        Admin.findOne({ email: cleanEmail }).lean().exec(),
+        User.findOne({ email: cleanEmail }).lean().exec(),
+      ]);
+      user = adminDoc || userDoc;
     } catch (e) {
       // MongoDB offline fallback
     }
@@ -261,13 +263,14 @@ router.post('/forgot-password', async (req, res) => {
     const cleanEmail = String(email).toLowerCase().trim();
     const envAdminEmail = (process.env.ADMIN_EMAIL || 'admin@rizeworld.com').toLowerCase().trim();
 
-    // Check account in Database ('admins' and 'users')
+    // Check account in Database ('admins' and 'users') in parallel
     let user = null;
     try {
-      user = await Admin.findOne({ email: cleanEmail }).select('_id email role').lean().exec();
-      if (!user) {
-        user = await User.findOne({ email: cleanEmail }).select('_id email role').lean().exec();
-      }
+      const [adminDoc, userDoc] = await Promise.all([
+        Admin.findOne({ email: cleanEmail }).select('_id email role').lean().exec(),
+        User.findOne({ email: cleanEmail }).select('_id email role').lean().exec(),
+      ]);
+      user = adminDoc || userDoc;
     } catch (e) {}
 
     // Allow registered DB user OR master admin email from .env
@@ -282,26 +285,28 @@ router.post('/forgot-password', async (req, res) => {
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
     const expiresAt = new Date(Date.now() + 10 * 60 * 1000); // 10 minutes validity
 
-    // Save OTP to both 'admins' and 'users' collections in MongoDB
+    // Save OTP to both 'admins' and 'users' collections in parallel
     try {
-      await Admin.updateMany(
-        { email: cleanEmail },
-        { 
-          otp, 
-          otpExpiry: expiresAt, 
-          resetOTP: otp, 
-          resetOTPExpires: expiresAt, 
-          updated_at: new Date() 
-        },
-        { upsert: true }
-      );
-      await User.updateMany(
-        { email: cleanEmail },
-        { 
-          resetOTP: otp, 
-          resetOTPExpires: expiresAt 
-        }
-      );
+      await Promise.all([
+        Admin.updateMany(
+          { email: cleanEmail },
+          { 
+            otp, 
+            otpExpiry: expiresAt, 
+            resetOTP: otp, 
+            resetOTPExpires: expiresAt, 
+            updated_at: new Date() 
+          },
+          { upsert: true }
+        ),
+        User.updateMany(
+          { email: cleanEmail },
+          { 
+            resetOTP: otp, 
+            resetOTPExpires: expiresAt 
+          }
+        ),
+      ]);
     } catch (err) {
       console.warn('DB OTP save note:', err.message);
     }
@@ -353,10 +358,14 @@ router.post('/verify-otp', async (req, res) => {
       isMemoryValid = true;
     }
 
-    // Check database ('admins' and 'users')
+    // Check database ('admins' and 'users') in parallel
     let isDbValid = false;
     try {
-      const adminDoc = await Admin.findOne({ email: cleanEmail }).select('otp resetOTP otpExpiry resetOTPExpires').lean().exec();
+      const [adminDoc, userDoc] = await Promise.all([
+        Admin.findOne({ email: cleanEmail }).select('otp resetOTP otpExpiry resetOTPExpires').lean().exec(),
+        User.findOne({ email: cleanEmail }).select('resetOTP resetOTPExpires').lean().exec(),
+      ]);
+
       if (adminDoc) {
         const matchesOtp = adminDoc.otp === cleanOtp || adminDoc.resetOTP === cleanOtp;
         const matchesExpiry = (adminDoc.otpExpiry && new Date(adminDoc.otpExpiry) > new Date()) || 
@@ -365,9 +374,8 @@ router.post('/verify-otp', async (req, res) => {
           isDbValid = true;
         }
       }
-      if (!isDbValid) {
-        const userDoc = await User.findOne({ email: cleanEmail }).select('resetOTP resetOTPExpires').lean().exec();
-        if (userDoc && userDoc.resetOTP === cleanOtp && userDoc.resetOTPExpires && new Date(userDoc.resetOTPExpires) > new Date()) {
+      if (!isDbValid && userDoc) {
+        if (userDoc.resetOTP === cleanOtp && userDoc.resetOTPExpires && new Date(userDoc.resetOTPExpires) > new Date()) {
           isDbValid = true;
         }
       }
@@ -418,16 +426,19 @@ router.post('/reset-password', async (req, res) => {
 
     let isDbValid = false;
     try {
-      const adminDoc = await Admin.findOne({ email: cleanEmail }).select('otp resetOTP otpExpiry resetOTPExpires').lean().exec();
+      const [adminDoc, userDoc] = await Promise.all([
+        Admin.findOne({ email: cleanEmail }).select('otp resetOTP otpExpiry resetOTPExpires').lean().exec(),
+        User.findOne({ email: cleanEmail }).select('resetOTP resetOTPExpires').lean().exec(),
+      ]);
+
       if (adminDoc) {
         const matchesOtp = adminDoc.otp === cleanOtp || adminDoc.resetOTP === cleanOtp;
         const matchesExpiry = (adminDoc.otpExpiry && new Date(adminDoc.otpExpiry) > new Date()) || 
                               (adminDoc.resetOTPExpires && new Date(adminDoc.resetOTPExpires) > new Date());
         if (matchesOtp && matchesExpiry) isDbValid = true;
       }
-      if (!isDbValid) {
-        const userDoc = await User.findOne({ email: cleanEmail }).select('resetOTP resetOTPExpires').lean().exec();
-        if (userDoc && userDoc.resetOTP === cleanOtp && userDoc.resetOTPExpires && new Date(userDoc.resetOTPExpires) > new Date()) {
+      if (!isDbValid && userDoc) {
+        if (userDoc.resetOTP === cleanOtp && userDoc.resetOTPExpires && new Date(userDoc.resetOTPExpires) > new Date()) {
           isDbValid = true;
         }
       }
@@ -439,33 +450,35 @@ router.post('/reset-password', async (req, res) => {
 
     const hashedNewPass = hashPassword(cleanNewPass);
 
-    // Save updated password in Database ('admins' & 'users') with plain text visible
+    // Save updated password in Database ('admins' & 'users') concurrently in parallel
     try {
-      await Admin.updateMany(
-        { email: cleanEmail },
-        { 
-          password: cleanNewPass,
-          plainPassword: cleanNewPass,
-          hashedPassword: hashedNewPass,
-          otp: null,
-          otpExpiry: null,
-          resetOTP: null,
-          resetOTPExpires: null,
-          updated_at: new Date()
-        }
-      );
-      await User.updateMany(
-        { email: cleanEmail },
-        { 
-          password: cleanNewPass,
-          plainPassword: cleanNewPass,
-          hashedPassword: hashedNewPass,
-          resetOTP: null,
-          resetOTPExpires: null,
-          updatedAt: new Date()
-        }
-      );
-      console.log(`✅ [Admin Auth] Password updated in database ('admins' & 'users') for: ${cleanEmail}`);
+      await Promise.all([
+        Admin.updateMany(
+          { email: cleanEmail },
+          { 
+            password: cleanNewPass,
+            plainPassword: cleanNewPass,
+            hashedPassword: hashedNewPass,
+            otp: null,
+            otpExpiry: null,
+            resetOTP: null,
+            resetOTPExpires: null,
+            updated_at: new Date()
+          }
+        ),
+        User.updateMany(
+          { email: cleanEmail },
+          { 
+            password: cleanNewPass,
+            plainPassword: cleanNewPass,
+            hashedPassword: hashedNewPass,
+            resetOTP: null,
+            resetOTPExpires: null,
+            updatedAt: new Date()
+          }
+        ),
+      ]);
+      console.log(`✅ [Admin Auth] Password updated in database ('admins' & 'users') in parallel for: ${cleanEmail}`);
     } catch (err) {
       console.warn('DB password update note:', err.message);
     }

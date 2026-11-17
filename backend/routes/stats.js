@@ -106,6 +106,25 @@ router.get('/breakdown', async (req, res) => {
   }
 });
 
+// Parallel Unified Multi-portfolio Data Retrieval (Parallel DB calls via Promise.all)
+router.get('/all-portfolios', async (req, res) => {
+  try {
+    const [graphics, videos, seo] = await Promise.all([
+      Graphic.find().sort({ createdAt: -1 }).lean().exec(),
+      Video.find().sort({ priority: 1, createdAt: -1 }).lean().exec(),
+      Seo.find().sort({ createdAt: -1 }).lean().exec(),
+    ]);
+
+    res.json({
+      graphics: graphics.map((g) => ({ ...g, id: g._id.toString() })),
+      videos: videos.map((v) => ({ ...v, id: v._id.toString() })),
+      seo: seo.map((s) => ({ ...s, id: s._id.toString() })),
+    });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch all portfolios in parallel', details: error.message });
+  }
+});
+
 router.get('/', async (req, res) => {
   try {
     const [graphicsCount, videosCount, seoCount] = await Promise.all([
