@@ -183,9 +183,9 @@ router.post('/login', async (req, res) => {
 
     let user = null;
     try {
-      user = await Admin.findOne({ email: cleanEmail });
+      user = await Admin.findOne({ email: cleanEmail }).lean().exec();
       if (!user) {
-        user = await User.findOne({ email: cleanEmail });
+        user = await User.findOne({ email: cleanEmail }).lean().exec();
       }
     } catch (e) {
       // MongoDB offline fallback
@@ -264,9 +264,9 @@ router.post('/forgot-password', async (req, res) => {
     // Check account in Database ('admins' and 'users')
     let user = null;
     try {
-      user = await Admin.findOne({ email: cleanEmail });
+      user = await Admin.findOne({ email: cleanEmail }).select('_id email role').lean().exec();
       if (!user) {
-        user = await User.findOne({ email: cleanEmail });
+        user = await User.findOne({ email: cleanEmail }).select('_id email role').lean().exec();
       }
     } catch (e) {}
 
@@ -356,18 +356,18 @@ router.post('/verify-otp', async (req, res) => {
     // Check database ('admins' and 'users')
     let isDbValid = false;
     try {
-      const adminDoc = await Admin.findOne({ email: cleanEmail });
+      const adminDoc = await Admin.findOne({ email: cleanEmail }).select('otp resetOTP otpExpiry resetOTPExpires').lean().exec();
       if (adminDoc) {
         const matchesOtp = adminDoc.otp === cleanOtp || adminDoc.resetOTP === cleanOtp;
-        const matchesExpiry = (adminDoc.otpExpiry && adminDoc.otpExpiry > new Date()) || 
-                              (adminDoc.resetOTPExpires && adminDoc.resetOTPExpires > new Date());
+        const matchesExpiry = (adminDoc.otpExpiry && new Date(adminDoc.otpExpiry) > new Date()) || 
+                              (adminDoc.resetOTPExpires && new Date(adminDoc.resetOTPExpires) > new Date());
         if (matchesOtp && matchesExpiry) {
           isDbValid = true;
         }
       }
       if (!isDbValid) {
-        const userDoc = await User.findOne({ email: cleanEmail });
-        if (userDoc && userDoc.resetOTP === cleanOtp && userDoc.resetOTPExpires && userDoc.resetOTPExpires > new Date()) {
+        const userDoc = await User.findOne({ email: cleanEmail }).select('resetOTP resetOTPExpires').lean().exec();
+        if (userDoc && userDoc.resetOTP === cleanOtp && userDoc.resetOTPExpires && new Date(userDoc.resetOTPExpires) > new Date()) {
           isDbValid = true;
         }
       }
@@ -418,16 +418,16 @@ router.post('/reset-password', async (req, res) => {
 
     let isDbValid = false;
     try {
-      const adminDoc = await Admin.findOne({ email: cleanEmail });
+      const adminDoc = await Admin.findOne({ email: cleanEmail }).select('otp resetOTP otpExpiry resetOTPExpires').lean().exec();
       if (adminDoc) {
         const matchesOtp = adminDoc.otp === cleanOtp || adminDoc.resetOTP === cleanOtp;
-        const matchesExpiry = (adminDoc.otpExpiry && adminDoc.otpExpiry > new Date()) || 
-                              (adminDoc.resetOTPExpires && adminDoc.resetOTPExpires > new Date());
+        const matchesExpiry = (adminDoc.otpExpiry && new Date(adminDoc.otpExpiry) > new Date()) || 
+                              (adminDoc.resetOTPExpires && new Date(adminDoc.resetOTPExpires) > new Date());
         if (matchesOtp && matchesExpiry) isDbValid = true;
       }
       if (!isDbValid) {
-        const userDoc = await User.findOne({ email: cleanEmail });
-        if (userDoc && userDoc.resetOTP === cleanOtp && userDoc.resetOTPExpires && userDoc.resetOTPExpires > new Date()) {
+        const userDoc = await User.findOne({ email: cleanEmail }).select('resetOTP resetOTPExpires').lean().exec();
+        if (userDoc && userDoc.resetOTP === cleanOtp && userDoc.resetOTPExpires && new Date(userDoc.resetOTPExpires) > new Date()) {
           isDbValid = true;
         }
       }

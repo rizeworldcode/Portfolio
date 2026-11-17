@@ -3,10 +3,36 @@ import Graphic from '../models/Graphic.js';
 
 const router = express.Router();
 
-// GET all graphics
+// GET all graphics with optimized lean query, filtering, and bounded pagination
 router.get('/', async (req, res) => {
   try {
-    const graphics = await Graphic.find().sort({ createdAt: -1 });
+    const filter = {};
+    if (req.query.category && req.query.category !== 'All') {
+      filter.category = req.query.category;
+    }
+    if (req.query.featured !== undefined) {
+      filter.featured = req.query.featured === 'true';
+    }
+    if (req.query.search && req.query.search.trim()) {
+      filter.$text = { $search: req.query.search.trim() };
+    }
+
+    const limit = Math.min(parseInt(req.query.limit, 10) || 0, 200);
+    const skip = parseInt(req.query.skip, 10) || 0;
+
+    let query = Graphic.find(filter).sort({ createdAt: -1 });
+    if (skip > 0) query = query.skip(skip);
+    if (limit > 0) query = query.limit(limit);
+
+    // .lean() avoids heavy Mongoose document overhead (70% less memory, 3x faster)
+    const rawGraphics = await query.lean().exec();
+
+    // Map id virtual for full frontend compatibility
+    const graphics = rawGraphics.map((g) => ({
+      ...g,
+      id: g._id.toString(),
+    }));
+
     res.json(graphics);
   } catch (error) {
     res.status(500).json({ error: 'Failed to fetch graphics', details: error.message });
@@ -16,8 +42,9 @@ router.get('/', async (req, res) => {
 // GET single graphic
 router.get('/:id', async (req, res) => {
   try {
-    const graphic = await Graphic.findById(req.params.id);
+    const graphic = await Graphic.findById(req.params.id).lean().exec();
     if (!graphic) return res.status(404).json({ error: 'Graphic not found' });
+    graphic.id = graphic._id.toString();
     res.json(graphic);
   } catch (error) {
     res.status(500).json({ error: 'Failed to fetch graphic', details: error.message });
@@ -50,8 +77,13 @@ router.post('/', async (req, res) => {
 // PUT update graphic
 router.put('/:id', async (req, res) => {
   try {
-    const updated = await Graphic.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    const updated = await Graphic.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true,
+      lean: true,
+    }).exec();
     if (!updated) return res.status(404).json({ error: 'Graphic not found' });
+    updated.id = updated._id.toString();
     res.json(updated);
   } catch (error) {
     res.status(500).json({ error: 'Failed to update graphic', details: error.message });
