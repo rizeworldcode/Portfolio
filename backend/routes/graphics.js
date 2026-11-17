@@ -1,4 +1,5 @@
 import express from 'express';
+import mongoose from 'mongoose';
 import Graphic from '../models/Graphic.js';
 
 const router = express.Router();
@@ -125,6 +126,9 @@ router.post('/batch/delete', async (req, res) => {
 // GET single graphic
 router.get('/:id', async (req, res) => {
   try {
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+      return res.status(404).json({ error: 'Graphic not found' });
+    }
     const graphic = await Graphic.findById(req.params.id).lean().exec();
     if (!graphic) return res.status(404).json({ error: 'Graphic not found' });
     graphic.id = graphic._id.toString();

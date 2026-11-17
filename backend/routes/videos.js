@@ -1,4 +1,5 @@
 import express from 'express';
+import mongoose from 'mongoose';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -236,6 +237,9 @@ router.post('/batch/delete', async (req, res) => {
 // GET single video
 router.get('/:id', async (req, res) => {
   try {
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+      return res.status(404).json({ error: 'Video not found' });
+    }
     const video = await Video.findById(req.params.id).lean().exec();
     if (!video) return res.status(404).json({ error: 'Video not found' });
     video.id = video._id.toString();

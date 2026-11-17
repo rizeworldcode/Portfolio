@@ -1,4 +1,5 @@
 import express from 'express';
+import mongoose from 'mongoose';
 import Seo from '../models/Seo.js';
 
 const router = express.Router();
@@ -128,6 +129,9 @@ router.post('/batch/delete', async (req, res) => {
 // GET single SEO case
 router.get('/:id', async (req, res) => {
   try {
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+      return res.status(404).json({ error: 'SEO case not found' });
+    }
     const seoCase = await Seo.findById(req.params.id).lean().exec();
     if (!seoCase) return res.status(404).json({ error: 'SEO case not found' });
     seoCase.id = seoCase._id.toString();

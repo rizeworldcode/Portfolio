@@ -4,33 +4,7 @@ import "./Hero.css";
 
 export default function Hero() {
   const videoRef = useRef(null);
-  const [heroVideoSrc, setHeroVideoSrc] = useState("/hero-stream.mp4");
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
-
-  useEffect(() => {
-    // 1. Fetch priority Hero Reel from backend database
-    const apiBase = import.meta.env.VITE_API_BASE_URL || "https://portfolio-j73f.onrender.com/api";
-    const controller = new AbortController();
-
-    fetch(`${apiBase}/videos/hero`, { signal: controller.signal })
-      .then((res) => {
-        if (!res.ok) throw new Error("Failed to fetch hero reel");
-        return res.json();
-      })
-      .then((data) => {
-        if (data && (data.videoUrl || data.video)) {
-          const v = data.videoUrl || data.video;
-          if (v && v.trim()) {
-            setHeroVideoSrc(v);
-          }
-        }
-      })
-      .catch(() => {
-        // Fallback to local faststart hero-stream.mp4
-      });
-
-    return () => controller.abort();
-  }, []);
 
   useEffect(() => {
     if (videoRef.current) {
@@ -43,7 +17,7 @@ export default function Hero() {
         });
       }
     }
-  }, [heroVideoSrc]);
+  }, []);
 
   // Motion variants
   const fadeUp = {
@@ -62,11 +36,10 @@ export default function Hero() {
 
   return (
     <header className="ignitex-hero" id="home">
-      {/* Background Video (Priority #1 - Preloaded with High Priority) */}
+      {/* Background Video (Dedicated Faststart Hero Reel) */}
       <div className="ignitex-hero__bg-wrap" aria-hidden="true">
         <video
           ref={videoRef}
-          key={heroVideoSrc}
           className="ignitex-hero__bg-video"
           autoPlay
           loop
@@ -79,7 +52,7 @@ export default function Hero() {
             transition: "opacity 0.4s ease-in-out",
           }}
         >
-          <source src={heroVideoSrc} type="video/mp4" />
+          <source src="/hero-stream.mp4" type="video/mp4" />
         </video>
       </div>
 
