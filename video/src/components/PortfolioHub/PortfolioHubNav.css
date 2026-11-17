@@ -21,7 +21,7 @@
   display: flex !important;
   align-items: center !important;
   gap: 4px !important;
-  background: rgba(14, 15, 23, 0.92) !important;
+  background: rgba(14, 15, 23, 0.94) !important;
   backdrop-filter: blur(24px) saturate(180%) !important;
   -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
   border: 1.5px solid rgba(255, 255, 255, 0.18) !important;
@@ -34,6 +34,7 @@
   pointer-events: auto !important;
   visibility: visible !important;
   opacity: 1 !important;
+  transition: top 0.28s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s ease, box-shadow 0.2s ease !important;
 }
 
 .portfolio-hub-dock:hover {
@@ -126,18 +127,40 @@
   }
 }
 
-/* Responsive for Mobile */
-@media (max-width: 640px) {
+/* ========================================================
+   RESPONSIVE DESIGN (Fixes logo overlap on mobile screens)
+   ======================================================== */
+@media (max-width: 768px) {
   .portfolio-hub-dock {
-    top: 10px !important;
+    /* Below top logo when at top of page so it NEVER covers the logo */
+    top: 58px !important;
     padding: 5px 6px !important;
     gap: 2px !important;
+    max-width: calc(100vw - 16px) !important;
+    box-shadow: 0 10px 28px -4px rgba(0, 0, 0, 0.9), 0 0 18px rgba(255, 107, 0, 0.15) !important;
   }
+
+  /* When scrolled down past hero, smoothly glides to top: 10px */
+  .portfolio-hub-dock.portfolio-hub-dock--scrolled {
+    top: 10px !important;
+  }
+
   .portfolio-hub-link {
-    padding: 6px 9px !important;
+    padding: 6px 8px !important;
     font-size: 11.5px !important;
-    gap: 4px !important;
+    gap: 3.5px !important;
   }
+
+  .portfolio-hub-link svg {
+    width: 13px !important;
+    height: 13px !important;
+  }
+
+  .portfolio-hub-link--back {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+
   .portfolio-hub-link--back .portfolio-hub-text-full {
     display: none !important;
   }
@@ -146,7 +169,30 @@
   }
 }
 
-@media (min-width: 641px) {
+@media (max-width: 360px) {
+  .portfolio-hub-dock {
+    padding: 4px 4px !important;
+    gap: 1px !important;
+  }
+
+  .portfolio-hub-link {
+    padding: 5px 6px !important;
+    font-size: 10.5px !important;
+    gap: 3px !important;
+  }
+
+  .portfolio-hub-link svg {
+    width: 12px !important;
+    height: 12px !important;
+  }
+
+  .portfolio-hub-divider {
+    height: 16px !important;
+    margin: 0 2px !important;
+  }
+}
+
+@media (min-width: 769px) {
   .portfolio-hub-link--back .portfolio-hub-text-short {
     display: none !important;
   }

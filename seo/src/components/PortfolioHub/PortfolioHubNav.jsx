@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import './PortfolioHubNav.css';
 
 const LINKS = {
@@ -8,6 +9,17 @@ const LINKS = {
 };
 
 export default function PortfolioHubNav({ current = 'seo' }) {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 30);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const handleClick = (e, key) => {
     if (current === key) {
       e.preventDefault();
@@ -17,7 +29,7 @@ export default function PortfolioHubNav({ current = 'seo' }) {
 
   return (
     <nav
-      className="portfolio-hub-dock"
+      className={`portfolio-hub-dock ${isScrolled ? 'portfolio-hub-dock--scrolled' : ''}`}
       aria-label="Portfolio Switcher and Main Site Navigation"
     >
       {/* ⬅ Back to Main Website */}

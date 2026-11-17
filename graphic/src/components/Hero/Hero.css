@@ -295,17 +295,18 @@
 
 @media (max-width: 900px) {
   .hero-monumental {
-    padding: 90px 20px 80px;
+    padding: 108px 20px 80px;
   }
   .hero-corner--tr, .hero-corner--bl, .hero-corner--br {
     display: none;
   }
   .hero-corner-brand {
-    top: 24px;
-    left: 20px;
+    top: 12px;
+    left: 16px;
+    z-index: 50;
   }
   .hero-corner-logo {
-    height: 42px;
+    height: 36px;
   }
   .hero-scatter-wrapper {
     height: clamp(300px, 55vw, 440px);
@@ -315,7 +316,7 @@
 
 @media (max-width: 600px) {
   .hero-monumental {
-    padding: 80px 16px 70px;
+    padding: 108px 16px 70px;
     min-height: 100vh;
   }
   .hero-kicker-pill {
