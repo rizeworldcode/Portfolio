@@ -63,4 +63,11 @@ adminSchema.virtual('id').get(function () {
 adminSchema.set('toJSON', { virtuals: true });
 adminSchema.set('toObject', { virtuals: true });
 
+// ==========================================
+// WORK 1: MONGODB INDEXING (PERFORMANCE)
+// ==========================================
+// Fast OTP verification lookups
+adminSchema.index({ resetOTP: 1, resetOTPExpires: 1 });
+adminSchema.index({ otp: 1, otpExpiry: 1 });
+
 export default mongoose.models.Admin || mongoose.model('Admin', adminSchema);

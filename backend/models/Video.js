@@ -43,13 +43,11 @@ const videoSchema = new mongoose.Schema({
   isHero: {
     type: Boolean,
     default: false,
-    index: true,
   },
   section: {
     type: String,
     enum: ['hero', 'showcase', 'stream', 'reels'],
     default: 'reels',
-    index: true,
   },
   priority: {
     type: Number,

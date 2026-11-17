@@ -48,5 +48,14 @@ userSchema.virtual('id').get(function () {
 userSchema.set('toJSON', { virtuals: true });
 userSchema.set('toObject', { virtuals: true });
 
+// ==========================================
+// WORK 1: MONGODB INDEXING (PERFORMANCE)
+// ==========================================
+// 1. Role-based query optimization
+userSchema.index({ role: 1 });
+
+// 2. Fast OTP verification lookups
+userSchema.index({ resetOTP: 1, resetOTPExpires: 1 });
+
 const User = mongoose.model('User', userSchema);
 export default User;

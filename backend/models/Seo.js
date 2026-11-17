@@ -72,5 +72,23 @@ seoSchema.virtual('id').get(function () {
 seoSchema.set('toJSON', { virtuals: true });
 seoSchema.set('toObject', { virtuals: true });
 
+// ==========================================
+// WORK 1: MONGODB INDEXING (PERFORMANCE)
+// ==========================================
+// 1. Default chronological sorting
+seoSchema.index({ createdAt: -1 });
+
+// 2. Category filtering & sorting
+seoSchema.index({ category: 1, createdAt: -1 });
+
+// 3. Featured case studies queries
+seoSchema.index({ featured: 1, createdAt: -1 });
+
+// 4. Status filtering (e.g. 'Top 3 Secured')
+seoSchema.index({ status: 1, createdAt: -1 });
+
+// 5. Full-text search index for client, website, topKeyword
+seoSchema.index({ client: 'text', website: 'text', topKeyword: 'text' });
+
 const Seo = mongoose.model('Seo', seoSchema);
 export default Seo;
