@@ -43,7 +43,7 @@ function loadAllVideos() {
   const allVideosPath = path.resolve(__dirname, '../../admin/src/data/allVideos.json');
   const raw = fs.readFileSync(allVideosPath, 'utf8');
   const list = JSON.parse(raw);
-  return list.map(v => ({
+  return list.map((v, idx) => ({
     title: v.title,
     client: v.client,
     category: v.category,
@@ -53,6 +53,9 @@ function loadAllVideos() {
     duration: v.duration || '0:30',
     tags: v.tags || [],
     featured: !!v.featured,
+    isHero: idx === 0 || !!v.isHero,
+    section: idx === 0 ? 'hero' : (v.section || 'reels'),
+    priority: idx === 0 ? 1 : (idx + 2),
   }));
 }
 

@@ -393,7 +393,7 @@ export default function CurvedMediaCarousel(rawProps) {
                   muted
                   loop
                   playsInline
-                  preload="auto"
+                  preload="none"
                   style={{
                     width: "100%",
                     height: "100%",

@@ -104,46 +104,68 @@ const STREAM_CARDS = [
 ];
 
 export default function SwellStreamSection() {
+  const sectionRef = useRef(null);
+  const [isSectionVisible, setIsSectionVisible] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsSectionVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "350px" }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="swell-section" id="stream">
+    <section ref={sectionRef} className="swell-section" id="stream">
       {/* The Pure SwellCast Dual Stream Canvas with Centered Headline */}
       <div className="swell-section__canvas-wrap">
-        <SwellCastPro
-          cards={STREAM_CARDS}
-          showText={true}
-          lineLead="Made to be"
-          lineAccent="remembered"
-          lineTrail=""
-          textX={62}
-          textColor="#111111"
-          accentColor="#111111"
-          background="#ffffff"
-          spread={1}
-          startSize={0.32}
-          endSize={1.02}
-          growth={3}
-          ratio={0.58}
-          gap={28}
-          radius={0.08}
-          flow={0.25}
-          direction="outward"
-          hoverSlow={0.22}
-          drag={true}
-          wheel={true}
-          vScroll="page"
-          scrollGain={0.65}
-          smear={0.4}
-          bulge={0.22}
-          bend={0.28}
-          depthBlur={1}
-          focusX={58}
-          focusWidth={0.2}
-          maxVideos={2}
-          onSelect={(card) => setSelectedCard(card)}
-          style={{ width: "100%", height: "100%" }}
-        />
+        {isSectionVisible && (
+          <SwellCastPro
+            cards={STREAM_CARDS}
+            showText={true}
+            lineLead="Made to be"
+            lineAccent="remembered"
+            lineTrail=""
+            textX={62}
+            textColor="#111111"
+            accentColor="#111111"
+            background="#ffffff"
+            spread={1}
+            startSize={0.32}
+            endSize={1.02}
+            growth={3}
+            ratio={0.58}
+            gap={28}
+            radius={0.08}
+            flow={0.25}
+            direction="outward"
+            hoverSlow={0.22}
+            drag={true}
+            wheel={true}
+            vScroll="page"
+            scrollGain={0.65}
+            smear={0.4}
+            bulge={0.22}
+            bend={0.28}
+            depthBlur={1}
+            focusX={58}
+            focusWidth={0.2}
+            maxVideos={2}
+            onSelect={(card) => setSelectedCard(card)}
+            style={{ width: "100%", height: "100%" }}
+          />
+        )}
 
         {/* Bottom Right Minimal Badge (as seen in screenshot) */}
         <div className="swell-section__badge-pill">

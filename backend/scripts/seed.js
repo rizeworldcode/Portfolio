@@ -54,6 +54,20 @@ const initialGraphics = [
 
 const initialVideos = [
   {
+    title: "Rizeworld Master Cinematic Showcase",
+    client: "Rizeworld Studio",
+    category: "Master Production",
+    videoUrl: "/videos-compressed/rizeworld-gmb.mp4",
+    thumbnail: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=600&q=80",
+    views: "520K",
+    duration: "1:00",
+    tags: ["Cinematic", "Showreel", "Hero Reel", "4K Video"],
+    featured: true,
+    isHero: true,
+    section: "hero",
+    priority: 1,
+  },
+  {
     title: "Avantika Crunch Logs Gourmet Bites",
     client: "Avantika Cafe & Restaurant",
     category: "Cafe & Restaurant",

@@ -77,7 +77,7 @@ function SmartReelCard({ reel, index, onSelect }) {
           loop
           muted
           playsInline
-          preload="metadata"
+          preload="none"
           className="reel-card__video"
           onError={(e) => {
             if (reel.rawVideo && e.currentTarget && !e.currentTarget.src.includes(encodeURI(reel.rawVideo))) {
@@ -113,8 +113,28 @@ function SmartReelCard({ reel, index, onSelect }) {
 }
 
 export default function CategoryReels() {
+  const sectionRef = useRef(null);
+  const [isSectionVisible, setIsSectionVisible] = useState(false);
   const [activeCategory, setActiveCategory] = useState(CATEGORIES[0].id);
   const [selectedReel, setSelectedReel] = useState(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsSectionVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "350px" }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   const filteredReels =
     activeCategory === "all"
@@ -122,7 +142,7 @@ export default function CategoryReels() {
       : REELS_DATA.filter((r) => r.categoryKey === activeCategory);
 
   return (
-    <section className="category-reels" id="reels">
+    <section ref={sectionRef} className="category-reels" id="reels">
       <div className="category-reels__container">
         {/* ========================================================
             1. SECTION HEADER
@@ -203,35 +223,37 @@ export default function CategoryReels() {
             ======================================================== */}
         <motion.div layout className="category-reels__grid">
           <AnimatePresence mode="popLayout">
-            {filteredReels.length > 0 ? (
-              filteredReels.map((reel, index) => (
-                <SmartReelCard
-                  key={reel.id}
-                  reel={reel}
-                  index={index}
-                  onSelect={setSelectedReel}
-                />
-              ))
-            ) : (
-              <motion.div
-                key="empty-ai-state"
-                initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95, y: -20 }}
-                transition={{ duration: 0.4 }}
-                className="category-reels__empty-state"
-              >
-                <div className="category-reels__empty-icon">
-                  <RiRobotLine />
-                </div>
-                <h3 className="category-reels__empty-title">AI Video Reels Coming Soon</h3>
-                <p className="category-reels__empty-subtitle">
-                  Curated AI-generated video reels, viral avatars, and futuristic video edits are being prepared.
-                </p>
-                <div className="category-reels__empty-badge">
-                  <span>Ready For Uploads</span>
-                </div>
-              </motion.div>
+            {isSectionVisible && (
+              filteredReels.length > 0 ? (
+                filteredReels.map((reel, index) => (
+                  <SmartReelCard
+                    key={reel.id}
+                    reel={reel}
+                    index={index}
+                    onSelect={setSelectedReel}
+                  />
+                ))
+              ) : (
+                <motion.div
+                  key="empty-ai-state"
+                  initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95, y: -20 }}
+                  transition={{ duration: 0.4 }}
+                  className="category-reels__empty-state"
+                >
+                  <div className="category-reels__empty-icon">
+                    <RiRobotLine />
+                  </div>
+                  <h3 className="category-reels__empty-title">AI Video Reels Coming Soon</h3>
+                  <p className="category-reels__empty-subtitle">
+                    Curated AI-generated video reels, viral avatars, and futuristic video edits are being prepared.
+                  </p>
+                  <div className="category-reels__empty-badge">
+                    <span>Ready For Uploads</span>
+                  </div>
+                </motion.div>
+              )
             )}
           </AnimatePresence>
         </motion.div>

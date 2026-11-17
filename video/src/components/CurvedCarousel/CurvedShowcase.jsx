@@ -137,12 +137,32 @@ function CurvedModalVideo({ item }) {
 }
 
 export default function CurvedShowcase() {
+  const sectionRef = useRef(null);
+  const [isSectionVisible, setIsSectionVisible] = useState(false);
   const [activeItem, setActiveItem] = useState(null);
   const [autoplay, setAutoplay] = useState(true);
   const [speed, setSpeed] = useState(38);
   const [direction, setDirection] = useState("left");
   const [activeIdx, setActiveIdx] = useState(0);
   const [activeSection, setActiveSection] = useState("projects");
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsSectionVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "350px" }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   const scrollToSection = (e, sectionId) => {
     if (e) e.preventDefault();
@@ -199,7 +219,7 @@ export default function CurvedShowcase() {
   const currentHighlight = SHOWCASE_ITEMS[activeIdx] || SHOWCASE_ITEMS[0];
 
   return (
-    <section className="curved-showcase" id="projects">
+    <section ref={sectionRef} className="curved-showcase" id="projects">
       {/* Subtle Background Glows */}
       <div className="curved-showcase__ambient-glow curved-showcase__ambient-glow--top" />
       <div className="curved-showcase__ambient-glow curved-showcase__ambient-glow--center" />
@@ -339,64 +359,66 @@ export default function CurvedShowcase() {
           2. THE CURVED 3D CANVAS CAROUSEL
           ======================================================== */}
       <div className="curved-showcase__carousel-wrap">
-        <CurvedMediaCarousel
-          images={SHOWCASE_ITEMS}
-          paused={Boolean(activeItem)}
-          layout={{
-            cardHeight: 64,
-            aspect: 0.72,
-            gap: 28,
-            cardRadius: 16,
-            imageZoom: 1.05,
-            offsetY: 0,
-          }}
-          curve={{
-            curve: 0.72,
-            power: 2,
-            slant: 0,
-            smoothness: 3,
-          }}
-          appearance={{
-            background: "#ffffff",
-            radius: "0px",
-            edgeShade: 0.25,
-            shadeColor: "#ffffff",
-          }}
-          motion={{
-            autoplay: autoplay,
-            speed: 28,
-            direction: direction,
-            pauseOnHover: true,
-          }}
-          interaction={{
-            draggable: true,
-            inertia: true,
-            friction: 2.0,
-            dragSensitivity: 1.0,
-            snap: false,
-            wheel: true,
-          }}
-          media={{
-            loopMode: "loop",
-            videoPlay: "hover",
-          }}
-          hoverFx={{
-            hoverEnabled: true,
-            hoverScale: 1.12,
-            hoverDuration: 280,
-            hoverDim: 0.2,
-          }}
-          arrowsGroup={{
-            arrows: true,
-            arrowSize: 52,
-            arrowOffset: 32,
-            arrowBg: "#ffffff",
-            arrowColor: "#111111",
-          }}
-          onCardClick={handleCardClick}
-          activeIndexChange={(idx) => setActiveIdx(idx)}
-          style={{ width: "100%", height: "100%" }}
-        />
+        {isSectionVisible && (
+          <CurvedMediaCarousel
+            images={SHOWCASE_ITEMS}
+            paused={Boolean(activeItem)}
+            layout={{
+              cardHeight: 64,
+              aspect: 0.72,
+              gap: 28,
+              cardRadius: 16,
+              imageZoom: 1.05,
+              offsetY: 0,
+            }}
+            curve={{
+              curve: 0.72,
+              power: 2,
+              slant: 0,
+              smoothness: 3,
+            }}
+            appearance={{
+              background: "#ffffff",
+              radius: "0px",
+              edgeShade: 0.25,
+              shadeColor: "#ffffff",
+            }}
+            motion={{
+              autoplay: autoplay,
+              speed: 28,
+              direction: direction,
+              pauseOnHover: true,
+            }}
+            interaction={{
+              draggable: true,
+              inertia: true,
+              friction: 2.0,
+              dragSensitivity: 1.0,
+              snap: false,
+              wheel: true,
+            }}
+            media={{
+              loopMode: "loop",
+              videoPlay: "hover",
+            }}
+            hoverFx={{
+              hoverEnabled: true,
+              hoverScale: 1.12,
+              hoverDuration: 280,
+              hoverDim: 0.2,
+            }}
+            arrowsGroup={{
+              arrows: true,
+              arrowSize: 52,
+              arrowOffset: 32,
+              arrowBg: "#ffffff",
+              arrowColor: "#111111",
+            }}
+            onCardClick={handleCardClick}
+            activeIndexChange={(idx) => setActiveIdx(idx)}
+            style={{ width: "100%", height: "100%" }}
+          />
+        )}
 
         {/* Ambient bottom fade for cinematic integration */}
         <div className="curved-showcase__fade-bottom" />
