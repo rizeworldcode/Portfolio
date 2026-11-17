@@ -65,4 +65,27 @@ router.post('/', upload.single('file'), (req, res) => {
   }
 });
 
+// Parallel multiple file upload endpoint
+router.post('/multiple', upload.array('files', 15), (req, res) => {
+  try {
+    if (!req.files || req.files.length === 0) {
+      return res.status(400).json({ error: 'No files uploaded' });
+    }
+    const uploadedFiles = req.files.map((file) => ({
+      success: true,
+      url: `/uploads/${file.filename}`,
+      filename: file.filename,
+      size: file.size,
+      mimetype: file.mimetype,
+    }));
+    res.json({
+      success: true,
+      count: uploadedFiles.length,
+      files: uploadedFiles,
+    });
+  } catch (error) {
+    res.status(500).json({ error: 'Parallel upload failed', details: error.message });
+  }
+});
+
 export default router;

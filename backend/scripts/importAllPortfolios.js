@@ -187,11 +187,11 @@ async function importAll() {
       Seo.deleteMany({}),
     ]);
 
-    console.log('🌱 Inserting all real portfolio items into MongoDB Atlas...');
+    console.log('🌱 Inserting all real portfolio items into MongoDB Atlas in parallel batches...');
     await Promise.all([
-      Graphic.insertMany(allGraphics),
-      Video.insertMany(allVideos),
-      Seo.insertMany(allSeoCases),
+      Graphic.insertMany(allGraphics, { ordered: false }),
+      Video.insertMany(allVideos, { ordered: false }),
+      Seo.insertMany(allSeoCases, { ordered: false }),
     ]);
 
     console.log(`🎉 SUCCESS! Imported:`);

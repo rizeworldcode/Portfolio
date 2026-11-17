@@ -74,6 +74,54 @@ router.post('/batch', async (req, res) => {
   }
 });
 
+// PUT batch update graphics in parallel (Parallel Unordered bulkWrite)
+router.put('/batch/update', async (req, res) => {
+  try {
+    const { items } = req.body;
+    if (!Array.isArray(items) || items.length === 0) {
+      return res.status(400).json({ error: 'Array of items with id/_id and update fields is required' });
+    }
+
+    const bulkOps = items.map((item) => {
+      const { id, _id, ...updates } = item;
+      const targetId = id || _id;
+      return {
+        updateOne: {
+          filter: { _id: targetId },
+          update: { $set: updates },
+        },
+      };
+    });
+
+    const result = await Graphic.bulkWrite(bulkOps, { ordered: false });
+    res.json({
+      message: 'Batch update executed in parallel',
+      matchedCount: result.matchedCount,
+      modifiedCount: result.modifiedCount,
+    });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to batch update graphics in parallel', details: error.message });
+  }
+});
+
+// POST batch delete graphics in parallel (Atomic multi-document deletion)
+router.post('/batch/delete', async (req, res) => {
+  try {
+    const { ids } = req.body;
+    if (!Array.isArray(ids) || ids.length === 0) {
+      return res.status(400).json({ error: 'Array of ids is required' });
+    }
+
+    const result = await Graphic.deleteMany({ _id: { $in: ids } });
+    res.json({
+      message: 'Batch delete executed in parallel',
+      deletedCount: result.deletedCount,
+    });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to batch delete graphics in parallel', details: error.message });
+  }
+});
+
 // GET single graphic
 router.get('/:id', async (req, res) => {
   try {

@@ -159,6 +159,80 @@ router.post('/batch', async (req, res) => {
   }
 });
 
+// PUT batch update videos in parallel (Parallel Unordered bulkWrite)
+router.put('/batch/update', async (req, res) => {
+  try {
+    const { items } = req.body;
+    if (!Array.isArray(items) || items.length === 0) {
+      return res.status(400).json({ error: 'Array of items with id/_id and update fields is required' });
+    }
+
+    const bulkOps = items.map((item) => {
+      const { id, _id, ...updates } = item;
+      const targetId = id || _id;
+      return {
+        updateOne: {
+          filter: { _id: targetId },
+          update: { $set: updates },
+        },
+      };
+    });
+
+    const result = await Video.bulkWrite(bulkOps, { ordered: false });
+    res.json({
+      message: 'Batch update executed in parallel',
+      matchedCount: result.matchedCount,
+      modifiedCount: result.modifiedCount,
+    });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to batch update videos in parallel', details: error.message });
+  }
+});
+
+// PUT batch reorder video priorities in parallel (Parallel Unordered bulkWrite)
+router.put('/batch/reorder', async (req, res) => {
+  try {
+    const { orders } = req.body; // Array of { id, priority }
+    if (!Array.isArray(orders) || orders.length === 0) {
+      return res.status(400).json({ error: 'Array of orders with id and priority is required' });
+    }
+
+    const bulkOps = orders.map((item) => ({
+      updateOne: {
+        filter: { _id: item.id || item._id },
+        update: { $set: { priority: Number(item.priority) } },
+      },
+    }));
+
+    const result = await Video.bulkWrite(bulkOps, { ordered: false });
+    res.json({
+      message: 'Priorities reordered in parallel',
+      matchedCount: result.matchedCount,
+      modifiedCount: result.modifiedCount,
+    });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to reorder videos in parallel', details: error.message });
+  }
+});
+
+// POST batch delete videos in parallel (Atomic multi-document deletion)
+router.post('/batch/delete', async (req, res) => {
+  try {
+    const { ids } = req.body;
+    if (!Array.isArray(ids) || ids.length === 0) {
+      return res.status(400).json({ error: 'Array of ids is required' });
+    }
+
+    const result = await Video.deleteMany({ _id: { $in: ids } });
+    res.json({
+      message: 'Batch delete executed in parallel',
+      deletedCount: result.deletedCount,
+    });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to batch delete videos in parallel', details: error.message });
+  }
+});
+
 // GET single video
 router.get('/:id', async (req, res) => {
   try {

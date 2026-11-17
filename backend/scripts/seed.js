@@ -215,11 +215,11 @@ async function seed() {
       Seo.deleteMany({}),
     ]);
 
-    console.log('🌱 Inserting initial Graphics, Videos & SEO...');
+    console.log('🌱 Inserting initial Graphics, Videos & SEO in parallel batches...');
     await Promise.all([
-      Graphic.insertMany(initialGraphics),
-      Video.insertMany(initialVideos),
-      Seo.insertMany(initialSeo),
+      Graphic.insertMany(initialGraphics, { ordered: false }),
+      Video.insertMany(initialVideos, { ordered: false }),
+      Seo.insertMany(initialSeo, { ordered: false }),
     ]);
 
     console.log('🎉 Seeding successfully completed!');
