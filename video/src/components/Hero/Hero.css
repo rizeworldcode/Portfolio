@@ -53,6 +53,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 34px 56px 20px;
+  pointer-events: none;
 }
 
 .ignitex-nav__logo {
@@ -60,6 +61,7 @@
   align-items: center;
   text-decoration: none;
   transition: opacity 200ms ease;
+  pointer-events: auto;
 }
 
 .ignitex-nav__logo-img {

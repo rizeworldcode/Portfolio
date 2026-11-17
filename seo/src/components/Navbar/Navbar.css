@@ -16,6 +16,7 @@
   -webkit-backdrop-filter: none;
   border-bottom: 1px solid transparent;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
 }
 
 /* Subtle frosted backdrop only when scrolled down page */
@@ -35,6 +36,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 24px;
+  pointer-events: none;
 }
 
 /* ============================================================
@@ -47,6 +49,7 @@
   text-decoration: none;
   cursor: pointer;
   user-select: none;
+  pointer-events: auto;
 }
 
 .rw-brand__logo-wrap {

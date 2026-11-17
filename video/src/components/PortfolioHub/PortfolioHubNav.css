@@ -1,0 +1,153 @@
+/* ========================================================
+   PORTFOLIO HUB FLOATING DOCK (Top Switcher & Main Site Back)
+   ======================================================== */
+@keyframes navSlideDown {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.portfolio-hub-dock {
+  position: fixed !important;
+  top: 18px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  z-index: 9999999 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  background: rgba(14, 15, 23, 0.92) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.18) !important;
+  border-radius: 9999px !important;
+  padding: 6px 10px !important;
+  box-shadow: 0 14px 36px -6px rgba(0, 0, 0, 0.85), 0 0 24px rgba(255, 107, 0, 0.12) !important;
+  user-select: none !important;
+  font-family: inherit !important;
+  animation: navSlideDown 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+  pointer-events: auto !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.portfolio-hub-dock:hover {
+  border-color: rgba(255, 255, 255, 0.28) !important;
+  box-shadow: 0 18px 44px -6px rgba(0, 0, 0, 0.95), 0 0 32px rgba(255, 107, 0, 0.2) !important;
+  background: rgba(10, 11, 18, 0.96) !important;
+}
+
+.portfolio-hub-link {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 7px 13px !important;
+  border-radius: 9999px !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  color: rgba(255, 255, 255, 0.75) !important;
+  text-decoration: none !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  white-space: nowrap !important;
+  line-height: 1 !important;
+}
+
+.portfolio-hub-link svg {
+  flex-shrink: 0 !important;
+  transition: transform 0.2s ease !important;
+}
+
+.portfolio-hub-link:hover {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* ⬅ Back to Main Website button */
+.portfolio-hub-link--back {
+  color: #f1f2f6 !important;
+  font-weight: 600 !important;
+  padding-left: 11px !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+}
+
+.portfolio-hub-link--back:hover {
+  background: rgba(255, 255, 255, 0.16) !important;
+  color: #ffffff !important;
+}
+
+.portfolio-hub-link--back:hover svg {
+  transform: translateX(-3px) !important;
+}
+
+/* Glass Divider */
+.portfolio-hub-divider {
+  width: 1px !important;
+  height: 20px !important;
+  background: rgba(255, 255, 255, 0.18) !important;
+  margin: 0 4px !important;
+  flex-shrink: 0 !important;
+  display: inline-block !important;
+}
+
+/* Active Portfolio Tab */
+.portfolio-hub-link--active {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  background: linear-gradient(135deg, rgba(255, 107, 0, 0.35), rgba(255, 140, 0, 0.2)) !important;
+  border: 1px solid rgba(255, 120, 30, 0.55) !important;
+  box-shadow: 0 0 16px rgba(255, 107, 0, 0.38) !important;
+  cursor: pointer !important;
+}
+
+.portfolio-hub-dot {
+  width: 6px !important;
+  height: 6px !important;
+  border-radius: 50% !important;
+  background: #ff7820 !important;
+  box-shadow: 0 0 8px #ff7820 !important;
+  flex-shrink: 0 !important;
+  display: inline-block !important;
+  animation: hubPulse 2s infinite ease-in-out !important;
+}
+
+@keyframes hubPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 0.75;
+  }
+}
+
+/* Responsive for Mobile */
+@media (max-width: 640px) {
+  .portfolio-hub-dock {
+    top: 10px !important;
+    padding: 5px 6px !important;
+    gap: 2px !important;
+  }
+  .portfolio-hub-link {
+    padding: 6px 9px !important;
+    font-size: 11.5px !important;
+    gap: 4px !important;
+  }
+  .portfolio-hub-link--back .portfolio-hub-text-full {
+    display: none !important;
+  }
+  .portfolio-hub-link--back .portfolio-hub-text-short {
+    display: inline !important;
+  }
+}
+
+@media (min-width: 641px) {
+  .portfolio-hub-link--back .portfolio-hub-text-short {
+    display: none !important;
+  }
+}

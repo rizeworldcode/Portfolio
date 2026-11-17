@@ -4,6 +4,7 @@ import CurvedShowcase from './components/CurvedCarousel/CurvedShowcase'
 import SwellStreamSection from './components/SwellCast/SwellStreamSection'
 import CategoryReels from './components/CategoryReels/CategoryReels'
 import Footer from './components/Footer/Footer'
+import PortfolioHubNav from './components/PortfolioHub/PortfolioHubNav'
 import './App.css'
 
 function App() {
@@ -30,6 +31,9 @@ function App() {
 
   return (
     <div className="app-container">
+      {/* Floating Portfolio Switcher & Main Website Return Dock (Top Center) */}
+      <PortfolioHubNav current="video" />
+
       <Hero />
       <CurvedShowcase />
       <SwellStreamSection />

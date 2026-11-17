@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import "./Navbar.css";
 
 export default function Navbar() {
-  const [activeLink, setActiveLink] = useState("Services");
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -13,16 +12,6 @@ export default function Navbar() {
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const navLinks = [
-    { label: "Overview", href: "#clients" },
-    { label: "Local SEO", href: "#why-us" },
-    { label: "Strategy", href: "#services" },
-    { label: "Implementation", href: "#how-it-works" },
-    { label: "Results", href: "#results" },
-    { label: "Deep-Dive", href: "#blog" },
-    { label: "Process", href: "#process" },
-  ];
 
   return (
     <header className={`rw-header ${isScrolled ? "rw-header--scrolled" : ""}`}>
@@ -45,34 +34,7 @@ export default function Navbar() {
           </div>
         </a>
 
-        {/* Center Pill Navigation */}
-        <nav className="rw-nav" aria-label="Main Navigation">
-          <ul className="rw-nav__list">
-            {navLinks.map((item) => (
-              <li key={item.label} className="rw-nav__item">
-                <a
-                  href={item.href}
-                  className={`rw-nav__link ${activeLink === item.label ? "rw-nav__link--active" : ""}`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setActiveLink(item.label);
-                    const target = document.querySelector(item.href);
-                    if (target) {
-                      target.scrollIntoView({ behavior: 'smooth' });
-                    }
-                    if (window.history.replaceState) {
-                      window.history.replaceState(null, '', window.location.pathname);
-                    }
-                  }}
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        {/* Right Actions Spacer (keeps center pill nav balanced) */}
+        {/* Right Actions Spacer (keeps center clear for top floating hub nav) */}
         <div className="rw-header__actions" aria-hidden="true" />
       </div>
     </header>

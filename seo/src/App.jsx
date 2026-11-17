@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import PortfolioHubNav from "./components/PortfolioHub/PortfolioHubNav";
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
 import RadarClients from "./components/RadarClients/RadarClients";
@@ -21,6 +22,9 @@ function App() {
 
   return (
     <div className="seo-portfolio-wrapper">
+      {/* Global Top Portfolio Switcher & Main Website Return Dock (Top Center) */}
+      <PortfolioHubNav current="seo" />
+
       {/* Top Floating Glassmorphic Navbar */}
       <Navbar />
 

@@ -3,6 +3,7 @@ import './App.css'
 import Hero from './components/Hero/Hero'
 import PinterestGallery from './components/PinterestGallery/PinterestGallery'
 import Footer from './components/Footer/Footer'
+import PortfolioHubNav from './components/PortfolioHub/PortfolioHubNav'
 
 function App() {
   // Automatically strip '#hero' or any hash from address bar on load
@@ -14,6 +15,9 @@ function App() {
 
   return (
     <div className="app-wrapper">
+      {/* Floating Portfolio Switcher & Main Website Return Dock (Top Center) */}
+      <PortfolioHubNav current="graphic" />
+
       {/* Noise texture overlay */}
       <div className="noise-overlay" aria-hidden="true" />
 
