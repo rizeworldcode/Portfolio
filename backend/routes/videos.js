@@ -123,6 +123,42 @@ router.get('/', async (req, res) => {
   }
 });
 
+// GET category and section summary with counts (Single aggregation, Avoids N+1 query loops)
+router.get('/categories/summary', async (req, res) => {
+  try {
+    const summary = await Video.aggregate([
+      {
+        $group: {
+          _id: '$category',
+          count: { $sum: 1 },
+          featuredCount: { $sum: { $cond: ['$featured', 1, 0] } },
+          heroCount: { $sum: { $cond: ['$isHero', 1, 0] } },
+          latestItemDate: { $max: '$createdAt' },
+        },
+      },
+      { $sort: { count: -1 } },
+    ]);
+    res.json(summary);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch categories summary', details: error.message });
+  }
+});
+
+// POST batch lookup by IDs (Single query with $in, avoiding N+1 loops)
+router.post('/batch', async (req, res) => {
+  try {
+    const { ids } = req.body;
+    if (!Array.isArray(ids) || ids.length === 0) {
+      return res.status(400).json({ error: 'Array of ids is required' });
+    }
+    const rawItems = await Video.find({ _id: { $in: ids } }).lean().exec();
+    const items = rawItems.map((v) => ({ ...v, id: v._id.toString() }));
+    res.json(items);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch batch videos', details: error.message });
+  }
+});
+
 // GET single video
 router.get('/:id', async (req, res) => {
   try {
