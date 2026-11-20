@@ -25,12 +25,12 @@ function readTiles(raw) {
   const arr = Array.isArray(raw) ? raw : [];
   const out = arr.map((c) => {
     const o = c || {};
-    const image = mediaUrl(o.image) || mediaUrl(o.imageUrl);
+    const image = mediaUrl(o.image) || mediaUrl(o.imageUrl) || mediaUrl(o.poster);
     const clip = mediaUrl(o.video) || mediaUrl(o.videoUrl);
-    const useVideo = o.media === "video" || (o.media !== "image" && !!clip && !image);
+    const useVideo = o.media === "video" || (o.media !== "image" && !!clip);
     return {
       ...o,
-      image: useVideo ? "" : image,
+      image: image,
       video: useVideo ? clip : "",
       title: typeof o.title === "string" ? o.title : "",
       category: typeof o.category === "string" ? o.category : "",
@@ -617,7 +617,7 @@ function StreamLive(props) {
         v.muted = true;
         v.loop = true;
         v.playsInline = true;
-        v.preload = "auto";
+        v.preload = "none";
         v.setAttribute("playsinline", "");
         v.src = tile.video;
         v.addEventListener("loadeddata", () => {

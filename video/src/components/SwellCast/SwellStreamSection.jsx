@@ -14,6 +14,7 @@ const STREAM_CARDS = [
   {
     media: "video",
     video: "/videos-compressed/june-17.mp4",
+    image: "/posters/june-17.webp",
     title: "17th June Milestone Visuals",
     category: "Event Film",
     client: "Rizeworld Events",
@@ -23,6 +24,7 @@ const STREAM_CARDS = [
   {
     media: "video",
     video: "/videos-compressed/water-cinematic.mp4",
+    image: "/posters/water-cinematic.webp",
     title: "Elemental Water Macro Cinema",
     category: "Macro Visual",
     client: "Cinematic Nature Studies",
@@ -32,6 +34,7 @@ const STREAM_CARDS = [
   {
     media: "video",
     video: "/videos-compressed/stone-trees.mp4",
+    image: "/posters/stone-trees.webp",
     title: "Stone & Trees Organic Space",
     category: "Landscape Design",
     client: "Eco Living Studio",
@@ -41,6 +44,7 @@ const STREAM_CARDS = [
   {
     media: "video",
     video: "/videos-compressed/ambhuti-tile-1.mp4",
+    image: "/posters/ambhuti-tile-1.webp",
     title: "Ambhuti High Bond Material Film",
     category: "Industrial Reel",
     client: "Ambhuti Group",
@@ -50,6 +54,7 @@ const STREAM_CARDS = [
   {
     media: "video",
     video: "/videos-compressed/saniya-ambience.mp4",
+    image: "/posters/saniya-ambience.webp",
     title: "Saniya Hospital Ambience & Stories",
     category: "Healthcare Docu",
     client: "Saniya Hospital",
@@ -59,6 +64,7 @@ const STREAM_CARDS = [
   {
     media: "video",
     video: "/videos-compressed/bhau-final.mp4",
+    image: "/posters/bhau-final.webp",
     title: "High-Octane Cinematic Action Showcase",
     category: "Action Cinema",
     client: "Apex Motion Pictures",
@@ -68,6 +74,7 @@ const STREAM_CARDS = [
   {
     media: "video",
     video: "/videos-compressed/rize-institute.mp4",
+    image: "/posters/rize-institute.webp",
     title: "Rize Creative Academy Hub",
     category: "Academy Reel",
     client: "Rize Institute",
@@ -77,6 +84,7 @@ const STREAM_CARDS = [
   {
     media: "video",
     video: "/videos-compressed/influencer-reel.mp4",
+    image: "/posters/influencer-reel.webp",
     title: "Creator Influencer Viral Campaign",
     category: "Influencer Reel",
     client: "Creator Network",
@@ -86,6 +94,7 @@ const STREAM_CARDS = [
   {
     media: "video",
     video: "/videos-compressed/zoniraz-franchise.mp4",
+    image: "/posters/zoniraz-franchise.webp",
     title: "Zoniraz Franchise Launch Gala",
     category: "Franchise Film",
     client: "Zoniraz Retail",
@@ -95,6 +104,7 @@ const STREAM_CARDS = [
   {
     media: "video",
     video: "/videos-compressed/yoga-adventure.mp4",
+    image: "/posters/yoga-adventure.webp",
     title: "Himalayan Outdoor Yoga Adventure",
     category: "Adventure Reel",
     client: "Yoga Lifestyle Life",

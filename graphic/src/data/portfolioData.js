@@ -1,3 +1,4 @@
-import categoriesData from './portfolioData.json';
-export const PORTFOLIO_CATEGORIES = categoriesData;
-export default categoriesData;
+import portfolioJson from './portfolioData.json';
+
+export const PORTFOLIO_CATEGORIES = portfolioJson;
+export default PORTFOLIO_CATEGORIES;

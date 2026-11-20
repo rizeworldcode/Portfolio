@@ -162,7 +162,7 @@ export default function CategoryDetail({ category, onClose }) {
                     transition={{ duration: 0.2 }}
                   >
                     <img
-                      src={encodeURI(img.src)}
+                      src={encodeURI(img.thumb || img.src)}
                       alt=""
                       loading="lazy"
                       className="gallery-card__img"
@@ -283,7 +283,7 @@ export default function CategoryDetail({ category, onClose }) {
               </button>
 
               <img
-                src={encodeURI(activeImage.src)}
+                src={encodeURI(activeImage.full || activeImage.src)}
                 alt=""
                 className="lightbox-image"
               />

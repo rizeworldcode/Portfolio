@@ -385,11 +385,12 @@ export default function CurvedMediaCarousel(rawProps) {
               onMouseEnter={() => handleMouseEnterCard(idx)}
               onMouseLeave={() => handleMouseLeaveCard(idx)}
             >
-              {/* Native Video Display (No Images) */}
+              {/* Native Video Display (With Lightweight Authentic First-Frame Poster) */}
               {item.video && (
                 <video
                   ref={(el) => (videoRefs.current[idx] = el)}
                   src={item.video}
+                  poster={item.poster || (item.video ? `/posters/${item.video.split('/').pop().replace('.mp4', '.webp')}` : undefined)}
                   muted
                   loop
                   playsInline

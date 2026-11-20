@@ -27,12 +27,36 @@ Thumbs.db
 !.vscode/settings.json
 !.vscode/extensions.json
 
-# Large media files (exceeds GitHub 100MB limit)
+# Video portfolio media rules (Original uncompressed media ignored)
 *.mp4
 *.mov
 video/public/hero-video.mp4
 video/public/Video portfolio/
 **/Video portfolio/
 
+# Explicit exceptions for web-optimized production video assets
+!video/public/hero-stream.mp4
+!video/public/hero-poster.webp
+!video/public/posters/
+!video/public/posters/**
+
+# Graphic portfolio original source media (safely backed up in portfolio_media_backup/)
+graphic/public/Graphic portfolio/*.*
+graphic/public/Graphic portfolio/cafe/*.*
+graphic/public/Graphic portfolio/east eyes/*.*
+graphic/public/Graphic portfolio/gym/*.*
+
+# Explicit exceptions for web-optimized graphic assets & essential files
+!graphic/public/Graphic portfolio/thumbs/
+!graphic/public/Graphic portfolio/thumbs/**
+!graphic/public/Graphic portfolio/optimized/
+!graphic/public/Graphic portfolio/optimized/**
+!graphic/public/RW.png
+!graphic/public/favicon.ico
+!graphic/public/.htaccess
+
 # Local assistant config
 GEMINI.md
+
+# Media source backup (Never push original uncompressed media to GitHub)
+/portfolio_media_backup/

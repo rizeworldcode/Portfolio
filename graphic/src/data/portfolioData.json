@@ -11,144 +11,202 @@
       {
         "name": "doctor c1",
         "src": "/Graphic portfolio/doctor c1.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/doctor c1.webp",
+        "full": "/Graphic portfolio/optimized/doctor c1.webp"
       },
       {
         "name": "Dr Jayant theraja",
         "src": "/Graphic portfolio/Dr Jayant theraja.png",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/Dr Jayant theraja.webp",
+        "full": "/Graphic portfolio/optimized/Dr Jayant theraja.webp"
       },
       {
         "name": "dr r",
         "src": "/Graphic portfolio/dr r.png",
-        "aspectRatio": 1
+        "aspectRatio": 1,
+        "thumb": "/Graphic portfolio/thumbs/dr r.webp",
+        "full": "/Graphic portfolio/optimized/dr r.webp"
       },
       {
         "name": "Dr. Shikhar Saniya",
         "src": "/Graphic portfolio/Dr. Shikhar Saniya.png",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/Dr. Shikhar Saniya.webp",
+        "full": "/Graphic portfolio/optimized/Dr. Shikhar Saniya.webp"
       },
       {
         "name": "DR. YOGESH",
         "src": "/Graphic portfolio/DR. YOGESH.png",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/DR. YOGESH.webp",
+        "full": "/Graphic portfolio/optimized/DR. YOGESH.webp"
       },
       {
         "name": "Link blood",
         "src": "/Graphic portfolio/Link blood.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/Link blood.webp",
+        "full": "/Graphic portfolio/optimized/Link blood.webp"
       },
       {
         "name": "MADICOMPARE",
         "src": "/Graphic portfolio/MADICOMPARE.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/MADICOMPARE.webp",
+        "full": "/Graphic portfolio/optimized/MADICOMPARE.webp"
       },
       {
         "name": "Medicompare 2",
         "src": "/Graphic portfolio/Medicompare 2.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/Medicompare 2.webp",
+        "full": "/Graphic portfolio/optimized/Medicompare 2.webp"
       },
       {
         "name": "MEDI 1LKH",
         "src": "/Graphic portfolio/MEDI 1LKH.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/MEDI 1LKH.webp",
+        "full": "/Graphic portfolio/optimized/MEDI 1LKH.webp"
       },
       {
         "name": "Medi 20% Off",
         "src": "/Graphic portfolio/Medi 20-off.png",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/Medi 20-off.webp",
+        "full": "/Graphic portfolio/optimized/Medi 20-off.webp"
       },
       {
         "name": "MEDI A1",
         "src": "/Graphic portfolio/MEDI A1.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/MEDI A1.webp",
+        "full": "/Graphic portfolio/optimized/MEDI A1.webp"
       },
       {
         "name": "Medi A10",
         "src": "/Graphic portfolio/Medi A10.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/Medi A10.webp",
+        "full": "/Graphic portfolio/optimized/Medi A10.webp"
       },
       {
         "name": "MEDI LINK 3",
         "src": "/Graphic portfolio/MEDI LINK 3.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/MEDI LINK 3.webp",
+        "full": "/Graphic portfolio/optimized/MEDI LINK 3.webp"
       },
       {
         "name": "MEDI LINK 4",
         "src": "/Graphic portfolio/MEDI LINK 4.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/MEDI LINK 4.webp",
+        "full": "/Graphic portfolio/optimized/MEDI LINK 4.webp"
       },
       {
         "name": "MEDI SUGAR",
         "src": "/Graphic portfolio/MEDI SUGAR.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/MEDI SUGAR.webp",
+        "full": "/Graphic portfolio/optimized/MEDI SUGAR.webp"
       },
       {
         "name": "MEDI INDIA'S",
         "src": "/Graphic portfolio/MEDI INDIA'S.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/MEDI INDIA'S.webp",
+        "full": "/Graphic portfolio/optimized/MEDI INDIA'S.webp"
       },
       {
         "name": "san 1",
         "src": "/Graphic portfolio/san 1.jpg",
-        "aspectRatio": 1.25
+        "aspectRatio": 1.25,
+        "thumb": "/Graphic portfolio/thumbs/san 1.webp",
+        "full": "/Graphic portfolio/optimized/san 1.webp"
       },
       {
         "name": "saniya ct scan",
         "src": "/Graphic portfolio/saniya ct scan.png",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/saniya ct scan.webp",
+        "full": "/Graphic portfolio/optimized/saniya ct scan.webp"
       },
       {
         "name": "Saniya Dr Arvind (1)",
         "src": "/Graphic portfolio/Saniya Dr Arvind (1).png",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/Saniya Dr Arvind (1).webp",
+        "full": "/Graphic portfolio/optimized/Saniya Dr Arvind (1).webp"
       },
       {
         "name": "saniya hospital ent",
         "src": "/Graphic portfolio/saniya hospital ent.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/saniya hospital ent.webp",
+        "full": "/Graphic portfolio/optimized/saniya hospital ent.webp"
       },
       {
         "name": "SANIYA NURSE",
         "src": "/Graphic portfolio/SANIYA NURSE.png",
-        "aspectRatio": 1.25
+        "aspectRatio": 1.25,
+        "thumb": "/Graphic portfolio/thumbs/SANIYA NURSE.webp",
+        "full": "/Graphic portfolio/optimized/SANIYA NURSE.webp"
       },
       {
         "name": "saniya poster (1)",
         "src": "/Graphic portfolio/saniya poster (1).png",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/saniya poster (1).webp",
+        "full": "/Graphic portfolio/optimized/saniya poster (1).webp"
       },
       {
         "name": "saniya TEETH",
         "src": "/Graphic portfolio/saniya TEETH.png",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/saniya TEETH.webp",
+        "full": "/Graphic portfolio/optimized/saniya TEETH.webp"
       },
       {
         "name": "sant sukh dev",
         "src": "/Graphic portfolio/sant sukh dev.png",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/sant sukh dev.webp",
+        "full": "/Graphic portfolio/optimized/sant sukh dev.webp"
       },
       {
         "name": "sant sukh dev 12121",
         "src": "/Graphic portfolio/sant sukh dev 12121.png",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/sant sukh dev 12121.webp",
+        "full": "/Graphic portfolio/optimized/sant sukh dev 12121.webp"
       },
       {
         "name": "linkedin p",
         "src": "/Graphic portfolio/linkedin p.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/linkedin p.webp",
+        "full": "/Graphic portfolio/optimized/linkedin p.webp"
       },
       {
         "name": "POST IN",
         "src": "/Graphic portfolio/POST IN.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/POST IN.webp",
+        "full": "/Graphic portfolio/optimized/POST IN.webp"
       },
       {
         "name": "TREAT INSTA",
         "src": "/Graphic portfolio/TREAT INSTA.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/TREAT INSTA.webp",
+        "full": "/Graphic portfolio/optimized/TREAT INSTA.webp"
       }
-    ]
+    ],
+    "coverImageThumb": "/Graphic portfolio/thumbs/saniya hospital ent.webp",
+    "coverImageFull": "/Graphic portfolio/optimized/saniya hospital ent.webp"
   },
   {
     "id": "education",
@@ -162,134 +220,188 @@
       {
         "name": "dwps 1",
         "src": "/Graphic portfolio/dwps 1.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/dwps 1.webp",
+        "full": "/Graphic portfolio/optimized/dwps 1.webp"
       },
       {
         "name": "DWPS AD.png",
         "src": "/Graphic portfolio/DWPS AD.png.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/DWPS AD.png.webp",
+        "full": "/Graphic portfolio/optimized/DWPS AD.png.webp"
       },
       {
         "name": "DWPS ALWARRR",
         "src": "/Graphic portfolio/DWPS ALWARRR.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/DWPS ALWARRR.webp",
+        "full": "/Graphic portfolio/optimized/DWPS ALWARRR.webp"
       },
       {
         "name": "dwps angle",
         "src": "/Graphic portfolio/dwps angle.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/dwps angle.webp",
+        "full": "/Graphic portfolio/optimized/dwps angle.webp"
       },
       {
         "name": "DWPS BADMINTION",
         "src": "/Graphic portfolio/DWPS BADMINTION.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/DWPS BADMINTION.webp",
+        "full": "/Graphic portfolio/optimized/DWPS BADMINTION.webp"
       },
       {
         "name": "DWPS BASKET F",
         "src": "/Graphic portfolio/DWPS BASKET F.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/DWPS BASKET F.webp",
+        "full": "/Graphic portfolio/optimized/DWPS BASKET F.webp"
       },
       {
         "name": "DWPS CH",
         "src": "/Graphic portfolio/DWPS CH.png",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/DWPS CH.webp",
+        "full": "/Graphic portfolio/optimized/DWPS CH.webp"
       },
       {
         "name": "Dwps child p",
         "src": "/Graphic portfolio/Dwps child p.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/Dwps child p.webp",
+        "full": "/Graphic portfolio/optimized/Dwps child p.webp"
       },
       {
         "name": "dwps cre",
         "src": "/Graphic portfolio/dwps cre.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/dwps cre.webp",
+        "full": "/Graphic portfolio/optimized/dwps cre.webp"
       },
       {
         "name": "DWPS DOCTOR",
         "src": "/Graphic portfolio/DWPS DOCTOR.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/DWPS DOCTOR.webp",
+        "full": "/Graphic portfolio/optimized/DWPS DOCTOR.webp"
       },
       {
         "name": "DWPS FIRSST",
         "src": "/Graphic portfolio/DWPS FIRSST.png",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/DWPS FIRSST.webp",
+        "full": "/Graphic portfolio/optimized/DWPS FIRSST.webp"
       },
       {
         "name": "DWPS FLY",
         "src": "/Graphic portfolio/DWPS FLY.png",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/DWPS FLY.webp",
+        "full": "/Graphic portfolio/optimized/DWPS FLY.webp"
       },
       {
         "name": "DWPS GANESH",
         "src": "/Graphic portfolio/DWPS GANESH.png",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/DWPS GANESH.webp",
+        "full": "/Graphic portfolio/optimized/DWPS GANESH.webp"
       },
       {
         "name": "DWPS GROW",
         "src": "/Graphic portfolio/DWPS GROW.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/DWPS GROW.webp",
+        "full": "/Graphic portfolio/optimized/DWPS GROW.webp"
       },
       {
         "name": "DWPS GRP PST",
         "src": "/Graphic portfolio/DWPS GRP PST.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/DWPS GRP PST.webp",
+        "full": "/Graphic portfolio/optimized/DWPS GRP PST.webp"
       },
       {
         "name": "dwps guru",
         "src": "/Graphic portfolio/dwps guru.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/dwps guru.webp",
+        "full": "/Graphic portfolio/optimized/dwps guru.webp"
       },
       {
         "name": "DWPS SKATING",
         "src": "/Graphic portfolio/DWPS SKATING.png",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/DWPS SKATING.webp",
+        "full": "/Graphic portfolio/optimized/DWPS SKATING.webp"
       },
       {
         "name": "DWPS SMART",
         "src": "/Graphic portfolio/DWPS SMART.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/DWPS SMART.webp",
+        "full": "/Graphic portfolio/optimized/DWPS SMART.webp"
       },
       {
         "name": "dwps tak",
         "src": "/Graphic portfolio/dwps tak.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/dwps tak.webp",
+        "full": "/Graphic portfolio/optimized/dwps tak.webp"
       },
       {
         "name": "DWPSS ADD 2",
         "src": "/Graphic portfolio/DWPSS ADD 2.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/DWPSS ADD 2.webp",
+        "full": "/Graphic portfolio/optimized/DWPSS ADD 2.webp"
       },
       {
         "name": "dwpsss",
         "src": "/Graphic portfolio/dwpsss.jpg",
-        "aspectRatio": 1.25
+        "aspectRatio": 1.25,
+        "thumb": "/Graphic portfolio/thumbs/dwpsss.webp",
+        "full": "/Graphic portfolio/optimized/dwpsss.webp"
       },
       {
         "name": "DWPSSSS",
         "src": "/Graphic portfolio/DWPSSSS.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/DWPSSSS.webp",
+        "full": "/Graphic portfolio/optimized/DWPSSSS.webp"
       },
       {
         "name": "krishna dwps",
         "src": "/Graphic portfolio/krishna dwps.png",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/krishna dwps.webp",
+        "full": "/Graphic portfolio/optimized/krishna dwps.webp"
       },
       {
         "name": "Teacher's day",
         "src": "/Graphic portfolio/Teacher's day.png",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/Teacher's day.webp",
+        "full": "/Graphic portfolio/optimized/Teacher's day.webp"
       },
       {
         "name": "CRICKET",
         "src": "/Graphic portfolio/CRICKET.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/CRICKET.webp",
+        "full": "/Graphic portfolio/optimized/CRICKET.webp"
       },
       {
         "name": "Cricketers",
         "src": "/Graphic portfolio/Cricketers.png",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/Cricketers.webp",
+        "full": "/Graphic portfolio/optimized/Cricketers.webp"
       }
-    ]
+    ],
+    "coverImageThumb": "/Graphic portfolio/thumbs/DWPS ALWARRR.webp",
+    "coverImageFull": "/Graphic portfolio/optimized/DWPS ALWARRR.webp"
   },
   {
     "id": "institute",
@@ -303,79 +415,111 @@
       {
         "name": "RIZE INSTITUTE",
         "src": "/Graphic portfolio/RIZE INSTITUTE.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/RIZE INSTITUTE.webp",
+        "full": "/Graphic portfolio/optimized/RIZE INSTITUTE.webp"
       },
       {
         "name": "INSTITUTE MASTER",
         "src": "/Graphic portfolio/INSTITUTE MASTER.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/INSTITUTE MASTER.webp",
+        "full": "/Graphic portfolio/optimized/INSTITUTE MASTER.webp"
       },
       {
         "name": "INSTI TECH PRO",
         "src": "/Graphic portfolio/INSTI TECH PRO.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/INSTI TECH PRO.webp",
+        "full": "/Graphic portfolio/optimized/INSTI TECH PRO.webp"
       },
       {
         "name": "Insti",
         "src": "/Graphic portfolio/Insti.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/Insti.webp",
+        "full": "/Graphic portfolio/optimized/Insti.webp"
       },
       {
         "name": "Institute looking",
         "src": "/Graphic portfolio/Institute looking.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/Institute looking.webp",
+        "full": "/Graphic portfolio/optimized/Institute looking.webp"
       },
       {
         "name": "Institute p",
         "src": "/Graphic portfolio/Institute p.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/Institute p.webp",
+        "full": "/Graphic portfolio/optimized/Institute p.webp"
       },
       {
         "name": "RIZE INS 100",
         "src": "/Graphic portfolio/RIZE INS 100.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/RIZE INS 100.webp",
+        "full": "/Graphic portfolio/optimized/RIZE INS 100.webp"
       },
       {
         "name": "rize inst mistake",
         "src": "/Graphic portfolio/rize inst mistake.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/rize inst mistake.webp",
+        "full": "/Graphic portfolio/optimized/rize inst mistake.webp"
       },
       {
         "name": "RIZE INSTITUTE POST",
         "src": "/Graphic portfolio/RIZE INSTITUTE POST.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/RIZE INSTITUTE POST.webp",
+        "full": "/Graphic portfolio/optimized/RIZE INSTITUTE POST.webp"
       },
       {
         "name": "RIZEINS",
         "src": "/Graphic portfolio/RIZEINS.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/RIZEINS.webp",
+        "full": "/Graphic portfolio/optimized/RIZEINS.webp"
       },
       {
         "name": "Rizeinstitute",
         "src": "/Graphic portfolio/Rizeinstitute.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/Rizeinstitute.webp",
+        "full": "/Graphic portfolio/optimized/Rizeinstitute.webp"
       },
       {
         "name": "SEO RIZE",
         "src": "/Graphic portfolio/SEO RIZE.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/SEO RIZE.webp",
+        "full": "/Graphic portfolio/optimized/SEO RIZE.webp"
       },
       {
         "name": "RIZE POR",
         "src": "/Graphic portfolio/RIZE POR.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/RIZE POR.webp",
+        "full": "/Graphic portfolio/optimized/RIZE POR.webp"
       },
       {
         "name": "PORT",
         "src": "/Graphic portfolio/PORT.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/PORT.webp",
+        "full": "/Graphic portfolio/optimized/PORT.webp"
       },
       {
         "name": "CREATIVE PRO - Graphic Designing & Video Editing",
         "src": "/Graphic portfolio/CREATIVE.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/CREATIVE.webp",
+        "full": "/Graphic portfolio/optimized/CREATIVE.webp"
       }
-    ]
+    ],
+    "coverImageThumb": "/Graphic portfolio/thumbs/RIZE INSTITUTE.webp",
+    "coverImageFull": "/Graphic portfolio/optimized/RIZE INSTITUTE.webp"
   },
   {
     "id": "food",
@@ -389,204 +533,286 @@
       {
         "name": "Roastro Coffee House Strawberry",
         "src": "/Graphic portfolio/cafe/Image-17716.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/Image-17716.webp",
+        "full": "/Graphic portfolio/optimized/Image-17716.webp"
       },
       {
         "name": "Roastro Beverage Showcase 4",
         "src": "/Graphic portfolio/cafe/Image-38594.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/Image-38594.webp",
+        "full": "/Graphic portfolio/optimized/Image-38594.webp"
       },
       {
         "name": "Roastro Cafe Special 2",
         "src": "/Graphic portfolio/cafe/Image-19512.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/Image-19512.webp",
+        "full": "/Graphic portfolio/optimized/Image-19512.webp"
       },
       {
         "name": "Roastro Refreshment Design 7",
         "src": "/Graphic portfolio/cafe/Image-80240.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/Image-80240.webp",
+        "full": "/Graphic portfolio/optimized/Image-80240.webp"
       },
       {
         "name": "Roastro Coffee House Creatives 9",
         "src": "/Graphic portfolio/cafe/Image-90700.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/Image-90700.webp",
+        "full": "/Graphic portfolio/optimized/Image-90700.webp"
       },
       {
         "name": "Roastro Cafe Creative 3",
         "src": "/Graphic portfolio/cafe/Image-24286.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/Image-24286.webp",
+        "full": "/Graphic portfolio/optimized/Image-24286.webp"
       },
       {
         "name": "KAFESA BURGER",
         "src": "/Graphic portfolio/KAFESA BURGER.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/KAFESA BURGER.webp",
+        "full": "/Graphic portfolio/optimized/KAFESA BURGER.webp"
       },
       {
         "name": "AVAN REST",
         "src": "/Graphic portfolio/AVAN REST.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/AVAN REST.webp",
+        "full": "/Graphic portfolio/optimized/AVAN REST.webp"
       },
       {
         "name": "Roastro Cafe Food Showcase 8",
         "src": "/Graphic portfolio/cafe/Image-82898.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/Image-82898.webp",
+        "full": "/Graphic portfolio/optimized/Image-82898.webp"
       },
       {
         "name": "AVAN RES",
         "src": "/Graphic portfolio/AVAN RES.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/AVAN RES.webp",
+        "full": "/Graphic portfolio/optimized/AVAN RES.webp"
       },
       {
         "name": "chaw",
         "src": "/Graphic portfolio/chaw.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/chaw.webp",
+        "full": "/Graphic portfolio/optimized/chaw.webp"
       },
       {
         "name": "Avan g",
         "src": "/Graphic portfolio/Avan g.png",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/Avan g.webp",
+        "full": "/Graphic portfolio/optimized/Avan g.webp"
       },
       {
         "name": "Chappan",
         "src": "/Graphic portfolio/Chappan.png",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/Chappan.webp",
+        "full": "/Graphic portfolio/optimized/Chappan.webp"
       },
       {
         "name": "mojito",
         "src": "/Graphic portfolio/mojito.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/mojito.webp",
+        "full": "/Graphic portfolio/optimized/mojito.webp"
       },
       {
         "name": "BROWNIE",
         "src": "/Graphic portfolio/BROWNIE.png",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/BROWNIE.webp",
+        "full": "/Graphic portfolio/optimized/BROWNIE.webp"
       },
       {
         "name": "KRISHNA DAIRY",
         "src": "/Graphic portfolio/KRISHNA DAIRY.png",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/KRISHNA DAIRY.webp",
+        "full": "/Graphic portfolio/optimized/KRISHNA DAIRY.webp"
       },
       {
         "name": "sigdi poster rice (1)",
         "src": "/Graphic portfolio/sigdi poster rice (1).png",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/sigdi poster rice (1).webp",
+        "full": "/Graphic portfolio/optimized/sigdi poster rice (1).webp"
       },
       {
         "name": "K SANDWICH",
         "src": "/Graphic portfolio/K SANDWICH.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/K SANDWICH.webp",
+        "full": "/Graphic portfolio/optimized/K SANDWICH.webp"
       },
       {
         "name": "sigdi poster pneer",
         "src": "/Graphic portfolio/sigdi poster pneer.png",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/sigdi poster pneer.webp",
+        "full": "/Graphic portfolio/optimized/sigdi poster pneer.webp"
       },
       {
         "name": "WRAP KAFESA",
         "src": "/Graphic portfolio/WRAP KAFESA.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/WRAP KAFESA.webp",
+        "full": "/Graphic portfolio/optimized/WRAP KAFESA.webp"
       },
       {
         "name": "sigdi paneer (1)",
         "src": "/Graphic portfolio/sigdi paneer (1).png",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/sigdi paneer (1).webp",
+        "full": "/Graphic portfolio/optimized/sigdi paneer (1).webp"
       },
       {
         "name": "sigdi ser",
         "src": "/Graphic portfolio/sigdi ser.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/sigdi ser.webp",
+        "full": "/Graphic portfolio/optimized/sigdi ser.webp"
       },
       {
         "name": "CLAP BOX",
         "src": "/Graphic portfolio/CLAP BOX.jpg",
-        "aspectRatio": 1.25
+        "aspectRatio": 1.25,
+        "thumb": "/Graphic portfolio/thumbs/CLAP BOX.webp",
+        "full": "/Graphic portfolio/optimized/CLAP BOX.webp"
       },
       {
         "name": "sigdi pulao",
         "src": "/Graphic portfolio/sigdi pulao.png",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/sigdi pulao.webp",
+        "full": "/Graphic portfolio/optimized/sigdi pulao.webp"
       },
       {
         "name": "sigdi chappan",
         "src": "/Graphic portfolio/sigdi chappan.jpg",
-        "aspectRatio": 1.25
+        "aspectRatio": 1.25,
+        "thumb": "/Graphic portfolio/thumbs/sigdi chappan.webp",
+        "full": "/Graphic portfolio/optimized/sigdi chappan.webp"
       },
       {
         "name": "AVANTIKA ROYAL",
         "src": "/Graphic portfolio/AVANTIKA ROYAL.jpg",
-        "aspectRatio": 0.67
+        "aspectRatio": 0.67,
+        "thumb": "/Graphic portfolio/thumbs/AVANTIKA ROYAL.webp",
+        "full": "/Graphic portfolio/optimized/AVANTIKA ROYAL.webp"
       },
       {
         "name": "kafesa meggie",
         "src": "/Graphic portfolio/kafesa meggie.jpg",
-        "aspectRatio": 1.25
+        "aspectRatio": 1.25,
+        "thumb": "/Graphic portfolio/thumbs/kafesa meggie.webp",
+        "full": "/Graphic portfolio/optimized/kafesa meggie.webp"
       },
       {
         "name": "Roastro Cafe Ambience 6",
         "src": "/Graphic portfolio/cafe/Image-72002.jpg",
-        "aspectRatio": 1.25
+        "aspectRatio": 1.25,
+        "thumb": "/Graphic portfolio/thumbs/Image-72002.webp",
+        "full": "/Graphic portfolio/optimized/Image-72002.webp"
       },
       {
         "name": "RIGHT OUTSIDE",
         "src": "/Graphic portfolio/RIGHT OUTSIDE.jpg",
-        "aspectRatio": 0.43
+        "aspectRatio": 0.43,
+        "thumb": "/Graphic portfolio/thumbs/RIGHT OUTSIDE.webp",
+        "full": "/Graphic portfolio/optimized/RIGHT OUTSIDE.webp"
       },
       {
         "name": "Roastro Coffee & Eatery Branding",
         "src": "/Graphic portfolio/cafe/Image-38819.jpg",
-        "aspectRatio": 1.25
+        "aspectRatio": 1.25,
+        "thumb": "/Graphic portfolio/thumbs/Image-38819.webp",
+        "full": "/Graphic portfolio/optimized/Image-38819.webp"
       },
       {
         "name": "AC",
         "src": "/Graphic portfolio/AC.jpg",
-        "aspectRatio": 0.33
+        "aspectRatio": 0.33,
+        "thumb": "/Graphic portfolio/thumbs/AC.webp",
+        "full": "/Graphic portfolio/optimized/AC.webp"
       },
       {
         "name": "AVANTIKA 2",
         "src": "/Graphic portfolio/AVANTIKA 2.jpg",
-        "aspectRatio": 0.33
+        "aspectRatio": 0.33,
+        "thumb": "/Graphic portfolio/thumbs/AVANTIKA 2.webp",
+        "full": "/Graphic portfolio/optimized/AVANTIKA 2.webp"
       },
       {
         "name": "AVANTIKA PRIZE COUPON",
         "src": "/Graphic portfolio/AVANTIKA PRIZE COUPON.jpg",
-        "aspectRatio": 0.39
+        "aspectRatio": 0.39,
+        "thumb": "/Graphic portfolio/thumbs/AVANTIKA PRIZE COUPON.webp",
+        "full": "/Graphic portfolio/optimized/AVANTIKA PRIZE COUPON.webp"
       },
       {
         "name": "avantika Front",
         "src": "/Graphic portfolio/avantika Front.jpg",
-        "aspectRatio": 0.14
+        "aspectRatio": 0.14,
+        "thumb": "/Graphic portfolio/thumbs/avantika Front.webp",
+        "full": "/Graphic portfolio/optimized/avantika Front.webp"
       },
       {
         "name": "Jain Event Planner - We Plan You Shine",
         "src": "/events/jain-event-we-plan-you-shine.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/jain-event-we-plan-you-shine.webp",
+        "full": "/Graphic portfolio/optimized/jain-event-we-plan-you-shine.webp"
       },
       {
         "name": "Jain Event Planner - Crafting Experiences",
         "src": "/events/jain-event-crafting-experiences.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/jain-event-crafting-experiences.webp",
+        "full": "/Graphic portfolio/optimized/jain-event-crafting-experiences.webp"
       },
       {
         "name": "Jain Event Planner - Wedding Planning",
         "src": "/events/jain-event-perfect-wedding.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/jain-event-perfect-wedding.webp",
+        "full": "/Graphic portfolio/optimized/jain-event-perfect-wedding.webp"
       },
       {
         "name": "Jain Event Planner - The Perfect Decor",
         "src": "/events/jain-event-perfect-decor.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/jain-event-perfect-decor.webp",
+        "full": "/Graphic portfolio/optimized/jain-event-perfect-decor.webp"
       },
       {
         "name": "Jain Event Planner - Services Showcase",
         "src": "/events/jain-event-services-list.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/jain-event-services-list.webp",
+        "full": "/Graphic portfolio/optimized/jain-event-services-list.webp"
       },
       {
         "name": "Jain Event Planner - Enchanting Decor",
         "src": "/events/jain-event-decor-booking.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/jain-event-decor-booking.webp",
+        "full": "/Graphic portfolio/optimized/jain-event-decor-booking.webp"
       }
-    ]
+    ],
+    "coverImageThumb": "/Graphic portfolio/thumbs/KAFESA BURGER.webp",
+    "coverImageFull": "/Graphic portfolio/optimized/KAFESA BURGER.webp"
   },
   {
     "id": "products",
@@ -600,169 +826,237 @@
       {
         "name": "K",
         "src": "/Graphic portfolio/K.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/K.webp",
+        "full": "/Graphic portfolio/optimized/K.webp"
       },
       {
         "name": "7 one combo",
         "src": "/Graphic portfolio/7 one combo.jpg",
-        "aspectRatio": 1.25
+        "aspectRatio": 1.25,
+        "thumb": "/Graphic portfolio/thumbs/7 one combo.webp",
+        "full": "/Graphic portfolio/optimized/7 one combo.webp"
       },
       {
         "name": "7 ONE WOMEN'S DAY",
         "src": "/Graphic portfolio/7 ONE WOMEN'S DAY.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/7 ONE WOMEN'S DAY.webp",
+        "full": "/Graphic portfolio/optimized/7 ONE WOMEN'S DAY.webp"
       },
       {
         "name": "7one holi",
         "src": "/Graphic portfolio/7one holi.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/7one holi.webp",
+        "full": "/Graphic portfolio/optimized/7one holi.webp"
       },
       {
         "name": "777",
         "src": "/Graphic portfolio/777.jpg",
-        "aspectRatio": 1.78
+        "aspectRatio": 1.78,
+        "thumb": "/Graphic portfolio/thumbs/777.webp",
+        "full": "/Graphic portfolio/optimized/777.webp"
       },
       {
         "name": "Serum 1",
         "src": "/Graphic portfolio/Serum 1.jpg",
-        "aspectRatio": 1
+        "aspectRatio": 1,
+        "thumb": "/Graphic portfolio/thumbs/Serum 1.webp",
+        "full": "/Graphic portfolio/optimized/Serum 1.webp"
       },
       {
         "name": "SERUM G1",
         "src": "/Graphic portfolio/SERUM G1.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/SERUM G1.webp",
+        "full": "/Graphic portfolio/optimized/SERUM G1.webp"
       },
       {
         "name": "7 ONE - Classic Eyewear Collection",
         "src": "/Graphic portfolio/east eyes/7 ON C.jpg",
-        "aspectRatio": 1.25
+        "aspectRatio": 1.25,
+        "thumb": "/Graphic portfolio/thumbs/7 ON C.webp",
+        "full": "/Graphic portfolio/optimized/7 ON C.webp"
       },
       {
         "name": "7 ONE - Makar Sankranti Eyewear Fest",
         "src": "/Graphic portfolio/east eyes/7 one 14.png",
-        "aspectRatio": 1.25
+        "aspectRatio": 1.25,
+        "thumb": "/Graphic portfolio/thumbs/7 one 14.webp",
+        "full": "/Graphic portfolio/optimized/7 one 14.webp"
       },
       {
         "name": "7 ONE - Lohri Celebration Offer",
         "src": "/Graphic portfolio/east eyes/7 ONE LOHRI.png",
-        "aspectRatio": 1.25
+        "aspectRatio": 1.25,
+        "thumb": "/Graphic portfolio/thumbs/7 ONE LOHRI.webp",
+        "full": "/Graphic portfolio/optimized/7 ONE LOHRI.webp"
       },
       {
         "name": "7 ONE - Divine Festive Offer",
         "src": "/Graphic portfolio/east eyes/7 one ram.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/7 one ram.webp",
+        "full": "/Graphic portfolio/optimized/7 one ram.webp"
       },
       {
         "name": "7 ONE - Premium Eyewear Studio",
         "src": "/Graphic portfolio/east eyes/7 ONE.jpg",
-        "aspectRatio": 1.25
+        "aspectRatio": 1.25,
+        "thumb": "/Graphic portfolio/thumbs/7 ONE.webp",
+        "full": "/Graphic portfolio/optimized/7 ONE.webp"
       },
       {
         "name": "7 ONE - Rangotsav Holi Special",
         "src": "/Graphic portfolio/east eyes/7oneee holi 2.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/7oneee holi 2.webp",
+        "full": "/Graphic portfolio/optimized/7oneee holi 2.webp"
       },
       {
         "name": "7 ONE - Trendy Frames Story",
         "src": "/Graphic portfolio/east eyes/7oneeee.png",
-        "aspectRatio": 1.78
+        "aspectRatio": 1.78,
+        "thumb": "/Graphic portfolio/thumbs/7oneeee.webp",
+        "full": "/Graphic portfolio/optimized/7oneeee.webp"
       },
       {
         "name": "Easy Eye - Optical Elegance E3",
         "src": "/Graphic portfolio/east eyes/E3.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/E3.webp",
+        "full": "/Graphic portfolio/optimized/E3.webp"
       },
       {
         "name": "Easy Eye - Signature Spectacles 5",
         "src": "/Graphic portfolio/east eyes/Eaasy eye 5.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/Eaasy eye 5.webp",
+        "full": "/Graphic portfolio/optimized/Eaasy eye 5.webp"
       },
       {
         "name": "Easy Eye - Clear Vision Frames 2",
         "src": "/Graphic portfolio/east eyes/easy 2.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/easy 2.webp",
+        "full": "/Graphic portfolio/optimized/easy 2.webp"
       },
       {
         "name": "Easy Eye - Designer Sunglasses",
         "src": "/Graphic portfolio/east eyes/Easy eye ....jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/Easy eye ....webp",
+        "full": "/Graphic portfolio/optimized/Easy eye ....webp"
       },
       {
         "name": "Easy Eye - Premium Eyewear 1",
         "src": "/Graphic portfolio/east eyes/easy eye 1.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/easy eye 1.webp",
+        "full": "/Graphic portfolio/optimized/easy eye 1.webp"
       },
       {
         "name": "Easy Eye - Urban Style Frames 2A",
         "src": "/Graphic portfolio/east eyes/EASY EYE 2a.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/EASY EYE 2a.webp",
+        "full": "/Graphic portfolio/optimized/EASY EYE 2a.webp"
       },
       {
         "name": "Easy Eye - Modern Optics 4",
         "src": "/Graphic portfolio/east eyes/Easy eye 4.png",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/Easy eye 4.webp",
+        "full": "/Graphic portfolio/optimized/Easy eye 4.webp"
       },
       {
         "name": "Easy Eye - Sleek Lightweight Frames 7",
         "src": "/Graphic portfolio/east eyes/Easy eye 7.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/Easy eye 7.webp",
+        "full": "/Graphic portfolio/optimized/Easy eye 7.webp"
       },
       {
         "name": "Easy Eye - High-Index Prescription 9",
         "src": "/Graphic portfolio/east eyes/Easy eye 9.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/Easy eye 9.webp",
+        "full": "/Graphic portfolio/optimized/Easy eye 9.webp"
       },
       {
         "name": "Easy Eye - Optical Story Showcase",
         "src": "/Graphic portfolio/east eyes/Easy eye stry.jpg",
-        "aspectRatio": 1.78
+        "aspectRatio": 1.78,
+        "thumb": "/Graphic portfolio/thumbs/Easy eye stry.webp",
+        "full": "/Graphic portfolio/optimized/Easy eye stry.webp"
       },
       {
         "name": "Easy Eye - Studio Collection",
         "src": "/Graphic portfolio/east eyes/easy eye.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/easy eye.webp",
+        "full": "/Graphic portfolio/optimized/easy eye.webp"
       },
       {
         "name": "Easy Eye - Contemporary Eyewear 2",
         "src": "/Graphic portfolio/east eyes/Easy eyes 2.png",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/Easy eyes 2.webp",
+        "full": "/Graphic portfolio/optimized/Easy eyes 2.webp"
       },
       {
         "name": "Easy Eye - New Arrivals Announcement 2",
         "src": "/Graphic portfolio/east eyes/easy news 2.jpg",
-        "aspectRatio": 1.25
+        "aspectRatio": 1.25,
+        "thumb": "/Graphic portfolio/thumbs/easy news 2.webp",
+        "full": "/Graphic portfolio/optimized/easy news 2.webp"
       },
       {
         "name": "Easy Eye - Exclusive Eyewear Launch",
         "src": "/Graphic portfolio/east eyes/EASY NEWS.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/EASY NEWS.webp",
+        "full": "/Graphic portfolio/optimized/EASY NEWS.webp"
       },
       {
         "name": "Easy Eye - Bold Red Frame Edition",
         "src": "/Graphic portfolio/east eyes/easy red.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/easy red.webp",
+        "full": "/Graphic portfolio/optimized/easy red.webp"
       },
       {
         "name": "Easy Eye - Summer Sunglasses Edition",
         "src": "/Graphic portfolio/east eyes/EE SUN.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/EE SUN.webp",
+        "full": "/Graphic portfolio/optimized/EE SUN.webp"
       },
       {
         "name": "Easy Eye - Luxury Minimalist Collection",
         "src": "/Graphic portfolio/east eyes/EE.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/EE.webp",
+        "full": "/Graphic portfolio/optimized/EE.webp"
       },
       {
         "name": "Easy Eye - Summer UV Protection Campaign",
         "src": "/Graphic portfolio/east eyes/EYE SUMMER.jpg",
-        "aspectRatio": 1.49
+        "aspectRatio": 1.49,
+        "thumb": "/Graphic portfolio/thumbs/EYE SUMMER.webp",
+        "full": "/Graphic portfolio/optimized/EYE SUMMER.webp"
       },
       {
         "name": "Easy Eye - Google Business Profile Showcase",
         "src": "/Graphic portfolio/east eyes/GMB EASY.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/GMB EASY.webp",
+        "full": "/Graphic portfolio/optimized/GMB EASY.webp"
       }
-    ]
+    ],
+    "coverImageThumb": "/Graphic portfolio/thumbs/7 one combo.webp",
+    "coverImageFull": "/Graphic portfolio/optimized/7 one combo.webp"
   },
   {
     "id": "election",
@@ -776,34 +1070,48 @@
       {
         "name": "Bhau k",
         "src": "/Graphic portfolio/Bhau k.png",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/Bhau k.webp",
+        "full": "/Graphic portfolio/optimized/Bhau k.webp"
       },
       {
         "name": "Balwant g",
         "src": "/Graphic portfolio/Balwant g.png",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/Balwant g.webp",
+        "full": "/Graphic portfolio/optimized/Balwant g.webp"
       },
       {
         "name": "Balwant",
         "src": "/Graphic portfolio/Balwant.png",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/Balwant.webp",
+        "full": "/Graphic portfolio/optimized/Balwant.webp"
       },
       {
         "name": "Bhau alwar",
         "src": "/Graphic portfolio/Bhau alwar.png",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/Bhau alwar.webp",
+        "full": "/Graphic portfolio/optimized/Bhau alwar.webp"
       },
       {
         "name": "Tara EVM",
         "src": "/Graphic portfolio/Tara EVM.png",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/Tara EVM.webp",
+        "full": "/Graphic portfolio/optimized/Tara EVM.webp"
       },
       {
         "name": "BHAU",
         "src": "/Graphic portfolio/BHAU.png",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/BHAU.webp",
+        "full": "/Graphic portfolio/optimized/BHAU.webp"
       }
-    ]
+    ],
+    "coverImageThumb": "/Graphic portfolio/thumbs/Bhau alwar.webp",
+    "coverImageFull": "/Graphic portfolio/optimized/Bhau alwar.webp"
   },
   {
     "id": "gemstone",
@@ -817,74 +1125,104 @@
       {
         "name": "Red ring",
         "src": "/Graphic portfolio/Red ring.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/Red ring.webp",
+        "full": "/Graphic portfolio/optimized/Red ring.webp"
       },
       {
         "name": "RING",
         "src": "/Graphic portfolio/RING.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/RING.webp",
+        "full": "/Graphic portfolio/optimized/RING.webp"
       },
       {
         "name": "SHIV P1",
         "src": "/Graphic portfolio/SHIV P1.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/SHIV P1.webp",
+        "full": "/Graphic portfolio/optimized/SHIV P1.webp"
       },
       {
         "name": "SHIV P2",
         "src": "/Graphic portfolio/SHIV P2.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/SHIV P2.webp",
+        "full": "/Graphic portfolio/optimized/SHIV P2.webp"
       },
       {
         "name": "Shiv stone",
         "src": "/Graphic portfolio/Shiv stone.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/Shiv stone.webp",
+        "full": "/Graphic portfolio/optimized/Shiv stone.webp"
       },
       {
         "name": "SHIV YANTRA",
         "src": "/Graphic portfolio/SHIV YANTRA.png",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/SHIV YANTRA.webp",
+        "full": "/Graphic portfolio/optimized/SHIV YANTRA.webp"
       },
       {
         "name": "Z GANESH",
         "src": "/Graphic portfolio/Z GANESH.png",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/Z GANESH.webp",
+        "full": "/Graphic portfolio/optimized/Z GANESH.webp"
       },
       {
         "name": "shivaura rose.png-1",
         "src": "/Graphic portfolio/shivaura rose.png-1.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/shivaura rose.png-1.webp",
+        "full": "/Graphic portfolio/optimized/shivaura rose.png-1.webp"
       },
       {
         "name": "s4",
         "src": "/Graphic portfolio/s4.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/s4.webp",
+        "full": "/Graphic portfolio/optimized/s4.webp"
       },
       {
         "name": "s1",
         "src": "/Graphic portfolio/s1.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/s1.webp",
+        "full": "/Graphic portfolio/optimized/s1.webp"
       },
       {
         "name": "Zoniraz - Diwali Jewellery Sparkle",
         "src": "/gemstone/zoniraz-diwali-celebration.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/zoniraz-diwali-celebration.webp",
+        "full": "/Graphic portfolio/optimized/zoniraz-diwali-celebration.webp"
       },
       {
         "name": "Zoniraz - Encash Counter Gold Value",
         "src": "/gemstone/zoniraz-encash-counter-gold.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/zoniraz-encash-counter-gold.webp",
+        "full": "/Graphic portfolio/optimized/zoniraz-encash-counter-gold.webp"
       },
       {
         "name": "Zoniraz - Mother's Day Timeless Jewellery",
         "src": "/gemstone/zoniraz-mothers-day-jewellery.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/zoniraz-mothers-day-jewellery.webp",
+        "full": "/Graphic portfolio/optimized/zoniraz-mothers-day-jewellery.webp"
       },
       {
         "name": "Zoniraz - Dandiya Night Diamond Ring Award",
         "src": "/gemstone/zoniraz-dandiya-night-diamond-ring.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/zoniraz-dandiya-night-diamond-ring.webp",
+        "full": "/Graphic portfolio/optimized/zoniraz-dandiya-night-diamond-ring.webp"
       }
-    ]
+    ],
+    "coverImageThumb": "/Graphic portfolio/thumbs/Shiv stone.webp",
+    "coverImageFull": "/Graphic portfolio/optimized/Shiv stone.webp"
   },
   {
     "id": "realestate",
@@ -898,64 +1236,90 @@
       {
         "name": "Ambhuti new",
         "src": "/Graphic portfolio/Ambhuti new.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/Ambhuti new.webp",
+        "full": "/Graphic portfolio/optimized/Ambhuti new.webp"
       },
       {
         "name": "ambhuti poster new (1)",
         "src": "/Graphic portfolio/ambhuti poster new (1).png",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/ambhuti poster new (1).webp",
+        "full": "/Graphic portfolio/optimized/ambhuti poster new (1).webp"
       },
       {
         "name": "AMBHUTI POSTER",
         "src": "/Graphic portfolio/AMBHUTI POSTER.png",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/AMBHUTI POSTER.webp",
+        "full": "/Graphic portfolio/optimized/AMBHUTI POSTER.webp"
       },
       {
         "name": "Ambhuti",
         "src": "/Graphic portfolio/Ambhuti.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/Ambhuti.webp",
+        "full": "/Graphic portfolio/optimized/Ambhuti.webp"
       },
       {
         "name": "AMBUTI TILES",
         "src": "/Graphic portfolio/AMBUTI TILES.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/AMBUTI TILES.webp",
+        "full": "/Graphic portfolio/optimized/AMBUTI TILES.webp"
       },
       {
         "name": "b infra",
         "src": "/Graphic portfolio/b infra.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/b infra.webp",
+        "full": "/Graphic portfolio/optimized/b infra.webp"
       },
       {
         "name": "infraa",
         "src": "/Graphic portfolio/infraa.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/infraa.webp",
+        "full": "/Graphic portfolio/optimized/infraa.webp"
       },
       {
         "name": "INFRAAA C",
         "src": "/Graphic portfolio/INFRAAA C.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/INFRAAA C.webp",
+        "full": "/Graphic portfolio/optimized/INFRAAA C.webp"
       },
       {
         "name": "INFRAAA f",
         "src": "/Graphic portfolio/INFRAAA f.jpg",
-        "aspectRatio": 1.25
+        "aspectRatio": 1.25,
+        "thumb": "/Graphic portfolio/thumbs/INFRAAA f.webp",
+        "full": "/Graphic portfolio/optimized/INFRAAA f.webp"
       },
       {
         "name": "INFRAAA",
         "src": "/Graphic portfolio/INFRAAA.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/INFRAAA.webp",
+        "full": "/Graphic portfolio/optimized/INFRAAA.webp"
       },
       {
         "name": "infraaaaaaa",
         "src": "/Graphic portfolio/infraaaaaaa.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/infraaaaaaa.webp",
+        "full": "/Graphic portfolio/optimized/infraaaaaaa.webp"
       },
       {
         "name": "BOND",
         "src": "/Graphic portfolio/BOND.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/BOND.webp",
+        "full": "/Graphic portfolio/optimized/BOND.webp"
       }
-    ]
+    ],
+    "coverImageThumb": "/Graphic portfolio/thumbs/AMBHUTI POSTER.webp",
+    "coverImageFull": "/Graphic portfolio/optimized/AMBHUTI POSTER.webp"
   },
   {
     "id": "beauty_wellness",
@@ -969,64 +1333,90 @@
       {
         "name": "Sushanti Dhyanyoga - Teachers Day Special",
         "src": "/Graphic portfolio/Sushanti Dhyanyoga - Teachers Day.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/Sushanti Dhyanyoga - Teachers Day.webp",
+        "full": "/Graphic portfolio/optimized/Sushanti Dhyanyoga - Teachers Day.webp"
       },
       {
         "name": "YG day",
         "src": "/Graphic portfolio/YG day.jpg",
-        "aspectRatio": 1.25
+        "aspectRatio": 1.25,
+        "thumb": "/Graphic portfolio/thumbs/YG day.webp",
+        "full": "/Graphic portfolio/optimized/YG day.webp"
       },
       {
         "name": "ygg",
         "src": "/Graphic portfolio/ygg.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/ygg.webp",
+        "full": "/Graphic portfolio/optimized/ygg.webp"
       },
       {
         "name": "YOFA NAVYA",
         "src": "/Graphic portfolio/YOFA NAVYA.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/YOFA NAVYA.webp",
+        "full": "/Graphic portfolio/optimized/YOFA NAVYA.webp"
       },
       {
         "name": "YOGA full  ADS",
         "src": "/Graphic portfolio/YOGA full  ADS.jpg",
-        "aspectRatio": 1
+        "aspectRatio": 1,
+        "thumb": "/Graphic portfolio/thumbs/YOGA full  ADS.webp",
+        "full": "/Graphic portfolio/optimized/YOGA full  ADS.webp"
       },
       {
         "name": "Yoga Nature",
         "src": "/Graphic portfolio/Yoga Nature.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/Yoga Nature.webp",
+        "full": "/Graphic portfolio/optimized/Yoga Nature.webp"
       },
       {
         "name": "YOGA X AVANTIKA",
         "src": "/Graphic portfolio/YOGA X AVANTIKA.jpg",
-        "aspectRatio": 1.25
+        "aspectRatio": 1.25,
+        "thumb": "/Graphic portfolio/thumbs/YOGA X AVANTIKA.webp",
+        "full": "/Graphic portfolio/optimized/YOGA X AVANTIKA.webp"
       },
       {
         "name": "Y1",
         "src": "/Graphic portfolio/Y1.jpg",
-        "aspectRatio": 1.25
+        "aspectRatio": 1.25,
+        "thumb": "/Graphic portfolio/thumbs/Y1.webp",
+        "full": "/Graphic portfolio/optimized/Y1.webp"
       },
       {
         "name": "Sushanti Dhyanyoga - Harmony for Mind, Body & Soul",
         "src": "/Graphic portfolio/Sushanti Dhyanyoga - Mind Body Soul.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/Sushanti Dhyanyoga - Mind Body Soul.webp",
+        "full": "/Graphic portfolio/optimized/Sushanti Dhyanyoga - Mind Body Soul.webp"
       },
       {
         "name": "Sushanti Dhyanyoga - Shubh Navratri Celebration",
         "src": "/Graphic portfolio/Sushanti Dhyanyoga - Shubh Navratri.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/Sushanti Dhyanyoga - Shubh Navratri.webp",
+        "full": "/Graphic portfolio/optimized/Sushanti Dhyanyoga - Shubh Navratri.webp"
       },
       {
         "name": "Sushanti Dhyanyoga - Meditation & Asana",
         "src": "/Graphic portfolio/Sushanti Dhyanyoga - Padmasana Meditation.jpg",
-        "aspectRatio": 1.78
+        "aspectRatio": 1.78,
+        "thumb": "/Graphic portfolio/thumbs/Sushanti Dhyanyoga - Padmasana Meditation.webp",
+        "full": "/Graphic portfolio/optimized/Sushanti Dhyanyoga - Padmasana Meditation.webp"
       },
       {
         "name": "Sushanti Dhyanyoga - Mindful Strength & Conscious Living",
         "src": "/Graphic portfolio/Sushanti Dhyanyoga - Conscious Living.jpg",
-        "aspectRatio": 1.78
+        "aspectRatio": 1.78,
+        "thumb": "/Graphic portfolio/thumbs/Sushanti Dhyanyoga - Conscious Living.webp",
+        "full": "/Graphic portfolio/optimized/Sushanti Dhyanyoga - Conscious Living.webp"
       }
-    ]
+    ],
+    "coverImageThumb": "/Graphic portfolio/thumbs/Yoga Nature.webp",
+    "coverImageFull": "/Graphic portfolio/optimized/Yoga Nature.webp"
   },
   {
     "id": "branding",
@@ -1040,54 +1430,76 @@
       {
         "name": "FOUNDER RIZE",
         "src": "/Graphic portfolio/FOUNDER RIZE.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/FOUNDER RIZE.webp",
+        "full": "/Graphic portfolio/optimized/FOUNDER RIZE.webp"
       },
       {
         "name": "LINK RIZE",
         "src": "/Graphic portfolio/LINK RIZE.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/LINK RIZE.webp",
+        "full": "/Graphic portfolio/optimized/LINK RIZE.webp"
       },
       {
         "name": "rize link kavin",
         "src": "/Graphic portfolio/rize link kavin.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/rize link kavin.webp",
+        "full": "/Graphic portfolio/optimized/rize link kavin.webp"
       },
       {
         "name": "RIZE POSTPV",
         "src": "/Graphic portfolio/RIZE POSTPV.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/RIZE POSTPV.webp",
+        "full": "/Graphic portfolio/optimized/RIZE POSTPV.webp"
       },
       {
         "name": "RW LINKDINNNNN",
         "src": "/Graphic portfolio/RW LINKDINNNNN.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/RW LINKDINNNNN.webp",
+        "full": "/Graphic portfolio/optimized/RW LINKDINNNNN.webp"
       },
       {
         "name": "RW ROADMAP",
         "src": "/Graphic portfolio/RW ROADMAP.png",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/RW ROADMAP.webp",
+        "full": "/Graphic portfolio/optimized/RW ROADMAP.webp"
       },
       {
         "name": "RizeWorld - We Are Hiring (SEO & SMO Specialist)",
         "src": "/Graphic portfolio/RW - We Are Hiring SEO SMO.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/RW - We Are Hiring SEO SMO.webp",
+        "full": "/Graphic portfolio/optimized/RW - We Are Hiring SEO SMO.webp"
       },
       {
         "name": "RizeWorld - One Team Every Solution",
         "src": "/Graphic portfolio/RW - One Team Every Solution.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/RW - One Team Every Solution.webp",
+        "full": "/Graphic portfolio/optimized/RW - One Team Every Solution.webp"
       },
       {
         "name": "RizeWorld - Design Is Strategy (Brand Trust)",
         "src": "/Graphic portfolio/RW - Design Is Strategy.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/RW - Design Is Strategy.webp",
+        "full": "/Graphic portfolio/optimized/RW - Design Is Strategy.webp"
       },
       {
         "name": "RizeWorld - Digital Marketer Career Strategy",
         "src": "/Graphic portfolio/RW - Digital Marketer Blueprint.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/RW - Digital Marketer Blueprint.webp",
+        "full": "/Graphic portfolio/optimized/RW - Digital Marketer Blueprint.webp"
       }
-    ]
+    ],
+    "coverImageThumb": "/Graphic portfolio/thumbs/FOUNDER RIZE.webp",
+    "coverImageFull": "/Graphic portfolio/optimized/FOUNDER RIZE.webp"
   },
   {
     "id": "automotive_retail",
@@ -1101,54 +1513,76 @@
       {
         "name": "Hydrowash Banner 1",
         "src": "/automobile/hydrowash-1.jpeg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/hydrowash-1.webp",
+        "full": "/Graphic portfolio/optimized/hydrowash-1.webp"
       },
       {
         "name": "Hydro Ceramic Wash 2",
         "src": "/automobile/hydrowash-2.jpeg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/hydrowash-2.webp",
+        "full": "/Graphic portfolio/optimized/hydrowash-2.webp"
       },
       {
         "name": "Hydrowash Service 3",
         "src": "/automobile/hydrowash-3.jpeg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/hydrowash-3.webp",
+        "full": "/Graphic portfolio/optimized/hydrowash-3.webp"
       },
       {
         "name": "Hydrowash Detail 4",
         "src": "/automobile/hydrowash-4.jpeg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/hydrowash-4.webp",
+        "full": "/Graphic portfolio/optimized/hydrowash-4.webp"
       },
       {
         "name": "AutoDetox - Premium Foam Wash",
         "src": "/automobile/autodetox-foam-wash.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/autodetox-foam-wash.webp",
+        "full": "/Graphic portfolio/optimized/autodetox-foam-wash.webp"
       },
       {
         "name": "AutoDetox - Ceramic Coating Protection",
         "src": "/automobile/autodetox-ceramic-coating.jpg",
-        "aspectRatio": 1.25
+        "aspectRatio": 1.25,
+        "thumb": "/Graphic portfolio/thumbs/autodetox-ceramic-coating.webp",
+        "full": "/Graphic portfolio/optimized/autodetox-ceramic-coating.webp"
       },
       {
         "name": "AutoDetox - Carwash & Detailing Studio",
         "src": "/automobile/autodetox-detailing-studio.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/autodetox-detailing-studio.webp",
+        "full": "/Graphic portfolio/optimized/autodetox-detailing-studio.webp"
       },
       {
         "name": "AutoDetox - Happy Makar Sankranti",
         "src": "/automobile/autodetox-makar-sankranti.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/autodetox-makar-sankranti.webp",
+        "full": "/Graphic portfolio/optimized/autodetox-makar-sankranti.webp"
       },
       {
         "name": "AutoDetox - Shield Your Car Completely",
         "src": "/automobile/autodetox-shield-car.jpg",
-        "aspectRatio": 1
+        "aspectRatio": 1,
+        "thumb": "/Graphic portfolio/thumbs/autodetox-shield-car.webp",
+        "full": "/Graphic portfolio/optimized/autodetox-shield-car.webp"
       },
       {
         "name": "AutoDetox - Rubbing & Compound Paint Restore",
         "src": "/automobile/autodetox-rubbing-compound.jpg",
-        "aspectRatio": 1
+        "aspectRatio": 1,
+        "thumb": "/Graphic portfolio/thumbs/autodetox-rubbing-compound.webp",
+        "full": "/Graphic portfolio/optimized/autodetox-rubbing-compound.webp"
       }
-    ]
+    ],
+    "coverImageThumb": "/Graphic portfolio/thumbs/hydrowash-1.webp",
+    "coverImageFull": "/Graphic portfolio/optimized/hydrowash-1.webp"
   },
   {
     "id": "fashion_clothing",
@@ -1162,59 +1596,83 @@
       {
         "name": "Dailyprints Bespoke Suit Tailoring",
         "src": "/design/Image-25624.jpg",
-        "aspectRatio": 1.25
+        "aspectRatio": 1.25,
+        "thumb": "/Graphic portfolio/thumbs/Image-25624.webp",
+        "full": "/Graphic portfolio/optimized/Image-25624.webp"
       },
       {
         "name": "Dailyprints Corporate & Industry Uniforms",
         "src": "/design/Image-30136.jpg",
-        "aspectRatio": 1.25
+        "aspectRatio": 1.25,
+        "thumb": "/Graphic portfolio/thumbs/Image-30136.webp",
+        "full": "/Graphic portfolio/optimized/Image-30136.webp"
       },
       {
         "name": "Fashion Apparel Collection 1",
         "src": "/design/Image-31036.jpg",
-        "aspectRatio": 1.25
+        "aspectRatio": 1.25,
+        "thumb": "/Graphic portfolio/thumbs/Image-31036.webp",
+        "full": "/Graphic portfolio/optimized/Image-31036.webp"
       },
       {
         "name": "Custom Tailored Uniform Design",
         "src": "/design/Image-35782.jpg",
-        "aspectRatio": 1.25
+        "aspectRatio": 1.25,
+        "thumb": "/Graphic portfolio/thumbs/Image-35782.webp",
+        "full": "/Graphic portfolio/optimized/Image-35782.webp"
       },
       {
         "name": "Apparel Stitching & Branding",
         "src": "/design/Image-37705.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/Image-37705.webp",
+        "full": "/Graphic portfolio/optimized/Image-37705.webp"
       },
       {
         "name": "Designer Workwear Showcase",
         "src": "/design/Image-4243.jpg",
-        "aspectRatio": 1.25
+        "aspectRatio": 1.25,
+        "thumb": "/Graphic portfolio/thumbs/Image-4243.webp",
+        "full": "/Graphic portfolio/optimized/Image-4243.webp"
       },
       {
         "name": "Bespoke Clothing Showcase",
         "src": "/design/Image-44259.jpg",
-        "aspectRatio": 1.25
+        "aspectRatio": 1.25,
+        "thumb": "/Graphic portfolio/thumbs/Image-44259.webp",
+        "full": "/Graphic portfolio/optimized/Image-44259.webp"
       },
       {
         "name": "Custom Outfit & Uniform Fits",
         "src": "/design/Image-85394.jpg",
-        "aspectRatio": 1.25
+        "aspectRatio": 1.25,
+        "thumb": "/Graphic portfolio/thumbs/Image-85394.webp",
+        "full": "/Graphic portfolio/optimized/Image-85394.webp"
       },
       {
         "name": "Traditional Stylish Corporate Wear",
         "src": "/design/Image-90863.jpg",
-        "aspectRatio": 1.25
+        "aspectRatio": 1.25,
+        "thumb": "/Graphic portfolio/thumbs/Image-90863.webp",
+        "full": "/Graphic portfolio/optimized/Image-90863.webp"
       },
       {
         "name": "Professional Tailoring Showcase",
         "src": "/design/Image-92859.jpg",
-        "aspectRatio": 1.25
+        "aspectRatio": 1.25,
+        "thumb": "/Graphic portfolio/thumbs/Image-92859.webp",
+        "full": "/Graphic portfolio/optimized/Image-92859.webp"
       },
       {
         "name": "Dailyprints Custom Apparel Fits",
         "src": "/design/Image-93325.jpg",
-        "aspectRatio": 1.25
+        "aspectRatio": 1.25,
+        "thumb": "/Graphic portfolio/thumbs/Image-93325.webp",
+        "full": "/Graphic portfolio/optimized/Image-93325.webp"
       }
-    ]
+    ],
+    "coverImageThumb": "/Graphic portfolio/thumbs/Image-25624.webp",
+    "coverImageFull": "/Graphic portfolio/optimized/Image-25624.webp"
   },
   {
     "id": "gym_fitness",
@@ -1228,83 +1686,117 @@
       {
         "name": "Golden Fitness Studio - Intro Banner",
         "src": "/gym/golden-fitness-slide-1.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/golden-fitness-slide-1.webp",
+        "full": "/Graphic portfolio/optimized/golden-fitness-slide-1.webp"
       },
       {
         "name": "Golden Fitness Studio - Legacy of Strength Since 2001",
         "src": "/gym/golden-fitness-slide-2.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/golden-fitness-slide-2.webp",
+        "full": "/Graphic portfolio/optimized/golden-fitness-slide-2.webp"
       },
       {
         "name": "Golden Fitness Studio - Social & Facilities",
         "src": "/gym/golden-fitness-slide-3.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/golden-fitness-slide-3.webp",
+        "full": "/Graphic portfolio/optimized/golden-fitness-slide-3.webp"
       },
       {
         "name": "Golden Fitness - Membership & Training Packages",
         "src": "/gym/golden-fitness-pricing.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/golden-fitness-pricing.webp",
+        "full": "/Graphic portfolio/optimized/golden-fitness-pricing.webp"
       },
       {
         "name": "Golden Fitness - Womens Dedicated Fitness Zone",
         "src": "/gym/golden-fitness-slide-4.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/golden-fitness-slide-4.webp",
+        "full": "/Graphic portfolio/optimized/golden-fitness-slide-4.webp"
       },
       {
         "name": "Golden Fitness - Book a Consult Session (25 Years)",
         "src": "/gym/golden-fitness-slide-5.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/golden-fitness-slide-5.webp",
+        "full": "/Graphic portfolio/optimized/golden-fitness-slide-5.webp"
       },
       {
         "name": "Golden Fitness - Athletic Training & Runners",
         "src": "/gym/golden-fitness-athletes.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/golden-fitness-athletes.webp",
+        "full": "/Graphic portfolio/optimized/golden-fitness-athletes.webp"
       },
       {
         "name": "Golden Fitness - Train With Expert Guidance",
         "src": "/gym/golden-fitness-expert-guidance.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/golden-fitness-expert-guidance.webp",
+        "full": "/Graphic portfolio/optimized/golden-fitness-expert-guidance.webp"
       },
       {
         "name": "Golden Fitness - Get Your Membership Campaign",
         "src": "/gym/golden-fitness-membership-poster.jpg",
-        "aspectRatio": 1.33
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/golden-fitness-membership-poster.webp",
+        "full": "/Graphic portfolio/optimized/golden-fitness-membership-poster.webp"
       },
       {
         "name": "Golden Fitness - Transform Your Body Transform Your Life",
         "src": "/gym/golden-fitness-transform-life.jpg",
-        "aspectRatio": 1
+        "aspectRatio": 1,
+        "thumb": "/Graphic portfolio/thumbs/golden-fitness-transform-life.webp",
+        "full": "/Graphic portfolio/optimized/golden-fitness-transform-life.webp"
       },
       {
         "name": "Shiv Nutrition - One Science Burn Machine",
         "src": "/gym/shiv-nutrition-burn-machine.jpg",
-        "aspectRatio": 1.25
+        "aspectRatio": 1.25,
+        "thumb": "/Graphic portfolio/thumbs/shiv-nutrition-burn-machine.webp",
+        "full": "/Graphic portfolio/optimized/shiv-nutrition-burn-machine.webp"
       },
       {
         "name": "Shiv Nutrition - Rule 1 Source 7 Protein",
         "src": "/gym/shiv-nutrition-rule1-protein.jpg",
-        "aspectRatio": 1.25
+        "aspectRatio": 1.25,
+        "thumb": "/Graphic portfolio/thumbs/shiv-nutrition-rule1-protein.webp",
+        "full": "/Graphic portfolio/optimized/shiv-nutrition-rule1-protein.webp"
       },
       {
         "name": "Shiv Nutrition - MuscleTech VaporX5 Pre-Workout",
         "src": "/gym/shiv-nutrition-vaporx5-preworkout.jpg",
-        "aspectRatio": 1.25
+        "aspectRatio": 1.25,
+        "thumb": "/Graphic portfolio/thumbs/shiv-nutrition-vaporx5-preworkout.webp",
+        "full": "/Graphic portfolio/optimized/shiv-nutrition-vaporx5-preworkout.webp"
       },
       {
         "name": "Shiv Nutrition - Critical Whey Advanced Protein",
         "src": "/gym/shiv-nutrition-critical-whey.jpg",
-        "aspectRatio": 1.25
+        "aspectRatio": 1.25,
+        "thumb": "/Graphic portfolio/thumbs/shiv-nutrition-critical-whey.webp",
+        "full": "/Graphic portfolio/optimized/shiv-nutrition-critical-whey.webp"
       },
       {
         "name": "Shiv Nutrition - Super Mass Gainer Beast Fuel",
         "src": "/gym/shiv-nutrition-super-mass-gainer.jpg",
-        "aspectRatio": 1.25
+        "aspectRatio": 1.25,
+        "thumb": "/Graphic portfolio/thumbs/shiv-nutrition-super-mass-gainer.webp",
+        "full": "/Graphic portfolio/optimized/shiv-nutrition-super-mass-gainer.webp"
       },
       {
         "name": "Shiv Nutrition - Avvatar Whey Belgian Chocolate",
         "src": "/gym/shiv-nutrition-avvatar-whey.jpg",
-        "aspectRatio": 1.25
+        "aspectRatio": 1.25,
+        "thumb": "/Graphic portfolio/thumbs/shiv-nutrition-avvatar-whey.webp",
+        "full": "/Graphic portfolio/optimized/shiv-nutrition-avvatar-whey.webp"
       }
-    ]
+    ],
+    "coverImageThumb": "/Graphic portfolio/thumbs/golden-fitness-cover.webp",
+    "coverImageFull": "/Graphic portfolio/optimized/golden-fitness-cover.webp"
   }
 ]

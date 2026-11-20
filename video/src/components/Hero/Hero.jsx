@@ -46,6 +46,7 @@ export default function Hero() {
           muted
           playsInline
           preload="auto"
+          poster="/hero-poster.webp"
           onLoadedData={() => setIsVideoLoaded(true)}
           style={{
             opacity: isVideoLoaded ? 1 : 0.8,

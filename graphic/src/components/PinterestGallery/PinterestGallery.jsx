@@ -30,6 +30,7 @@ export default function PinterestGallery() {
   const [activeLightboxIndex, setActiveLightboxIndex] = useState(null);
   const [viewMode, setViewMode] = useState("categories"); // "categories" (default) or "masonry"
   const [selectedCategoryForModal, setSelectedCategoryForModal] = useState(null);
+  const [visibleCount, setVisibleCount] = useState(24);
   const searchInputRef = useRef(null);
 
   // Smartly interleaved & mixed feed across all categories (Pinterest Style)
@@ -101,23 +102,33 @@ export default function PinterestGallery() {
     });
   }, [allItems, searchQuery]);
 
+  // Reset visible count when search query changes
+  useEffect(() => {
+    setVisibleCount(24);
+  }, [searchQuery]);
+
+  // Progressive batch of items to render in Masonry Feed
+  const visibleItems = useMemo(() => {
+    return filteredItems.slice(0, visibleCount);
+  }, [filteredItems, visibleCount]);
+
   // Distribute items into balanced masonry columns
   const masonryColumns = useMemo(() => {
-    const effectiveCols = Math.min(columnCount, Math.max(1, filteredItems.length));
+    const effectiveCols = Math.min(columnCount, Math.max(1, visibleItems.length));
     const cols = Array.from({ length: effectiveCols }, () => []);
     const colHeights = Array(effectiveCols).fill(0);
 
-    filteredItems.forEach((item, globalIdx) => {
+    visibleItems.forEach((item, localIdx) => {
       let shortest = 0;
       for (let c = 1; c < effectiveCols; c++) {
         if (colHeights[c] < colHeights[shortest] - 0.28) shortest = c;
       }
-      cols[shortest].push({ item, globalIdx });
+      cols[shortest].push({ item, globalIdx: localIdx });
       colHeights[shortest] += item.aspectRatio || 1.33;
     });
 
     return cols;
-  }, [filteredItems, columnCount]);
+  }, [visibleItems, columnCount]);
 
   // Lightbox keyboard navigation
   const handleKeyDown = useCallback(
@@ -286,7 +297,7 @@ export default function PinterestGallery() {
                       >
                         <div className="pinterest-card__img-container">
                           <img
-                            src={encodeURI(item.src)}
+                            src={encodeURI(item.thumb || item.src)}
                             alt={item.name}
                             loading="lazy"
                             decoding="async"
@@ -324,6 +335,28 @@ export default function PinterestGallery() {
                 ))}
               </div>
             )}
+
+            {/* Progressive Load More Button for Feed View */}
+            {filteredItems.length > visibleCount && (
+              <div className="pinterest-load-more-wrap">
+                <button
+                  type="button"
+                  className="pinterest-load-more-btn"
+                  onClick={() => setVisibleCount((prev) => Math.min(prev + 24, filteredItems.length))}
+                >
+                  <span>Load More Designs ({filteredItems.length - visibleCount} remaining)</span>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M19 9L12 16L5 9"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+            )}
           </div>
         )}
 
@@ -349,7 +382,7 @@ export default function PinterestGallery() {
                 >
                   <div className="pinterest-category-card__img-wrap">
                     <img
-                      src={encodeURI(cat.coverImage)}
+                      src={encodeURI(cat.coverImageThumb || cat.coverImage)}
                       alt={cat.title}
                       loading="lazy"
                       className="pinterest-category-card__img"
@@ -435,7 +468,7 @@ export default function PinterestGallery() {
               {/* Main Image Frame */}
               <div className="pinterest-lightbox__image-frame">
                 <img
-                  src={encodeURI(activeLightboxItem.src)}
+                  src={encodeURI(activeLightboxItem.full || activeLightboxItem.src)}
                   alt={activeLightboxItem.name}
                   className="pinterest-lightbox__img"
                 />

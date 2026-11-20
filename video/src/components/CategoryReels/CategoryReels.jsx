@@ -74,6 +74,7 @@ function SmartReelCard({ reel, index, onSelect }) {
         <video
           ref={videoRef}
           src={encodeURI(reel.video || reel.videoUrl || reel.rawVideo)}
+          poster={encodeURI(reel.poster || (reel.video ? `/posters/${reel.video.split('/').pop().replace('.mp4', '.webp')}` : ''))}
           loop
           muted
           playsInline

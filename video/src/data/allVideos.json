@@ -19,7 +19,8 @@
       "Food Art"
     ],
     "featured": true,
-    "subCategory": "AI Food & Sweets"
+    "subCategory": "AI Food & Sweets",
+    "poster": "/posters/chappan-bhog.webp"
   },
   {
     "id": "ai-2",
@@ -41,7 +42,8 @@
     ],
     "featured": true,
     "subCategory": "AI Heritage",
-    "rawVideo": "/Video portfolio/ai video/JAIN EVENTS REEL DADHIKAR.mp4"
+    "rawVideo": "/Video portfolio/ai video/JAIN EVENTS REEL DADHIKAR.mp4",
+    "poster": "/posters/jain-dadhikar.webp"
   },
   {
     "id": "ai-3",
@@ -63,7 +65,8 @@
     ],
     "featured": true,
     "subCategory": "AI Cafe Trend",
-    "rawVideo": "/Video portfolio/ai video/kafesa trnbd.mov"
+    "rawVideo": "/Video portfolio/ai video/kafesa trnbd.mov",
+    "poster": "/posters/kafesa-trend.webp"
   },
   {
     "id": "ai-4",
@@ -85,7 +88,8 @@
     ],
     "featured": true,
     "subCategory": "Marvel AI Crossover",
-    "rawVideo": "/Video portfolio/ai video/KAFESA X MARVVEL .mp4"
+    "rawVideo": "/Video portfolio/ai video/KAFESA X MARVVEL .mp4",
+    "poster": "/posters/kafesa-marvel.webp"
   },
   {
     "id": "ai-5",
@@ -107,7 +111,8 @@
     ],
     "featured": true,
     "subCategory": "AI Medical Tech",
-    "rawVideo": "/Video portfolio/ai video/MEDICOMAPRES REEL 14.mp4"
+    "rawVideo": "/Video portfolio/ai video/MEDICOMAPRES REEL 14.mp4",
+    "poster": "/posters/medicompares-14.webp"
   },
   {
     "id": "ai-6",
@@ -129,7 +134,8 @@
     ],
     "featured": false,
     "subCategory": "Meta Ads AI",
-    "rawVideo": "/Video portfolio/ai video/MEDICOMPARES REEL 2.2 META ADS (2.12).mp4"
+    "rawVideo": "/Video portfolio/ai video/MEDICOMPARES REEL 2.2 META ADS (2.12).mp4",
+    "poster": "/posters/medicompares-meta.webp"
   },
   {
     "id": "ai-7",
@@ -151,7 +157,8 @@
     ],
     "featured": false,
     "subCategory": "AI Product Motion",
-    "rawVideo": "/Video portfolio/ai video/TEEVA 1.1.mov"
+    "rawVideo": "/Video portfolio/ai video/TEEVA 1.1.mov",
+    "poster": "/posters/teeva-1.webp"
   },
   {
     "id": "ai-8",
@@ -173,7 +180,8 @@
     ],
     "featured": false,
     "subCategory": "Kinetic AI",
-    "rawVideo": "/Video portfolio/ai video/TEEVA 1.3.mov"
+    "rawVideo": "/Video portfolio/ai video/TEEVA 1.3.mov",
+    "poster": "/posters/teeva-3.webp"
   },
   {
     "id": "ai-9",
@@ -195,7 +203,8 @@
     ],
     "featured": false,
     "subCategory": "AI Luxury Jewellery",
-    "rawVideo": "/Video portfolio/ai video/ZONIrajsd.mov"
+    "rawVideo": "/Video portfolio/ai video/ZONIrajsd.mov",
+    "poster": "/posters/zoniraz-diamond.webp"
   },
   {
     "id": "ai-10",
@@ -217,7 +226,8 @@
     ],
     "featured": false,
     "subCategory": "AI Brand Franchise",
-    "rawVideo": "/Video portfolio/ai video/ZONIRAZ REEL FRNAHISZE 1.mp4"
+    "rawVideo": "/Video portfolio/ai video/ZONIRAZ REEL FRNAHISZE 1.mp4",
+    "poster": "/posters/zoniraz-franchise-ai.webp"
   },
   {
     "id": "hosp-1",
@@ -238,7 +248,8 @@
       "Healthcare"
     ],
     "featured": false,
-    "subCategory": "Specialized OPD"
+    "subCategory": "Specialized OPD",
+    "poster": "/posters/saniya-bhumika.webp"
   },
   {
     "id": "hosp-3",
@@ -258,7 +269,8 @@
       "Specialist Reel"
     ],
     "featured": false,
-    "subCategory": "Specialist"
+    "subCategory": "Specialist",
+    "poster": "/posters/dr-himanshu.webp"
   },
   {
     "id": "hosp-4",
@@ -278,7 +290,8 @@
       "Doctor Branding"
     ],
     "featured": false,
-    "subCategory": "Consultation"
+    "subCategory": "Consultation",
+    "poster": "/posters/dr-swati.webp"
   },
   {
     "id": "hosp-5",
@@ -298,7 +311,8 @@
       "Medical Video"
     ],
     "featured": false,
-    "subCategory": "Clinical"
+    "subCategory": "Clinical",
+    "poster": "/posters/medicompares-15.webp"
   },
   {
     "id": "hosp-6",
@@ -318,7 +332,8 @@
       "App Promo"
     ],
     "featured": false,
-    "subCategory": "Telemedicine"
+    "subCategory": "Telemedicine",
+    "poster": "/posters/medicompares-3.webp"
   },
   {
     "id": "hosp-7",
@@ -338,7 +353,8 @@
       "Public Awareness"
     ],
     "featured": false,
-    "subCategory": "Health Tips"
+    "subCategory": "Health Tips",
+    "poster": "/posters/medicompares-4.webp"
   },
   {
     "id": "school-1",
@@ -359,7 +375,8 @@
       "Admissions"
     ],
     "featured": false,
-    "subCategory": "Admissions"
+    "subCategory": "Admissions",
+    "poster": "/posters/dwps-admission.webp"
   },
   {
     "id": "school-2",
@@ -379,7 +396,8 @@
       "Campus Architecture"
     ],
     "featured": false,
-    "subCategory": "Campus Tour"
+    "subCategory": "Campus Tour",
+    "poster": "/posters/dwps-build.webp"
   },
   {
     "id": "school-3",
@@ -399,7 +417,8 @@
       "Campus Life"
     ],
     "featured": false,
-    "subCategory": "Athletics"
+    "subCategory": "Athletics",
+    "poster": "/posters/school-dwps.webp"
   },
   {
     "id": "school-4",
@@ -419,7 +438,8 @@
       "Stage Performance"
     ],
     "featured": false,
-    "subCategory": "Annual Gala"
+    "subCategory": "Annual Gala",
+    "poster": "/posters/dwps-26.webp"
   },
   {
     "id": "school-5",
@@ -439,7 +459,8 @@
       "School Values"
     ],
     "featured": false,
-    "subCategory": "Assembly"
+    "subCategory": "Assembly",
+    "poster": "/posters/dwps-reel-11.webp"
   },
   {
     "id": "food-1",
@@ -460,7 +481,8 @@
       "Cozy Coffee"
     ],
     "featured": false,
-    "subCategory": "Ambience"
+    "subCategory": "Ambience",
+    "poster": "/posters/kafesa-extn.webp"
   },
   {
     "id": "food-2",
@@ -481,7 +503,8 @@
       "Food Cinema"
     ],
     "featured": false,
-    "subCategory": "Gourmet Kitchen"
+    "subCategory": "Gourmet Kitchen",
+    "poster": "/posters/kafesa-ch1.webp"
   },
   {
     "id": "food-3",
@@ -501,7 +524,8 @@
       "Family Feast"
     ],
     "featured": false,
-    "subCategory": "Royal Dining"
+    "subCategory": "Royal Dining",
+    "poster": "/posters/sigdi-final.webp"
   },
   {
     "id": "food-4",
@@ -521,7 +545,8 @@
       "BBQ Feast"
     ],
     "featured": false,
-    "subCategory": "Influencer Collab"
+    "subCategory": "Influencer Collab",
+    "poster": "/posters/sigdi-influencer.webp"
   },
   {
     "id": "food-5",
@@ -542,7 +567,8 @@
       "Crispy Bites"
     ],
     "featured": false,
-    "subCategory": "Cafe Special"
+    "subCategory": "Cafe Special",
+    "poster": "/posters/avan-spring.webp"
   },
   {
     "id": "food-6",
@@ -563,7 +589,8 @@
       "Navratri Special"
     ],
     "featured": false,
-    "subCategory": "Festive Dining"
+    "subCategory": "Festive Dining",
+    "poster": "/posters/avantika-navratri.webp"
   },
   {
     "id": "real-2",
@@ -583,7 +610,8 @@
       "CGI Architecture"
     ],
     "featured": false,
-    "subCategory": "CGI & Infra"
+    "subCategory": "CGI & Infra",
+    "poster": "/posters/infra-cgi.webp"
   },
   {
     "id": "real-3",
@@ -603,7 +631,8 @@
       "Modern Living"
     ],
     "featured": false,
-    "subCategory": "Interiors"
+    "subCategory": "Interiors",
+    "poster": "/posters/bhavik-flat.webp"
   },
   {
     "id": "real-4",
@@ -623,7 +652,8 @@
       "Engineering"
     ],
     "featured": false,
-    "subCategory": "Commercial Hub"
+    "subCategory": "Commercial Hub",
+    "poster": "/posters/bhavik-infra.webp"
   },
   {
     "id": "real-5",
@@ -644,7 +674,8 @@
       "Build Tech"
     ],
     "featured": false,
-    "subCategory": "Construction Infra"
+    "subCategory": "Construction Infra",
+    "poster": "/posters/ambhuti-reel-2-1.webp"
   },
   {
     "id": "real-6",
@@ -665,7 +696,8 @@
       "Infra Materials"
     ],
     "featured": false,
-    "subCategory": "Build Tech"
+    "subCategory": "Build Tech",
+    "poster": "/posters/ambhuti-tile-2.webp"
   },
   {
     "id": "creative-1",
@@ -685,7 +717,8 @@
       "Macro Shine"
     ],
     "featured": false,
-    "subCategory": "Product Promo"
+    "subCategory": "Product Promo",
+    "poster": "/posters/shivaura-citirin.webp"
   },
   {
     "id": "creative-2",
@@ -705,7 +738,8 @@
       "Commercial Film"
     ],
     "featured": false,
-    "subCategory": "Brand Film"
+    "subCategory": "Brand Film",
+    "poster": "/posters/shivaura-final.webp"
   },
   {
     "id": "creative-3",
@@ -725,7 +759,8 @@
       "Sound Sync"
     ],
     "featured": false,
-    "subCategory": "Fashion Film"
+    "subCategory": "Fashion Film",
+    "poster": "/posters/zoniraz-final.webp"
   },
   {
     "id": "creative-4",
@@ -745,7 +780,8 @@
       "Kinetic Edits"
     ],
     "featured": false,
-    "subCategory": "Streetwear"
+    "subCategory": "Streetwear",
+    "poster": "/posters/zoniraz-kd.webp"
   },
   {
     "id": "creative-5",
@@ -766,7 +802,8 @@
       "Product Reel"
     ],
     "featured": false,
-    "subCategory": "Artisan Gemstones"
+    "subCategory": "Artisan Gemstones",
+    "poster": "/posters/stone-trees.webp"
   },
   {
     "id": "life-1",
@@ -786,7 +823,8 @@
       "Sunrise Flow"
     ],
     "featured": false,
-    "subCategory": "Community Yoga"
+    "subCategory": "Community Yoga",
+    "poster": "/posters/yoga-group.webp"
   },
   {
     "id": "life-2",
@@ -806,7 +844,8 @@
       "Cinematic Wellness"
     ],
     "featured": false,
-    "subCategory": "Cinematic Film"
+    "subCategory": "Cinematic Film",
+    "poster": "/posters/yoga-shortfilm.webp"
   },
   {
     "id": "reel-1",
@@ -827,7 +866,8 @@
       "Sound Design"
     ],
     "featured": true,
-    "subCategory": "Cinematic Showcase"
+    "subCategory": "Cinematic Showcase",
+    "poster": "/posters/rizeworld-gmb.webp"
   },
   {
     "id": "item-2",
@@ -847,7 +887,8 @@
       "Brand Film"
     ],
     "featured": true,
-    "subCategory": "Cinematic Showcase"
+    "subCategory": "Cinematic Showcase",
+    "poster": "/posters/skills.webp"
   },
   {
     "id": "item-3",
@@ -867,7 +908,8 @@
       "Commercial"
     ],
     "featured": true,
-    "subCategory": "Cinematic Showcase"
+    "subCategory": "Cinematic Showcase",
+    "poster": "/posters/kafesa-befr.webp"
   },
   {
     "id": "item-5",
@@ -887,7 +929,8 @@
       "Dynamic Cut"
     ],
     "featured": true,
-    "subCategory": "Cinematic Showcase"
+    "subCategory": "Cinematic Showcase",
+    "poster": "/posters/sigdi-b.webp"
   },
   {
     "id": "item-6",
@@ -907,7 +950,8 @@
       "Luxury Tour"
     ],
     "featured": true,
-    "subCategory": "Cinematic Showcase"
+    "subCategory": "Cinematic Showcase",
+    "poster": "/posters/avantika-k.webp"
   },
   {
     "id": "item-7",
@@ -927,7 +971,8 @@
       "Storytelling"
     ],
     "featured": true,
-    "subCategory": "Cinematic Showcase"
+    "subCategory": "Cinematic Showcase",
+    "poster": "/posters/dwps-jerry.webp"
   },
   {
     "id": "item-8",
@@ -947,7 +992,8 @@
       "Wellness"
     ],
     "featured": true,
-    "subCategory": "Cinematic Showcase"
+    "subCategory": "Cinematic Showcase",
+    "poster": "/posters/yoga-nature.webp"
   },
   {
     "id": "stream-47",
@@ -966,7 +1012,8 @@
       "Cinematic"
     ],
     "featured": false,
-    "subCategory": "Ambient Stream"
+    "subCategory": "Ambient Stream",
+    "poster": "/posters/june-17.webp"
   },
   {
     "id": "stream-48",
@@ -985,7 +1032,8 @@
       "Cinematic"
     ],
     "featured": false,
-    "subCategory": "Ambient Stream"
+    "subCategory": "Ambient Stream",
+    "poster": "/posters/water-cinematic.webp"
   },
   {
     "id": "stream-49",
@@ -1004,7 +1052,8 @@
       "Cinematic"
     ],
     "featured": false,
-    "subCategory": "Ambient Stream"
+    "subCategory": "Ambient Stream",
+    "poster": "/posters/ambhuti-tile-1.webp"
   },
   {
     "id": "stream-50",
@@ -1023,7 +1072,8 @@
       "Cinematic"
     ],
     "featured": false,
-    "subCategory": "Ambient Stream"
+    "subCategory": "Ambient Stream",
+    "poster": "/posters/saniya-ambience.webp"
   },
   {
     "id": "stream-51",
@@ -1042,7 +1092,8 @@
       "Cinematic"
     ],
     "featured": false,
-    "subCategory": "Ambient Stream"
+    "subCategory": "Ambient Stream",
+    "poster": "/posters/bhau-final.webp"
   },
   {
     "id": "stream-52",
@@ -1061,7 +1112,8 @@
       "Cinematic"
     ],
     "featured": false,
-    "subCategory": "Ambient Stream"
+    "subCategory": "Ambient Stream",
+    "poster": "/posters/rize-institute.webp"
   },
   {
     "id": "stream-53",
@@ -1080,7 +1132,8 @@
       "Cinematic"
     ],
     "featured": false,
-    "subCategory": "Ambient Stream"
+    "subCategory": "Ambient Stream",
+    "poster": "/posters/influencer-reel.webp"
   },
   {
     "id": "stream-54",
@@ -1099,7 +1152,8 @@
       "Cinematic"
     ],
     "featured": false,
-    "subCategory": "Ambient Stream"
+    "subCategory": "Ambient Stream",
+    "poster": "/posters/zoniraz-franchise.webp"
   },
   {
     "id": "stream-55",
@@ -1118,6 +1172,7 @@
       "Cinematic"
     ],
     "featured": false,
-    "subCategory": "Ambient Stream"
+    "subCategory": "Ambient Stream",
+    "poster": "/posters/yoga-adventure.webp"
   }
 ]

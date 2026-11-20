@@ -729,3 +729,48 @@
   }
 }
 
+/* ============================================================
+   PROGRESSIVE LOAD MORE BUTTON
+   ============================================================ */
+
+.pinterest-load-more-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 48px;
+  margin-bottom: 24px;
+}
+
+.pinterest-load-more-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 9999px;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.5);
+}
+
+.pinterest-load-more-btn:hover {
+  background: rgba(255, 107, 53, 0.18);
+  border-color: rgba(255, 107, 53, 0.5);
+  color: #ff6b35;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px -6px rgba(255, 107, 53, 0.28);
+}
+
+.pinterest-load-more-btn:active {
+  transform: translateY(0);
+}
+
+
