@@ -1684,13 +1684,6 @@
     "itemCount": 16,
     "images": [
       {
-        "name": "Golden Fitness Studio - Intro Banner",
-        "src": "/gym/golden-fitness-slide-1.jpg",
-        "aspectRatio": 1.33,
-        "thumb": "/Graphic portfolio/thumbs/golden-fitness-slide-1.webp",
-        "full": "/Graphic portfolio/optimized/golden-fitness-slide-1.webp"
-      },
-      {
         "name": "Golden Fitness Studio - Legacy of Strength Since 2001",
         "src": "/gym/golden-fitness-slide-2.jpg",
         "aspectRatio": 1.33,
@@ -1794,6 +1787,13 @@
         "aspectRatio": 1.25,
         "thumb": "/Graphic portfolio/thumbs/shiv-nutrition-avvatar-whey.webp",
         "full": "/Graphic portfolio/optimized/shiv-nutrition-avvatar-whey.webp"
+      },
+      {
+        "name": "Golden Fitness Studio - Intro Banner",
+        "src": "/gym/golden-fitness-slide-1.jpg",
+        "aspectRatio": 1.33,
+        "thumb": "/Graphic portfolio/thumbs/golden-fitness-slide-1.webp",
+        "full": "/Graphic portfolio/optimized/golden-fitness-slide-1.webp"
       }
     ],
     "coverImageThumb": "/Graphic portfolio/thumbs/golden-fitness-cover.webp",

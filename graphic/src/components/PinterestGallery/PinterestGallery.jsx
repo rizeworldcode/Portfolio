@@ -48,14 +48,14 @@ export default function PinterestGallery() {
 
     // High-impact priority order so diverse visual styles mix right from the top
     const priorityOrder = [
-      "gym_fitness",
       "food",
       "gemstone",
+      "branding",
       "fashion_clothing",
       "beauty_wellness",
-      "branding",
       "products",
       "healthcare",
+      "gym_fitness",
       "automotive_retail",
       "institute",
       "education",
@@ -472,19 +472,6 @@ export default function PinterestGallery() {
                   alt={activeLightboxItem.name}
                   className="pinterest-lightbox__img"
                 />
-              </div>
-
-              {/* Bottom Caption Bar */}
-              <div className="pinterest-lightbox__caption">
-                <div className="pinterest-lightbox__meta">
-                  <span className="pinterest-lightbox__tag">
-                    {activeLightboxItem.categoryTag || activeLightboxItem.categoryTitle}
-                  </span>
-                  <h3 className="pinterest-lightbox__title">{activeLightboxItem.name}</h3>
-                  <span className="pinterest-lightbox__sub">
-                    Industry: {activeLightboxItem.categoryTitle}
-                  </span>
-                </div>
               </div>
             </div>
           </motion.div>

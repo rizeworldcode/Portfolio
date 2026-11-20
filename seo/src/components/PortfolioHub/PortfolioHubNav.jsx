@@ -56,11 +56,9 @@ export default function PortfolioHubNav({ current = 'seo' }) {
         className={`portfolio-hub-link ${current === 'video' ? 'portfolio-hub-link--active' : ''}`}
         title="Switch to Video Production Portfolio"
       >
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-          <rect x="2" y="2" width="20" height="20" rx="2.5" ry="2.5"></rect>
-          <line x1="7" y1="2" x2="7" y2="22"></line>
-          <line x1="17" y1="2" x2="17" y2="22"></line>
-          <line x1="2" y1="12" x2="22" y2="12"></line>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <polygon points="23 7 16 12 23 17 23 7" fill="currentColor" fillOpacity="0.25"></polygon>
+          <rect x="1" y="5" width="15" height="14" rx="2.5" ry="2.5"></rect>
         </svg>
         <span>Video</span>
         {current === 'video' && <span className="portfolio-hub-dot" />}
@@ -73,12 +71,12 @@ export default function PortfolioHubNav({ current = 'seo' }) {
         className={`portfolio-hub-link ${current === 'graphic' ? 'portfolio-hub-link--active' : ''}`}
         title="Switch to Graphic Design Portfolio"
       >
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-          <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle>
-          <circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle>
-          <circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle>
-          <circle cx="6.5" cy="12.5" r=".5" fill="currentColor"></circle>
-          <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.563-2.512 5.563-5.563C22 6.5 17.5 2 12 2z"></path>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M12 2a10 10 0 1 0 10 10c0-1.8-1.4-3-3-3h-1.5a1.5 1.5 0 0 1-1.5-1.5V6a4 4 0 0 0-4-4z"></path>
+          <circle cx="8" cy="9" r="1.3" fill="currentColor"></circle>
+          <circle cx="12" cy="7" r="1.3" fill="currentColor"></circle>
+          <circle cx="16" cy="9" r="1.3" fill="currentColor"></circle>
+          <circle cx="9" cy="14" r="1.3" fill="currentColor"></circle>
         </svg>
         <span>Graphic</span>
         {current === 'graphic' && <span className="portfolio-hub-dot" />}
@@ -91,11 +89,9 @@ export default function PortfolioHubNav({ current = 'seo' }) {
         className={`portfolio-hub-link ${current === 'seo' ? 'portfolio-hub-link--active' : ''}`}
         title="Switch to SEO & Ranking Portfolio"
       >
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-          <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path>
-          <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path>
-          <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path>
-          <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+          <polyline points="16 7 22 7 22 13"></polyline>
         </svg>
         <span>SEO</span>
         {current === 'seo' && <span className="portfolio-hub-dot" />}

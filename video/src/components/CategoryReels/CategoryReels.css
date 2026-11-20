@@ -442,14 +442,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
+  padding: 84px 20px 24px 20px;
+  box-sizing: border-box;
 }
 
 .reel-modal-card {
   position: relative;
-  width: min(calc(88vh * (9 / 16)), 92vw);
+  width: min(calc((100vh - 120px) * (9 / 16)), 92vw);
   height: auto;
-  max-height: 88vh;
+  max-height: min(calc(100vh - 120px), 82vh);
   aspect-ratio: 9 / 16;
   background: #000000;
   border-radius: 24px;
@@ -459,6 +460,7 @@
   justify-content: center;
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85);
   border: 1px solid rgba(255, 255, 255, 0.2);
+  margin: auto;
 }
 
 .reel-modal-close {
@@ -668,21 +670,22 @@
   }
 
   .reel-modal-backdrop {
-    padding: 16px;
+    padding: 76px 16px 20px 16px;
   }
 
   /* Full-size 9:16 Reel Player on Responsive (No Text Card Overlap) */
   .reel-modal-card {
     width: 90vw !important;
-    max-width: calc(85vh * (9 / 16)) !important;
+    max-width: calc(min(calc(100vh - 110px), 80vh) * (9 / 16)) !important;
     height: auto !important;
-    max-height: 85vh !important;
+    max-height: min(calc(100vh - 110px), 80vh) !important;
     aspect-ratio: 9 / 16 !important;
     background: #000000 !important;
     border-radius: 24px !important;
     overflow: hidden !important;
     border: 1px solid rgba(255, 255, 255, 0.18) !important;
     box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7) !important;
+    margin: auto !important;
   }
 
   .reel-modal-player-col {
@@ -795,12 +798,13 @@
   }
 
   .reel-modal-backdrop {
-    padding: 8px;
+    padding: 72px 10px 16px 10px;
   }
 
   .reel-modal-card {
     border-radius: 20px !important;
-    max-height: 84vh !important;
+    max-height: min(calc(100vh - 96px), 78vh) !important;
+    max-width: calc(min(calc(100vh - 96px), 78vh) * (9 / 16)) !important;
   }
 
   .reel-modal-close {

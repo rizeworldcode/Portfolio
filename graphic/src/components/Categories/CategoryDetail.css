@@ -359,22 +359,24 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
+  padding: 84px 20px 24px 20px;
+  box-sizing: border-box;
 }
 
 .lightbox-content {
   position: relative;
   max-width: 92vw;
-  max-height: 92vh;
+  max-height: min(calc(100vh - 110px), 82vh);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin: auto;
 }
 
 .lightbox-image {
   max-width: 90vw;
-  max-height: 80vh;
+  max-height: min(calc(100vh - 180px), 70vh);
   object-fit: contain;
   border-radius: 12px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.1);
@@ -530,15 +532,15 @@
     border-radius: 12px;
   }
   .lightbox-backdrop {
-    padding: 12px;
+    padding: 76px 14px 18px 14px;
   }
   .lightbox-content {
     max-width: 96vw;
-    max-height: 90vh;
+    max-height: min(calc(100vh - 100px), 80vh);
   }
   .lightbox-image {
     max-width: 94vw;
-    max-height: 72vh;
+    max-height: min(calc(100vh - 170px), 65vh);
     border-radius: 8px;
   }
   .lightbox-nav {

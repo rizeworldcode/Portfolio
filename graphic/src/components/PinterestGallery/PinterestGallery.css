@@ -492,7 +492,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 84px 20px 24px 20px;
+  box-sizing: border-box;
 }
 
 .pinterest-lightbox__backdrop {
@@ -507,10 +508,11 @@
   position: relative;
   z-index: 10;
   max-width: 90vw;
-  max-height: 90vh;
+  max-height: min(calc(100vh - 110px), 82vh);
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: auto;
 }
 
 .pinterest-lightbox__close {
@@ -572,8 +574,8 @@
 }
 
 .pinterest-lightbox__image-frame {
-  max-width: 82vw;
-  max-height: 75vh;
+  max-width: 88vw;
+  max-height: min(calc(100vh - 120px), 82vh);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -584,7 +586,7 @@
 
 .pinterest-lightbox__img {
   max-width: 100%;
-  max-height: 75vh;
+  max-height: min(calc(100vh - 120px), 82vh);
   object-fit: contain;
   display: block;
 }
@@ -710,6 +712,16 @@
   }
   .pinterest-card__title {
     font-size: 11.5px;
+  }
+  .pinterest-lightbox {
+    padding: 76px 14px 18px 14px;
+  }
+  .pinterest-lightbox__image-frame {
+    max-width: 92vw;
+    max-height: min(calc(100vh - 110px), 80vh);
+  }
+  .pinterest-lightbox__img {
+    max-height: min(calc(100vh - 110px), 80vh);
   }
   .pinterest-lightbox__nav {
     display: none; /* Swipe / tap preferred on small touch screens */
