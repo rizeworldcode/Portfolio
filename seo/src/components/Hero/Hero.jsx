@@ -84,19 +84,6 @@ export default function Hero() {
 
       {/* Main Hero Center Content */}
       <div className="hero-content">
-        {/* Status Pill Badge */}
-        <motion.div
-          className="hero-status-pill"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-        >
-          <span className="hero-status-pill__dot" />
-          <span className="hero-status-pill__text">
-            {content.statusPill || "RizeWorld · Ranked #1 in Alwar & Local Pack"}
-          </span>
-        </motion.div>
-
         {/* Main Headline */}
         <motion.h1
           className="hero-title"
@@ -106,10 +93,10 @@ export default function Hero() {
         >
           <span className="hero-title__row">{content.titleRow1 || "Get seen by"}</span>
           <span className="hero-title__row">
-            the{" "}
+            <span>the</span>
             <span className="hero-badge-pill hero-badge-pill--orange">
               {content.titleBadge1 || "right"}
-            </span>{" "}
+            </span>
             <span className="hero-badge-pill hero-badge-pill--green">
               {content.titleBadge2 || "crowd."}
             </span>
