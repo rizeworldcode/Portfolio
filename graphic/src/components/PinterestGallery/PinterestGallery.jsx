@@ -76,7 +76,7 @@ export default function PinterestGallery() {
                 return {
                   ...cat,
                   itemCount: matching.length,
-                  coverImage: matching[0]?.src || cat.coverImage,
+                  coverImage: cat.coverImage || matching[0]?.src,
                   images: matching,
                 };
               }

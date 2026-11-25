@@ -12,15 +12,16 @@ export default function CategoryDetail({ category, onClose }) {
   useEffect(() => {
     const handleResize = () => {
       const w = window.innerWidth;
-      if (w >= 1480) setColumnCount(4);
-      else if (w >= 940) setColumnCount(3);
+      // For 3-slide panoramic sets (e.g. Gym & Fitness Studio), 3 columns provides seamless horizontal alignment
+      const maxCols = category?.id === "gym_fitness" ? 3 : (w >= 1480 ? 4 : 3);
+      if (w >= 940) setColumnCount(maxCols);
       else if (w >= 600) setColumnCount(2);
       else setColumnCount(1);
     };
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [category?.id]);
 
   // Lock body scroll when view is open
   useEffect(() => {
@@ -39,6 +40,10 @@ export default function CategoryDetail({ category, onClose }) {
   const colHeights = Array(effectiveCols).fill(0);
 
   images.forEach((img, idx) => {
+    if (category?.id === "gym_fitness") {
+      columns[idx % effectiveCols].push({ img, idx });
+      return;
+    }
     let shortest = 0;
     for (let c = 1; c < effectiveCols; c++) {
       if (colHeights[c] < colHeights[shortest] - 0.28) shortest = c;

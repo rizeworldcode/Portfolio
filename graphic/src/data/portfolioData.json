@@ -1684,18 +1684,53 @@
     "itemCount": 16,
     "images": [
       {
-        "name": "Golden Fitness Studio - Legacy of Strength Since 2001",
-        "src": "/gym/golden-fitness-slide-2.jpg",
+        "name": "Golden Fitness Studio - Part 1",
+        "src": "/gym/golden-fitness-slide-1.jpg",
         "aspectRatio": 1.33,
-        "thumb": "/Graphic portfolio/thumbs/golden-fitness-slide-2.webp",
-        "full": "/Graphic portfolio/optimized/golden-fitness-slide-2.webp"
+        "thumb": "/gym/golden-fitness-slide-1.jpg",
+        "full": "/gym/golden-fitness-slide-1.jpg"
       },
       {
-        "name": "Golden Fitness Studio - Social & Facilities",
+        "name": "Golden Fitness Studio - Part 2 (Legacy of Strength Since 2001)",
+        "src": "/gym/golden-fitness-slide-2.jpg",
+        "aspectRatio": 1.33,
+        "thumb": "/gym/golden-fitness-slide-2.jpg",
+        "full": "/gym/golden-fitness-slide-2.jpg"
+      },
+      {
+        "name": "Golden Fitness Studio - Part 3 (Follow Us Now)",
         "src": "/gym/golden-fitness-slide-3.jpg",
         "aspectRatio": 1.33,
-        "thumb": "/Graphic portfolio/thumbs/golden-fitness-slide-3.webp",
-        "full": "/Graphic portfolio/optimized/golden-fitness-slide-3.webp"
+        "thumb": "/gym/golden-fitness-slide-3.jpg",
+        "full": "/gym/golden-fitness-slide-3.jpg"
+      },
+      {
+        "name": "Golden Fitness - Womens Dedicated Fitness Zone",
+        "src": "/gym/golden-fitness-slide-4.jpg",
+        "aspectRatio": 1.33,
+        "thumb": "/gym/golden-fitness-slide-4.jpg",
+        "full": "/gym/golden-fitness-slide-4.jpg"
+      },
+      {
+        "name": "Golden Fitness - Book a Consult Session (25 Years)",
+        "src": "/gym/golden-fitness-slide-5.jpg",
+        "aspectRatio": 1.33,
+        "thumb": "/gym/golden-fitness-slide-5.jpg",
+        "full": "/gym/golden-fitness-slide-5.jpg"
+      },
+      {
+        "name": "Golden Fitness - Athletic Training & Runners",
+        "src": "/gym/golden-fitness-athletes.jpg",
+        "aspectRatio": 1.33,
+        "thumb": "/gym/golden-fitness-athletes.jpg",
+        "full": "/gym/golden-fitness-athletes.jpg"
+      },
+      {
+        "name": "Golden Fitness - Train With Expert Guidance",
+        "src": "/gym/golden-fitness-expert-guidance.jpg",
+        "aspectRatio": 1.33,
+        "thumb": "/gym/golden-fitness-expert-guidance.jpg",
+        "full": "/gym/golden-fitness-expert-guidance.jpg"
       },
       {
         "name": "Golden Fitness - Membership & Training Packages",
@@ -1703,34 +1738,6 @@
         "aspectRatio": 1.33,
         "thumb": "/Graphic portfolio/thumbs/golden-fitness-pricing.webp",
         "full": "/Graphic portfolio/optimized/golden-fitness-pricing.webp"
-      },
-      {
-        "name": "Golden Fitness - Womens Dedicated Fitness Zone",
-        "src": "/gym/golden-fitness-slide-4.jpg",
-        "aspectRatio": 1.33,
-        "thumb": "/Graphic portfolio/thumbs/golden-fitness-slide-4.webp",
-        "full": "/Graphic portfolio/optimized/golden-fitness-slide-4.webp"
-      },
-      {
-        "name": "Golden Fitness - Book a Consult Session (25 Years)",
-        "src": "/gym/golden-fitness-slide-5.jpg",
-        "aspectRatio": 1.33,
-        "thumb": "/Graphic portfolio/thumbs/golden-fitness-slide-5.webp",
-        "full": "/Graphic portfolio/optimized/golden-fitness-slide-5.webp"
-      },
-      {
-        "name": "Golden Fitness - Athletic Training & Runners",
-        "src": "/gym/golden-fitness-athletes.jpg",
-        "aspectRatio": 1.33,
-        "thumb": "/Graphic portfolio/thumbs/golden-fitness-athletes.webp",
-        "full": "/Graphic portfolio/optimized/golden-fitness-athletes.webp"
-      },
-      {
-        "name": "Golden Fitness - Train With Expert Guidance",
-        "src": "/gym/golden-fitness-expert-guidance.jpg",
-        "aspectRatio": 1.33,
-        "thumb": "/Graphic portfolio/thumbs/golden-fitness-expert-guidance.webp",
-        "full": "/Graphic portfolio/optimized/golden-fitness-expert-guidance.webp"
       },
       {
         "name": "Golden Fitness - Get Your Membership Campaign",
@@ -1787,13 +1794,6 @@
         "aspectRatio": 1.25,
         "thumb": "/Graphic portfolio/thumbs/shiv-nutrition-avvatar-whey.webp",
         "full": "/Graphic portfolio/optimized/shiv-nutrition-avvatar-whey.webp"
-      },
-      {
-        "name": "Golden Fitness Studio - Intro Banner",
-        "src": "/gym/golden-fitness-slide-1.jpg",
-        "aspectRatio": 1.33,
-        "thumb": "/Graphic portfolio/thumbs/golden-fitness-slide-1.webp",
-        "full": "/Graphic portfolio/optimized/golden-fitness-slide-1.webp"
       }
     ],
     "coverImageThumb": "/Graphic portfolio/thumbs/golden-fitness-cover.webp",
