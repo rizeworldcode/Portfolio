@@ -15,11 +15,11 @@ dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
 const MONGO_URI = process.env.MONGO_URI;
 
-// Import graphics from graphic/src/data/portfolioData.js
+// Import graphics from graphic/src/data/portfolioData.json
 async function loadAllGraphics() {
-  const portfolioDataPath = path.resolve(__dirname, '../../graphic/src/data/portfolioData.js');
-  const module = await import(`file://${portfolioDataPath}`);
-  const categories = module.PORTFOLIO_CATEGORIES || [];
+  const jsonPath = path.resolve(__dirname, '../../graphic/src/data/portfolioData.json');
+  const raw = fs.readFileSync(jsonPath, 'utf8');
+  const categories = JSON.parse(raw);
   
   const graphics = [];
   for (const cat of categories) {

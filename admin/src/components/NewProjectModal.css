@@ -483,6 +483,21 @@ select.form-input option {
   transform: scale(1.02);
 }
 
+.showcase-media-stage--video {
+  height: 250px;
+  background: radial-gradient(circle at center, #0f172a 0%, #020617 100%);
+}
+
+.showcase-video {
+  max-height: 230px;
+  max-width: 100%;
+  aspect-ratio: 9/16;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  background: #000;
+}
+
 /* Modal Actions Footer */
 .modal-actions {
   display: flex;

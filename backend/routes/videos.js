@@ -287,11 +287,56 @@ router.post('/', async (req, res) => {
     });
 
     const saved = await video.save();
+    syncVideoFile(saved);
     res.status(201).json(saved);
   } catch (error) {
     res.status(500).json({ error: 'Failed to create video', details: error.message });
   }
 });
+
+// Helper to keep local static allVideos.json synchronized with database changes
+function syncVideoFile(videoItem, isDelete = false) {
+  try {
+    const targetPaths = [
+      path.resolve(__dirname, '../../video/src/data/allVideos.json'),
+      path.resolve(__dirname, '../../admin/src/data/allVideos.json'),
+    ];
+    for (const filePath of targetPaths) {
+      if (!fs.existsSync(filePath)) continue;
+      const raw = fs.readFileSync(filePath, 'utf-8');
+      let list = JSON.parse(raw);
+      const vidId = videoItem.id || videoItem._id?.toString();
+      if (isDelete) {
+        list = list.filter((item) => item.id !== vidId);
+      } else {
+        const idx = list.findIndex((item) => item.id === vidId);
+        const isElection = (videoItem.category || '').toLowerCase().includes('election') || (videoItem.category || '').toLowerCase().includes('politic');
+        const formatted = {
+          id: vidId,
+          title: videoItem.title || 'Video Reel',
+          category: videoItem.category || (isElection ? 'Political & Election' : 'Video Reel'),
+          categoryKey: videoItem.categoryKey || (isElection ? 'election' : 'reels'),
+          client: videoItem.client || 'Client',
+          duration: videoItem.duration || '0:30',
+          views: videoItem.views || '120K',
+          likes: videoItem.likes || '14K',
+          video: videoItem.videoUrl || videoItem.video || '',
+          videoUrl: videoItem.videoUrl || videoItem.video || '',
+          tags: Array.isArray(videoItem.tags) ? videoItem.tags : ['Video Reel'],
+          featured: !!videoItem.featured,
+        };
+        if (idx >= 0) {
+          list[idx] = { ...list[idx], ...formatted };
+        } else {
+          list.unshift(formatted);
+        }
+      }
+      fs.writeFileSync(filePath, JSON.stringify(list, null, 2), 'utf-8');
+    }
+  } catch (err) {
+    console.warn('Sync to allVideos.json skipped:', err.message);
+  }
+}
 
 // PUT update video
 router.put('/:id', async (req, res) => {
@@ -303,6 +348,7 @@ router.put('/:id', async (req, res) => {
     }).exec();
     if (!updated) return res.status(404).json({ error: 'Video not found' });
     updated.id = updated._id.toString();
+    syncVideoFile(updated);
     res.json(updated);
   } catch (error) {
     res.status(500).json({ error: 'Failed to update video', details: error.message });
@@ -314,6 +360,7 @@ router.delete('/:id', async (req, res) => {
   try {
     const deleted = await Video.findByIdAndDelete(req.params.id);
     if (!deleted) return res.status(404).json({ error: 'Video not found' });
+    syncVideoFile({ id: req.params.id }, true);
     res.json({ message: 'Video deleted successfully', id: req.params.id });
   } catch (error) {
     res.status(500).json({ error: 'Failed to delete video', details: error.message });

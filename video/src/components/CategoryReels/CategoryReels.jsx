@@ -9,6 +9,7 @@ import {
   RiLeafLine,
   RiRobotLine,
   RiVipDiamondLine,
+  RiGovernmentLine,
 } from "react-icons/ri";
 import { IoPlay, IoClose } from "react-icons/io5";
 import { FiArrowRight } from "react-icons/fi";
@@ -17,7 +18,8 @@ import "./CategoryReels.css";
 // Reel categories
 const CATEGORIES = [
   { id: "hospital", name: "Hospital & Healthcare", icon: <RiHospitalLine /> },
-  { id: "school", name: "School & Education", icon: <RiGraduationCapLine /> },
+  { id: "school", name: "School & Institute", icon: <RiGraduationCapLine /> },
+  { id: "election", name: "Political & Election", icon: <RiGovernmentLine /> },
   { id: "food", name: "Cafe & Restaurant", icon: <RiRestaurant2Line /> },
   { id: "realestate", name: "Real Estate & Infra", icon: <RiBuilding4Line /> },
   { id: "creative", name: "Jewellery & Gemstones", icon: <RiVipDiamondLine /> },
@@ -105,7 +107,6 @@ function SmartReelCard({ reel, index, onSelect }) {
 
         {/* Bottom Metadata */}
         <div className="reel-card__bottom">
-          <p className="reel-card__client">{reel.client}</p>
           <h3 className="reel-card__title">{reel.title}</h3>
         </div>
       </div>
@@ -113,11 +114,66 @@ function SmartReelCard({ reel, index, onSelect }) {
   );
 }
 
+// Helper to map backend category strings to exact category tab ids
+function getCategoryKey(cat) {
+  const c = (cat || "").toLowerCase();
+  if (c.includes("election") || c.includes("politic")) return "election";
+  if (c.includes("hospital") || c.includes("health") || c.includes("doctor")) return "hospital";
+  if (c.includes("school") || c.includes("institute") || c.includes("educat")) return "school";
+  if (c.includes("cafe") || c.includes("restaurant") || c.includes("food") || c.includes("dining")) return "food";
+  if (c.includes("real estate") || c.includes("infra") || c.includes("build")) return "realestate";
+  if (c.includes("jewel") || c.includes("diamond") || c.includes("gemstone") || c.includes("gold")) return "creative";
+  if (c.includes("lifestyle") || c.includes("wellness") || c.includes("yoga")) return "lifestyle";
+  if (c.includes("ai") || c.includes("robot")) return "ai";
+  return "hospital";
+}
+
 export default function CategoryReels() {
   const sectionRef = useRef(null);
   const [isSectionVisible, setIsSectionVisible] = useState(false);
   const [activeCategory, setActiveCategory] = useState(CATEGORIES[0].id);
   const [selectedReel, setSelectedReel] = useState(null);
+  const [reelsData, setReelsData] = useState(REELS_DATA);
+
+  // Load all live video reels directly from backend API with strict deduplication
+  useEffect(() => {
+    const apiBase = import.meta.env.VITE_API_BASE_URL || "https://portfolio-j73f.onrender.com/api";
+    fetch(`${apiBase}/videos`)
+      .then((res) => (res.ok ? res.json() : null))
+      .then((liveList) => {
+        if (Array.isArray(liveList) && liveList.length > 0) {
+          const seen = new Set();
+          const cleanList = [];
+
+          liveList.forEach((v) => {
+            const rawPath = v.videoUrl || v.video || "";
+            const normalized = rawPath.split("?")[0].split("#")[0].trim().replace(/^.*[\\/]/, "").toLowerCase();
+            if (!normalized || seen.has(normalized)) return;
+            seen.add(normalized);
+
+            const isElection = (v.category || "").toLowerCase().includes("election") || (v.category || "").toLowerCase().includes("politic");
+            const cleanCategory = isElection ? "Political & Election" : (v.category || "Video Reel");
+
+            cleanList.push({
+              ...v,
+              id: v.id || v._id,
+              title: v.title || (isElection ? "Election" : "Video Reel"),
+              client: v.client || (isElection ? "Election" : "Client"),
+              category: cleanCategory,
+              categoryLabel: cleanCategory,
+              categoryKey: isElection ? "election" : (v.categoryKey || getCategoryKey(cleanCategory)),
+              video: rawPath,
+              videoUrl: rawPath,
+              poster: v.thumbnail || v.poster || (rawPath ? `/posters/${rawPath.split("/").pop().replace(".mp4", ".webp")}` : ""),
+            });
+          });
+
+          // All reels come directly from backend
+          setReelsData(cleanList);
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -137,10 +193,19 @@ export default function CategoryReels() {
     return () => observer.disconnect();
   }, []);
 
+  const isElectionReel = (r) => {
+    const cat = (r.category || '').toLowerCase();
+    const key = (r.categoryKey || '').toLowerCase();
+    return key === 'election' || cat.includes('election') || cat.includes('politic');
+  };
+
   const filteredReels =
     activeCategory === "all"
-      ? REELS_DATA
-      : REELS_DATA.filter((r) => r.categoryKey === activeCategory);
+      ? reelsData
+      : reelsData.filter((r) => {
+          if (activeCategory === "election") return isElectionReel(r);
+          return r.categoryKey === activeCategory || (r.category || '').toLowerCase() === activeCategory.toLowerCase();
+        });
 
   return (
     <section ref={sectionRef} className="category-reels" id="reels">
@@ -177,7 +242,7 @@ export default function CategoryReels() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Explore industry-specific reels for AI video, healthcare, schools, restaurants, real estate,
+            Explore industry-specific reels for AI video, political & election campaigns, healthcare, schools, restaurants, real estate,
             jewellery & gemstones, and wellness. Hover to preview or click to watch with full audio.
           </motion.p>
 
@@ -186,7 +251,10 @@ export default function CategoryReels() {
               ======================================================== */}
           <div className="category-reels__tabs" role="tablist">
             {CATEGORIES.map((cat) => {
-              const count = REELS_DATA.filter((r) => r.categoryKey === cat.id).length;
+              const count = reelsData.filter((r) => {
+                if (cat.id === "election") return isElectionReel(r);
+                return r.categoryKey === cat.id || (r.category || '').toLowerCase() === cat.name.toLowerCase();
+              }).length;
               const isActive = activeCategory === cat.id;
 
               return (
@@ -236,7 +304,7 @@ export default function CategoryReels() {
                 ))
               ) : (
                 <motion.div
-                  key="empty-ai-state"
+                  key="empty-category-state"
                   initial={{ opacity: 0, scale: 0.95, y: 20 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.95, y: -20 }}
@@ -244,11 +312,17 @@ export default function CategoryReels() {
                   className="category-reels__empty-state"
                 >
                   <div className="category-reels__empty-icon">
-                    <RiRobotLine />
+                    {activeCategory === "election" ? <RiGovernmentLine /> : <RiRobotLine />}
                   </div>
-                  <h3 className="category-reels__empty-title">AI Video Reels Coming Soon</h3>
+                  <h3 className="category-reels__empty-title">
+                    {activeCategory === "election"
+                      ? "Political & Election Reels Coming Soon"
+                      : "AI Video Reels Coming Soon"}
+                  </h3>
                   <p className="category-reels__empty-subtitle">
-                    Curated AI-generated video reels, viral avatars, and futuristic video edits are being prepared.
+                    {activeCategory === "election"
+                      ? "High-impact campaign reels, political speeches, candidate highlights, and rally videos are ready for upload from the Admin Panel."
+                      : "Curated AI-generated video reels, viral avatars, and futuristic video edits are being prepared."}
                   </p>
                   <div className="category-reels__empty-badge">
                     <span>Ready For Uploads</span>

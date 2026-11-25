@@ -9,6 +9,7 @@ import {
   LuSparkles,
   LuPlus
 } from 'react-icons/lu';
+import { uploadAsset } from '../services/api';
 import './NewProjectModal.css';
 
 // Authentic Graphic Portfolio Categories (13 Core Sectors from Live Portfolio)
@@ -28,10 +29,11 @@ export const AUTHENTIC_GRAPHIC_CATEGORIES = [
   'Gym & Fitness',
 ];
 
-// Authentic Video Portfolio Categories (The 7 Core Categories from Video Portfolio)
+// Authentic Video Portfolio Categories (The Core Categories from Video Portfolio)
 export const AUTHENTIC_VIDEO_CATEGORIES = [
   'Hospital & Healthcare',
-  'School & Education',
+  'School & Institute',
+  'Political & Election',
   'Cafe & Restaurant',
   'Real Estate & Infra',
   'Jewellery & Gemstones',
@@ -82,6 +84,9 @@ export default function NewProjectModal({
 
   // Video Specific
   const [videoUrl, setVideoUrl] = useState('');
+  const [previewVideoUrl, setPreviewVideoUrl] = useState('');
+  const [isVideoUploading, setIsVideoUploading] = useState(false);
+  const [uploadVideoStatus, setUploadVideoStatus] = useState('');
   const [duration, setDuration] = useState('0:45');
   const [views, setViews] = useState('180K');
 
@@ -146,6 +151,42 @@ export default function NewProjectModal({
     }
   };
 
+  const handleVideoUpload = async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    // 1. Instant local playback preview via Object URL
+    const objectUrl = URL.createObjectURL(file);
+    setPreviewVideoUrl(objectUrl);
+    setUploadVideoStatus(`Selected "${file.name}" (${(file.size / (1024 * 1024)).toFixed(1)} MB)`);
+
+    // Auto-fill title if empty
+    if (!title) {
+      const cleanName = file.name.replace(/\.[^/.]+$/, '').replace(/[-_]/g, ' ');
+      setTitle(cleanName.charAt(0).toUpperCase() + cleanName.slice(1));
+    }
+
+    // Default to local portfolio path convention
+    const localPath = `/videos-compressed/${file.name}`;
+    setVideoUrl(localPath);
+
+    // 2. Attempt backend upload to cloud/server if reachable
+    setIsVideoUploading(true);
+    try {
+      const uploadedUrl = await uploadAsset(file);
+      if (uploadedUrl) {
+        setVideoUrl(uploadedUrl);
+        setUploadVideoStatus(`Uploaded successfully: ${file.name}`);
+      }
+    } catch (err) {
+      console.warn('Backend upload skipped/failed, using local path:', err?.message || err);
+      setVideoUrl(localPath);
+      setUploadVideoStatus(`Ready with path: ${localPath}`);
+    } finally {
+      setIsVideoUploading(false);
+    }
+  };
+
   // Load edit item data or reset form
   useEffect(() => {
     if (editItem) {
@@ -170,7 +211,11 @@ export default function NewProjectModal({
       setImageUrl(editItem.image || '');
       setFormat(editItem.format || 'Poster (4:5)');
       setTags(editItem.tags ? editItem.tags.join(', ') : '');
-      setVideoUrl(editItem.video || editItem.videoUrl || '');
+      const initialVid = editItem.video || editItem.videoUrl || '';
+      setVideoUrl(initialVid);
+      setPreviewVideoUrl(initialVid);
+      setUploadVideoStatus('');
+      setIsVideoUploading(false);
       setDuration(editItem.duration || '0:45');
       setViews(editItem.views || '180K');
       setWebsite(editItem.website || '');
@@ -191,6 +236,9 @@ export default function NewProjectModal({
       setCategory(defaultList[0] || '');
       setImageUrl('');
       setVideoUrl('');
+      setPreviewVideoUrl('');
+      setUploadVideoStatus('');
+      setIsVideoUploading(false);
       setWebsite('');
       setTopKeyword('');
       setGoogleRank('#1 Position');
@@ -221,14 +269,19 @@ export default function NewProjectModal({
         date: editItem?.date || 'Oct 2026',
       }, !!editItem);
     } else if (activeMode === 'video') {
-      const finalCategory = resolvedCategory || availableVideoCats[0] || 'Cafe & Restaurant';
+      const finalCategory = resolvedCategory || availableVideoCats[0] || 'Hospital & Healthcare';
+      const finalVideo = videoUrl.trim() || previewVideoUrl.trim();
+      if (!finalVideo) {
+        alert('Please choose a video file from your PC or enter a video path.');
+        return;
+      }
       onSave('video', {
         id: editItem ? editItem.id : `v-${Date.now()}`,
-        title: title || 'New 4K Video Reel',
+        title: title || 'New Video Reel',
         client: client || 'Rize Client',
         category: finalCategory,
-        video: videoUrl || '/videos-compressed/avan-spring.mp4',
-        videoUrl: videoUrl || '/videos-compressed/avan-spring.mp4',
+        video: finalVideo,
+        videoUrl: finalVideo,
         views: views || '150K',
         likes: editItem?.likes || '12K',
         duration: duration || '0:45',
@@ -583,18 +636,100 @@ export default function NewProjectModal({
                 {renderCategoryField("Reel Category", availableVideoCats, "Cafe & Restaurant")}
               </div>
 
-              <div className="form-row-2">
-                <div className="form-group">
-                  <label className="form-label">Video File Path</label>
-                  <input 
-                    type="text" 
-                    className="form-input" 
-                    placeholder="/videos-compressed/avan-spring.mp4"
-                    value={videoUrl}
-                    onChange={(e) => setVideoUrl(e.target.value)}
-                  />
+              {/* Video File / Upload Source */}
+              <div className="form-group">
+                <div className="form-label-row">
+                  <label className="form-label">Video Reel File / Source *</label>
+                  <label className="file-upload-btn-chip" title="Choose video from PC">
+                    <LuUpload size={12} />
+                    <span>{isVideoUploading ? 'Uploading Video...' : 'Upload Video from PC'}</span>
+                    <input 
+                      type="file" 
+                      accept="video/mp4,video/webm,video/quicktime,.mp4,.mov,.webm" 
+                      style={{ display: 'none' }} 
+                      onChange={handleVideoUpload} 
+                      disabled={isVideoUploading}
+                    />
+                  </label>
                 </div>
+                <input 
+                  type="text" 
+                  className="form-input" 
+                  placeholder="Choose video from PC or enter /videos-compressed/video-name.mp4"
+                  value={videoUrl}
+                  onChange={(e) => {
+                    setVideoUrl(e.target.value);
+                    setPreviewVideoUrl(e.target.value);
+                  }}
+                  required
+                />
+                {uploadVideoStatus && (
+                  <div style={{ fontSize: '11px', marginTop: '5px', color: uploadVideoStatus.startsWith('Error') ? '#ef4444' : '#0284c7', fontWeight: 600 }}>
+                    {uploadVideoStatus}
+                  </div>
+                )}
 
+                {/* Live Video Reel Preview Stage */}
+                {(previewVideoUrl || videoUrl) && (
+                  <div className="modal-asset-showcase" style={{ marginTop: '10px' }}>
+                    <div className="showcase-header-bar">
+                      <div className="showcase-left-meta">
+                        <span className="showcase-status-indicator"></span>
+                        <span className="showcase-label">Live Reel Preview Stage</span>
+                      </div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <span className="showcase-format-pill">9:16 Cinema Reel</span>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setVideoUrl('');
+                            setPreviewVideoUrl('');
+                            setUploadVideoStatus('');
+                          }}
+                          style={{
+                            background: 'transparent',
+                            border: 'none',
+                            color: '#ef4444',
+                            cursor: 'pointer',
+                            fontSize: '11px',
+                            fontWeight: 700,
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '3px',
+                            padding: '2px 6px',
+                            borderRadius: '4px'
+                          }}
+                          title="Remove Video"
+                        >
+                          <LuX size={12} /> Remove
+                        </button>
+                      </div>
+                    </div>
+                    <div className="showcase-media-stage showcase-media-stage--video">
+                      <video 
+                        key={previewVideoUrl || videoUrl}
+                        src={previewVideoUrl || videoUrl} 
+                        controls 
+                        playsInline
+                        autoPlay
+                        muted
+                        loop
+                        onLoadedMetadata={(e) => {
+                          const sec = Math.round(e.target.duration);
+                          if (sec > 0 && (!duration || duration === '0:45')) {
+                            const mins = Math.floor(sec / 60);
+                            const remainderSec = sec % 60;
+                            setDuration(`${mins}:${remainderSec < 10 ? '0' : ''}${remainderSec}`);
+                          }
+                        }}
+                        className="showcase-video"
+                      />
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <div className="form-row-2">
                 <div className="form-group">
                   <label className="form-label">Duration</label>
                   <input 
@@ -605,17 +740,17 @@ export default function NewProjectModal({
                     onChange={(e) => setDuration(e.target.value)}
                   />
                 </div>
-              </div>
 
-              <div className="form-group">
-                <label className="form-label">Views & Impressions</label>
-                <input 
-                  type="text" 
-                  className="form-input" 
-                  placeholder="e.g. 210K"
-                  value={views}
-                  onChange={(e) => setViews(e.target.value)}
-                />
+                <div className="form-group">
+                  <label className="form-label">Views & Impressions</label>
+                  <input 
+                    type="text" 
+                    className="form-input" 
+                    placeholder="e.g. 210K"
+                    value={views}
+                    onChange={(e) => setViews(e.target.value)}
+                  />
+                </div>
               </div>
             </div>
           )}

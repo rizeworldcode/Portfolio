@@ -31,12 +31,67 @@ export default function PinterestGallery() {
   const [viewMode, setViewMode] = useState("categories"); // "categories" (default) or "masonry"
   const [selectedCategoryForModal, setSelectedCategoryForModal] = useState(null);
   const [visibleCount, setVisibleCount] = useState(24);
+  const [categoriesData, setCategoriesData] = useState(PORTFOLIO_CATEGORIES);
   const searchInputRef = useRef(null);
+
+  // Load live graphic designs directly from backend API
+  useEffect(() => {
+    const apiBase = import.meta.env.VITE_API_BASE_URL || "https://portfolio-j73f.onrender.com/api";
+    fetch(`${apiBase}/graphics`)
+      .then((res) => (res.ok ? res.json() : null))
+      .then((liveGraphics) => {
+        if (Array.isArray(liveGraphics) && liveGraphics.length > 0) {
+          const liveByCategory = {};
+          liveGraphics.forEach((g) => {
+            const rawCat = (g.category || "").trim();
+            if (!rawCat) return;
+            const normCat = rawCat.toLowerCase();
+            if (!liveByCategory[normCat]) liveByCategory[normCat] = [];
+
+            const rawSrc = g.image || "";
+            const thumbPath =
+              rawSrc.includes("/Graphic portfolio/") && !rawSrc.includes("/thumbs/")
+                ? rawSrc.replace("/Graphic portfolio/", "/Graphic portfolio/thumbs/").replace(/\.(jpg|jpeg|png)$/i, ".webp")
+                : rawSrc;
+
+            liveByCategory[normCat].push({
+              name: g.title || "Creative Artwork",
+              src: rawSrc,
+              aspectRatio: g.format?.includes("16:9") ? 1.77 : g.format?.includes("1:1") ? 1 : 1.33,
+              thumb: thumbPath,
+              full: rawSrc,
+              id: g.id || g._id,
+            });
+          });
+
+          // Match live backend graphics with categories
+          setCategoriesData((prevCats) => {
+            return prevCats.map((cat) => {
+              const tagKey = (cat.tag || "").toLowerCase();
+              const titleKey = (cat.title || "").toLowerCase();
+              const idKey = (cat.id || "").toLowerCase();
+
+              const matching = liveByCategory[tagKey] || liveByCategory[titleKey] || liveByCategory[idKey];
+              if (matching && matching.length > 0) {
+                return {
+                  ...cat,
+                  itemCount: matching.length,
+                  coverImage: matching[0]?.src || cat.coverImage,
+                  images: matching,
+                };
+              }
+              return cat;
+            });
+          });
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   // Smartly interleaved & mixed feed across all categories (Pinterest Style)
   const allItems = useMemo(() => {
     // Group images by category
-    const categoryGroups = PORTFOLIO_CATEGORIES.map((cat) =>
+    const categoryGroups = categoriesData.map((cat) =>
       (cat.images || []).map((img, idx) => ({
         ...img,
         uniqueId: `${cat.id}-${idx}-${img.name}`,
@@ -84,7 +139,7 @@ export default function PinterestGallery() {
     }
 
     return mixed;
-  }, []);
+  }, [categoriesData]);
 
   // Filter items based on search query (matches name, category title, tag, or id)
   const filteredItems = useMemo(() => {
@@ -366,7 +421,7 @@ export default function PinterestGallery() {
         {viewMode === "categories" && (
           <div className="pinterest-categories-wrapper">
             <div className="pinterest-categories-grid">
-              {PORTFOLIO_CATEGORIES.map((cat) => (
+              {categoriesData.map((cat) => (
                 <div
                   key={cat.id}
                   className="pinterest-category-card"
@@ -482,7 +537,7 @@ export default function PinterestGallery() {
       <AnimatePresence>
         {selectedCategoryForModal && (
           <CategoryDetail
-            category={selectedCategoryForModal}
+            category={categoriesData.find((c) => c.id === selectedCategoryForModal.id) || selectedCategoryForModal}
             onClose={() => setSelectedCategoryForModal(null)}
           />
         )}

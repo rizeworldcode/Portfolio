@@ -24,9 +24,9 @@ const SHOWCASE_ITEMS = [
   },
   {
     id: "item-2",
-    title: "Creative Pro Motion & Skills",
+    title: "Creative Motion & Skills",
     category: "Motion Graphics · Identity",
-    client: "Creative Corp",
+    client: "Motion Design",
     year: "2026",
     description:
       "Modern brand identity film featuring kinetic typography, sleek 3D renders, and futuristic aesthetic pacing.",
@@ -35,9 +35,9 @@ const SHOWCASE_ITEMS = [
   },
   {
     id: "item-3",
-    title: "Kafesa Gourmet Spotlight",
+    title: "Cafe & Restaurant Spotlight",
     category: "Commercial · Color Grade",
-    client: "Kafesa Cafe & Bistro",
+    client: "Cafe & Restaurant",
     year: "2025",
     description:
       "Mouth-watering culinary commercial with high-speed macro food shots and atmospheric warm color grading.",
@@ -48,7 +48,7 @@ const SHOWCASE_ITEMS = [
     id: "item-4",
     title: "3D Infrastructure CGI Walkthrough",
     category: "Product Promo · 3D VFX",
-    client: "Skyline Infra CGI",
+    client: "Real Estate & Infra",
     year: "2025",
     description:
       "Dynamic 3D product and architectural animation highlighting textures, lighting, and realistic structural modeling.",
@@ -57,9 +57,9 @@ const SHOWCASE_ITEMS = [
   },
   {
     id: "item-5",
-    title: "Sigdi Sizzling Food Feast",
+    title: "Live Kitchen Sizzling Feast",
     category: "Culinary Video · Sound Sync",
-    client: "Sigdi Food Lounge",
+    client: "Cafe & Restaurant",
     year: "2025",
     description:
       "High-energy live kitchen cuts edited to rhythm with smoky grill flames and delicious plating.",
@@ -68,9 +68,9 @@ const SHOWCASE_ITEMS = [
   },
   {
     id: "item-6",
-    title: "Avantika Royal Living",
+    title: "Architectural Living Tour",
     category: "Real Estate & Architecture",
-    client: "Avantika Group",
+    client: "Real Estate & Infra",
     year: "2025",
     description:
       "Cinematic architectural walkthrough combining high-definition FPV drone sweeps and elegant interior framing.",
@@ -79,9 +79,9 @@ const SHOWCASE_ITEMS = [
   },
   {
     id: "item-7",
-    title: "DWPS Horizons Campaign",
+    title: "Campus Horizons Campaign",
     category: "Institutional Video · Docu",
-    client: "DWPS Alwar",
+    client: "School & Institute",
     year: "2025",
     description:
       "Inspiring documentary-style campus story capturing academic excellence, sports passion, and student life.",
@@ -92,7 +92,7 @@ const SHOWCASE_ITEMS = [
     id: "item-8",
     title: "Serenity Yoga & Nature Film",
     category: "Lifestyle Documentary",
-    client: "Yoga Lifestyle Life",
+    client: "Lifestyle & Wellness",
     year: "2025",
     description:
       "Calming, organic visual study of movement and nature, crafted with gentle lighting and meditative pacing.",
@@ -274,17 +274,6 @@ export default function CurvedShowcase() {
           1. SECTION HEADER
           ======================================================== */}
       <div className="curved-showcase__header">
-        <motion.div
-          className="curved-showcase__pill"
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <span className="curved-showcase__pill-dot" />
-          <span>CURVED 3D SHOWCASE · 2026</span>
-        </motion.div>
-
         <motion.h2
           className="curved-showcase__title"
           initial={{ opacity: 0, y: 20 }}
